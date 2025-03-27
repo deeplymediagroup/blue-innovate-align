@@ -1,5 +1,6 @@
 
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Footer: React.FC = () => {
   return (
@@ -59,7 +60,7 @@ export const Footer: React.FC = () => {
               <a
                 href="#"
                 className="text-foreground/60 hover:text-blue-600 transition-colors"
-                aria-label="GitHub"
+                aria-label="YouTube"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -72,8 +73,8 @@ export const Footer: React.FC = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >
-                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
-                  <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                  <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path>
+                  <path d="m10 15 5-3-5-3z"></path>
                 </svg>
               </a>
             </div>
@@ -81,24 +82,24 @@ export const Footer: React.FC = () => {
           
           <div>
             <h3 className="font-semibold text-sm uppercase tracking-wider mb-4">
-              Product
+              Services
             </h3>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#features"
+                <Link
+                  to="/distribution"
                   className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
                 >
-                  Features
-                </a>
+                  Distribution
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/licensing"
                   className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
                 >
-                  Integrations
-                </a>
+                  Licensing
+                </Link>
               </li>
               <li>
                 <a
@@ -110,18 +111,10 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#contact"
                   className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
                 >
-                  Changelog
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
-                >
-                  Roadmap
+                  Contact Us
                 </a>
               </li>
             </ul>
@@ -156,38 +149,14 @@ export const Footer: React.FC = () => {
                   Blog
                 </a>
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
-                >
-                  Partners
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
-                >
-                  Contact
-                </a>
-              </li>
             </ul>
           </div>
 
           <div>
             <h3 className="font-semibold text-sm uppercase tracking-wider mb-4">
-              Resources
+              Support
             </h3>
             <ul className="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
-                >
-                  Documentation
-                </a>
-              </li>
               <li>
                 <a
                   href="#"
@@ -209,15 +178,7 @@ export const Footer: React.FC = () => {
                   href="#"
                   className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
                 >
-                  Security
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
-                >
-                  API
+                  Contact
                 </a>
               </li>
             </ul>
@@ -241,12 +202,6 @@ export const Footer: React.FC = () => {
                 className="text-sm text-foreground/60 hover:text-blue-600 transition-colors"
               >
                 Terms of Service
-              </a>
-              <a
-                href="#"
-                className="text-sm text-foreground/60 hover:text-blue-600 transition-colors"
-              >
-                Cookie Policy
               </a>
             </div>
           </div>

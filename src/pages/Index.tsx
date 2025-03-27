@@ -5,7 +5,6 @@ import { Hero } from "@/components/Hero";
 import { ClientLogos } from "@/components/ClientLogos";
 import { Services } from "@/components/Services";
 import { HowItWorks } from "@/components/HowItWorks";
-import { PricingPlans } from "@/components/PricingPlans";
 import { CTASection } from "@/components/CTASection";
 import { CreatorGrid } from "@/components/CreatorGrid";
 import { AlanWattsShowcase } from "@/components/AlanWattsShowcase";
@@ -57,7 +56,6 @@ const Index: React.FC = () => {
         <CreatorGrid className="max-w-5xl mx-auto" />
       </div>
       <HowItWorks />
-      <PricingPlans />
       <CTASection />
     </Layout>
   );

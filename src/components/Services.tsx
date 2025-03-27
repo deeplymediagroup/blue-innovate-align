@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { GlassmorphicCard } from "./GlassmorphicCard";
 import { CheckCircle, Shield, DollarSign, Youtube } from "lucide-react";
 import { Button } from "./ui/button";
+import { PricingPlans } from "./PricingPlans";
 
 export const Services: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -73,7 +74,7 @@ export const Services: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Comprehensive dashboard</span>
+                  <span>Custom Dashboard with real time data</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
@@ -91,7 +92,7 @@ export const Services: React.FC = () => {
               </div>
               <h3 className="text-xl font-bold mb-4">Protect Your Content</h3>
               <p className="text-foreground/70 mb-6">
-                Choose how your content is used and take action against unauthorized usage.
+                Choose how your content is used and manage unauthorized usage according to your preferences.
               </p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start">
@@ -104,7 +105,7 @@ export const Services: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Content removal options</span>
+                  <span>Usage management options</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
@@ -127,7 +128,7 @@ export const Services: React.FC = () => {
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Revenue sharing</span>
+                  <span>Claim Stolen Revenue</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
@@ -146,6 +147,10 @@ export const Services: React.FC = () => {
               Learn More About Our Services
             </Button>
           </div>
+        </div>
+        
+        <div className="mt-24 max-w-5xl mx-auto">
+          <PricingPlans />
         </div>
       </div>
     </section>

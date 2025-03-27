@@ -21,11 +21,11 @@ export const YoutubeContentCard: React.FC<YoutubeContentCardProps> = ({
       transition={{ duration: 0.2 }}
       className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
     >
-      <div className="relative">
+      <div className="relative overflow-hidden">
         <img
           src={thumbnail}
           alt={title}
-          className="w-full aspect-video object-cover"
+          className="w-full aspect-video object-cover transition-transform duration-500 hover:scale-105"
         />
         <div className="absolute inset-0 bg-black opacity-10"></div>
         <div className="absolute bottom-3 right-3 bg-black text-white text-xs px-2 py-1 rounded">

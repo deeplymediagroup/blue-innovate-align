@@ -1,104 +1,82 @@
 
 import React from "react";
 import { Layout } from "@/components/Layout";
-import { HowItWorks } from "@/components/HowItWorks";
+import { motion } from "framer-motion";
+import { GlassmorphicCard } from "@/components/GlassmorphicCard";
 import { YoutubeContentGrid } from "@/components/YoutubeContentGrid";
-import { CreatorGrid } from "@/components/CreatorGrid";
+import { HowItWorks } from "@/components/HowItWorks";
 
 const Licensing: React.FC = () => {
   return (
     <Layout>
-      <section className="py-20">
+      <div className="pt-24 md:pt-32 pb-16">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-display font-bold text-4xl md:text-5xl mb-6">
-              Content Licensing & Distribution
-            </h1>
-            <p className="text-xl text-foreground/70 max-w-3xl mx-auto mb-12">
-              Maximize the reach and impact of your content with our licensing and distribution solutions
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Content Licensing</h1>
+            <p className="text-xl text-foreground/70">
+              Maximize revenue from your content across YouTube through our licensing and monetization solutions
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto my-16">
-            <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-lg shadow-md">
-              <h3 className="text-2xl font-bold mb-4">Content Licensing</h3>
-              <p className="mb-4">Our content licensing solutions help you:</p>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mr-3 flex-shrink-0">
-                    <svg className="h-4 w-4 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <span>Protect your intellectual property rights</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mr-3 flex-shrink-0">
-                    <svg className="h-4 w-4 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <span>Create new revenue streams from existing content</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mr-3 flex-shrink-0">
-                    <svg className="h-4 w-4 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <span>Establish clear usage guidelines and terms</span>
-                </li>
-              </ul>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-16">
+            <GlassmorphicCard className="p-6 h-full">
+              <div className="text-center">
+                <div className="h-14 w-14 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-blue-600">
+                    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold mb-3">License Management</h3>
+                <p className="text-foreground/70">
+                  Comprehensive tools to manage how your content is licensed across YouTube
+                </p>
+              </div>
+            </GlassmorphicCard>
             
-            <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-lg shadow-md">
-              <h3 className="text-2xl font-bold mb-4">Content Distribution</h3>
-              <p className="mb-4">Our distribution network helps you:</p>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mr-3 flex-shrink-0">
-                    <svg className="h-4 w-4 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <span>Reach new audiences across multiple platforms</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mr-3 flex-shrink-0">
-                    <svg className="h-4 w-4 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <span>Partner with world-class creators to amplify your message</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mr-3 flex-shrink-0">
-                    <svg className="h-4 w-4 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <span>Optimize content for maximum engagement and monetization</span>
-                </li>
-              </ul>
-            </div>
+            <GlassmorphicCard className="p-6 h-full">
+              <div className="text-center">
+                <div className="h-14 w-14 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-blue-600">
+                    <path d="M12 2v2m0 16v2M4 12H2m4.314-5.686L4.9 4.9m12.786 1.414L19.1 4.9M6.314 17.686L4.9 19.1m12.786-1.414L19.1 19.1M22 12h-2m-8-6a6 6 0 100 12 6 6 0 000-12z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Content Visibility</h3>
+                <p className="text-foreground/70">
+                  Increased exposure through our network of premium content creators
+                </p>
+              </div>
+            </GlassmorphicCard>
+            
+            <GlassmorphicCard className="p-6 h-full">
+              <div className="text-center">
+                <div className="h-14 w-14 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-blue-600">
+                    <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V6m0 8v2m0 0c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Revenue Optimization</h3>
+                <p className="text-foreground/70">
+                  Strategic monetization to maximize your content's earning potential
+                </p>
+              </div>
+            </GlassmorphicCard>
           </div>
         </div>
-      </section>
-      
-      <HowItWorks />
+      </div>
       
       <YoutubeContentGrid />
       
-      <section className="py-16 container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12">
-          <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
-            Current Content Creators We Work With
-          </h2>
-          <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
-            From individual creators to large media companies, we help protect and monetize valuable content
-          </p>
+      <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">How Our Licensing Process Works</h2>
+            <p className="text-xl text-foreground/70">
+              Our streamlined approach helps you maximize value from your content
+            </p>
+          </div>
+          
+          <HowItWorks />
         </div>
-        <CreatorGrid className="max-w-5xl mx-auto" />
       </section>
     </Layout>
   );

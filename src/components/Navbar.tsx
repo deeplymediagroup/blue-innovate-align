@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,18 +41,18 @@ export const Navbar: React.FC = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a
-              href="#features"
+            <Link
+              to="/distribution"
               className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
             >
-              Features
-            </a>
-            <a
-              href="#testimonials"
+              Distribution
+            </Link>
+            <Link
+              to="/licensing"
               className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
             >
-              Testimonials
-            </a>
+              Licensing
+            </Link>
             <a
               href="#pricing"
               className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
@@ -67,12 +68,6 @@ export const Navbar: React.FC = () => {
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              className="text-sm font-medium text-foreground/80 hover:text-blue-600"
-            >
-              Sign In
-            </Button>
             <Button className="bg-blue-600 text-white hover:bg-blue-700 button-shimmer">
               Get Started
             </Button>
@@ -101,20 +96,20 @@ export const Navbar: React.FC = () => {
       >
         <div className="container mx-auto px-4 py-6 space-y-6">
           <nav className="flex flex-col space-y-4">
-            <a
-              href="#features"
+            <Link
+              to="/distribution"
               className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Features
-            </a>
-            <a
-              href="#testimonials"
+              Distribution
+            </Link>
+            <Link
+              to="/licensing"
               className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Testimonials
-            </a>
+              Licensing
+            </Link>
             <a
               href="#pricing"
               className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
@@ -130,14 +125,7 @@ export const Navbar: React.FC = () => {
               Contact
             </a>
           </nav>
-          <div className="grid grid-cols-2 gap-4">
-            <Button
-              variant="outline"
-              className="w-full text-sm font-medium"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Sign In
-            </Button>
+          <div className="grid">
             <Button
               className="w-full bg-blue-600 text-white hover:bg-blue-700 button-shimmer"
               onClick={() => setIsMobileMenuOpen(false)}
