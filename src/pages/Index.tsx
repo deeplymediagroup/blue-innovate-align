@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
@@ -205,9 +206,9 @@ const Index: React.FC = () => {
                 transition={{ duration: 0.5 }}
                 className="flex justify-center"
               >
-                <div className="w-full max-w-md">
+                <div className="w-full max-w-sm">
                   <div className="w-full aspect-square flex items-center justify-center">
-                    <ResponsiveContainer width="100%" height={400}>
+                    <ResponsiveContainer width="100%" height={300}>
                       <PieChart>
                         <Tooltip content={<CustomTooltip />} />
                         <Pie
@@ -216,8 +217,8 @@ const Index: React.FC = () => {
                           nameKey="name"
                           cx="50%"
                           cy="50%"
-                          innerRadius={90}
-                          outerRadius={160}
+                          innerRadius={70}
+                          outerRadius={120}
                           paddingAngle={3}
                           startAngle={90}
                           endAngle={-270}
@@ -245,7 +246,7 @@ const Index: React.FC = () => {
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
                                     className="fill-blue-800"
-                                    style={{ fontSize: '16px', fontWeight: 'bold' }}
+                                    style={{ fontSize: '14px', fontWeight: 'bold' }}
                                   >
                                     Revenue Split
                                   </text>
@@ -256,7 +257,7 @@ const Index: React.FC = () => {
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
                                     className="fill-blue-600"
-                                    style={{ fontSize: '12px' }}
+                                    style={{ fontSize: '10px' }}
                                   >
                                     Sustainable ecosystem
                                   </text>
@@ -279,7 +280,7 @@ const Index: React.FC = () => {
                           <div className="h-4 w-4 rounded-full mr-2" style={{ backgroundColor: segment.color }}></div>
                           <p className="text-sm font-medium">{segment.name}</p>
                         </div>
-                        <p className="text-2xl font-bold" style={{ color: segment.color }}>{segment.value}%</p>
+                        <p className="text-xl font-bold" style={{ color: segment.color }}>{segment.value}%</p>
                       </div>
                     ))}
                   </div>

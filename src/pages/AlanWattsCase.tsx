@@ -84,21 +84,21 @@ const AlanWattsCase: React.FC = () => {
   };
   
   return (
-    <Layout extraNavLinks={[{ title: "Case Studies", href: "/case-studies" }]}>
+    <Layout>
       <section className="pt-24 md:pt-32 pb-16">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto">
             <div className="mb-12">
               <div className="inline-block mb-4">
-                <a 
-                  href="/case-studies" 
+                <Link 
+                  to="/case-studies" 
                   className="text-sm font-medium text-blue-600 hover:text-blue-800 flex items-center"
                 >
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
                   </svg>
                   Back to Case Studies
-                </a>
+                </Link>
               </div>
               
               <h1 className="text-4xl md:text-5xl font-bold mb-6">Alan Watts Organization Case Study</h1>
@@ -144,78 +144,64 @@ const AlanWattsCase: React.FC = () => {
               </GlassmorphicCard>
             </div>
             
-            <div className="grid grid-cols-1 gap-12 mb-16">
-              <div>
-                <h2 className="text-3xl font-bold mb-6">The Challenge</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div>
-                    <GlassmorphicCard className="h-full p-6">
-                      <h3 className="text-xl font-bold mb-4 text-blue-700">Before Mindset DRM</h3>
-                      <ul className="space-y-3">
-                        <li className="flex items-start">
-                          <div className="h-5 w-5 rounded-full bg-red-100 flex items-center justify-center mr-3 mt-0.5">
-                            <div className="h-2.5 w-2.5 rounded-full bg-red-600"></div>
-                          </div>
-                          <span>No visibility into content usage across YouTube</span>
-                        </li>
-                        <li className="flex items-start">
-                          <div className="h-5 w-5 rounded-full bg-red-100 flex items-center justify-center mr-3 mt-0.5">
-                            <div className="h-2.5 w-2.5 rounded-full bg-red-600"></div>
-                          </div>
-                          <span>Widespread unauthorized usage with no monetization</span>
-                        </li>
-                        <li className="flex items-start">
-                          <div className="h-5 w-5 rounded-full bg-red-100 flex items-center justify-center mr-3 mt-0.5">
-                            <div className="h-2.5 w-2.5 rounded-full bg-red-600"></div>
-                          </div>
-                          <span>Limited revenue from their intellectual property</span>
-                        </li>
-                        <li className="flex items-start">
-                          <div className="h-5 w-5 rounded-full bg-red-100 flex items-center justify-center mr-3 mt-0.5">
-                            <div className="h-2.5 w-2.5 rounded-full bg-red-600"></div>
-                          </div>
-                          <span>No way to efficiently identify and claim content</span>
-                        </li>
-                      </ul>
-                    </GlassmorphicCard>
-                  </div>
-                  <div>
-                    <GlassmorphicCard className="h-full p-6">
-                      <h3 className="text-xl font-bold mb-4 text-blue-700">After Mindset DRM</h3>
-                      <ul className="space-y-3">
-                        <li className="flex items-start">
-                          <div className="h-5 w-5 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
-                            <div className="h-2.5 w-2.5 rounded-full bg-green-600"></div>
-                          </div>
-                          <span>Complete visibility across 26,962 Alan Watts videos</span>
-                        </li>
-                        <li className="flex items-start">
-                          <div className="h-5 w-5 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
-                            <div className="h-2.5 w-2.5 rounded-full bg-green-600"></div>
-                          </div>
-                          <span>Automated content identification and claiming</span>
-                        </li>
-                        <li className="flex items-start">
-                          <div className="h-5 w-5 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
-                            <div className="h-2.5 w-2.5 rounded-full bg-green-600"></div>
-                          </div>
-                          <span>660% increase in monthly revenue</span>
-                        </li>
-                        <li className="flex items-start">
-                          <div className="h-5 w-5 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
-                            <div className="h-2.5 w-2.5 rounded-full bg-green-600"></div>
-                          </div>
-                          <span>Strategic licensing program to generate additional revenue</span>
-                        </li>
-                      </ul>
-                    </GlassmorphicCard>
-                  </div>
+            <div className="mb-16">
+              <h2 className="text-3xl font-bold mb-6">Before & After</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <GlassmorphicCard className="h-full p-6">
+                    <h3 className="text-xl font-bold mb-4 text-blue-700">Before MindsetDRM</h3>
+                    <ul className="space-y-3">
+                      <li className="flex items-start">
+                        <div className="h-5 w-5 rounded-full bg-red-100 flex items-center justify-center mr-3 mt-0.5">
+                          <div className="h-2.5 w-2.5 rounded-full bg-red-600"></div>
+                        </div>
+                        <span>No visibility into Alan Watts' content usage</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="h-5 w-5 rounded-full bg-red-100 flex items-center justify-center mr-3 mt-0.5">
+                          <div className="h-2.5 w-2.5 rounded-full bg-red-600"></div>
+                        </div>
+                        <span>No control over content</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="h-5 w-5 rounded-full bg-red-100 flex items-center justify-center mr-3 mt-0.5">
+                          <div className="h-2.5 w-2.5 rounded-full bg-red-600"></div>
+                        </div>
+                        <span>No insight into content performance</span>
+                      </li>
+                    </ul>
+                  </GlassmorphicCard>
+                </div>
+                <div>
+                  <GlassmorphicCard className="h-full p-6">
+                    <h3 className="text-xl font-bold mb-4 text-blue-700">After MindsetDRM</h3>
+                    <ul className="space-y-3">
+                      <li className="flex items-start">
+                        <div className="h-5 w-5 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
+                          <div className="h-2.5 w-2.5 rounded-full bg-green-600"></div>
+                        </div>
+                        <span>100% visibility of 27,000+ Alan Watts videos</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="h-5 w-5 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
+                          <div className="h-2.5 w-2.5 rounded-full bg-green-600"></div>
+                        </div>
+                        <span>Full control over content</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="h-5 w-5 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
+                          <div className="h-2.5 w-2.5 rounded-full bg-green-600"></div>
+                        </div>
+                        <span>Full analytics and performance insights</span>
+                      </li>
+                    </ul>
+                  </GlassmorphicCard>
                 </div>
               </div>
             </div>
             
             <div className="mb-16">
-              <h2 className="text-3xl font-bold mb-6">Claims & Revenue Progress Over 6 Months</h2>
+              <h2 className="text-3xl font-bold mb-6">Content Claims & Revenue Progress Over 6 Months</h2>
               
               <div className="grid grid-cols-1 gap-8 mb-10">
                 <GlassmorphicCard className="p-6">
@@ -274,13 +260,122 @@ const AlanWattsCase: React.FC = () => {
                   </div>
                 </GlassmorphicCard>
               </div>
+            </div>
+
+            <div className="mb-16">
+              <h2 className="text-3xl font-bold mb-6">The Challenge</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                  <div className="text-blue-600 font-bold text-xl mb-2">1</div>
+                  <h3 className="text-xl font-bold mb-2">Widespread Misuse</h3>
+                  <p className="text-gray-600">
+                    Alan Watts' speeches and lectures were being re-uploaded without permission, with no way to track or monetize this use.
+                  </p>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                  <div className="text-blue-600 font-bold text-xl mb-2">2</div>
+                  <h3 className="text-xl font-bold mb-2">Content Detection</h3>
+                  <p className="text-gray-600">
+                    YouTube's Content ID system was unable to effectively detect audio-based content like Alan Watts' speeches.
+                  </p>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                  <div className="text-blue-600 font-bold text-xl mb-2">3</div>
+                  <h3 className="text-xl font-bold mb-2">Posthumous Management</h3>
+                  <p className="text-gray-600">
+                    Managing the rights to material from a speaker who passed away decades ago presented unique digital rights issues.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mb-16">
+              <h2 className="text-3xl font-bold mb-6">Our Solutions</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                  <div className="flex items-center mb-4">
+                    <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                      <svg className="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold">Audio-Only Content ID Tool</h3>
+                  </div>
+                  <p className="text-gray-600">
+                    We developed custom audio matching technology to help identify content across YouTube where traditional methods struggle to do so, providing an accurate track record under one dashboard.
+                  </p>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                  <div className="flex items-center mb-4">
+                    <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                      <svg className="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold">Custom Dashboard</h3>
+                  </div>
+                  <p className="text-gray-600">
+                    We built a proprietary dashboard specifically designed for intellectual property management - balancing control, insights & transparency, with real-time revenue reporting.
+                  </p>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                  <div className="flex items-center mb-4">
+                    <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                      <svg className="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold">Creator Ecosystem</h3>
+                  </div>
+                  <p className="text-gray-600">
+                    Rather than shutting down creators who use Alan Watts' speeches, we established a fair revenue share model that benefits both creators and the Alan Watts Organization.
+                  </p>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                  <div className="flex items-center mb-4">
+                    <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                      <svg className="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold">Content Guidelines</h3>
+                  </div>
+                  <p className="text-gray-600">
+                    We provided the organization standardized guidelines for using Alan Watts' material, ensuring consistent quality content that properly represents his philosophy.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mb-16">
+              <h2 className="text-3xl font-bold mb-6">Results & Impact</h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
+                  <p className="text-4xl font-bold text-blue-600">99.9%</p>
+                  <p className="text-sm text-gray-500">Content Claimed</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
+                  <p className="text-4xl font-bold text-blue-600">27K+</p>
+                  <p className="text-sm text-gray-500">Claims Processed</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
+                  <p className="text-4xl font-bold text-blue-600">660%</p>
+                  <p className="text-sm text-gray-500">Revenue Growth</p>
+                </div>
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center">
+                  <p className="text-4xl font-bold text-blue-600">866+</p>
+                  <p className="text-sm text-gray-500">Licensed Videos</p>
+                </div>
+              </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <GlassmorphicCard className="p-6">
                   <h3 className="text-xl font-bold mb-4">Audience Age Demographics</h3>
-                  <p className="text-foreground/70 mb-4">
-                    Understanding the audience demographics helped develop a targeted content strategy.
-                  </p>
                   <div className="h-[300px] mt-4">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart
@@ -307,7 +402,7 @@ const AlanWattsCase: React.FC = () => {
                           cx="50%"
                           cy="50%"
                           innerRadius={60}
-                          outerRadius={120}
+                          outerRadius={100}
                           paddingAngle={2}
                           dataKey="value"
                           labelLine={false}
@@ -326,73 +421,52 @@ const AlanWattsCase: React.FC = () => {
             </div>
             
             <div className="mb-16">
-              <h2 className="text-3xl font-bold mb-6">Value & Deeper Insights</h2>
-              <GlassmorphicCard className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div>
-                    <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
-                      <span className="text-xl font-bold text-blue-600">1</span>
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">Comprehensive Protection</h3>
-                    <p className="text-foreground/70">
-                      Our audio fingerprinting technology provides the most accurate content matching in the industry, ensuring nothing is missed.
-                    </p>
-                  </div>
-                  <div>
-                    <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
-                      <span className="text-xl font-bold text-blue-600">2</span>
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">Strategic Revenue</h3>
-                    <p className="text-foreground/70">
-                      Our licensing approach creates sustainable income while fostering a healthy content ecosystem for creators.
-                    </p>
-                  </div>
-                  <div>
-                    <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
-                      <span className="text-xl font-bold text-blue-600">3</span>
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">Total Transparency</h3>
-                    <p className="text-foreground/70">
-                      Our dashboard provides real-time analytics and insights, giving full visibility into content performance.
-                    </p>
-                  </div>
+              <h2 className="text-3xl font-bold mb-6">Deeper Insights & Value</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                  <h3 className="text-xl font-bold mb-3">Data-Driven Content Strategy</h3>
+                  <p className="text-gray-600">
+                    By analyzing which Alan Watts topics have highest engagement and view-through rates, we guided future content releases. This allowed them to focus more strategically on content that resonates with audiences and generates maximum revenue.
+                  </p>
                 </div>
-              </GlassmorphicCard>
+                
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                  <h3 className="text-xl font-bold mb-3">Sustainable Revenue Model</h3>
+                  <p className="text-gray-600">
+                    Rather than forcing takedowns of content, we created a successful licensing model in which both the Alan Watts Organization and content creators win. This approach maintains brand integrity while supporting community growth.
+                  </p>
+                  <p className="text-gray-600 mt-4">
+                    By empowering authenticated creators and channels, the Alan Watts Organization has built long-term sustainable relationships with creators who help spread his philosophy.
+                  </p>
+                </div>
+              </div>
             </div>
             
             <div className="mb-16">
               <h2 className="text-3xl font-bold mb-6">Testimonial</h2>
               <GlassmorphicCard className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-10 items-center">
-                  <div className="md:col-span-1 flex justify-start">
-                    <div className="flex flex-col items-start">
-                      <h4 className="font-bold">Mark Watts</h4>
-                      <p className="text-sm text-foreground/60">Alan Watts Organization</p>
-                    </div>
-                  </div>
-                  <div className="md:col-span-3">
-                    <svg className="h-8 w-8 text-blue-300 mb-4" fill="currentColor" viewBox="0 0 32 32">
-                      <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-                    </svg>
-                    <p className="text-lg mb-6">
-                      Mindset DRM has revolutionized our approach to content management on YouTube. Their solution not only helped us protect our intellectual property but also created a significant new revenue stream from content that was previously being used without our permission.
-                    </p>
-                    <p className="text-lg">
-                      We're particularly impressed by the detailed analytics and transparent reporting, which gives us complete visibility into how our content is being used across the platform.
-                    </p>
+                <blockquote className="text-lg italic mb-6">
+                  "Working with MindsetDRM has transformed how we manage my father's digital legacy. Their innovative approach to content protection and monetization has not only increased our revenue but ensured that Alan's teachings are shared authentically with the world."
+                </blockquote>
+                <div className="flex items-center">
+                  <img 
+                    src="/lovable-uploads/2d1dd468-78c1-4f89-81f8-fae7a806fb6b.png" 
+                    alt="Mark Watts" 
+                    className="w-12 h-12 rounded-full object-cover mr-4"
+                  />
+                  <div>
+                    <p className="font-medium">Mark Watts</p>
+                    <p className="text-sm text-gray-600">Director, Alan Watts Organization</p>
                   </div>
                 </div>
               </GlassmorphicCard>
             </div>
             
             <div className="text-center">
-              <h2 className="text-3xl font-bold mb-6">Ready to protect your content?</h2>
-              <p className="text-xl text-foreground/70 mb-8 max-w-2xl mx-auto">
-                Let us help you identify, claim, and monetize your content across YouTube
-              </p>
+              <h2 className="text-3xl font-bold mb-6">Ready to protect and monetize your content?</h2>
               <Link to="/contact">
-                <Button className="px-8 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
-                  Get Started
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
+                  Get Started Today
                 </Button>
               </Link>
             </div>

@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useIsMobile as useIsMobile } from "@/hooks/use-mobile";
+import { useIsMobile } from "@/hooks/use-mobile";
 
-export const Navbar: React.FC<{ extraNavLinks?: { title: string; href: string; }[] }> = ({ extraNavLinks }) => {
+export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const isMobile = useIsMobile();
@@ -94,30 +94,10 @@ export const Navbar: React.FC<{ extraNavLinks?: { title: string; href: string; }
               >
                 Licensing
               </Button>
-              <Link to="/case-studies">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-foreground/70 hover:text-foreground"
-                >
-                  Case Studies
-                </Button>
-              </Link>
-              {extraNavLinks?.map((link) => (
-                <Link key={link.href} to={link.href}>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="text-foreground/70 hover:text-foreground"
-                  >
-                    {link.title}
-                  </Button>
-                </Link>
-              ))}
             </nav>
             <Link to="/contact">
               <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
-                Get Started
+                Connect
               </Button>
             </Link>
           </div>
@@ -173,29 +153,9 @@ export const Navbar: React.FC<{ extraNavLinks?: { title: string; href: string; }
               >
                 Licensing
               </Button>
-              <Link to="/case-studies" className="w-full">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="justify-start h-10 w-full"
-                >
-                  Case Studies
-                </Button>
-              </Link>
-              {extraNavLinks?.map((link) => (
-                <Link key={link.href} to={link.href} className="w-full">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="justify-start h-10 w-full"
-                  >
-                    {link.title}
-                  </Button>
-                </Link>
-              ))}
               <Link to="/contact" className="w-full">
                 <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700">
-                  Get Started
+                  Connect
                 </Button>
               </Link>
             </div>
