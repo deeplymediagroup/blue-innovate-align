@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Layout } from "@/components/Layout";
 import { GlassmorphicCard } from "@/components/GlassmorphicCard";
@@ -65,6 +64,7 @@ const AlanWattsCase: React.FC = () => {
   };
 
   return (
+    
     <Layout>
       <div className="pt-24 md:pt-32 pb-16">
         <div className="container mx-auto px-4 md:px-6">
@@ -238,7 +238,7 @@ const AlanWattsCase: React.FC = () => {
             </div>
           </section>
           
-          <section className="py-16 bg-gradient-to-b from-white to-blue-50/30">
+          <section className="py-16 bg-gradient-to-b from-blue-50/30 to-white">
             <div className="container mx-auto px-4 md:px-6">
               <div className="max-w-5xl mx-auto mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">The Challenge</h2>
@@ -405,9 +405,6 @@ const AlanWattsCase: React.FC = () => {
                           <Tooltip formatter={(value) => `${value}%`} />
                         </PieChart>
                       </ResponsiveContainer>
-                    </div>
-                    <div className="mt-4 text-center">
-                      <p className="text-foreground/70">Gender distribution of Alan Watts content viewers</p>
                     </div>
                   </div>
                 </div>
