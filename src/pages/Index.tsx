@@ -24,9 +24,9 @@ import {
 
 const Index: React.FC = () => {
   const revenueData = [
-    { name: "Rights Holder", value: 40, color: "#2563eb" },
-    { name: "Creator", value: 50, color: "#16a34a" },
-    { name: "Mindset", value: 10, color: "#3b82f6" },
+    { name: "Rights Holder", value: 40, color: "#1e40af" },
+    { name: "Creator", value: 50, color: "#3b82f6" },
+    { name: "Mindset", value: 10, color: "#93c5fd" },
   ];
   
   const [activeIndex, setActiveIndex] = useState<number | null>(null);

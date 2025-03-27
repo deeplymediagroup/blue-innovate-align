@@ -38,7 +38,7 @@ export const AlanWattsShowcase: React.FC = () => {
               <div className="mt-6 space-y-3">
                 <div className="flex items-center">
                   <div className="h-2 w-2 rounded-full bg-green-500 mr-3"></div>
-                  <p className="text-gray-700">40,000+ Active Videos Claimed</p>
+                  <p className="text-gray-700">Live Monitoring</p>
                 </div>
                 <div className="flex items-center">
                   <div className="h-2 w-2 rounded-full bg-green-500 mr-3"></div>
@@ -61,7 +61,7 @@ export const AlanWattsShowcase: React.FC = () => {
               </div>
             </div>
             
-            <Link to="/contact">
+            <Link to="/case-studies/alan-watts">
               <Button variant="link" className="text-blue-600 group flex items-center">
                 View full case study 
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />

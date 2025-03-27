@@ -45,7 +45,7 @@ export const YoutubeContentGrid: React.FC = () => {
       channel: "T&H Inspiration",
       views: "3.8M views",
       timeAgo: "3 years ago",
-      thumbnail: "/lovable-uploads/44c3dcba-ffda-4e35-92d8-6751148c9e2c.png"
+      thumbnail: "/lovable-uploads/13159808-ae43-45c0-ae49-9aac4ca50fa4.png"
     },
     {
       title: "Stop Being Distracted",

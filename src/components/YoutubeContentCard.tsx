@@ -17,7 +17,7 @@ export const YoutubeContentCard: React.FC<YoutubeContentCardProps> = ({
   thumbnail,
 }) => {
   return (
-    <div className="group relative rounded-lg overflow-visible shadow-md hover:shadow-xl transition-all duration-300 z-10 hover:z-30">
+    <div className="group relative rounded-lg overflow-visible shadow-md hover:shadow-xl transition-all duration-300 z-10 hover:z-50">
       <div className="relative aspect-video overflow-hidden">
         <img
           src={thumbnail}

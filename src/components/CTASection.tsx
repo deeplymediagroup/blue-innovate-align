@@ -29,11 +29,6 @@ export const CTASection: React.FC = () => {
                 Get Started <ArrowRight className="h-5 w-5 ml-2" />
               </Button>
             </a>
-            <a href="https://studio.mindsetdrm.com" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white/10 px-8 py-6 text-lg rounded-lg">
-                Dashboard Access
-              </Button>
-            </a>
           </div>
         </div>
       </div>
