@@ -7,7 +7,11 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+  extraNavLinks?: { title: string; href: string; }[];
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const isMobile = useIsMobile();
@@ -94,6 +98,24 @@ export const Navbar: React.FC = () => {
               >
                 Licensing
               </Button>
+              
+              {extraNavLinks?.map((link, index) => (
+                <Button
+                  key={index}
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    if (link.href.startsWith("#")) {
+                      scrollToSection(link.href.substring(1));
+                    } else {
+                      window.location.href = link.href;
+                    }
+                  }}
+                  className="text-foreground/70 hover:text-foreground"
+                >
+                  {link.title}
+                </Button>
+              ))}
             </nav>
             <Link to="/contact">
               <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
@@ -153,6 +175,25 @@ export const Navbar: React.FC = () => {
               >
                 Licensing
               </Button>
+              
+              {extraNavLinks?.map((link, index) => (
+                <Button
+                  key={index}
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => {
+                    if (link.href.startsWith("#")) {
+                      scrollToSection(link.href.substring(1));
+                    } else {
+                      window.location.href = link.href;
+                    }
+                  }}
+                  className="justify-start h-10"
+                >
+                  {link.title}
+                </Button>
+              ))}
+              
               <Link to="/contact" className="w-full">
                 <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700">
                   Connect
