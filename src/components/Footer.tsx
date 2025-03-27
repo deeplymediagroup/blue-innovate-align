@@ -1,8 +1,22 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export const Footer: React.FC = () => {
+  const location = useLocation();
+  
+  // Helper function to scroll to a section if on homepage, or navigate if not
+  const scrollToSectionOrNavigate = (sectionId: string, path: string) => {
+    if (location.pathname === "/") {
+      // If on homepage, scroll to the section
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+      return `/#${sectionId}`;
+    } else {
+      // If not on homepage, prepare to navigate to homepage + section
+      return `/${path}`;
+    }
+  };
+
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4">
@@ -18,17 +32,26 @@ export const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/claiming" className="text-gray-400 hover:text-white transition-colors">
+                <Link 
+                  to={scrollToSectionOrNavigate("services", "")} 
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   Claiming
                 </Link>
               </li>
               <li>
-                <Link to="/distribution" className="text-gray-400 hover:text-white transition-colors">
+                <Link 
+                  to={scrollToSectionOrNavigate("distribution", "")} 
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   Distribution
                 </Link>
               </li>
               <li>
-                <Link to="/licensing" className="text-gray-400 hover:text-white transition-colors">
+                <Link 
+                  to={scrollToSectionOrNavigate("licensing", "")} 
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   Licensing
                 </Link>
               </li>
@@ -38,11 +61,6 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Resources</h4>
             <ul className="space-y-2">
-              <li>
-                <Link to="/pricing" className="text-gray-400 hover:text-white transition-colors">
-                  Pricing
-                </Link>
-              </li>
               <li>
                 <Link to="/dashboard" className="text-gray-400 hover:text-white transition-colors">
                   Dashboard
