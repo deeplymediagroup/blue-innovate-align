@@ -18,35 +18,35 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
-  // Images of real creators we work with
+  // Updated images with correct creator profile images
   const images = [
     { 
-      url: "https://workwithtalent.s3.amazonaws.com/assets/alanwatts.jpg", 
+      url: "/lovable-uploads/bc4f51e9-4d69-4861-952c-094cb60fbf09.png", 
       name: "Alan Watts", 
       role: "Philosopher"
     },
     { 
-      url: "https://workwithtalent.s3.amazonaws.com/assets/zigziglar.jpg", 
+      url: "https://www.zigziglar.com/wp-content/uploads/2021/04/Zig-Ziglar2.png", 
       name: "Zig Ziglar", 
       role: "Motivational Speaker"
     },
     { 
-      url: "https://workwithtalent.s3.amazonaws.com/assets/jimrohn.jpg", 
+      url: "https://jimrohn.com/wp-content/uploads/2023/01/Jim-Rohn-Portrait.jpg", 
       name: "Jim Rohn", 
       role: "Personal Development"
     },
     { 
-      url: "https://img.youtube.com/vi/uj1jQrr1rfw/maxresdefault.jpg", 
+      url: "https://i0.wp.com/cloecouture.com/wp-content/uploads/2020/10/Screen_Shot_2020-10-19_at_14.43.03.jpg", 
       name: "Cloe Couture", 
       role: "Content Creator"
     },
     { 
-      url: "https://workwithtalent.s3.amazonaws.com/assets/coachpain.jpg", 
+      url: "https://pbs.twimg.com/profile_images/1068329347720142848/82E-Hjli_400x400.jpg", 
       name: "Coach Pain", 
       role: "Motivational Speaker"
     },
     { 
-      url: "https://workwithtalent.s3.amazonaws.com/assets/lesbrown.jpg", 
+      url: "https://lesbrown.com/wp-content/uploads/2022/10/les_header_2022.png", 
       name: "Les Brown", 
       role: "Motivational Speaker"
     },

@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/carousel";
 
 export const YoutubeContentGrid: React.FC = () => {
-  // Updated YouTube content data with accurate popular videos
+  // Updated YouTube content data with accurate popular videos and correct thumbnails
   const videos = [
     {
       title: "The Most Eye Opening 10 Minutes of Your Life",

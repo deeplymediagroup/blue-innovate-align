@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -39,8 +38,13 @@ export const Navbar: React.FC = () => {
             </a>
           </div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
+            <Link
+              to="#claiming"
+              className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
+            >
+              Claiming
+            </Link>
             <Link
               to="/distribution"
               className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
@@ -53,12 +57,6 @@ export const Navbar: React.FC = () => {
             >
               Licensing
             </Link>
-            <a
-              href="#pricing"
-              className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
-            >
-              Pricing
-            </a>
             <a
               href="#contact"
               className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
