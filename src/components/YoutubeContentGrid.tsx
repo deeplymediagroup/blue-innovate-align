@@ -73,7 +73,7 @@ export const YoutubeContentGrid: React.FC = () => {
           </p>
         </div>
 
-        <div className="overflow-visible">
+        <div className="relative">
           <Carousel
             opts={{
               align: "start",
@@ -101,6 +101,16 @@ export const YoutubeContentGrid: React.FC = () => {
               <CarouselNext className="relative static transform-none" />
             </div>
           </Carousel>
+          
+          {/* Subtle indicator for horizontal scroll */}
+          <div className="flex justify-center mt-4">
+            <div className="flex space-x-1">
+              <span className="text-xs text-gray-400">Scroll to see more</span>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
     </section>

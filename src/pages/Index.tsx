@@ -24,13 +24,13 @@ const Index: React.FC = () => {
   const COLORS = ["#3b82f6", "#93c5fd", "#60a5fa"];
   
   const channelStats = [
-    { name: "Motiversity", subscribers: "3.8M", views: "590M+" },
-    { name: "Motivation Madness", subscribers: "3.8M", views: "450M+" },
-    { name: "Motivation2Study", subscribers: "4.6M", views: "380M+" },
-    { name: "MotivationHub", subscribers: "3.5M", views: "290M+" },
-    { name: "After Skool", subscribers: "3.7M", views: "340M+" },
-    { name: "T&H Inspiration", subscribers: "758K", views: "68M+" },
-    { name: "True Meaning", subscribers: "526K", views: "59M+" },
+    { name: "Motiversity", subscribers: "3.8M", views: "530M+" },
+    { name: "Motivation Madness", subscribers: "3.8M", views: "350M+" },
+    { name: "Motivation2Study", subscribers: "4.6M", views: "365M+" },
+    { name: "MotivationHub", subscribers: "3.5M", views: "380M+" },
+    { name: "After Skool", subscribers: "3.7M", views: "260M+" },
+    { name: "T&H Inspiration", subscribers: "758K", views: "140M+" },
+    { name: "True Meaning", subscribers: "526K", views: "38M+" },
   ];
 
   useEffect(() => {
@@ -79,12 +79,12 @@ const Index: React.FC = () => {
       </div>
       <HowItWorks />
 
-      {/* Largest Motivational Media Network Section */}
+      {/* Largest Motivational Media Network Section - Improved Layout */}
       <section id="distribution" className="py-16 bg-gradient-to-b from-white to-blue-50/30">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-12 text-center">
             <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
-              Largest Motivational Media Network on YouTube
+              Our Services Power The Largest Motivational Media Network on YouTube
             </h2>
             <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
               Our network manages rights for leading motivational content creators, helping them protect 
@@ -92,82 +92,50 @@ const Index: React.FC = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6">
-              <h3 className="text-2xl font-bold mb-4 text-blue-600">Distribution Partners</h3>
-              <p className="mb-6 text-foreground/70">
-                We help speakers and podcasters reach millions through our established distribution network.
-                Our partners have over 2 billion total views across YouTube.
-              </p>
-              
-              <div className="grid grid-cols-2 gap-4">
-                {channelStats.slice(0, 4).map((channel, index) => (
-                  <div key={index} className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                    <h4 className="font-bold text-blue-800">{channel.name}</h4>
-                    <div className="flex justify-between mt-2">
-                      <div>
-                        <p className="text-xs text-gray-500">Subscribers</p>
-                        <p className="font-bold text-blue-600">{channel.subscribers}</p>
-                      </div>
-                      <div>
-                        <p className="text-xs text-gray-500">Views</p>
-                        <p className="font-bold text-blue-600">{channel.views}</p>
-                      </div>
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 max-w-5xl mx-auto">
+            <h3 className="text-2xl font-bold mb-6 text-blue-600">Distribution Partners</h3>
+            <p className="mb-6 text-foreground/70">
+              We help speakers and podcasters reach millions through our established distribution network.
+              Our partners have over 2 billion total views across YouTube.
+            </p>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+              {channelStats.map((channel, index) => (
+                <div key={index} className="bg-blue-50 p-4 rounded-lg border border-blue-100 transition-all duration-300 hover:shadow-md">
+                  <h4 className="font-bold text-blue-800">{channel.name}</h4>
+                  <div className="flex flex-col mt-2">
+                    <div className="mb-1">
+                      <p className="text-xs text-gray-500">Subscribers</p>
+                      <p className="font-bold text-blue-600">{channel.subscribers}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500">Views</p>
+                      <p className="font-bold text-blue-600">{channel.views}</p>
                     </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
             
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6">
-              <h3 className="text-2xl font-bold mb-4 text-blue-600">Our Reach</h3>
-              <div className="flex space-x-8 mb-6">
-                <div>
-                  <p className="text-3xl font-bold text-blue-600">2B+</p>
-                  <p className="text-sm text-foreground/60">Total Views</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-bold text-blue-600">20M+</p>
-                  <p className="text-sm text-foreground/60">Subscribers</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-bold text-blue-600">100K+</p>
-                  <p className="text-sm text-foreground/60">Monthly Content Claims</p>
-                </div>
+            <div className="flex flex-wrap justify-center gap-6 md:gap-12 py-4 bg-blue-50 rounded-lg p-4">
+              <div>
+                <p className="text-3xl font-bold text-blue-600">2B+</p>
+                <p className="text-sm text-foreground/60">Total Views</p>
               </div>
-              
-              <div className="grid grid-cols-2 gap-4">
-                {channelStats.slice(4).map((channel, index) => (
-                  <div key={index} className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                    <h4 className="font-bold text-blue-800">{channel.name}</h4>
-                    <div className="flex justify-between mt-2">
-                      <div>
-                        <p className="text-xs text-gray-500">Subscribers</p>
-                        <p className="font-bold text-blue-600">{channel.subscribers}</p>
-                      </div>
-                      <div>
-                        <p className="text-xs text-gray-500">Views</p>
-                        <p className="font-bold text-blue-600">{channel.views}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-                <div className="bg-gradient-to-r from-blue-600 to-blue-400 text-white p-4 rounded-lg border border-blue-300 col-span-1">
-                  <h4 className="font-bold">How We Help</h4>
-                  <ul className="mt-2 text-sm space-y-1">
-                    <li>• Content Distribution</li>
-                    <li>• Audience Growth</li>
-                    <li>• Rights Management</li>
-                    <li>• Revenue Maximization</li>
-                  </ul>
-                </div>
+              <div>
+                <p className="text-3xl font-bold text-blue-600">20M+</p>
+                <p className="text-sm text-foreground/60">Subscribers</p>
+              </div>
+              <div>
+                <p className="text-3xl font-bold text-blue-600">7+</p>
+                <p className="text-sm text-foreground/60">Major Channels</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Offer Licensing Section */}
+      {/* Why Offer Licensing Section - Updated title and description */}
       <section id="licensing" className="py-16 bg-gradient-to-b from-blue-50/30 to-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-8">
@@ -212,28 +180,39 @@ const Index: React.FC = () => {
               >
                 <div className="relative w-full max-w-md aspect-square p-8">
                   <div className="w-full h-full flex items-center justify-center">
-                    {/* Revenue Split Visualization - Improved Semi-circle chart */}
-                    <svg viewBox="0 0 200 100" className="w-full">
-                      {/* Rights Holder: 40% */}
+                    {/* Fixed Revenue Split Visualization - Corrected Semi-circle chart */}
+                    <svg viewBox="0 0 200 200" className="w-full">
+                      {/* Base circle (gray background) */}
+                      <circle cx="100" cy="100" r="100" fill="#f1f5f9" />
+                      
+                      {/* Creator: 50% (Top-right quarter + half of bottom-right quarter) */}
                       <path
-                        d="M100,100 L100,0 A100,100 0 0,1 165.3,70.7 L100,100 Z"
-                        fill="#3b82f6"
-                      />
-                      {/* Creator: 50% */}
-                      <path
-                        d="M100,100 L165.3,70.7 A100,100 0 0,1 100,200 L100,100 Z"
+                        d="M 100 100 L 200 100 A 100 100 0 0 0 100 0 Z"
                         fill="#93c5fd"
                       />
-                      {/* Mindset: 10% */}
                       <path
-                        d="M100,100 L100,200 A100,100 0 0,1 34.7,70.7 L100,0 L100,100 Z"
+                        d="M 100 100 L 200 100 A 100 100 0 0 1 150 186.6 Z"
+                        fill="#93c5fd"
+                      />
+                      
+                      {/* Rights Holder: 40% (half of bottom-right quarter + bottom-left quarter) */}
+                      <path
+                        d="M 100 100 L 150 186.6 A 100 100 0 0 1 0 100 Z"
+                        fill="#3b82f6"
+                      />
+                      
+                      {/* Mindset: 10% (Top-left quarter) */}
+                      <path
+                        d="M 100 100 L 0 100 A 100 100 0 0 1 100 0 Z"
                         fill="#60a5fa"
                       />
+                      
                       {/* Inner white circle */}
                       <circle cx="100" cy="100" r="60" fill="white" />
+                      
                       {/* Text in the middle */}
-                      <text x="100" y="90" textAnchor="middle" fontWeight="bold" fontSize="12" fill="#0f5bde">Revenue Split</text>
-                      <text x="100" y="110" textAnchor="middle" fontSize="8" fill="#666">Sustainable ecosystem</text>
+                      <text x="100" y="95" textAnchor="middle" fontWeight="bold" fontSize="14" fill="#0f172a">Revenue Split</text>
+                      <text x="100" y="115" textAnchor="middle" fontSize="10" fill="#64748b">Sustainable ecosystem</text>
                     </svg>
                   </div>
                   

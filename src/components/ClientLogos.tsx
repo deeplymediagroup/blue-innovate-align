@@ -69,10 +69,10 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
         </div>
       </div>
 
-      <div className="py-12">
-        <p className="text-center text-sm font-medium text-blue-600 mb-10">TRUSTED BY WORLD-CLASS BRANDS</p>
+      <div className="py-12 mt-4">
+        <p className="text-center text-sm font-medium text-blue-600 mb-14">TRUSTED BY WORLD-CLASS BRANDS</p>
         
-        {/* Single sliding row */}
+        {/* Single sliding row - moved down by increasing margin top (mt-4) and bottom margin (mb-14) */}
         <div className="flex overflow-hidden">
           <motion.div
             className="flex space-x-16 min-w-full"

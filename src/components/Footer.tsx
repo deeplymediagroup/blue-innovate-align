@@ -14,12 +14,12 @@ export const Footer: React.FC = () => {
               </span>
             </a>
             <p className="mt-4 text-sm text-foreground/70">
-              Helping creators and brands recover and monetize unauthorized usage of their content across YouTube.
+              Empowering content creators with industry-leading rights management and distribution solutions.
             </p>
           </div>
           
           <div>
-            <h3 className="font-semibold mb-4">Services</h3>
+            <h3 className="font-medium text-sm mb-4">Services</h3>
             <ul className="space-y-2">
               <li>
                 <a href="#services" className="text-sm text-foreground/70 hover:text-blue-600 transition-colors">
@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
           </div>
           
           <div>
-            <h3 className="font-semibold mb-4">Resources</h3>
+            <h3 className="font-medium text-sm mb-4">Resources</h3>
             <ul className="space-y-2">
               <li>
                 <a href="#pricing" className="text-sm text-foreground/70 hover:text-blue-600 transition-colors">
@@ -66,7 +66,7 @@ export const Footer: React.FC = () => {
           </div>
           
           <div>
-            <h3 className="font-semibold mb-4">Legal</h3>
+            <h3 className="font-medium text-sm mb-4">Legal</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/privacy" className="text-sm text-foreground/70 hover:text-blue-600 transition-colors">

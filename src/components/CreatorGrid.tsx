@@ -18,7 +18,7 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
-  // Updated images with correct creator profile images and swapped as requested
+  // Updated images with correct creator profile images and adjusted for Jim Rohn
   const images = [
     { 
       url: "/lovable-uploads/bc4f51e9-4d69-4861-952c-094cb60fbf09.png", 
@@ -26,14 +26,14 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
       role: "Philosopher"
     },
     { 
-      url: "/lovable-uploads/889e60d9-7a32-4923-a04a-791b063f9cfb.png", 
+      url: "/lovable-uploads/9a04e358-ac60-49f2-a128-fc6b630d19fd.png", 
       name: "Zig Ziglar", 
       role: "Motivational Speaker"
     },
     { 
       url: "/lovable-uploads/ce91c4d1-7f98-41ef-b220-821a628bf124.png", 
       name: "Jim Rohn", 
-      role: "Personal Development"
+      role: "Motivational Speaker"
     },
     { 
       url: "/lovable-uploads/4b375f9c-1e1d-4a7d-b34a-b1b7a7a98ee6.png", 
@@ -46,7 +46,7 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
       role: "Motivational Speaker"
     },
     { 
-      url: "/lovable-uploads/9a04e358-ac60-49f2-a128-fc6b630d19fd.png", 
+      url: "/lovable-uploads/889e60d9-7a32-4923-a04a-791b063f9cfb.png", 
       name: "High Performance", 
       role: "Podcast"
     },
@@ -94,7 +94,12 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
             viewport={{ once: true }}
             className="overflow-hidden rounded-2xl shadow-lg h-80 relative transition-transform duration-300 hover:scale-105 hover:shadow-xl"
           >
-            <img src={images[2].url} alt={images[2].name} className="w-full h-full object-cover" />
+            {/* Adjusted object-position to better frame Jim Rohn's face */}
+            <img 
+              src={images[2].url} 
+              alt={images[2].name} 
+              className="w-full h-full object-cover object-top" 
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
               <h3 className="font-bold">{images[2].name}</h3>
