@@ -26,29 +26,29 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
       role: "Philosopher"
     },
     { 
-      url: "https://www.zigziglar.com/wp-content/uploads/2021/04/Zig-Ziglar2.png", 
+      url: "/lovable-uploads/889e60d9-7a32-4923-a04a-791b063f9cfb.png", 
       name: "Zig Ziglar", 
       role: "Motivational Speaker"
     },
     { 
-      url: "https://jimrohn.com/wp-content/uploads/2023/01/Jim-Rohn-Portrait.jpg", 
+      url: "/lovable-uploads/4b375f9c-1e1d-4a7d-b34a-b1b7a7a98ee6.png", 
       name: "Jim Rohn", 
       role: "Personal Development"
     },
     { 
-      url: "https://i0.wp.com/cloecouture.com/wp-content/uploads/2020/10/Screen_Shot_2020-10-19_at_14.43.03.jpg", 
+      url: "/lovable-uploads/ce91c4d1-7f98-41ef-b220-821a628bf124.png", 
       name: "Cloe Couture", 
       role: "Content Creator"
     },
     { 
-      url: "https://pbs.twimg.com/profile_images/1068329347720142848/82E-Hjli_400x400.jpg", 
+      url: "/lovable-uploads/874c4154-761b-4fc2-968c-7a7b396282b3.png", 
       name: "Coach Pain", 
       role: "Motivational Speaker"
     },
     { 
-      url: "https://lesbrown.com/wp-content/uploads/2022/10/les_header_2022.png", 
-      name: "Les Brown", 
-      role: "Motivational Speaker"
+      url: "/lovable-uploads/9a04e358-ac60-49f2-a128-fc6b630d19fd.png", 
+      name: "High Performance", 
+      role: "Podcast"
     },
   ];
 

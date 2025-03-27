@@ -1,3 +1,4 @@
+
 import React from "react";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
@@ -50,7 +51,7 @@ export const AlanWattsShowcase: React.FC = () => {
                 <img 
                   src="https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png" 
                   alt="Mark Watts" 
-                  className="h-full w-full object-cover object-center scale-150"
+                  className="h-full w-full object-cover object-center"
                 />
               </div>
               <div>

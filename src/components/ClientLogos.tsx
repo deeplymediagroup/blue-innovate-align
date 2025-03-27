@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+
+import React from "react";
 import { motion } from "framer-motion";
 import { CountUp } from "./CountUp";
 
@@ -8,7 +9,7 @@ interface ClientLogosProps {
 
 export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
   const clients = [
-    { name: "Alan Watts Organization", logo: "/lovable-uploads/69525235-ccf5-4f40-8b34-66d1a1be5e58.png" },
+    { name: "Alan Watts", text: "ALAN WATTS" },
     { name: "Ziglar", text: "ZIGLAR" },
     { name: "Jim Rohn", text: "JIM ROHN" },
     { name: "Motivation Madness", text: "MOTIVATION MADNESS" },
@@ -71,8 +72,8 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
       <div className="relative w-full overflow-hidden bg-blue-50/50 py-10">
         <p className="text-center text-sm font-medium text-blue-600 mb-6">TRUSTED BY WORLD-CLASS BRANDS</p>
         
-        {/* First sliding row */}
-        <div className="flex overflow-hidden mb-8">
+        {/* Single sliding row */}
+        <div className="flex overflow-hidden">
           <motion.div
             className="flex space-x-16 min-w-full"
             animate={{ x: [0, -1500] }}
@@ -87,37 +88,7 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
           >
             {[...clients, ...clients, ...clients].map((client, index) => (
               <div key={index} className="flex items-center justify-center h-12 min-w-[150px]">
-                {client.logo ? (
-                  <img src={client.logo} alt={client.name} className="h-full object-contain" />
-                ) : (
-                  <span className="text-xl font-bold text-gray-700">{client.text}</span>
-                )}
-              </div>
-            ))}
-          </motion.div>
-        </div>
-        
-        {/* Second sliding row (reverse direction) */}
-        <div className="flex overflow-hidden">
-          <motion.div
-            className="flex space-x-16 min-w-full"
-            animate={{ x: [-1500, 0] }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 30,
-                ease: "linear",
-              },
-            }}
-          >
-            {[...clients, ...clients, ...clients].map((client, index) => (
-              <div key={index} className="flex items-center justify-center h-12 min-w-[150px]">
-                {client.logo ? (
-                  <img src={client.logo} alt={client.name} className="h-full object-contain" />
-                ) : (
-                  <span className="text-xl font-bold text-gray-700">{client.text}</span>
-                )}
+                <span className="text-xl font-bold text-gray-700">{client.text}</span>
               </div>
             ))}
           </motion.div>

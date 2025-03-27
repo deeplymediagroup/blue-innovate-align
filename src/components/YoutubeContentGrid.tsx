@@ -16,25 +16,25 @@ export const YoutubeContentGrid: React.FC = () => {
       title: "The Most Eye Opening 10 Minutes of Your Life",
       channel: "Motivation Madness",
       views: "14.2M views",
-      thumbnail: "https://img.youtube.com/vi/kl1fytRAMRE/maxresdefault.jpg"
+      thumbnail: "/lovable-uploads/1ccff3eb-78af-43e3-af3b-737f2e97f47d.png"
     },
     {
       title: "WHEN IT HURTS - Best Motivational Speech Video",
       channel: "Motiversity",
       views: "11.7M views",
-      thumbnail: "https://img.youtube.com/vi/khOaAHK7efc/maxresdefault.jpg"
+      thumbnail: "/lovable-uploads/ed3f0dda-dc8c-4991-a1f5-b5723bc69d89.png"
     },
     {
-      title: "Zig Ziglar - Believing in Yourself",
+      title: "WHY 2% SUCCEED AND 98% DON'T",
       channel: "MotivationHub",
       views: "612K views", 
-      thumbnail: "https://img.youtube.com/vi/D7KHw3SsBWQ/maxresdefault.jpg"
+      thumbnail: "/lovable-uploads/28aa790f-d373-4500-b93b-e12dc5670e31.png"
     },
     {
-      title: "Don't Think Too Much - Alan Watts",
+      title: "Existence Is Weird - Alan Watts",
       channel: "True Meaning",
       views: "2.8M views",
-      thumbnail: "https://img.youtube.com/vi/gU2KsQWA8Pc/maxresdefault.jpg"
+      thumbnail: "/lovable-uploads/1af06f14-7429-4168-946d-e72c3191bb1f.png"
     },
     {
       title: "Jim Rohn: The Mindset And Attitude Of Thinking Wealthy",

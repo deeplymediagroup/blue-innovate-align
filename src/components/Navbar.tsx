@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -39,12 +40,12 @@ export const Navbar: React.FC = () => {
           </div>
 
           <nav className="hidden md:flex items-center space-x-8">
-            <Link
-              to="#claiming"
+            <a
+              href="#clients"
               className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
             >
               Claiming
-            </Link>
+            </a>
             <Link
               to="/distribution"
               className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
@@ -94,6 +95,13 @@ export const Navbar: React.FC = () => {
       >
         <div className="container mx-auto px-4 py-6 space-y-6">
           <nav className="flex flex-col space-y-4">
+            <a
+              href="#clients"
+              className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Claiming
+            </a>
             <Link
               to="/distribution"
               className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
@@ -108,13 +116,6 @@ export const Navbar: React.FC = () => {
             >
               Licensing
             </Link>
-            <a
-              href="#pricing"
-              className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Pricing
-            </a>
             <a
               href="#contact"
               className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
