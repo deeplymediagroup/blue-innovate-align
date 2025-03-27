@@ -37,7 +37,7 @@ export const AlanWattsShowcase: React.FC = () => {
               <div className="mt-6 space-y-3">
                 <div className="flex items-center">
                   <div className="h-2 w-2 rounded-full bg-green-500 mr-3"></div>
-                  <p className="text-gray-700">Monitoring</p>
+                  <p className="text-gray-700">Live Monitoring</p>
                 </div>
                 <div className="flex items-center">
                   <div className="h-2 w-2 rounded-full bg-green-500 mr-3"></div>
@@ -51,7 +51,7 @@ export const AlanWattsShowcase: React.FC = () => {
                 <img 
                   src="https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png" 
                   alt="Mark Watts" 
-                  className="h-full w-full object-cover object-center"
+                  className="h-full w-full object-cover object-top"
                 />
               </div>
               <div>

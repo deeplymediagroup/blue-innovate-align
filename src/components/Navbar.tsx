@@ -74,14 +74,14 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <a href="https://studio.mindsetdrm.com/" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-                Dashboard
-              </Button>
-            </a>
             <a href="/contact">
               <Button className="bg-blue-600 text-white hover:bg-blue-700 button-shimmer">
                 Get Started
+              </Button>
+            </a>
+            <a href="https://studio.mindsetdrm.com/" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+                Dashboard
               </Button>
             </a>
           </div>
@@ -142,17 +142,17 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
             </a>
           </nav>
           <div className="grid gap-4">
-            <a href="https://studio.mindsetdrm.com/" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" className="w-full border-blue-600 text-blue-600 hover:bg-blue-50">
-                Dashboard
-              </Button>
-            </a>
             <a href="/contact">
               <Button
                 className="w-full bg-blue-600 text-white hover:bg-blue-700 button-shimmer"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Get Started
+              </Button>
+            </a>
+            <a href="https://studio.mindsetdrm.com/" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" className="w-full border-blue-600 text-blue-600 hover:bg-blue-50">
+                Dashboard
               </Button>
             </a>
           </div>

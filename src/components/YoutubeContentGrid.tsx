@@ -34,7 +34,7 @@ export const YoutubeContentGrid: React.FC = () => {
       thumbnail: "/lovable-uploads/28aa790f-d373-4500-b93b-e12dc5670e31.png"
     },
     {
-      title: "It Will Give You Goosebumps",
+      title: "Alan Watts On Existence",
       channel: "True Meaning",
       views: "6.6M views",
       timeAgo: "3 years ago",
@@ -43,9 +43,9 @@ export const YoutubeContentGrid: React.FC = () => {
     {
       title: "It Will Give You Goosebumps",
       channel: "T&H Inspiration",
-      views: "3.7M views",
+      views: "3.8M views",
       timeAgo: "3 years ago",
-      thumbnail: "/lovable-uploads/58843909-f251-4754-8e76-dc538fa71efa.png"
+      thumbnail: "/lovable-uploads/cd4a9070-2246-4569-b3d5-37963bb80248.png"
     },
     {
       title: "Stop Being Distracted",

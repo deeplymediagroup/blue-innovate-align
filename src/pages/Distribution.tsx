@@ -5,7 +5,6 @@ import { GlassmorphicCard } from "@/components/GlassmorphicCard";
 import { YoutubeContentGrid } from "@/components/YoutubeContentGrid";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { PieChart, Pie, Cell, ResponsiveContainer, Label } from "recharts";
 import { motion } from "framer-motion";
 
 const Distribution: React.FC = () => {
@@ -87,10 +86,10 @@ const Distribution: React.FC = () => {
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Offer Licensing?</h2>
                 <p className="text-lg text-foreground/70 mb-6">
-                  We are the only digital rights management company in the world that not only does claims, but does licensing with creators to create an ecosystem.
+                  We are one of the only digital rights management companies that combines claiming with licensing to create a sustainable ecosystem for creators.
                 </p>
                 <p className="text-lg text-foreground/70 mb-6">
-                  Creators are making income from your content. If you claim and take away revenue completely, they will stop making videos. So we give up a percentage to creators of a pie.
+                  Our licensing model benefits everyone involved - creators continue to profit from their work, rights holders receive fair compensation, and the content ecosystem thrives.
                 </p>
                 <div className="bg-blue-50 p-6 rounded-lg border border-blue-100">
                   <h3 className="text-xl font-bold mb-4 text-blue-700">The Mindset Advantage</h3>
@@ -122,49 +121,83 @@ const Distribution: React.FC = () => {
                 transition={{ duration: 0.5 }}
                 className="flex justify-center"
               >
-                <div className="w-full max-w-md aspect-square">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <PieChart>
-                      <Pie
-                        data={data}
-                        cx="50%"
-                        cy="50%"
-                        innerRadius={80}
-                        outerRadius={140}
-                        fill="#8884d8"
-                        paddingAngle={1}
-                        dataKey="value"
-                        animationBegin={0}
-                        animationDuration={1500}
-                      >
-                        {data.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                        ))}
-                        <Label
-                          content={({ cx, cy }) => (
-                            <g>
-                              <text x={cx} y={cy} textAnchor="middle" dominantBaseline="central" className="text-xl font-bold fill-blue-800">
-                                Revenue Split
-                              </text>
-                            </g>
-                          )}
-                          position="center"
-                        />
-                      </Pie>
-                    </PieChart>
-                  </ResponsiveContainer>
+                <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
+                  {/* Revenue Split Visualization - Interactive Donut Chart */}
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    <svg viewBox="0 0 100 100" className="w-full h-full">
+                      <motion.circle
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: 1.5, ease: "easeInOut" }}
+                        cx="50"
+                        cy="50"
+                        r="40"
+                        fill="none"
+                        stroke="#3b82f6"
+                        strokeWidth="20"
+                        strokeDasharray="251.2"
+                        strokeDashoffset="150.72"
+                        transform="rotate(-90 50 50)"
+                      />
+                      <motion.circle
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: 1.5, ease: "easeInOut", delay: 0.3 }}
+                        cx="50"
+                        cy="50"
+                        r="40"
+                        fill="none"
+                        stroke="#93c5fd"
+                        strokeWidth="20"
+                        strokeDasharray="251.2"
+                        strokeDashoffset="125.6"
+                        strokeDashoffset="0"
+                        transform="rotate(-90 50 50)"
+                        pathLength="0.5"
+                      />
+                      <motion.circle
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: 1.5, ease: "easeInOut", delay: 0.6 }}
+                        cx="50"
+                        cy="50"
+                        r="40"
+                        fill="none"
+                        stroke="#60a5fa"
+                        strokeWidth="20"
+                        strokeDasharray="251.2"
+                        strokeDashoffset="226.08"
+                        transform="rotate(-90 50 50)"
+                      />
+                    </svg>
+                    <div className="absolute inset-0 flex items-center justify-center flex-col text-center">
+                      <h3 className="text-2xl font-bold text-blue-800">Revenue Split</h3>
+                      <p className="text-sm text-gray-600">Sustainable ecosystem</p>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </div>
             <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
               {data.map((segment, index) => (
-                <div key={index} className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-white rounded-lg p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
+                >
                   <div className="flex items-center mb-3">
-                    <div className="h-4 w-4 rounded-full mr-2" style={{ backgroundColor: COLORS[index] }}></div>
-                    <h4 className="font-medium">{segment.name}</h4>
+                    <div className="h-6 w-6 rounded-full mr-3" style={{ backgroundColor: COLORS[index] }}></div>
+                    <h4 className="font-medium text-lg">{segment.name}</h4>
                   </div>
-                  <p className="text-3xl font-bold">{segment.value}%</p>
-                </div>
+                  <p className="text-4xl font-bold text-blue-600">{segment.value}%</p>
+                  <p className="text-sm text-gray-500 mt-2">
+                    {index === 0 ? "Original content owner" : 
+                     index === 1 ? "Creator who uses content" : 
+                     "Platform management fee"}
+                  </p>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -178,7 +211,7 @@ const Distribution: React.FC = () => {
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Distribution Benefits</h2>
             <p className="text-xl text-foreground/70">
-              Our distribution network helps you expand your audience and increase revenue
+              Our ecosystem approach helps you expand your audience while building sustainable partnerships
             </p>
           </div>
           
@@ -205,9 +238,9 @@ const Distribution: React.FC = () => {
                     <path d="M12 2v2m0 16v2M4 12H2m4.314-5.686L4.9 4.9m12.786 1.414L19.1 4.9M6.314 17.686L4.9 19.1m12.786-1.414L19.1 19.1M22 12h-2m-8-6a6 6 0 100 12 6 6 0 000-12z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold mb-3">Brand Amplification</h3>
+                <h3 className="text-xl font-bold mb-3">Creator Partnerships</h3>
                 <p className="text-foreground/70">
-                  Strengthen your brand presence through strategic content distribution
+                  Build relationships with top creators who can amplify your message
                 </p>
               </div>
             </GlassmorphicCard>
@@ -219,9 +252,9 @@ const Distribution: React.FC = () => {
                     <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V6m0 8v2m0 0c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold mb-3">Increased Revenue</h3>
+                <h3 className="text-xl font-bold mb-3">Sustainable Revenue</h3>
                 <p className="text-foreground/70">
-                  Maximize monetization through our optimized distribution strategies
+                  Generate consistent passive income through our balanced ecosystem approach
                 </p>
               </div>
             </GlassmorphicCard>
