@@ -13,42 +13,42 @@ export const YoutubeContentGrid: React.FC = () => {
   // Updated YouTube content data with accurate popular videos and correct thumbnails
   const videos = [
     {
-      title: "The Most Eye Opening 10 Minutes of Your Life",
+      title: "The Most Eye Opening 10 Minutes",
       channel: "Motivation Madness",
       views: "21M views",
       timeAgo: "5 years ago",
       thumbnail: "/lovable-uploads/1ccff3eb-78af-43e3-af3b-737f2e97f47d.png"
     },
     {
-      title: "WHEN IT HURTS - Best Motivational Speech Video",
+      title: "WHEN IT HURTS",
       channel: "Motiversity",
       views: "11M views",
       timeAgo: "5 years ago",
       thumbnail: "/lovable-uploads/ed3f0dda-dc8c-4991-a1f5-b5723bc69d89.png"
     },
     {
-      title: "Zig Ziglar Motivation",
+      title: "This Will Leave You Speechless",
       channel: "MotivationHub",
       views: "707K views",
       timeAgo: "3 years ago", 
       thumbnail: "/lovable-uploads/28aa790f-d373-4500-b93b-e12dc5670e31.png"
     },
     {
-      title: "Existence Is Weird - Alan Watts",
+      title: "It Will Give You Goosebumps",
       channel: "True Meaning",
       views: "6.6M views",
       timeAgo: "3 years ago",
-      thumbnail: "/lovable-uploads/1af06f14-7429-4168-946d-e72c3191bb1f.png"
+      thumbnail: "/lovable-uploads/52177375-4183-4a15-b829-d9af2a03b1ef.png"
     },
     {
       title: "It Will Give You Goosebumps",
       channel: "T&H Inspiration",
       views: "3.7M views",
       timeAgo: "3 years ago",
-      thumbnail: "/lovable-uploads/3943a90d-de6d-46ba-b3ad-affd670703e8.png"
+      thumbnail: "/lovable-uploads/58843909-f251-4754-8e76-dc538fa71efa.png"
     },
     {
-      title: "Stop Being Distracted And Remember Why You Started",
+      title: "Stop Being Distracted",
       channel: "Coach Pain",
       views: "1M views",
       timeAgo: "1 year ago",

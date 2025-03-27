@@ -4,7 +4,11 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+  extraNavLinks?: { title: string; href: string; }[];
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -41,7 +45,7 @@ export const Navbar: React.FC = () => {
 
           <nav className="hidden md:flex items-center space-x-8">
             <a
-              href="#clients"
+              href="#services"
               className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
             >
               Claiming
@@ -52,14 +56,17 @@ export const Navbar: React.FC = () => {
             >
               Distribution
             </Link>
-            <Link
-              to="/licensing"
-              className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
-            >
-              Licensing
-            </Link>
+            {extraNavLinks?.map((link, index) => (
+              <a
+                key={index}
+                href={link.href}
+                className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
+              >
+                {link.title}
+              </a>
+            ))}
             <a
-              href="#contact"
+              href="/contact"
               className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
             >
               Contact
@@ -67,9 +74,16 @@ export const Navbar: React.FC = () => {
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <Button className="bg-blue-600 text-white hover:bg-blue-700 button-shimmer">
-              Get Started
-            </Button>
+            <a href="https://studio.mindsetdrm.com/" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+                Dashboard
+              </Button>
+            </a>
+            <a href="/contact">
+              <Button className="bg-blue-600 text-white hover:bg-blue-700 button-shimmer">
+                Get Started
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -96,7 +110,7 @@ export const Navbar: React.FC = () => {
         <div className="container mx-auto px-4 py-6 space-y-6">
           <nav className="flex flex-col space-y-4">
             <a
-              href="#clients"
+              href="#services"
               className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -109,28 +123,38 @@ export const Navbar: React.FC = () => {
             >
               Distribution
             </Link>
-            <Link
-              to="/licensing"
-              className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Licensing
-            </Link>
+            {extraNavLinks?.map((link, index) => (
+              <a
+                key={index}
+                href={link.href}
+                className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.title}
+              </a>
+            ))}
             <a
-              href="#contact"
+              href="/contact"
               className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact
             </a>
           </nav>
-          <div className="grid">
-            <Button
-              className="w-full bg-blue-600 text-white hover:bg-blue-700 button-shimmer"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Get Started
-            </Button>
+          <div className="grid gap-4">
+            <a href="https://studio.mindsetdrm.com/" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" className="w-full border-blue-600 text-blue-600 hover:bg-blue-50">
+                Dashboard
+              </Button>
+            </a>
+            <a href="/contact">
+              <Button
+                className="w-full bg-blue-600 text-white hover:bg-blue-700 button-shimmer"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Get Started
+              </Button>
+            </a>
           </div>
         </div>
       </div>

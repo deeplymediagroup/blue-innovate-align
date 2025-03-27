@@ -6,9 +6,10 @@ import { motion } from "framer-motion";
 
 interface LayoutProps {
   children: React.ReactNode;
+  extraNavLinks?: { title: string; href: string; }[];
 }
 
-export const Layout: React.FC<LayoutProps> = ({ children }) => {
+export const Layout: React.FC<LayoutProps> = ({ children, extraNavLinks }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorVariant, setCursorVariant] = useState("default");
 
@@ -62,7 +63,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className="min-safe-h-screen flex flex-col relative">
-      <Navbar />
+      <Navbar extraNavLinks={extraNavLinks} />
       <main className="flex-1">{children}</main>
       <Footer />
       

@@ -70,7 +70,7 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
       </div>
 
       <div className="relative w-full overflow-hidden bg-blue-50/50 py-14">
-        <p className="text-center text-sm font-medium text-blue-600 mb-8">TRUSTED BY WORLD-CLASS BRANDS</p>
+        <p className="text-center text-sm font-medium text-blue-600 mb-10">TRUSTED BY WORLD-CLASS BRANDS</p>
         
         {/* Single sliding row */}
         <div className="flex overflow-hidden">

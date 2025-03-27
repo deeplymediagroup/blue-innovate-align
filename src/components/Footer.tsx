@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-white border-t border-gray-100 py-12">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="md:col-span-1">
             <a href="/" className="inline-block mb-4">
               <span className="font-display text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
@@ -86,19 +86,19 @@ export const Footer: React.FC = () => {
             </h3>
             <ul className="space-y-2">
               <li>
+                <a
+                  href="#services"
+                  className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
+                >
+                  Claiming
+                </a>
+              </li>
+              <li>
                 <Link
                   to="/distribution"
                   className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
                 >
                   Distribution
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/licensing"
-                  className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
-                >
-                  Licensing
                 </Link>
               </li>
               <li>
@@ -111,7 +111,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
                 >
                   Contact Us
@@ -122,7 +122,7 @@ export const Footer: React.FC = () => {
 
           <div>
             <h3 className="font-semibold text-sm uppercase tracking-wider mb-4">
-              Company
+              Legal
             </h3>
             <ul className="space-y-2">
               <li>
@@ -130,7 +130,7 @@ export const Footer: React.FC = () => {
                   href="#"
                   className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
                 >
-                  About Us
+                  Privacy Policy
                 </a>
               </li>
               <li>
@@ -138,47 +138,7 @@ export const Footer: React.FC = () => {
                   href="#"
                   className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
                 >
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
-                >
-                  Blog
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-sm uppercase tracking-wider mb-4">
-              Support
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
-                >
-                  Help Center
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
-                >
-                  Case Studies
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-sm text-foreground/70 hover:text-blue-600 transition-colors"
-                >
-                  Contact
+                  Terms of Service
                 </a>
               </li>
             </ul>

@@ -39,8 +39,8 @@ export const Services: React.FC = () => {
           ref={sectionRef}
           className="reveal-section max-w-5xl mx-auto"
         >
-          <div className="mb-16 text-center">
-            <div className="inline-block mb-3">
+          <div className="mb-20 text-center">
+            <div className="inline-block mb-6">
               <div className="py-1 px-3 bg-blue-100 border border-blue-200 rounded-full">
                 <p className="text-xs font-medium text-blue-700">
                   What We Do
@@ -58,7 +58,7 @@ export const Services: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <GlassmorphicCard
               variant="bordered"
-              className="relative overflow-hidden"
+              className="relative overflow-hidden transition-all duration-300 hover:shadow-md"
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-blue-100 rounded-full -mt-12 -mr-12 flex items-end justify-start p-4">
                 <Youtube className="h-6 w-6 text-blue-600" />
@@ -85,7 +85,7 @@ export const Services: React.FC = () => {
 
             <GlassmorphicCard
               variant="highlight"
-              className="relative overflow-hidden md:-translate-y-4"
+              className="relative overflow-hidden md:-translate-y-4 transition-all duration-300 hover:shadow-md"
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-blue-100 rounded-full -mt-12 -mr-12 flex items-end justify-start p-4">
                 <Shield className="h-6 w-6 text-blue-600" />
@@ -101,7 +101,7 @@ export const Services: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Customized protection</span>
+                  <span>Protection options</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
@@ -116,7 +116,7 @@ export const Services: React.FC = () => {
 
             <GlassmorphicCard
               variant="bordered"
-              className="relative overflow-hidden"
+              className="relative overflow-hidden transition-all duration-300 hover:shadow-md"
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-blue-100 rounded-full -mt-12 -mr-12 flex items-end justify-start p-4">
                 <DollarSign className="h-6 w-6 text-blue-600" />
@@ -136,7 +136,7 @@ export const Services: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Monetization strategy</span>
+                  <span>Reclaim Stolen Revenue</span>
                 </li>
               </ul>
             </GlassmorphicCard>
