@@ -13,25 +13,32 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { PieChart, Pie, Cell, Label, ResponsiveContainer } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Label,
+  ResponsiveContainer,
+  Tooltip
+} from "recharts";
 
 const Index: React.FC = () => {
   const revenueData = [
     { name: "Rights Holder", value: 40, color: "#3b82f6" },
-    { name: "Creator", value: 50, color: "#93c5fd" },
-    { name: "Mindset", value: 10, color: "#60a5fa" },
+    { name: "Creator", value: 50, color: "#10b981" },
+    { name: "Mindset", value: 10, color: "#f59e0b" },
   ];
   
   // Sorted by views (descending)
   const channelStats = [
     { name: "Motiversity", subscribers: "3.8M", views: "530M+", icon: "/lovable-uploads/89599c4a-2943-430b-a348-cf1f039ac933.png" },
-    { name: "MotivationHub", subscribers: "3.5M", views: "380M+", icon: "/lovable-uploads/acc58035-160d-4d7e-8704-59c89f4e2201.png" },
+    { name: "MotivationHub", subscribers: "3.5M", views: "380M+", icon: "/lovable-uploads/1bf57caa-d1c1-40fc-823d-edd080e2b5db.png" },
     { name: "Motivation2Study", subscribers: "4.6M", views: "365M+", icon: "/lovable-uploads/7ad119b9-2029-4225-9db1-d52780651bd4.png" },
     { name: "Motivation Madness", subscribers: "3.8M", views: "350M+", icon: "/lovable-uploads/120bfcd1-e00e-4b2f-ac25-ee49edfe0e22.png" },
     { name: "After Skool", subscribers: "3.7M", views: "260M+", icon: "/lovable-uploads/67ff2ca5-79fd-44ed-b348-2dfb2dca0fb8.png" },
-    { name: "T&H Inspiration", subscribers: "758K", views: "140M+", icon: "/lovable-uploads/1bf57caa-d1c1-40fc-823d-edd080e2b5db.png" },
-    { name: "Alpha Leaders", subscribers: "767K", views: "56M+", icon: "/lovable-uploads/13347a70-78da-4271-af11-b267957cfba5.png" },
-    { name: "True Meaning", subscribers: "526K", views: "38M+", icon: "/lovable-uploads/89599c4a-2943-430b-a348-cf1f039ac933.png" },
+    { name: "T&H Inspiration", subscribers: "758K", views: "140M+", icon: "/lovable-uploads/89599c4a-2943-430b-a348-cf1f039ac933.png" },
+    { name: "Alpha Leaders", subscribers: "767K", views: "56M+", icon: "/lovable-uploads/1bf57caa-d1c1-40fc-823d-edd080e2b5db.png" },
+    { name: "True Meaning", subscribers: "526K", views: "38M+", icon: "/lovable-uploads/13347a70-78da-4271-af11-b267957cfba5.png" },
   ];
 
   useEffect(() => {
@@ -59,6 +66,19 @@ const Index: React.FC = () => {
       observer.disconnect();
     };
   }, []);
+
+  // Custom tooltip for the PieChart
+  const CustomTooltip = ({ active, payload }: any) => {
+    if (active && payload && payload.length) {
+      const data = payload[0].payload;
+      return (
+        <div className="bg-white p-2 rounded-md shadow-md border border-gray-200">
+          <p className="font-bold">{data.name}: {data.value}%</p>
+        </div>
+      );
+    }
+    return null;
+  };
 
   return (
     <Layout>
@@ -110,7 +130,7 @@ const Index: React.FC = () => {
                     />
                     <h4 className="font-bold text-blue-800">{channel.name}</h4>
                   </div>
-                  <div className="flex justify-between mt-2">
+                  <div className="flex items-center justify-between mt-2 space-x-2">
                     <div className="flex flex-col">
                       <p className="text-xs text-gray-500">Subscribers</p>
                       <p className="font-bold text-blue-600">{channel.subscribers}</p>
@@ -183,38 +203,46 @@ const Index: React.FC = () => {
               >
                 <div className="w-full max-w-md">
                   <div className="w-full aspect-square flex items-center justify-center">
-                    {/* Revenue Split Chart using Recharts - Fixed ViewBox Type Issue */}
+                    {/* Improved Revenue Split Chart */}
                     <ResponsiveContainer width="100%" height={300}>
                       <PieChart>
+                        <Tooltip content={<CustomTooltip />} />
                         <Pie
                           data={revenueData}
                           dataKey="value"
                           nameKey="name"
                           cx="50%"
                           cy="50%"
-                          innerRadius={60}
-                          outerRadius={100}
+                          innerRadius={70}
+                          outerRadius={110}
+                          paddingAngle={3}
                           startAngle={90}
                           endAngle={-270}
+                          isAnimationActive={true}
+                          onMouseEnter={(data, index) => {
+                            // This will be handled by the tooltip
+                          }}
                         >
                           {revenueData.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={entry.color} />
+                            <Cell 
+                              key={`cell-${index}`} 
+                              fill={entry.color} 
+                              stroke="#fff"
+                              strokeWidth={2}
+                            />
                           ))}
                           <Label
                             content={(props) => {
-                              // Safe access to viewBox properties
-                              const centerX = (props.viewBox && typeof props.viewBox === 'object' && 'width' in props.viewBox) 
-                                ? props.viewBox.width / 2 + (props.viewBox.x || 0) 
-                                : 150;
-                              const centerY = (props.viewBox && typeof props.viewBox === 'object' && 'height' in props.viewBox) 
-                                ? props.viewBox.height / 2 + (props.viewBox.y || 0) 
-                                : 150;
+                              // Safe calculation of center coordinates
+                              const viewBox = props.viewBox || {};
+                              const centerX = viewBox.width ? viewBox.width / 2 + (viewBox.x || 0) : 150;
+                              const centerY = viewBox.height ? viewBox.height / 2 + (viewBox.y || 0) : 150;
                               
                               return (
                                 <g>
                                   <text 
                                     x={centerX} 
-                                    y={centerY - 10} 
+                                    y={centerY - 15} 
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
                                     className="fill-foreground text-base font-bold"
@@ -223,7 +251,7 @@ const Index: React.FC = () => {
                                   </text>
                                   <text 
                                     x={centerX} 
-                                    y={centerY + 10} 
+                                    y={centerY + 15} 
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
                                     className="fill-foreground/60 text-xs"
@@ -246,7 +274,7 @@ const Index: React.FC = () => {
                           <div className="h-4 w-4 rounded-full mr-2" style={{ backgroundColor: segment.color }}></div>
                           <p className="text-sm font-medium">{segment.name}</p>
                         </div>
-                        <p className="text-2xl font-bold text-blue-600">{segment.value}%</p>
+                        <p className="text-2xl font-bold" style={{ color: segment.color }}>{segment.value}%</p>
                       </div>
                     ))}
                   </div>

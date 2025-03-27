@@ -14,11 +14,11 @@ const CaseStudies: React.FC = () => {
       title: "Alan Watts Organization",
       subtitle: "Transforming Alan Watts' Digital Legacy on YouTube",
       logo: "https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png",
-      background: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc",
+      background: "/lovable-uploads/1d5d1af3-5566-40c1-8981-9da6f0b1d011.png",
       metrics: [
-        { value: "99.7%", label: "Content Claimed" },
-        { value: "11K+", label: "Claims Processed" },
-        { value: "230%", label: "Revenue Growth" }
+        { value: "99.9%", label: "Content Claimed" },
+        { value: "27K+", label: "Claims Processed" },
+        { value: "660%", label: "Revenue Growth" }
       ],
       description: "Learn how we helped the Alan Watts Organization recover and monetize unauthorized usage of their content across YouTube."
     }
@@ -31,7 +31,7 @@ const CaseStudies: React.FC = () => {
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Case Studies</h1>
             <p className="text-xl text-foreground/70">
-              Discover how we've helped creators and brands protect and monetize their content
+              Discover how we've helped rights holders protect and monetize their content
             </p>
           </div>
           

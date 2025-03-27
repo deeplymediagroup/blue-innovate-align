@@ -18,47 +18,49 @@ import {
   Line,
   BarChart,
   Bar,
-  Legend
+  Legend,
+  PieChart,
+  Pie,
+  Cell
 } from "recharts";
 
 const AlanWattsCase: React.FC = () => {
-  // Data for the "before vs after" chart
-  const claimsData = [
-    { label: "Before", claimed: 0, total: 27000 },
-    { label: "After", claimed: 29962, total: 30000 }
-  ];
-
-  // Revenue growth data
+  // Data for the revenue growth data over time
   const revenueData = [
-    { month: "Jan", before: 800, after: 2500 },
-    { month: "Feb", before: 900, after: 2700 },
-    { month: "Mar", before: 750, after: 2900 },
-    { month: "Apr", before: 850, after: 3100 },
-    { month: "May", before: 900, after: 3300 },
-    { month: "Jun", before: 1000, after: 3500 },
-    { month: "Jul", before: 950, after: 3700 },
-    { month: "Aug", before: 1050, after: 3900 },
+    { month: "Month 1", revenue: 2255.46 },
+    { month: "Month 2", revenue: 4165.18 },
+    { month: "Month 3", revenue: 5729.14 },
+    { month: "Month 4", revenue: 8921.30 },
+    { month: "Month 5", revenue: 9873.62 },
+    { month: "Month 6", revenue: 11500 },
   ];
 
-  // Audience growth data
-  const audienceData = [
-    { month: "Jan", views: 120000 },
-    { month: "Feb", views: 150000 },
-    { month: "Mar", views: 180000 },
-    { month: "Apr", views: 220000 },
-    { month: "May", views: 270000 },
-    { month: "Jun", views: 310000 },
-    { month: "Jul", views: 350000 },
-    { month: "Aug", views: 410000 },
+  // Claims data over time
+  const claimsData = [
+    { month: "Month 1", claims: 9000 },
+    { month: "Month 2", claims: 6000 },
+    { month: "Month 3", claims: 4000 },
+    { month: "Month 4", claims: 4000 },
+    { month: "Month 5", claims: 3000 },
+    { month: "Month 6", claims: 4000 },
   ];
 
-  // Demographics data
-  const demographicsData = [
-    { age: "18-24", percentage: 22 },
-    { age: "25-34", percentage: 38 },
-    { age: "35-44", percentage: 20 },
-    { age: "45-54", percentage: 12 },
-    { age: "55+", percentage: 8 },
+  // Age demographics data
+  const ageData = [
+    { age: "13-17", percentage: 0.7, viewDuration: "10:23", avgPercentage: 31.9, watchTime: 0.4 },
+    { age: "18-24", percentage: 13.3, viewDuration: "12:54", avgPercentage: 35.3, watchTime: 8.9 },
+    { age: "25-34", percentage: 35.4, viewDuration: "15:05", avgPercentage: 33.8, watchTime: 27.8 },
+    { age: "35-44", percentage: 25.5, viewDuration: "21:01", avgPercentage: 32.2, watchTime: 27.9 },
+    { age: "45-54", percentage: 13.4, viewDuration: "27:16", avgPercentage: 31.3, watchTime: 18.9 },
+    { age: "55-64", percentage: 6.6, viewDuration: "28:03", avgPercentage: 29.4, watchTime: 9.7 },
+    { age: "65+", percentage: 5.0, viewDuration: "24:40", avgPercentage: 27.9, watchTime: 6.4 },
+  ];
+
+  // Gender demographics data
+  const genderData = [
+    { name: "Male", value: 80.4, color: "#3b82f6" },
+    { name: "Female", value: 18.9, color: "#ec4899" },
+    { name: "User Specified", value: 0.7, color: "#a855f7" },
   ];
 
   return (
@@ -83,17 +85,31 @@ const AlanWattsCase: React.FC = () => {
                 </p>
                 <div className="flex space-x-8 mb-8">
                   <div>
-                    <p className="text-3xl font-bold text-blue-600">99.7%</p>
+                    <p className="text-3xl font-bold text-blue-600">99.9%</p>
                     <p className="text-sm text-foreground/60">Content Claimed</p>
                   </div>
                   <div>
-                    <p className="text-3xl font-bold text-blue-600">11K+</p>
+                    <p className="text-3xl font-bold text-blue-600">27K+</p>
                     <p className="text-sm text-foreground/60">Claims Processed</p>
                   </div>
+                  <div>
+                    <p className="text-3xl font-bold text-blue-600">660%</p>
+                    <p className="text-sm text-foreground/60">Revenue Growth</p>
+                  </div>
                 </div>
-                <Button className="bg-blue-600 text-white hover:bg-blue-700 group flex items-center">
-                  View Full Documentation <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
-                </Button>
+                <div className="flex items-center mb-4">
+                  <div className="h-14 w-14 rounded-full bg-gray-200 mr-4 overflow-hidden">
+                    <img 
+                      src="https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png" 
+                      alt="Mark Watts" 
+                      className="h-full w-full object-cover object-top"
+                    />
+                  </div>
+                  <div>
+                    <p className="font-medium">Mark Watts</p>
+                    <p className="text-sm text-gray-600">Director, Alan Watts Organization</p>
+                  </div>
+                </div>
               </div>
               <div className="relative">
                 <motion.div 
@@ -102,18 +118,11 @@ const AlanWattsCase: React.FC = () => {
                   transition={{ duration: 0.5 }}
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc"
+                    src="/lovable-uploads/1d5d1af3-5566-40c1-8981-9da6f0b1d011.png"
                     alt="Alan Watts"
                     className="rounded-lg w-full relative z-0 shadow-lg aspect-[4/3] object-cover"
                   />
                 </motion.div>
-                <div className="absolute bottom-4 left-4 bg-white/80 backdrop-blur-sm py-2 px-3 rounded shadow-md flex items-center">
-                  <PlayCircle className="h-6 w-6 text-blue-600 mr-2" />
-                  <div>
-                    <p className="text-xs font-medium">Alan Watts</p>
-                    <p className="text-xs text-gray-600">Transforming Digital Legacy</p>
-                  </div>
-                </div>
               </div>
             </div>
           </GlassmorphicCard>
@@ -141,7 +150,7 @@ const AlanWattsCase: React.FC = () => {
                           <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </div>
-                      <p>No control or leverage over content</p>
+                      <p>No control over content</p>
                     </div>
                     <div className="flex items-center">
                       <div className="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center mr-4">
@@ -161,13 +170,13 @@ const AlanWattsCase: React.FC = () => {
                       <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center mr-4">
                         <CheckCircle2 className="h-5 w-5 text-green-600" />
                       </div>
-                      <p>99.9% claimed or 29,962 Alan Watts videos</p>
+                      <p>99.9% claimed or 26,962 Alan Watts videos</p>
                     </div>
                     <div className="flex items-center">
                       <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center mr-4">
                         <CheckCircle2 className="h-5 w-5 text-green-600" />
                       </div>
-                      <p>Full control and leverage over content</p>
+                      <p>Full control over content</p>
                     </div>
                     <div className="flex items-center">
                       <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center mr-4">
@@ -181,22 +190,68 @@ const AlanWattsCase: React.FC = () => {
               
               {/* Claims Chart */}
               <div className="bg-white rounded-lg shadow-lg p-6 mb-12">
-                <h3 className="text-xl font-bold mb-4">Content Claims Progress</h3>
-                <div className="h-80">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart
-                      data={claimsData}
-                      margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                    >
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="label" />
-                      <YAxis />
-                      <Tooltip />
-                      <Legend />
-                      <Bar name="Claimed Videos" dataKey="claimed" fill="#3b82f6" />
-                      <Bar name="Total Videos" dataKey="total" fill="#93c5fd" />
-                    </BarChart>
-                  </ResponsiveContainer>
+                <h3 className="text-xl font-bold mb-4">Content Claims & Revenue Progress Over 6 Months</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="h-80">
+                    <p className="text-lg font-medium mb-2">Claims Processed</p>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart
+                        data={claimsData}
+                        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="month" />
+                        <YAxis />
+                        <Tooltip />
+                        <Line 
+                          type="monotone"
+                          name="Claims" 
+                          dataKey="claims" 
+                          stroke="#3b82f6"
+                          strokeWidth={2}
+                          dot={{ r: 4 }}
+                          activeDot={{ r: 6 }}
+                        />
+                        <defs>
+                          <linearGradient id="claimsGradient" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.2}/>
+                            <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                          </linearGradient>
+                        </defs>
+                        {/* Arrow to indicate future growth */}
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </div>
+                  
+                  <div className="h-80">
+                    <p className="text-lg font-medium mb-2">Revenue Growth</p>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <AreaChart
+                        data={revenueData}
+                        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="month" />
+                        <YAxis />
+                        <Tooltip 
+                          formatter={(value: number) => ['$' + value.toFixed(2), 'Revenue']}
+                        />
+                        <defs>
+                          <linearGradient id="revenueGradient" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#10b981" stopOpacity={0.8}/>
+                            <stop offset="95%" stopColor="#10b981" stopOpacity={0.2}/>
+                          </linearGradient>
+                        </defs>
+                        <Area 
+                          type="monotone" 
+                          dataKey="revenue" 
+                          stroke="#10b981" 
+                          fill="url(#revenueGradient)" 
+                          strokeWidth={2}
+                        />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  </div>
                 </div>
               </div>
             </div>
@@ -300,75 +355,27 @@ const AlanWattsCase: React.FC = () => {
               <div className="max-w-5xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Results & Impact</h2>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
-                  {/* Revenue Growth Chart */}
-                  <div className="bg-white rounded-lg shadow-lg p-6">
-                    <div className="flex items-center mb-4">
-                      <TrendingUp className="text-blue-600 h-6 w-6 mr-3" />
-                      <h3 className="text-xl font-bold">Revenue Growth</h3>
+                {/* Metrics Cards */}
+                <div className="mb-12">
+                  <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+                    <div className="bg-white p-6 rounded-lg shadow-md">
+                      <div className="text-4xl font-bold text-blue-600 mb-2">99.9%</div>
+                      <p>Content Claimed</p>
                     </div>
-                    <div className="h-64">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <LineChart
-                          data={revenueData}
-                          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-                        >
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="month" />
-                          <YAxis />
-                          <Tooltip />
-                          <Legend />
-                          <Line type="monotone" dataKey="before" name="Before MindsetDRM" stroke="#93c5fd" />
-                          <Line type="monotone" dataKey="after" name="After MindsetDRM" stroke="#3b82f6" activeDot={{ r: 8 }} />
-                        </LineChart>
-                      </ResponsiveContainer>
+                    
+                    <div className="bg-white p-6 rounded-lg shadow-md">
+                      <div className="text-4xl font-bold text-blue-600 mb-2">27K+</div>
+                      <p>Claims Processed</p>
                     </div>
-                  </div>
-                  
-                  {/* Audience Growth Chart */}
-                  <div className="bg-white rounded-lg shadow-lg p-6">
-                    <div className="flex items-center mb-4">
-                      <TrendingUp className="text-blue-600 h-6 w-6 mr-3" />
-                      <h3 className="text-xl font-bold">Audience Growth</h3>
+                    
+                    <div className="bg-white p-6 rounded-lg shadow-md">
+                      <div className="text-4xl font-bold text-blue-600 mb-2">↑660%</div>
+                      <p>Revenue Growth</p>
                     </div>
-                    <div className="h-64">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <AreaChart
-                          data={audienceData}
-                          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-                        >
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="month" />
-                          <YAxis />
-                          <Tooltip />
-                          <Area type="monotone" dataKey="views" name="Monthly Views" stroke="#3b82f6" fill="#93c5fd" />
-                        </AreaChart>
-                      </ResponsiveContainer>
-                    </div>
-                  </div>
-                  
-                  {/* Metrics Cards */}
-                  <div className="md:col-span-2">
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
-                      <div className="bg-white p-6 rounded-lg shadow-md">
-                        <div className="text-4xl font-bold text-blue-600 mb-2">99.7%</div>
-                        <p>Content Claimed</p>
-                      </div>
-                      
-                      <div className="bg-white p-6 rounded-lg shadow-md">
-                        <div className="text-4xl font-bold text-blue-600 mb-2">11K+</div>
-                        <p>Claims Processed</p>
-                      </div>
-                      
-                      <div className="bg-white p-6 rounded-lg shadow-md">
-                        <div className="text-4xl font-bold text-blue-600 mb-2">↑230%</div>
-                        <p>Revenue Growth</p>
-                      </div>
-                      
-                      <div className="bg-white p-6 rounded-lg shadow-md">
-                        <div className="text-4xl font-bold text-blue-600 mb-2">100+</div>
-                        <p>Licensed Creators</p>
-                      </div>
+                    
+                    <div className="bg-white p-6 rounded-lg shadow-md">
+                      <div className="text-4xl font-bold text-blue-600 mb-2">866+</div>
+                      <p>Licensed Videos</p>
                     </div>
                   </div>
                 </div>
@@ -376,58 +383,97 @@ const AlanWattsCase: React.FC = () => {
                 {/* Demographics & Insights */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
                   <div className="bg-white rounded-lg shadow-lg p-6">
-                    <h3 className="text-xl font-bold mb-4">Audience Demographics</h3>
+                    <h3 className="text-xl font-bold mb-4">Audience Age Demographics</h3>
                     <p className="mb-4">MindsetDRM provides detailed insights into audience demographics that were previously unavailable</p>
                     <div className="h-64">
                       <ResponsiveContainer width="100%" height="100%">
                         <BarChart
-                          data={demographicsData}
+                          data={ageData}
                           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
                         >
                           <CartesianGrid strokeDasharray="3 3" />
                           <XAxis dataKey="age" />
                           <YAxis />
-                          <Tooltip />
+                          <Tooltip formatter={(value) => `${value}%`} />
                           <Legend />
                           <Bar name="Age Distribution (%)" dataKey="percentage" fill="#3b82f6" />
                         </BarChart>
                       </ResponsiveContainer>
                     </div>
+                    <div className="mt-4 overflow-x-auto">
+                      <table className="min-w-full text-sm">
+                        <thead>
+                          <tr className="border-b">
+                            <th className="py-2 text-left">Age</th>
+                            <th className="py-2 text-left">View Duration</th>
+                            <th className="py-2 text-left">Avg % Viewed</th>
+                            <th className="py-2 text-left">Watch Time %</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {ageData.map((item, idx) => (
+                            <tr key={idx} className="border-b last:border-b-0">
+                              <td className="py-2">{item.age}</td>
+                              <td className="py-2">{item.viewDuration}</td>
+                              <td className="py-2">{item.avgPercentage}%</td>
+                              <td className="py-2">{item.watchTime}%</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                   
                   <div className="bg-white rounded-lg shadow-lg p-6">
-                    <h3 className="text-xl font-bold mb-4">Impact & Benefits</h3>
-                    <div className="space-y-4">
-                      <div className="flex items-start">
-                        <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
-                          <div className="h-3 w-3 rounded-full bg-blue-600"></div>
-                        </div>
-                        <p>Full understanding of all content viewed across YouTube (including pirated)</p>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
-                          <div className="h-3 w-3 rounded-full bg-blue-600"></div>
-                        </div>
-                        <p>Data-informed decisions about viral content and audience preferences</p>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
-                          <div className="h-3 w-3 rounded-full bg-blue-600"></div>
-                        </div>
-                        <p>Detailed demographics including age range, countries, and gender</p>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
-                          <div className="h-3 w-3 rounded-full bg-blue-600"></div>
-                        </div>
-                        <p>Ability to promote Alan Watts lectures and keep content relevant</p>
-                      </div>
-                      <div className="flex items-start">
-                        <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
-                          <div className="h-3 w-3 rounded-full bg-blue-600"></div>
-                        </div>
-                        <p>Fostered ecosystem with growing creators on favorable licensing splits</p>
-                      </div>
+                    <h3 className="text-xl font-bold mb-4">Gender Demographics</h3>
+                    <div className="h-64 flex items-center justify-center">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>
+                          <Pie
+                            data={genderData}
+                            dataKey="value"
+                            nameKey="name"
+                            cx="50%"
+                            cy="50%"
+                            outerRadius={80}
+                            label={({name, percent}) => `${name}: ${(percent * 100).toFixed(1)}%`}
+                            labelLine={false}
+                          >
+                            {genderData.map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={entry.color} />
+                            ))}
+                          </Pie>
+                          <Tooltip formatter={(value) => `${value}%`} />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </div>
+                    <div className="mt-4 text-center">
+                      <p className="text-foreground/70">Gender distribution of Alan Watts content viewers</p>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Additional Data Insights Section */}
+                <div className="bg-white rounded-lg shadow-lg p-6 mb-16">
+                  <h3 className="text-xl font-bold mb-4">Deeper Insights & Value</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                      <h4 className="text-lg font-bold mb-3">Data-Driven Content Strategy</h4>
+                      <p className="text-foreground/70 mb-4">
+                        With MindsetDRM's technology, the Alan Watts Organization gained full visibility into how their content performs across YouTube. This allowed them to make strategic decisions based on actual audience preferences, trending topics, and engagement patterns.
+                      </p>
+                      <p className="text-foreground/70">
+                        By understanding which lectures resonated most with different audience segments, they could better focus their preservation and digitization efforts on high-value content.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-bold mb-3">Sustainable Revenue Model</h4>
+                      <p className="text-foreground/70 mb-4">
+                        Beyond simply claiming content, MindsetDRM created a sustainable ecosystem that encourages creators to engage with Alan Watts' work legitimately. 
+                      </p>
+                      <p className="text-foreground/70">
+                        The licensing program provided a win-win: creators get to use high-quality content with permission, while the Alan Watts Organization receives fair compensation and maintains control over how Alan's teachings are presented.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -439,17 +485,17 @@ const AlanWattsCase: React.FC = () => {
                     <blockquote className="text-lg italic mb-4">
                       "Working with MindsetDRM has transformed how we manage my father's digital legacy. Their innovative approach to content protection and monetization has not only increased our revenue but ensured that Alan's teachings are shared authentically with the world."
                     </blockquote>
-                    <div className="flex items-center justify-end">
-                      <div className="mr-4">
-                        <p className="font-bold">Mark Watts</p>
-                        <p className="text-sm text-gray-600">Alan Watts Organization</p>
-                      </div>
-                      <div className="h-12 w-12 rounded-full bg-gray-200 overflow-hidden">
+                    <div className="flex items-center">
+                      <div className="h-12 w-12 rounded-full bg-gray-200 overflow-hidden mr-4">
                         <img 
                           src="https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png" 
                           alt="Mark Watts" 
                           className="h-full w-full object-cover object-top"
                         />
+                      </div>
+                      <div>
+                        <p className="font-bold">Mark Watts</p>
+                        <p className="text-sm text-gray-600">Alan Watts Organization</p>
                       </div>
                     </div>
                   </div>

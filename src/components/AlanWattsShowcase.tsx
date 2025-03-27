@@ -24,21 +24,21 @@ export const AlanWattsShowcase: React.FC = () => {
               unauthorized usage of their content across YouTube.
             </p>
             
-            <div className="bg-white/90 shadow-lg backdrop-blur-sm rounded-lg p-8 mb-8 transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+            <div className="bg-white/90 shadow-lg backdrop-blur-sm rounded-lg p-8 mb-8 transition-transform duration-300 hover:shadow-xl">
               <div className="mb-4">
                 <p className="text-gray-600">Monthly Revenue Recovered</p>
               </div>
               
               <div className="flex items-baseline">
                 <h3 className="text-5xl font-bold text-blue-600">$9,873</h3>
-                <span className="text-2xl ml-1 text-gray-400">.12</span>
+                <span className="text-2xl ml-1 text-gray-400">.68</span>
                 <span className="ml-2 text-gray-400">/month</span>
               </div>
               
               <div className="mt-6 space-y-3">
                 <div className="flex items-center">
                   <div className="h-2 w-2 rounded-full bg-green-500 mr-3"></div>
-                  <p className="text-gray-700">Live Monitoring</p>
+                  <p className="text-gray-700">40,000+ Active Videos Claimed</p>
                 </div>
                 <div className="flex items-center">
                   <div className="h-2 w-2 rounded-full bg-green-500 mr-3"></div>

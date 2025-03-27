@@ -45,7 +45,7 @@ export const YoutubeContentGrid: React.FC = () => {
       channel: "T&H Inspiration",
       views: "3.8M views",
       timeAgo: "3 years ago",
-      thumbnail: "/lovable-uploads/21958e1b-ef4c-491e-937f-abf4074e3bbf.png"
+      thumbnail: "/lovable-uploads/44c3dcba-ffda-4e35-92d8-6751148c9e2c.png"
     },
     {
       title: "Stop Being Distracted",
@@ -84,15 +84,13 @@ export const YoutubeContentGrid: React.FC = () => {
             <CarouselContent className="-ml-2 md:-ml-4">
               {videos.map((video, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                  <div className="transition-transform duration-300 hover:scale-105 hover:shadow-xl mb-10">
-                    <YoutubeContentCard
-                      title={video.title}
-                      channel={video.channel}
-                      views={video.views}
-                      timeAgo={video.timeAgo}
-                      thumbnail={video.thumbnail}
-                    />
-                  </div>
+                  <YoutubeContentCard
+                    title={video.title}
+                    channel={video.channel}
+                    views={video.views}
+                    timeAgo={video.timeAgo}
+                    thumbnail={video.thumbnail}
+                  />
                 </CarouselItem>
               ))}
             </CarouselContent>
