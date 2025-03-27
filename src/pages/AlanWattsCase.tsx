@@ -55,9 +55,10 @@ const AlanWattsCase: React.FC = () => {
   ];
 
   // Fix for the TypeScript error - customized tooltip formatter
-  const formatTooltipValue = (value: any, name: string) => {
-    if (name === 'Claims Processed') return `${value} claims`;
-    if (name === 'Revenue') {
+  // Modified to accept NameType (which can be string or number)
+  const formatTooltipValue = (value: any, name: any) => {
+    if (name === 'Claims Processed' || String(name) === 'Claims Processed') return `${value} claims`;
+    if (name === 'Revenue' || String(name) === 'Revenue') {
       // Check if value is a number and can use toFixed
       return typeof value === 'number' ? `$${value.toFixed(2)}` : `$${value}`;
     }
