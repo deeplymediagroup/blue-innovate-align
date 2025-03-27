@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useIsMobile as useIsMobile } from "@/hooks/use-mobile";
 
 export const Navbar: React.FC<{ extraNavLinks?: { title: string; href: string; }[] }> = ({ extraNavLinks }) => {
   const [isOpen, setIsOpen] = useState(false);

@@ -39,11 +39,6 @@ export const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-4">Resources</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/pricing" className="text-gray-400 hover:text-white transition-colors">
-                  Pricing
-                </Link>
-              </li>
-              <li>
                 <a href="https://studio.mindsetdrm.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                   Dashboard
                 </a>

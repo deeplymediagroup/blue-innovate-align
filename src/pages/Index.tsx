@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
@@ -242,22 +241,22 @@ const Index: React.FC = () => {
                                   <text 
                                     x="50%" 
                                     y="50%" 
-                                    dy={-10}
+                                    dy={-8}
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
                                     className="fill-blue-800"
-                                    style={{ fontSize: '20px', fontWeight: 'bold' }}
+                                    style={{ fontSize: '16px', fontWeight: 'bold' }}
                                   >
                                     Revenue Split
                                   </text>
                                   <text 
                                     x="50%" 
                                     y="50%" 
-                                    dy={16}
+                                    dy={12}
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
                                     className="fill-blue-600"
-                                    style={{ fontSize: '14px' }}
+                                    style={{ fontSize: '12px' }}
                                   >
                                     Sustainable ecosystem
                                   </text>

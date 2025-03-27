@@ -19,10 +19,22 @@ export const AlanWattsShowcase: React.FC = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
-            <p className="text-lg text-gray-700 mb-12 max-w-xl">
+            <p className="text-lg text-gray-700 mb-8 max-w-xl">
               We've helped the Alan Watts Organization recover and monetize
               unauthorized usage of their content across YouTube.
             </p>
+
+            <div className="flex items-center mb-8">
+              <img 
+                src="/lovable-uploads/2d1dd468-78c1-4f89-81f8-fae7a806fb6b.png" 
+                alt="Mark Watts" 
+                className="w-12 h-12 rounded-full object-cover mr-4"
+              />
+              <div>
+                <p className="font-medium text-gray-900">Mark Watts</p>
+                <p className="text-sm text-gray-600">Director, Alan Watts Organization</p>
+              </div>
+            </div>
             
             <div className="bg-white/90 shadow-lg backdrop-blur-sm rounded-lg p-8 mb-8 transition-transform duration-300 hover:shadow-xl">
               <div className="mb-4">

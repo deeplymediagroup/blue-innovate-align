@@ -2,6 +2,7 @@
 import React from "react";
 import { Layout } from "@/components/Layout";
 import { GlassmorphicCard } from "@/components/GlassmorphicCard";
+import { Link } from "react-router-dom";
 import {
   BarChart,
   Bar,
@@ -16,18 +17,18 @@ import {
   PieChart,
   Pie,
   Cell,
-  Label,
   AreaChart,
   Area,
   ComposedChart
 } from "recharts";
+import { Button } from "@/components/ui/button";
 
 const AlanWattsCase: React.FC = () => {
   // Gender demographic data
   const genderData = [
     { name: "Male", value: 80.4, color: "#2563eb" },
     { name: "Female", value: 18.9, color: "#ec4899" },
-    { name: "User Specified", value: 0.7, color: "#6366f1" }
+    { name: "Other", value: 0.7, color: "#6366f1" }
   ];
 
   // Age demographics data
@@ -214,15 +215,11 @@ const AlanWattsCase: React.FC = () => {
             </div>
             
             <div className="mb-16">
-              <h2 className="text-3xl font-bold mb-6">Results & Metrics</h2>
+              <h2 className="text-3xl font-bold mb-6">Claims & Revenue Progress Over 6 Months</h2>
               
               <div className="grid grid-cols-1 gap-8 mb-10">
                 <GlassmorphicCard className="p-6">
-                  <h3 className="text-xl font-bold mb-4">Claims Processed & Revenue Growth</h3>
-                  <p className="text-foreground/70 mb-4">
-                    Over a 6-month period, we identified and processed over 26,962 content claims, resulting in a consistent monthly revenue increase.
-                  </p>
-                  <div className="h-[400px] mt-6">
+                  <div className="h-[400px] mt-4">
                     <ResponsiveContainer width="100%" height="100%">
                       <ComposedChart
                         data={claimsAndRevenueData}
@@ -310,7 +307,7 @@ const AlanWattsCase: React.FC = () => {
                           cx="50%"
                           cy="50%"
                           innerRadius={60}
-                          outerRadius={100}
+                          outerRadius={120}
                           paddingAngle={2}
                           dataKey="value"
                           labelLine={false}
@@ -329,34 +326,34 @@ const AlanWattsCase: React.FC = () => {
             </div>
             
             <div className="mb-16">
-              <h2 className="text-3xl font-bold mb-6">Implementation Process</h2>
+              <h2 className="text-3xl font-bold mb-6">Value & Deeper Insights</h2>
               <GlassmorphicCard className="p-6">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div>
                     <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
                       <span className="text-xl font-bold text-blue-600">1</span>
                     </div>
-                    <h3 className="text-xl font-bold mb-2">Content Identification</h3>
+                    <h3 className="text-xl font-bold mb-2">Comprehensive Protection</h3>
                     <p className="text-foreground/70">
-                      We indexed all Alan Watts audio content and created a comprehensive content database.
+                      Our audio fingerprinting technology provides the most accurate content matching in the industry, ensuring nothing is missed.
                     </p>
                   </div>
                   <div>
                     <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
                       <span className="text-xl font-bold text-blue-600">2</span>
                     </div>
-                    <h3 className="text-xl font-bold mb-2">Content Claiming</h3>
+                    <h3 className="text-xl font-bold mb-2">Strategic Revenue</h3>
                     <p className="text-foreground/70">
-                      Our system automatically identified and claimed unauthorized usage across YouTube.
+                      Our licensing approach creates sustainable income while fostering a healthy content ecosystem for creators.
                     </p>
                   </div>
                   <div>
                     <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
                       <span className="text-xl font-bold text-blue-600">3</span>
                     </div>
-                    <h3 className="text-xl font-bold mb-2">Monetization</h3>
+                    <h3 className="text-xl font-bold mb-2">Total Transparency</h3>
                     <p className="text-foreground/70">
-                      We implemented a fair revenue-sharing model that benefited both the rights holder and content creators.
+                      Our dashboard provides real-time analytics and insights, giving full visibility into content performance.
                     </p>
                   </div>
                 </div>
@@ -393,11 +390,11 @@ const AlanWattsCase: React.FC = () => {
               <p className="text-xl text-foreground/70 mb-8 max-w-2xl mx-auto">
                 Let us help you identify, claim, and monetize your content across YouTube
               </p>
-              <a href="/contact" className="inline-block">
-                <button className="px-8 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+              <Link to="/contact">
+                <Button className="px-8 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
                   Get Started
-                </button>
-              </a>
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

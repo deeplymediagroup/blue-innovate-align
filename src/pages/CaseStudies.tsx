@@ -17,8 +17,7 @@ const CaseStudies: React.FC = () => {
       metrics: [
         { value: "99.9%", label: "Content Claimed" },
         { value: "27K+", label: "Claims Processed" },
-        { value: "660%", label: "Revenue Growth" },
-        { value: "866+", label: "Licensed Videos" }
+        { value: "660%", label: "Revenue Growth" }
       ],
       description: "Learn how we helped the Alan Watts Organization recover and monetize unauthorized usage of their content across YouTube."
     }
