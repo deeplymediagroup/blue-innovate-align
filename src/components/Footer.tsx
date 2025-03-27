@@ -18,19 +18,19 @@ export const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/claiming" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://preview--blue-innovate-align.lovable.app/services" className="text-gray-400 hover:text-white transition-colors">
                   Claiming
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/distribution" className="text-gray-400 hover:text-white transition-colors">
+                <a href="/#distribution" className="text-gray-400 hover:text-white transition-colors">
                   Distribution
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/licensing" className="text-gray-400 hover:text-white transition-colors">
+                <a href="/#licensing" className="text-gray-400 hover:text-white transition-colors">
                   Licensing
-                </Link>
+                </a>
               </li>
             </ul>
           </div>

@@ -29,6 +29,14 @@ const SectionRedirect = ({ to }: { to: string }) => {
   return null;
 };
 
+const ExternalRedirect = ({ to }: { to: string }) => {
+  useEffect(() => {
+    window.location.href = to;
+  }, [to]);
+  
+  return null;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -46,6 +54,11 @@ const App = () => (
           <Route path="/services" element={<SectionRedirect to="/#services" />} />
           <Route path="/distribution" element={<SectionRedirect to="/#distribution" />} />
           <Route path="/licensing" element={<SectionRedirect to="/#licensing" />} />
+          <Route path="/claiming" element={<SectionRedirect to="/#services" />} />
+          
+          {/* Scale and Enterprise program redirects */}
+          <Route path="/scale" element={<ExternalRedirect to="https://preview--blue-innovate-align.lovable.app/contact" />} />
+          <Route path="/enterprise" element={<ExternalRedirect to="https://preview--blue-innovate-align.lovable.app/contact" />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

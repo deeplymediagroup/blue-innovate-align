@@ -49,8 +49,8 @@ const AlanWattsCase: React.FC = () => {
 
   // Gender demographics data
   const genderData = [
-    { name: "Male", value: 80.4, color: "#3b82f6" },
-    { name: "Female", value: 18.9, color: "#ec4899" },
+    { name: "Male", value: 80.4, color: "#1e40af" }, // Darker blue
+    { name: "Female", value: 18.9, color: "#60a5fa" }, // Lighter blue
     { name: "User Specified", value: 0.7, color: "#a855f7" },
   ];
 
