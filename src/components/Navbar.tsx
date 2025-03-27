@@ -25,6 +25,22 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToSection = (id: string) => {
+    // Check if we're on the home page
+    const isHomePage = window.location.pathname === '/';
+    
+    if (!isHomePage) {
+      // Redirect to home page with hash
+      window.location.href = `/#${id}`;
+      return;
+    }
+    
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
@@ -44,24 +60,24 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
           </div>
 
           <nav className="hidden md:flex items-center space-x-8">
-            <a
-              href="#services"
+            <button
+              onClick={() => scrollToSection('services')}
               className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
             >
               Claiming
-            </a>
-            <a
-              href="#distribution"
+            </button>
+            <button
+              onClick={() => scrollToSection('distribution')}
               className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
             >
               Distribution
-            </a>
-            <a
-              href="#licensing"
+            </button>
+            <button
+              onClick={() => scrollToSection('licensing')}
               className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
             >
               Licensing
-            </a>
+            </button>
             {extraNavLinks?.map((link, index) => (
               <a
                 key={index}
@@ -104,27 +120,33 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
       >
         <div className="container mx-auto px-4 py-6 space-y-6">
           <nav className="flex flex-col space-y-4">
-            <a
-              href="#services"
+            <button
+              onClick={() => {
+                scrollToSection('services');
+                setIsMobileMenuOpen(false);
+              }}
               className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
             >
               Claiming
-            </a>
-            <a
-              href="#distribution"
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection('distribution');
+                setIsMobileMenuOpen(false);
+              }}
               className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
             >
               Distribution
-            </a>
-            <a
-              href="#licensing"
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection('licensing');
+                setIsMobileMenuOpen(false);
+              }}
               className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
             >
               Licensing
-            </a>
+            </button>
             {extraNavLinks?.map((link, index) => (
               <a
                 key={index}

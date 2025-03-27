@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
@@ -25,7 +26,7 @@ const Index: React.FC = () => {
   const revenueData = [
     { name: "Rights Holder", value: 40, color: "#2563eb" },
     { name: "Creator", value: 50, color: "#16a34a" },
-    { name: "Mindset", value: 10, color: "#f59e0b" },
+    { name: "Mindset", value: 10, color: "#3b82f6" },
   ];
   
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -135,7 +136,7 @@ const Index: React.FC = () => {
                     />
                     <h4 className="font-bold text-blue-800">{channel.name}</h4>
                   </div>
-                  <div className="grid grid-cols-2 gap-2 mt-2">
+                  <div className="grid grid-cols-2 gap-0 mt-2">
                     <div className="flex flex-col">
                       <p className="text-xs text-gray-500">Subscribers</p>
                       <p className="font-bold text-blue-600">{channel.subscribers}</p>
@@ -217,7 +218,7 @@ const Index: React.FC = () => {
                           cx="50%"
                           cy="50%"
                           innerRadius={80}
-                          outerRadius={130}
+                          outerRadius={160}
                           paddingAngle={3}
                           startAngle={90}
                           endAngle={-270}
@@ -243,16 +244,16 @@ const Index: React.FC = () => {
                                     y={160} 
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
-                                    className="fill-foreground text-base font-bold"
+                                    className="fill-foreground text-xl font-bold"
                                   >
                                     Revenue Split
                                   </text>
                                   <text 
                                     x={175} 
-                                    y={190} 
+                                    y={185} 
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
-                                    className="fill-foreground/60 text-xs"
+                                    className="fill-foreground/60 text-sm"
                                   >
                                     Sustainable ecosystem
                                   </text>

@@ -64,7 +64,7 @@ export const YoutubeContentGrid: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-blue-50 to-white overflow-hidden">
+    <section className="py-16 bg-gradient-to-b from-blue-50 to-white overflow-visible">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-3">Content We Amplify</h2>
