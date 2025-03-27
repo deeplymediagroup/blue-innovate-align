@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
               </span>
             </a>
             <p className="mt-4 text-sm text-foreground/70">
-              Empowering content creators with industry-leading rights management and distribution solutions.
+              Empowering content creators with industry-leading rights management solutions.
             </p>
           </div>
           
@@ -56,6 +56,11 @@ export const Footer: React.FC = () => {
                 >
                   Dashboard
                 </a>
+              </li>
+              <li>
+                <Link to="/case-studies" className="text-sm text-foreground/70 hover:text-blue-600 transition-colors">
+                  Case Studies
+                </Link>
               </li>
               <li>
                 <Link to="/contact" className="text-sm text-foreground/70 hover:text-blue-600 transition-colors">

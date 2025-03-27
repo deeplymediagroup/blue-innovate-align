@@ -84,7 +84,7 @@ export const YoutubeContentGrid: React.FC = () => {
             <CarouselContent className="-ml-2 md:-ml-4">
               {videos.map((video, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                  <div className="transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                  <div className="transition-transform duration-300 hover:scale-105 hover:shadow-xl mb-6">
                     <YoutubeContentCard
                       title={video.title}
                       channel={video.channel}

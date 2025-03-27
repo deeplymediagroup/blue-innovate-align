@@ -13,6 +13,7 @@ import { GlassmorphicCard } from "@/components/GlassmorphicCard";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Index: React.FC = () => {
   const revenueData = [
@@ -24,13 +25,14 @@ const Index: React.FC = () => {
   const COLORS = ["#3b82f6", "#93c5fd", "#60a5fa"];
   
   const channelStats = [
-    { name: "Motiversity", subscribers: "3.8M", views: "530M+" },
-    { name: "Motivation Madness", subscribers: "3.8M", views: "350M+" },
-    { name: "Motivation2Study", subscribers: "4.6M", views: "365M+" },
-    { name: "MotivationHub", subscribers: "3.5M", views: "380M+" },
-    { name: "After Skool", subscribers: "3.7M", views: "260M+" },
-    { name: "T&H Inspiration", subscribers: "758K", views: "140M+" },
-    { name: "True Meaning", subscribers: "526K", views: "38M+" },
+    { name: "Motiversity", subscribers: "3.8M", views: "530M+", icon: "/lovable-uploads/89599c4a-2943-430b-a348-cf1f039ac933.png" },
+    { name: "MotivationHub", subscribers: "3.5M", views: "380M+", icon: "/lovable-uploads/1bf57caa-d1c1-40fc-823d-edd080e2b5db.png" },
+    { name: "Motivation2Study", subscribers: "4.6M", views: "365M+", icon: "/lovable-uploads/7ad119b9-2029-4225-9db1-d52780651bd4.png" },
+    { name: "Motivation Madness", subscribers: "3.8M", views: "350M+", icon: "/lovable-uploads/120bfcd1-e00e-4b2f-ac25-ee49edfe0e22.png" },
+    { name: "After Skool", subscribers: "3.7M", views: "260M+", icon: "/lovable-uploads/67ff2ca5-79fd-44ed-b348-2dfb2dca0fb8.png" },
+    { name: "T&H Inspiration", subscribers: "758K", views: "140M+", icon: "/lovable-uploads/acc58035-160d-4d7e-8704-59c89f4e2201.png" },
+    { name: "Alpha Leaders", subscribers: "767K", views: "56M+", icon: "/lovable-uploads/13347a70-78da-4271-af11-b267957cfba5.png" },
+    { name: "True Meaning", subscribers: "526K", views: "38M+", icon: "/lovable-uploads/89599c4a-2943-430b-a348-cf1f039ac933.png" },
   ];
 
   useEffect(() => {
@@ -84,7 +86,7 @@ const Index: React.FC = () => {
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-12 text-center">
             <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
-              Our Services Power The Largest Motivational Media Network on YouTube
+              We Power The Largest Motivational YouTube Network
             </h2>
             <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
               Our network manages rights for leading motivational content creators, helping them protect 
@@ -102,7 +104,14 @@ const Index: React.FC = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
               {channelStats.map((channel, index) => (
                 <div key={index} className="bg-blue-50 p-4 rounded-lg border border-blue-100 transition-all duration-300 hover:shadow-md">
-                  <h4 className="font-bold text-blue-800">{channel.name}</h4>
+                  <div className="flex items-center mb-2">
+                    <img 
+                      src={channel.icon} 
+                      alt={channel.name} 
+                      className="w-8 h-8 rounded-full mr-2 object-cover"
+                    />
+                    <h4 className="font-bold text-blue-800">{channel.name}</h4>
+                  </div>
                   <div className="flex flex-col mt-2">
                     <div className="mb-1">
                       <p className="text-xs text-gray-500">Subscribers</p>
@@ -126,16 +135,12 @@ const Index: React.FC = () => {
                 <p className="text-3xl font-bold text-blue-600">20M+</p>
                 <p className="text-sm text-foreground/60">Subscribers</p>
               </div>
-              <div>
-                <p className="text-3xl font-bold text-blue-600">7+</p>
-                <p className="text-sm text-foreground/60">Major Channels</p>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Offer Licensing Section - Updated title and description */}
+      {/* Optional Licensing Section - Updated title and description */}
       <section id="licensing" className="py-16 bg-gradient-to-b from-blue-50/30 to-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-8">
@@ -180,30 +185,26 @@ const Index: React.FC = () => {
               >
                 <div className="relative w-full max-w-md aspect-square p-8">
                   <div className="w-full h-full flex items-center justify-center">
-                    {/* Fixed Revenue Split Visualization - Corrected Semi-circle chart */}
+                    {/* Corrected Revenue Split Visualization */}
                     <svg viewBox="0 0 200 200" className="w-full">
-                      {/* Base circle (gray background) */}
+                      {/* Base circle */}
                       <circle cx="100" cy="100" r="100" fill="#f1f5f9" />
                       
-                      {/* Creator: 50% (Top-right quarter + half of bottom-right quarter) */}
+                      {/* Rights Holder: 40% - Blue */}
                       <path
-                        d="M 100 100 L 200 100 A 100 100 0 0 0 100 0 Z"
-                        fill="#93c5fd"
-                      />
-                      <path
-                        d="M 100 100 L 200 100 A 100 100 0 0 1 150 186.6 Z"
-                        fill="#93c5fd"
-                      />
-                      
-                      {/* Rights Holder: 40% (half of bottom-right quarter + bottom-left quarter) */}
-                      <path
-                        d="M 100 100 L 150 186.6 A 100 100 0 0 1 0 100 Z"
+                        d="M 100 100 L 100 0 A 100 100 0 0 1 186.6 65 Z"
                         fill="#3b82f6"
                       />
                       
-                      {/* Mindset: 10% (Top-left quarter) */}
+                      {/* Creator: 50% - Light Blue */}
                       <path
-                        d="M 100 100 L 0 100 A 100 100 0 0 1 100 0 Z"
+                        d="M 100 100 L 186.6 65 A 100 100 0 0 1 65 186.6 Z"
+                        fill="#93c5fd"
+                      />
+                      
+                      {/* Mindset: 10% - Sky Blue */}
+                      <path
+                        d="M 100 100 L 65 186.6 A 100 100 0 0 1 0 100 A 100 100 0 0 1 100 0 Z"
                         fill="#60a5fa"
                       />
                       
