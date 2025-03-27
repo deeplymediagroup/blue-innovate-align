@@ -29,7 +29,7 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
                 <CountUp 
                   end={26.1} 
                   duration={2500} 
-                  suffix=" Million" 
+                  suffix="M+" 
                   decimals={1}
                   className="text-5xl font-bold"
                 />
@@ -58,7 +58,7 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
                 <CountUp 
                   end={8.4} 
                   duration={2500} 
-                  suffix=" Million" 
+                  suffix="M+" 
                   decimals={1}
                   className="text-5xl font-bold"
                 />
@@ -69,8 +69,8 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
         </div>
       </div>
 
-      <div className="relative w-full overflow-hidden bg-blue-50/50 py-10">
-        <p className="text-center text-sm font-medium text-blue-600 mb-6">TRUSTED BY WORLD-CLASS BRANDS</p>
+      <div className="relative w-full overflow-hidden bg-blue-50/50 py-14">
+        <p className="text-center text-sm font-medium text-blue-600 mb-8">TRUSTED BY WORLD-CLASS BRANDS</p>
         
         {/* Single sliding row */}
         <div className="flex overflow-hidden">

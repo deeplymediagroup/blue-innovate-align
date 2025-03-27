@@ -9,6 +9,7 @@ import { CTASection } from "@/components/CTASection";
 import { CreatorGrid } from "@/components/CreatorGrid";
 import { AlanWattsShowcase } from "@/components/AlanWattsShowcase";
 import { YoutubeContentGrid } from "@/components/YoutubeContentGrid";
+import { ScrollingStats } from "@/components/ScrollingStats";
 
 const Index: React.FC = () => {
   useEffect(() => {
@@ -38,11 +39,12 @@ const Index: React.FC = () => {
   }, []);
 
   return (
-    <Layout>
+    <Layout extraNavLinks={[{ title: "Claiming", href: "#services" }]}>
       <Hero />
       <ClientLogos />
       <AlanWattsShowcase />
       <Services />
+      <ScrollingStats />
       <YoutubeContentGrid />
       <div className="py-16 container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">

@@ -6,6 +6,7 @@ interface YoutubeContentCardProps {
   title: string;
   channel: string;
   views: string;
+  timeAgo: string;
   thumbnail: string;
 }
 
@@ -13,6 +14,7 @@ export const YoutubeContentCard: React.FC<YoutubeContentCardProps> = ({
   title,
   channel,
   views,
+  timeAgo,
   thumbnail
 }) => {
   return (
@@ -35,7 +37,7 @@ export const YoutubeContentCard: React.FC<YoutubeContentCardProps> = ({
       <div className="p-4">
         <h3 className="font-medium text-base mb-1 line-clamp-2">{title}</h3>
         <p className="text-gray-600 text-sm mb-1">{channel}</p>
-        <p className="text-gray-500 text-xs">{views} • 2 years ago</p>
+        <p className="text-gray-500 text-xs">{views} • {timeAgo}</p>
       </div>
     </motion.div>
   );

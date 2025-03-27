@@ -74,7 +74,7 @@ export const Services: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Custom Dashboard with real time data</span>
+                  <span>Personalized Dashboard</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
@@ -101,7 +101,7 @@ export const Services: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Customized protection strategies</span>
+                  <span>Customized protection</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
@@ -128,7 +128,7 @@ export const Services: React.FC = () => {
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Claim Stolen Revenue</span>
+                  <span>Unlock Revenue Potential</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
