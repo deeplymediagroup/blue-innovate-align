@@ -3,11 +3,18 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, ArrowDown } from "lucide-react";
 import { AnimatedBlob } from "./AnimatedBlob";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export const Hero: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  });
+  
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -54,16 +61,57 @@ export const Hero: React.FC = () => {
         }}
       />
       
-      {/* Animated background blobs */}
-      <AnimatedBlob 
-        size="h-[600px] w-[600px]" 
-        position="top-[-200px] right-[-200px]" 
-      />
-      <AnimatedBlob 
-        size="h-[700px] w-[700px]" 
-        position="bottom-[-300px] left-[-200px]" 
-        delay="3s"
-      />
+      {/* Animated background blobs with parallax effect */}
+      <motion.div style={{ y, opacity }} className="absolute inset-0 pointer-events-none">
+        <AnimatedBlob 
+          size="h-[600px] w-[600px]" 
+          position="top-[-200px] right-[-200px]" 
+        />
+        <AnimatedBlob 
+          size="h-[700px] w-[700px]" 
+          position="bottom-[-300px] left-[-200px]" 
+          delay="3s"
+        />
+      </motion.div>
+
+      {/* 3D floating elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div 
+          className="absolute h-32 w-32 rounded-full bg-blue-300/30 blur-xl"
+          animate={{
+            x: [0, 20, 0],
+            y: [0, 30, 0],
+            rotate: [0, 10, 0],
+          }}
+          transition={{
+            duration: 15,
+            ease: "easeInOut",
+            repeat: Infinity,
+          }}
+          style={{
+            top: '15%',
+            right: '20%',
+          }}
+        />
+        <motion.div 
+          className="absolute h-20 w-20 rounded-full bg-blue-400/20 blur-xl"
+          animate={{
+            x: [0, -30, 0],
+            y: [0, 20, 0],
+            rotate: [0, -15, 0],
+          }}
+          transition={{
+            duration: 18,
+            ease: "easeInOut",
+            repeat: Infinity,
+            delay: 1
+          }}
+          style={{
+            top: '30%',
+            left: '15%',
+          }}
+        />
+      </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div
@@ -101,7 +149,12 @@ export const Hero: React.FC = () => {
           >
             <a href="#clients" className="inline-flex flex-col items-center">
               <p className="text-sm text-foreground/70 mb-2">Trusted by World-Class Brands</p>
-              <ArrowDown className="h-5 w-5 animate-bounce" />
+              <motion.div 
+                animate={{ y: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                <ArrowDown className="h-5 w-5" />
+              </motion.div>
             </a>
           </motion.div>
         </div>

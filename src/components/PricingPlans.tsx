@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { GlassmorphicCard } from "./GlassmorphicCard";
 import { Button } from "@/components/ui/button";
 import { Check, X } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const PlanFeature: React.FC<{ 
   feature: string; 
@@ -41,6 +42,13 @@ const PlanFeature: React.FC<{
 
 export const PricingPlans: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.95, 1, 1, 0.95]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -69,8 +77,9 @@ export const PricingPlans: React.FC = () => {
   return (
     <section id="pricing" className="py-24 bg-gradient-to-b from-background to-blue-50/50">
       <div className="container mx-auto px-4 md:px-6">
-        <div
+        <motion.div
           ref={sectionRef}
+          style={{ opacity, scale }}
           className="reveal-section max-w-5xl mx-auto"
         >
           <div className="mb-16 text-center">
@@ -169,7 +178,7 @@ export const PricingPlans: React.FC = () => {
               </div>
             </div>
           </GlassmorphicCard>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
