@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
@@ -29,7 +28,6 @@ const Index: React.FC = () => {
     { name: "Mindset", value: 10, color: "#f59e0b" },
   ];
   
-  // Sorted by views (descending)
   const channelStats = [
     { name: "Motiversity", subscribers: "3.8M", views: "530M+", icon: "/lovable-uploads/89599c4a-2943-430b-a348-cf1f039ac933.png" },
     { name: "MotivationHub", subscribers: "3.5M", views: "380M+", icon: "/lovable-uploads/1bf57caa-d1c1-40fc-823d-edd080e2b5db.png" },
@@ -42,7 +40,6 @@ const Index: React.FC = () => {
   ];
 
   useEffect(() => {
-    // Add intersection observer for scroll animations
     const observerOptions = {
       root: null,
       rootMargin: "0px",
@@ -67,7 +64,6 @@ const Index: React.FC = () => {
     };
   }, []);
 
-  // Custom tooltip for the PieChart
   const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
@@ -100,7 +96,6 @@ const Index: React.FC = () => {
       </div>
       <HowItWorks />
 
-      {/* Largest Motivational Media Network Section - Improved Layout */}
       <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-12 text-center">
@@ -158,7 +153,6 @@ const Index: React.FC = () => {
         </div>
       </section>
 
-      {/* Optional Licensing Section - Updated title and description */}
       <section id="licensing" className="py-16 pt-24 bg-gradient-to-b from-blue-50/30 to-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-8">
@@ -203,7 +197,6 @@ const Index: React.FC = () => {
               >
                 <div className="w-full max-w-md">
                   <div className="w-full aspect-square flex items-center justify-center">
-                    {/* Improved Revenue Split Chart */}
                     <ResponsiveContainer width="100%" height={300}>
                       <PieChart>
                         <Tooltip content={<CustomTooltip />} />
@@ -233,16 +226,15 @@ const Index: React.FC = () => {
                           ))}
                           <Label
                             content={(props) => {
-                              // Safe calculation of center coordinates
                               const viewBox = props.viewBox || {};
-                              const centerX = viewBox.width ? viewBox.width / 2 + (viewBox.x || 0) : 150;
-                              const centerY = viewBox.height ? viewBox.height / 2 + (viewBox.y || 0) : 150;
+                              const cx = typeof viewBox.cx === 'number' ? viewBox.cx : 150;
+                              const cy = typeof viewBox.cy === 'number' ? viewBox.cy : 150;
                               
                               return (
                                 <g>
                                   <text 
-                                    x={centerX} 
-                                    y={centerY - 15} 
+                                    x={cx} 
+                                    y={cy - 15} 
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
                                     className="fill-foreground text-base font-bold"
@@ -250,8 +242,8 @@ const Index: React.FC = () => {
                                     Revenue Split
                                   </text>
                                   <text 
-                                    x={centerX} 
-                                    y={centerY + 15} 
+                                    x={cx} 
+                                    y={cy + 15} 
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
                                     className="fill-foreground/60 text-xs"
