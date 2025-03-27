@@ -6,8 +6,6 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { scrollToTop } from "@/hooks/use-mobile";
-import { useEffect } from "react";
 
 const CaseStudies: React.FC = () => {
   const caseStudies = [
@@ -15,8 +13,7 @@ const CaseStudies: React.FC = () => {
       id: "alan-watts",
       title: "Alan Watts Organization",
       subtitle: "Transforming Alan Watts' Digital Legacy on YouTube",
-      logo: "https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png",
-      background: "/lovable-uploads/9395cd72-13ef-467b-b2f4-a45c7f43f0cd.png",
+      background: "/lovable-uploads/2d1dd468-78c1-4f89-81f8-fae7a806fb6b.png",
       metrics: [
         { value: "99.9%", label: "Content Claimed" },
         { value: "27K+", label: "Claims Processed" },
@@ -25,11 +22,6 @@ const CaseStudies: React.FC = () => {
       description: "Learn how we helped the Alan Watts Organization recover and monetize unauthorized usage of their content across YouTube."
     }
   ];
-
-  useEffect(() => {
-    // Scroll to top when the page loads
-    scrollToTop();
-  }, []);
 
   return (
     <Layout>
@@ -77,13 +69,6 @@ const CaseStudies: React.FC = () => {
                         alt={study.title}
                         className="rounded-lg w-full aspect-[4/3] object-cover shadow-lg"
                       />
-                      <div className="absolute top-4 right-4 h-16 w-16 rounded-full bg-white p-1 shadow-md">
-                        <img 
-                          src={study.logo} 
-                          alt={`${study.title} logo`}
-                          className="w-full h-full rounded-full object-cover"
-                        />
-                      </div>
                     </motion.div>
                   </div>
                 </GlassmorphicCard>

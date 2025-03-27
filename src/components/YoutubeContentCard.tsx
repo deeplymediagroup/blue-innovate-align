@@ -17,7 +17,7 @@ export const YoutubeContentCard: React.FC<YoutubeContentCardProps> = ({
   thumbnail,
 }) => {
   return (
-    <div className="group relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 bg-white h-full">
+    <div className="group relative rounded-lg overflow-visible shadow-md hover:shadow-xl transition-all duration-300 z-10 hover:z-50 cursor-pointer">
       <div className="relative aspect-video overflow-hidden">
         <img
           src={thumbnail}
@@ -26,7 +26,7 @@ export const YoutubeContentCard: React.FC<YoutubeContentCardProps> = ({
         />
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
       </div>
-      <div className="p-3">
+      <div className="bg-white p-3">
         <h3 className="font-bold text-sm line-clamp-2 h-10 mb-1">{title}</h3>
         <p className="text-xs text-gray-600 mb-1">{channel}</p>
         <div className="flex text-xs text-gray-500">

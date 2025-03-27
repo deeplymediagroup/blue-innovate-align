@@ -1,28 +1,8 @@
 
 import React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { scrollToElement } from "@/hooks/use-mobile";
+import { Link } from "react-router-dom";
 
 export const Footer: React.FC = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  
-  // Helper function to scroll to a section if on homepage, or navigate if not
-  const scrollToSectionOrNavigate = (sectionId: string) => {
-    if (location.pathname === "/") {
-      // If on homepage, scroll to the section
-      scrollToElement(sectionId);
-      return `/#${sectionId}`;
-    } else {
-      // If not on homepage, navigate to homepage + section
-      navigate("/");
-      setTimeout(() => {
-        scrollToElement(sectionId);
-      }, 100);
-      return "/";
-    }
-  };
-
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4">
@@ -38,26 +18,17 @@ export const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
               <li>
-                <Link 
-                  to={scrollToSectionOrNavigate("services")} 
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <Link to="/#claiming" className="text-gray-400 hover:text-white transition-colors">
                   Claiming
                 </Link>
               </li>
               <li>
-                <Link 
-                  to={scrollToSectionOrNavigate("distribution")} 
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <Link to="/#distribution" className="text-gray-400 hover:text-white transition-colors">
                   Distribution
                 </Link>
               </li>
               <li>
-                <Link 
-                  to={scrollToSectionOrNavigate("licensing")} 
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <Link to="/#licensing" className="text-gray-400 hover:text-white transition-colors">
                   Licensing
                 </Link>
               </li>

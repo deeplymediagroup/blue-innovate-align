@@ -5,7 +5,6 @@ import { ChevronRight, ArrowDown } from "lucide-react";
 import { AnimatedBlob } from "./AnimatedBlob";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
-import { scrollToElement } from "@/hooks/use-mobile";
 
 export const Hero: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -151,14 +150,7 @@ export const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.5 }}
           >
-            <a 
-              href="#clients" 
-              className="inline-flex flex-col items-center"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToElement("clients");
-              }}
-            >
+            <a href="#clients" className="inline-flex flex-col items-center">
               <p className="text-sm text-foreground/70 mb-2">Trusted by World-Class Brands</p>
               <motion.div 
                 animate={{ y: [0, 5, 0] }}
