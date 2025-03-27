@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { PieChart, Pie, Cell, Label } from "recharts";
+import { PieChart, Pie, Cell, Label, ResponsiveContainer } from "recharts";
 
 const Index: React.FC = () => {
   const revenueData = [
@@ -25,11 +25,11 @@ const Index: React.FC = () => {
   // Sorted by views (descending)
   const channelStats = [
     { name: "Motiversity", subscribers: "3.8M", views: "530M+", icon: "/lovable-uploads/89599c4a-2943-430b-a348-cf1f039ac933.png" },
-    { name: "MotivationHub", subscribers: "3.5M", views: "380M+", icon: "/lovable-uploads/1bf57caa-d1c1-40fc-823d-edd080e2b5db.png" },
+    { name: "MotivationHub", subscribers: "3.5M", views: "380M+", icon: "/lovable-uploads/acc58035-160d-4d7e-8704-59c89f4e2201.png" },
     { name: "Motivation2Study", subscribers: "4.6M", views: "365M+", icon: "/lovable-uploads/7ad119b9-2029-4225-9db1-d52780651bd4.png" },
     { name: "Motivation Madness", subscribers: "3.8M", views: "350M+", icon: "/lovable-uploads/120bfcd1-e00e-4b2f-ac25-ee49edfe0e22.png" },
     { name: "After Skool", subscribers: "3.7M", views: "260M+", icon: "/lovable-uploads/67ff2ca5-79fd-44ed-b348-2dfb2dca0fb8.png" },
-    { name: "T&H Inspiration", subscribers: "758K", views: "140M+", icon: "/lovable-uploads/acc58035-160d-4d7e-8704-59c89f4e2201.png" },
+    { name: "T&H Inspiration", subscribers: "758K", views: "140M+", icon: "/lovable-uploads/1bf57caa-d1c1-40fc-823d-edd080e2b5db.png" },
     { name: "Alpha Leaders", subscribers: "767K", views: "56M+", icon: "/lovable-uploads/13347a70-78da-4271-af11-b267957cfba5.png" },
     { name: "True Meaning", subscribers: "526K", views: "38M+", icon: "/lovable-uploads/89599c4a-2943-430b-a348-cf1f039ac933.png" },
   ];
@@ -183,40 +183,60 @@ const Index: React.FC = () => {
               >
                 <div className="w-full max-w-md">
                   <div className="w-full aspect-square flex items-center justify-center">
-                    {/* Revenue Split Chart using Recharts */}
-                    <PieChart width={300} height={300}>
-                      <Pie
-                        data={revenueData}
-                        dataKey="value"
-                        nameKey="name"
-                        cx="50%"
-                        cy="50%"
-                        innerRadius={60}
-                        outerRadius={100}
-                        startAngle={90}
-                        endAngle={-270}
-                      >
-                        {revenueData.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={entry.color} />
-                        ))}
-                        <Label
-                          content={({ viewBox }) => {
-                            if (!viewBox) return null;
-                            const { cx, cy } = viewBox;
-                            return (
-                              <g>
-                                <text x={cx} y={cy - 10} textAnchor="middle" dominantBaseline="central" className="fill-foreground text-base font-bold">
-                                  Revenue Split
-                                </text>
-                                <text x={cx} y={cy + 10} textAnchor="middle" dominantBaseline="central" className="fill-foreground/60 text-xs">
-                                  Sustainable ecosystem
-                                </text>
-                              </g>
-                            );
-                          }}
-                        />
-                      </Pie>
-                    </PieChart>
+                    {/* Revenue Split Chart using Recharts - Fixed ViewBox Type Issue */}
+                    <ResponsiveContainer width="100%" height={300}>
+                      <PieChart>
+                        <Pie
+                          data={revenueData}
+                          dataKey="value"
+                          nameKey="name"
+                          cx="50%"
+                          cy="50%"
+                          innerRadius={60}
+                          outerRadius={100}
+                          startAngle={90}
+                          endAngle={-270}
+                        >
+                          {revenueData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={entry.color} />
+                          ))}
+                          <Label
+                            content={(props) => {
+                              // Safe access to viewBox properties
+                              const centerX = (props.viewBox && typeof props.viewBox === 'object' && 'width' in props.viewBox) 
+                                ? props.viewBox.width / 2 + (props.viewBox.x || 0) 
+                                : 150;
+                              const centerY = (props.viewBox && typeof props.viewBox === 'object' && 'height' in props.viewBox) 
+                                ? props.viewBox.height / 2 + (props.viewBox.y || 0) 
+                                : 150;
+                              
+                              return (
+                                <g>
+                                  <text 
+                                    x={centerX} 
+                                    y={centerY - 10} 
+                                    textAnchor="middle" 
+                                    dominantBaseline="central" 
+                                    className="fill-foreground text-base font-bold"
+                                  >
+                                    Revenue Split
+                                  </text>
+                                  <text 
+                                    x={centerX} 
+                                    y={centerY + 10} 
+                                    textAnchor="middle" 
+                                    dominantBaseline="central" 
+                                    className="fill-foreground/60 text-xs"
+                                  >
+                                    Sustainable ecosystem
+                                  </text>
+                                </g>
+                              );
+                            }}
+                          />
+                        </Pie>
+                      </PieChart>
+                    </ResponsiveContainer>
                   </div>
                   
                   <div className="mt-4 grid grid-cols-3 gap-4 w-full">
