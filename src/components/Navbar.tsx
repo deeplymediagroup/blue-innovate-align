@@ -56,6 +56,12 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
             >
               Distribution
             </Link>
+            <Link
+              to="/licensing"
+              className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
+            >
+              Licensing
+            </Link>
             {extraNavLinks?.map((link, index) => (
               <a
                 key={index}
@@ -65,22 +71,16 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
                 {link.title}
               </a>
             ))}
-            <a
-              href="/contact"
-              className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
-            >
-              Contact
-            </a>
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
             <a href="/contact">
               <Button className="bg-blue-600 text-white hover:bg-blue-700 button-shimmer">
-                Get Started
+                Connect
               </Button>
             </a>
             <a href="https://studio.mindsetdrm.com/" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+              <Button variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-50">
                 Dashboard
               </Button>
             </a>
@@ -123,6 +123,13 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
             >
               Distribution
             </Link>
+            <Link
+              to="/licensing"
+              className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Licensing
+            </Link>
             {extraNavLinks?.map((link, index) => (
               <a
                 key={index}
@@ -133,13 +140,6 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
                 {link.title}
               </a>
             ))}
-            <a
-              href="/contact"
-              className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Contact
-            </a>
           </nav>
           <div className="grid gap-4">
             <a href="/contact">
@@ -147,11 +147,11 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
                 className="w-full bg-blue-600 text-white hover:bg-blue-700 button-shimmer"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Get Started
+                Connect
               </Button>
             </a>
             <a href="https://studio.mindsetdrm.com/" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" className="w-full border-blue-600 text-blue-600 hover:bg-blue-50">
+              <Button variant="outline" className="w-full border-blue-200 text-blue-600 hover:bg-blue-50">
                 Dashboard
               </Button>
             </a>

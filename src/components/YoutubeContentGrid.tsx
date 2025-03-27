@@ -45,7 +45,7 @@ export const YoutubeContentGrid: React.FC = () => {
       channel: "T&H Inspiration",
       views: "3.8M views",
       timeAgo: "3 years ago",
-      thumbnail: "/lovable-uploads/cd4a9070-2246-4569-b3d5-37963bb80248.png"
+      thumbnail: "/lovable-uploads/69525235-ccf5-4f40-8b34-66d1a1be5e58.png"
     },
     {
       title: "Stop Being Distracted",
@@ -64,7 +64,7 @@ export const YoutubeContentGrid: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-blue-50 to-white">
+    <section className="py-16 bg-gradient-to-b from-blue-50 to-white overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-3">Content We Amplify</h2>

@@ -48,7 +48,7 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
                   className="text-5xl font-bold"
                 />
               </h3>
-              <p className="text-blue-100">Monthly Claims</p>
+              <p className="text-blue-100">Live Monitoring</p>
             </div>
           </div>
 
@@ -69,8 +69,8 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
         </div>
       </div>
 
-      <div className="relative w-full overflow-hidden bg-blue-50/50 py-8">
-        <p className="text-center text-sm font-medium text-blue-600 mb-4">TRUSTED BY WORLD-CLASS BRANDS</p>
+      <div className="py-8">
+        <p className="text-center text-sm font-medium text-blue-600 mb-6">TRUSTED BY WORLD-CLASS BRANDS</p>
         
         {/* Single sliding row */}
         <div className="flex overflow-hidden">

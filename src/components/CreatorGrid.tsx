@@ -26,9 +26,9 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
       role: "Philosopher"
     },
     { 
-      url: "/lovable-uploads/9a04e358-ac60-49f2-a128-fc6b630d19fd.png", 
-      name: "High Performance", 
-      role: "Podcast"
+      url: "/lovable-uploads/889e60d9-7a32-4923-a04a-791b063f9cfb.png", 
+      name: "Zig Ziglar", 
+      role: "Motivational Speaker"
     },
     { 
       url: "/lovable-uploads/ce91c4d1-7f98-41ef-b220-821a628bf124.png", 
@@ -46,9 +46,9 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
       role: "Motivational Speaker"
     },
     { 
-      url: "/lovable-uploads/889e60d9-7a32-4923-a04a-791b063f9cfb.png", 
-      name: "Zig Ziglar", 
-      role: "Motivational Speaker"
+      url: "/lovable-uploads/9a04e358-ac60-49f2-a128-fc6b630d19fd.png", 
+      name: "High Performance", 
+      role: "Podcast"
     },
   ];
 
