@@ -2,9 +2,11 @@
 import React, { useEffect } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
-import { Features } from "@/components/Features";
-import { Testimonials } from "@/components/Testimonials";
-import { Pricing } from "@/components/Pricing";
+import { ClientLogos } from "@/components/ClientLogos";
+import { Services } from "@/components/Services";
+import { HowItWorks } from "@/components/HowItWorks";
+import { PricingPlans } from "@/components/PricingPlans";
+import { CreatorShowcase } from "@/components/CreatorShowcase";
 import { CTASection } from "@/components/CTASection";
 
 const Index: React.FC = () => {
@@ -37,9 +39,11 @@ const Index: React.FC = () => {
   return (
     <Layout>
       <Hero />
-      <Features />
-      <Testimonials />
-      <Pricing />
+      <ClientLogos />
+      <Services />
+      <HowItWorks />
+      <PricingPlans />
+      <CreatorShowcase />
       <CTASection />
     </Layout>
   );

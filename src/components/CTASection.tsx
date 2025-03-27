@@ -45,20 +45,14 @@ export const CTASection: React.FC = () => {
             className="reveal-section bg-gradient-to-r from-blue-600 to-blue-400 rounded-3xl p-12 text-white text-center"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-              Ready to Secure Your Digital Content?
+              Let's talk about your content.
             </h2>
             <p className="text-xl opacity-90 max-w-2xl mx-auto mb-8">
-              Join thousands of businesses that trust Mindset DRM for their content protection needs. Get started today.
+              Join top creators and brands who trust us to protect and monetize their digital assets.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-6 text-lg button-shimmer">
                 Get Started <ArrowRight className="h-5 w-5 ml-2" />
-              </Button>
-              <Button
-                variant="outline"
-                className="border-white/30 hover:bg-white/10 text-white px-8 py-6 text-lg"
-              >
-                Schedule a Demo
               </Button>
             </div>
           </div>
