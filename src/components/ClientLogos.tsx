@@ -76,8 +76,6 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
               <div key={index} className="flex items-center justify-center h-12 min-w-[150px]">
                 {client.logo ? (
                   <img src={client.logo} alt={client.name} className="h-full object-contain" />
-                ) : client.symbol ? (
-                  <span className="text-3xl font-bold text-gray-700">{client.symbol}</span>
                 ) : (
                   <span className="text-xl font-bold text-gray-700">{client.text}</span>
                 )}
@@ -104,8 +102,6 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
               <div key={index} className="flex items-center justify-center h-12 min-w-[150px]">
                 {client.logo ? (
                   <img src={client.logo} alt={client.name} className="h-full object-contain" />
-                ) : client.symbol ? (
-                  <span className="text-3xl font-bold text-gray-700">{client.symbol}</span>
                 ) : (
                   <span className="text-xl font-bold text-gray-700">{client.text}</span>
                 )}
