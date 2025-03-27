@@ -54,6 +54,16 @@ const AlanWattsCase: React.FC = () => {
     { name: "User Specified", value: 0.7, color: "#a855f7" },
   ];
 
+  // Fix for the TypeScript error - customized tooltip formatter
+  const formatTooltipValue = (value: any, name: string) => {
+    if (name === 'Claims Processed') return `${value} claims`;
+    if (name === 'Revenue') {
+      // Check if value is a number and can use toFixed
+      return typeof value === 'number' ? `$${value.toFixed(2)}` : `$${value}`;
+    }
+    return value;
+  };
+
   return (
     <Layout>
       <div className="pt-24 md:pt-32 pb-16">
@@ -193,11 +203,7 @@ const AlanWattsCase: React.FC = () => {
                       <YAxis yAxisId="left" orientation="left" stroke="#3b82f6" />
                       <YAxis yAxisId="right" orientation="right" stroke="#10b981" />
                       <Tooltip 
-                        formatter={(value, name) => {
-                          if (name === 'Claims Processed') return [`${value} claims`, name];
-                          if (name === 'Revenue') return [`$${value.toFixed(2)}`, name];
-                          return [value, name];
-                        }}
+                        formatter={(value, name) => formatTooltipValue(value, name)}
                       />
                       <Legend />
                       <Line 
