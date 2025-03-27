@@ -45,7 +45,7 @@ export const YoutubeContentGrid: React.FC = () => {
       channel: "T&H Inspiration",
       views: "3.8M views",
       timeAgo: "3 years ago",
-      thumbnail: "/lovable-uploads/69525235-ccf5-4f40-8b34-66d1a1be5e58.png"
+      thumbnail: "/lovable-uploads/aa48efd1-d44a-4e1b-9eb5-48b8d2360706.png"
     },
     {
       title: "Stop Being Distracted",
@@ -73,33 +73,35 @@ export const YoutubeContentGrid: React.FC = () => {
           </p>
         </div>
 
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          className="w-full max-w-6xl mx-auto"
-        >
-          <CarouselContent className="-ml-2 md:-ml-4">
-            {videos.map((video, index) => (
-              <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                <div className="transition-transform duration-300 hover:scale-105 hover:shadow-xl">
-                  <YoutubeContentCard
-                    title={video.title}
-                    channel={video.channel}
-                    views={video.views}
-                    timeAgo={video.timeAgo}
-                    thumbnail={video.thumbnail}
-                  />
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <div className="flex justify-center mt-8">
-            <CarouselPrevious className="relative static transform-none mr-2" />
-            <CarouselNext className="relative static transform-none" />
-          </div>
-        </Carousel>
+        <div className="overflow-visible">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full max-w-6xl mx-auto"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {videos.map((video, index) => (
+                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                  <div className="transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                    <YoutubeContentCard
+                      title={video.title}
+                      channel={video.channel}
+                      views={video.views}
+                      timeAgo={video.timeAgo}
+                      thumbnail={video.thumbnail}
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex justify-center mt-8">
+              <CarouselPrevious className="relative static transform-none mr-2" />
+              <CarouselNext className="relative static transform-none" />
+            </div>
+          </Carousel>
+        </div>
       </div>
     </section>
   );
