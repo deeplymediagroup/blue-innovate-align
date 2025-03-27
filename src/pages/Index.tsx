@@ -7,9 +7,9 @@ import { Services } from "@/components/Services";
 import { HowItWorks } from "@/components/HowItWorks";
 import { PricingPlans } from "@/components/PricingPlans";
 import { CTASection } from "@/components/CTASection";
-import { ScrollingStats } from "@/components/ScrollingStats";
 import { CreatorGrid } from "@/components/CreatorGrid";
 import { AlanWattsShowcase } from "@/components/AlanWattsShowcase";
+import { YoutubeContentGrid } from "@/components/YoutubeContentGrid";
 
 const Index: React.FC = () => {
   useEffect(() => {
@@ -41,9 +41,10 @@ const Index: React.FC = () => {
   return (
     <Layout>
       <Hero />
-      <AlanWattsShowcase />
       <ClientLogos />
+      <AlanWattsShowcase />
       <Services />
+      <YoutubeContentGrid />
       <div className="py-16 container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
@@ -56,7 +57,6 @@ const Index: React.FC = () => {
         <CreatorGrid className="max-w-5xl mx-auto" />
       </div>
       <HowItWorks />
-      <ScrollingStats />
       <PricingPlans />
       <CTASection />
     </Layout>

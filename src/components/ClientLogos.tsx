@@ -1,6 +1,7 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { CountUp } from "./CountUp";
 
 interface ClientLogosProps {
   className?: string;
@@ -10,33 +11,45 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
   // List of client logos
   const clients = [
     { name: "Alan Watts Organization", logo: "/lovable-uploads/69525235-ccf5-4f40-8b34-66d1a1be5e58.png" },
-    { name: "ICONS Collective", text: "ICONS COLLECTIVE" },
-    { name: "TH Company", text: "TH" },
-    { name: "Yin Yang", symbol: "☯" },
-    { name: "Mindset Media", text: "M25" },
-    { name: "Zuda", text: "Zuda" },
+    { name: "Ziglar", text: "ZIGLAR" },
+    { name: "Jim Rohn", text: "JIM ROHN" },
+    { name: "Motivation Madness", text: "MOTIVATION MADNESS" },
+    { name: "Success Archive", text: "SUCCESS ARCHIVE" },
+    { name: "Coach Pain", text: "COACH PAIN" },
   ];
 
   return (
     <section id="clients" className={`py-16 relative overflow-hidden ${className}`}>
       <div className="container mx-auto px-4 md:px-6 mb-8 text-center">
-        <h2 className="text-2xl font-bold mb-8">Our Clients See Results</h2>
+        <h2 className="text-2xl font-bold mb-12">Our Client Results</h2>
         
-        <div className="bg-gradient-to-r from-blue-600 to-blue-400 text-white rounded-lg p-8 mb-12 shadow-lg">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="mb-6 md:mb-0 md:mr-8">
-              <h3 className="text-3xl font-bold mb-2">$9,873.12</h3>
-              <p className="text-blue-100">Monthly Revenue for Alan Watts</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-400 text-white rounded-lg p-8 shadow-lg">
+            <div className="text-center">
+              <h3 className="text-5xl font-bold mb-2">
+                <CountUp 
+                  end={26.1} 
+                  duration={2500} 
+                  suffix=" Million" 
+                  decimals={1}
+                  className="text-5xl font-bold"
+                />
+              </h3>
+              <p className="text-blue-100">Views Recaptured</p>
             </div>
-            <div className="flex-1 h-0.5 bg-blue-300 hidden md:block"></div>
-            <div className="mb-6 md:mb-0 md:mx-8">
-              <h3 className="text-3xl font-bold mb-2">25,000+</h3>
-              <p className="text-blue-100">Active Claims</p>
-            </div>
-            <div className="flex-1 h-0.5 bg-blue-300 hidden md:block"></div>
-            <div>
-              <h3 className="text-3xl font-bold mb-2">100%</h3>
-              <p className="text-blue-100">Content Control & Transparency</p>
+          </div>
+          
+          <div className="bg-gradient-to-r from-blue-600 to-blue-400 text-white rounded-lg p-8 shadow-lg">
+            <div className="text-center">
+              <h3 className="text-5xl font-bold mb-2">
+                <CountUp 
+                  end={25000} 
+                  duration={2500} 
+                  suffix="+" 
+                  className="text-5xl font-bold"
+                />
+              </h3>
+              <p className="text-blue-100">Monthly Claims</p>
             </div>
           </div>
         </div>

@@ -18,15 +18,38 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
-  // Images of creators, podcasters - using placeholder images
-  // In a real implementation, you would replace these with actual images
+  // Images of real creators we work with
   const images = [
-    "https://images.unsplash.com/photo-1581368135153-a506cf13531c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80", // person with mic
-    "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80", // podcast recording
-    "https://images.unsplash.com/photo-1593697972672-b3bb7f4d4c33?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80", // speaker
-    "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80", // podcasting
-    "https://images.unsplash.com/photo-1582538885300-be9477375c50?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80", // filming
-    "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80", // content creator
+    { 
+      url: "https://img.youtube.com/vi/dYSQ1NF1hvw/mqdefault.jpg", 
+      name: "Alan Watts", 
+      role: "Philosopher"
+    },
+    { 
+      url: "https://img.youtube.com/vi/epFaoYVUODw/mqdefault.jpg", 
+      name: "Zig Ziglar", 
+      role: "Motivational Speaker"
+    },
+    { 
+      url: "https://img.youtube.com/vi/DGIjuVbGP_A/mqdefault.jpg", 
+      name: "Jim Rohn", 
+      role: "Personal Development"
+    },
+    { 
+      url: "https://i.ytimg.com/vi/T2T-0-7cL0Y/mqdefault.jpg", 
+      name: "Cloe Couture", 
+      role: "Content Creator"
+    },
+    { 
+      url: "https://img.youtube.com/vi/LBxYhQEr3-w/mqdefault.jpg", 
+      name: "Coach Pain", 
+      role: "Motivational Speaker"
+    },
+    { 
+      url: "https://img.youtube.com/vi/6-yfXjWxPKA/mqdefault.jpg", 
+      name: "Les Brown", 
+      role: "Motivational Speaker"
+    },
   ];
 
   return (
@@ -40,8 +63,12 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
             viewport={{ once: true }}
             className="overflow-hidden rounded-2xl shadow-lg h-64 relative"
           >
-            <img src={images[0]} alt="Creator" className="w-full h-full object-cover" />
+            <img src={images[0].url} alt={images[0].name} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+              <h3 className="font-bold">{images[0].name}</h3>
+              <p className="text-sm text-white/80">{images[0].role}</p>
+            </div>
           </motion.div>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -50,8 +77,12 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
             viewport={{ once: true }}
             className="overflow-hidden rounded-2xl shadow-lg h-80 relative"
           >
-            <img src={images[1]} alt="Creator" className="w-full h-full object-cover" />
+            <img src={images[1].url} alt={images[1].name} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+              <h3 className="font-bold">{images[1].name}</h3>
+              <p className="text-sm text-white/80">{images[1].role}</p>
+            </div>
           </motion.div>
         </motion.div>
         
@@ -63,8 +94,12 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
             viewport={{ once: true }}
             className="overflow-hidden rounded-2xl shadow-lg h-80 relative"
           >
-            <img src={images[2]} alt="Creator" className="w-full h-full object-cover" />
+            <img src={images[2].url} alt={images[2].name} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+              <h3 className="font-bold">{images[2].name}</h3>
+              <p className="text-sm text-white/80">{images[2].role}</p>
+            </div>
           </motion.div>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -73,8 +108,12 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
             viewport={{ once: true }}
             className="overflow-hidden rounded-2xl shadow-lg h-64 relative"
           >
-            <img src={images[3]} alt="Creator" className="w-full h-full object-cover" />
+            <img src={images[3].url} alt={images[3].name} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+              <h3 className="font-bold">{images[3].name}</h3>
+              <p className="text-sm text-white/80">{images[3].role}</p>
+            </div>
           </motion.div>
         </motion.div>
         
@@ -86,8 +125,12 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
             viewport={{ once: true }}
             className="overflow-hidden rounded-2xl shadow-lg h-64 relative"
           >
-            <img src={images[4]} alt="Creator" className="w-full h-full object-cover" />
+            <img src={images[4].url} alt={images[4].name} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+              <h3 className="font-bold">{images[4].name}</h3>
+              <p className="text-sm text-white/80">{images[4].role}</p>
+            </div>
           </motion.div>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -96,8 +139,12 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
             viewport={{ once: true }}
             className="overflow-hidden rounded-2xl shadow-lg h-80 relative"
           >
-            <img src={images[5]} alt="Creator" className="w-full h-full object-cover" />
+            <img src={images[5].url} alt={images[5].name} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+              <h3 className="font-bold">{images[5].name}</h3>
+              <p className="text-sm text-white/80">{images[5].role}</p>
+            </div>
           </motion.div>
         </motion.div>
       </motion.div>
