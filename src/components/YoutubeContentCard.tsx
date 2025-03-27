@@ -1,6 +1,5 @@
 
 import React from "react";
-import { motion } from "framer-motion";
 
 interface YoutubeContentCardProps {
   title: string;
@@ -15,34 +14,30 @@ export const YoutubeContentCard: React.FC<YoutubeContentCardProps> = ({
   channel,
   views,
   timeAgo,
-  thumbnail
+  thumbnail,
 }) => {
   return (
-    <motion.div
-      whileHover={{ 
-        y: -5,
-        zIndex: 10,
-        boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)"
-      }}
-      transition={{ duration: 0.2 }}
-      className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 h-full flex flex-col"
-    >
+    <div className="group relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 z-10 hover:z-20">
       <div className="relative aspect-video overflow-hidden">
         <img
           src={thumbnail}
           alt={title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-black opacity-10"></div>
-        <div className="absolute bottom-3 right-3 bg-black text-white text-xs px-2 py-1 rounded">
-          7:15
+        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+        <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+          HD
         </div>
       </div>
-      <div className="p-4 flex-1">
-        <h3 className="font-medium text-base mb-1 line-clamp-2">{title}</h3>
-        <p className="text-gray-600 text-sm mb-1">{channel}</p>
-        <p className="text-gray-500 text-xs">{views} • {timeAgo}</p>
+      <div className="bg-white p-3">
+        <h3 className="font-bold text-sm line-clamp-2 h-10 mb-1">{title}</h3>
+        <p className="text-xs text-gray-600 mb-1">{channel}</p>
+        <div className="flex text-xs text-gray-500">
+          <span>{views}</span>
+          <span className="mx-1">•</span>
+          <span>{timeAgo}</span>
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 };

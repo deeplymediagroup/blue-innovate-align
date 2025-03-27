@@ -21,39 +21,30 @@ import {
   Legend,
   PieChart,
   Pie,
-  Cell
+  Cell,
+  ComposedChart
 } from "recharts";
 
 const AlanWattsCase: React.FC = () => {
   // Data for the revenue growth data over time
   const revenueData = [
-    { month: "Month 1", revenue: 2255.46 },
-    { month: "Month 2", revenue: 4165.18 },
-    { month: "Month 3", revenue: 5729.14 },
-    { month: "Month 4", revenue: 8921.30 },
-    { month: "Month 5", revenue: 9873.62 },
-    { month: "Month 6", revenue: 11500 },
-  ];
-
-  // Claims data over time
-  const claimsData = [
-    { month: "Month 1", claims: 9000 },
-    { month: "Month 2", claims: 6000 },
-    { month: "Month 3", claims: 4000 },
-    { month: "Month 4", claims: 4000 },
-    { month: "Month 5", claims: 3000 },
-    { month: "Month 6", claims: 4000 },
+    { month: "Month 1", revenue: 2255.46, claims: 9000, cumulativeClaims: 9000 },
+    { month: "Month 2", revenue: 4165.18, claims: 6000, cumulativeClaims: 15000 },
+    { month: "Month 3", revenue: 5729.14, claims: 4000, cumulativeClaims: 19000 },
+    { month: "Month 4", revenue: 8921.30, claims: 4000, cumulativeClaims: 23000 },
+    { month: "Month 5", revenue: 9873.62, claims: 3000, cumulativeClaims: 26000 },
+    { month: "Month 6", revenue: 11500, claims: 962, cumulativeClaims: 26962 },
   ];
 
   // Age demographics data
   const ageData = [
-    { age: "13-17", percentage: 0.7, viewDuration: "10:23", avgPercentage: 31.9, watchTime: 0.4 },
-    { age: "18-24", percentage: 13.3, viewDuration: "12:54", avgPercentage: 35.3, watchTime: 8.9 },
-    { age: "25-34", percentage: 35.4, viewDuration: "15:05", avgPercentage: 33.8, watchTime: 27.8 },
-    { age: "35-44", percentage: 25.5, viewDuration: "21:01", avgPercentage: 32.2, watchTime: 27.9 },
-    { age: "45-54", percentage: 13.4, viewDuration: "27:16", avgPercentage: 31.3, watchTime: 18.9 },
-    { age: "55-64", percentage: 6.6, viewDuration: "28:03", avgPercentage: 29.4, watchTime: 9.7 },
-    { age: "65+", percentage: 5.0, viewDuration: "24:40", avgPercentage: 27.9, watchTime: 6.4 },
+    { age: "13-17", percentage: 0.7 },
+    { age: "18-24", percentage: 13.3 },
+    { age: "25-34", percentage: 35.4 },
+    { age: "35-44", percentage: 25.5 },
+    { age: "45-54", percentage: 13.4 },
+    { age: "55-64", percentage: 6.6 },
+    { age: "65+", percentage: 5.0 },
   ];
 
   // Gender demographics data
@@ -77,6 +68,19 @@ const AlanWattsCase: React.FC = () => {
           <GlassmorphicCard className="p-8 md:p-12 max-w-5xl mx-auto mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
+                <div className="flex items-center mb-4">
+                  <div className="h-14 w-14 rounded-full bg-gray-200 mr-4 overflow-hidden">
+                    <img 
+                      src="https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png" 
+                      alt="Mark Watts" 
+                      className="h-full w-full object-cover object-top"
+                    />
+                  </div>
+                  <div>
+                    <p className="font-medium">Mark Watts</p>
+                    <p className="text-sm text-gray-600">Director, Alan Watts Organization</p>
+                  </div>
+                </div>
                 <h3 className="text-3xl font-bold mb-4">
                   The Alan Watts Organization
                 </h3>
@@ -97,19 +101,6 @@ const AlanWattsCase: React.FC = () => {
                     <p className="text-sm text-foreground/60">Revenue Growth</p>
                   </div>
                 </div>
-                <div className="flex items-center mb-4">
-                  <div className="h-14 w-14 rounded-full bg-gray-200 mr-4 overflow-hidden">
-                    <img 
-                      src="https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png" 
-                      alt="Mark Watts" 
-                      className="h-full w-full object-cover object-top"
-                    />
-                  </div>
-                  <div>
-                    <p className="font-medium">Mark Watts</p>
-                    <p className="text-sm text-gray-600">Director, Alan Watts Organization</p>
-                  </div>
-                </div>
               </div>
               <div className="relative">
                 <motion.div 
@@ -118,7 +109,7 @@ const AlanWattsCase: React.FC = () => {
                   transition={{ duration: 0.5 }}
                 >
                   <img
-                    src="/lovable-uploads/1d5d1af3-5566-40c1-8981-9da6f0b1d011.png"
+                    src="/lovable-uploads/52177375-4183-4a15-b829-d9af2a03b1ef.png"
                     alt="Alan Watts"
                     className="rounded-lg w-full relative z-0 shadow-lg aspect-[4/3] object-cover"
                   />
@@ -191,67 +182,51 @@ const AlanWattsCase: React.FC = () => {
               {/* Claims Chart */}
               <div className="bg-white rounded-lg shadow-lg p-6 mb-12">
                 <h3 className="text-xl font-bold mb-4">Content Claims & Revenue Progress Over 6 Months</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="h-80">
-                    <p className="text-lg font-medium mb-2">Claims Processed</p>
-                    <ResponsiveContainer width="100%" height="100%">
-                      <LineChart
-                        data={claimsData}
-                        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                      >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="month" />
-                        <YAxis />
-                        <Tooltip />
-                        <Line 
-                          type="monotone"
-                          name="Claims" 
-                          dataKey="claims" 
-                          stroke="#3b82f6"
-                          strokeWidth={2}
-                          dot={{ r: 4 }}
-                          activeDot={{ r: 6 }}
-                        />
-                        <defs>
-                          <linearGradient id="claimsGradient" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.2}/>
-                            <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
-                          </linearGradient>
-                        </defs>
-                        {/* Arrow to indicate future growth */}
-                      </LineChart>
-                    </ResponsiveContainer>
-                  </div>
-                  
-                  <div className="h-80">
-                    <p className="text-lg font-medium mb-2">Revenue Growth</p>
-                    <ResponsiveContainer width="100%" height="100%">
-                      <AreaChart
-                        data={revenueData}
-                        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                      >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="month" />
-                        <YAxis />
-                        <Tooltip 
-                          formatter={(value: number) => ['$' + value.toFixed(2), 'Revenue']}
-                        />
-                        <defs>
-                          <linearGradient id="revenueGradient" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#10b981" stopOpacity={0.8}/>
-                            <stop offset="95%" stopColor="#10b981" stopOpacity={0.2}/>
-                          </linearGradient>
-                        </defs>
-                        <Area 
-                          type="monotone" 
-                          dataKey="revenue" 
-                          stroke="#10b981" 
-                          fill="url(#revenueGradient)" 
-                          strokeWidth={2}
-                        />
-                      </AreaChart>
-                    </ResponsiveContainer>
-                  </div>
+                <div className="h-80">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <ComposedChart
+                      data={revenueData}
+                      margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="month" />
+                      <YAxis yAxisId="left" orientation="left" stroke="#3b82f6" />
+                      <YAxis yAxisId="right" orientation="right" stroke="#10b981" />
+                      <Tooltip 
+                        formatter={(value, name) => {
+                          if (name === 'Claims Processed') return [`${value} claims`, name];
+                          if (name === 'Revenue') return [`$${value.toFixed(2)}`, name];
+                          return [value, name];
+                        }}
+                      />
+                      <Legend />
+                      <Line 
+                        yAxisId="left"
+                        type="monotone"
+                        name="Claims Processed" 
+                        dataKey="cumulativeClaims" 
+                        stroke="#3b82f6"
+                        strokeWidth={2}
+                        dot={{ r: 4 }}
+                        activeDot={{ r: 6 }}
+                      />
+                      <Area 
+                        yAxisId="right"
+                        type="monotone" 
+                        name="Revenue" 
+                        dataKey="revenue" 
+                        stroke="#10b981" 
+                        fill="url(#revenueGradient)" 
+                        strokeWidth={2}
+                      />
+                      <defs>
+                        <linearGradient id="revenueGradient" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="#10b981" stopOpacity={0.8}/>
+                          <stop offset="95%" stopColor="#10b981" stopOpacity={0.2}/>
+                        </linearGradient>
+                      </defs>
+                    </ComposedChart>
+                  </ResponsiveContainer>
                 </div>
               </div>
             </div>
@@ -381,7 +356,7 @@ const AlanWattsCase: React.FC = () => {
                 </div>
                 
                 {/* Demographics & Insights */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
                   <div className="bg-white rounded-lg shadow-lg p-6">
                     <h3 className="text-xl font-bold mb-4">Audience Age Demographics</h3>
                     <p className="mb-4">MindsetDRM provides detailed insights into audience demographics that were previously unavailable</p>
@@ -389,38 +364,16 @@ const AlanWattsCase: React.FC = () => {
                       <ResponsiveContainer width="100%" height="100%">
                         <BarChart
                           data={ageData}
-                          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                          margin={{ top: 5, right: 5, left: 5, bottom: 5 }}
+                          barSize={35}
                         >
                           <CartesianGrid strokeDasharray="3 3" />
                           <XAxis dataKey="age" />
                           <YAxis />
                           <Tooltip formatter={(value) => `${value}%`} />
-                          <Legend />
                           <Bar name="Age Distribution (%)" dataKey="percentage" fill="#3b82f6" />
                         </BarChart>
                       </ResponsiveContainer>
-                    </div>
-                    <div className="mt-4 overflow-x-auto">
-                      <table className="min-w-full text-sm">
-                        <thead>
-                          <tr className="border-b">
-                            <th className="py-2 text-left">Age</th>
-                            <th className="py-2 text-left">View Duration</th>
-                            <th className="py-2 text-left">Avg % Viewed</th>
-                            <th className="py-2 text-left">Watch Time %</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {ageData.map((item, idx) => (
-                            <tr key={idx} className="border-b last:border-b-0">
-                              <td className="py-2">{item.age}</td>
-                              <td className="py-2">{item.viewDuration}</td>
-                              <td className="py-2">{item.avgPercentage}%</td>
-                              <td className="py-2">{item.watchTime}%</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
                     </div>
                   </div>
                   
@@ -469,7 +422,7 @@ const AlanWattsCase: React.FC = () => {
                     <div>
                       <h4 className="text-lg font-bold mb-3">Sustainable Revenue Model</h4>
                       <p className="text-foreground/70 mb-4">
-                        Beyond simply claiming content, MindsetDRM created a sustainable ecosystem that encourages creators to engage with Alan Watts' work legitimately. 
+                        Beyond simply claiming content, MindsetDRM created a sustainable ecosystem that encourages creators to engage with Alan Watts' work appropriately. 
                       </p>
                       <p className="text-foreground/70">
                         The licensing program provided a win-win: creators get to use high-quality content with permission, while the Alan Watts Organization receives fair compensation and maintains control over how Alan's teachings are presented.

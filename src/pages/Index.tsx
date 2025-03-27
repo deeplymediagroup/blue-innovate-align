@@ -1,5 +1,4 @@
-
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { ClientLogos } from "@/components/ClientLogos";
@@ -24,10 +23,12 @@ import {
 
 const Index: React.FC = () => {
   const revenueData = [
-    { name: "Rights Holder", value: 40, color: "#3b82f6" },
-    { name: "Creator", value: 50, color: "#10b981" },
+    { name: "Rights Holder", value: 40, color: "#2563eb" },
+    { name: "Creator", value: 50, color: "#16a34a" },
     { name: "Mindset", value: 10, color: "#f59e0b" },
   ];
+  
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   
   const channelStats = [
     { name: "Motiversity", subscribers: "3.8M", views: "530M+", icon: "/lovable-uploads/89599c4a-2943-430b-a348-cf1f039ac933.png" },
@@ -75,6 +76,14 @@ const Index: React.FC = () => {
       );
     }
     return null;
+  };
+
+  const onPieEnter = (_: any, index: number) => {
+    setActiveIndex(index);
+  };
+
+  const onPieLeave = () => {
+    setActiveIndex(null);
   };
 
   return (
@@ -126,7 +135,7 @@ const Index: React.FC = () => {
                     />
                     <h4 className="font-bold text-blue-800">{channel.name}</h4>
                   </div>
-                  <div className="flex items-center justify-between mt-2 space-x-2">
+                  <div className="grid grid-cols-2 gap-2 mt-2">
                     <div className="flex flex-col">
                       <p className="text-xs text-gray-500">Subscribers</p>
                       <p className="font-bold text-blue-600">{channel.subscribers}</p>
@@ -198,7 +207,7 @@ const Index: React.FC = () => {
               >
                 <div className="w-full max-w-md">
                   <div className="w-full aspect-square flex items-center justify-center">
-                    <ResponsiveContainer width="100%" height={300}>
+                    <ResponsiveContainer width="100%" height={350}>
                       <PieChart>
                         <Tooltip content={<CustomTooltip />} />
                         <Pie
@@ -207,34 +216,31 @@ const Index: React.FC = () => {
                           nameKey="name"
                           cx="50%"
                           cy="50%"
-                          innerRadius={70}
-                          outerRadius={110}
+                          innerRadius={80}
+                          outerRadius={130}
                           paddingAngle={3}
                           startAngle={90}
                           endAngle={-270}
                           isAnimationActive={true}
-                          onMouseEnter={(data, index) => {
-                            // This will be handled by the tooltip
-                          }}
+                          onMouseEnter={onPieEnter}
+                          onMouseLeave={onPieLeave}
                         >
                           {revenueData.map((entry, index) => (
                             <Cell 
                               key={`cell-${index}`} 
                               fill={entry.color} 
                               stroke="#fff"
-                              strokeWidth={2}
+                              strokeWidth={activeIndex === index ? 3 : 2}
+                              scale={activeIndex === index ? 1.05 : 1}
                             />
                           ))}
                           <Label
-                            content={(props) => {
-                              const viewBox = props.viewBox || {};
-                              // Use fixed coordinates instead of relying on viewBox properties
-                              // that may not exist on all ViewBox types
+                            content={() => {
                               return (
                                 <g>
                                   <text 
-                                    x={150} 
-                                    y={135} 
+                                    x={175} 
+                                    y={160} 
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
                                     className="fill-foreground text-base font-bold"
@@ -242,8 +248,8 @@ const Index: React.FC = () => {
                                     Revenue Split
                                   </text>
                                   <text 
-                                    x={150} 
-                                    y={165} 
+                                    x={175} 
+                                    y={190} 
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
                                     className="fill-foreground/60 text-xs"
@@ -261,7 +267,10 @@ const Index: React.FC = () => {
                   
                   <div className="mt-4 grid grid-cols-3 gap-4 w-full">
                     {revenueData.map((segment, index) => (
-                      <div key={index} className="flex flex-col items-center">
+                      <div 
+                        key={index} 
+                        className={`flex flex-col items-center transition-all duration-300 ${activeIndex === index ? 'scale-110' : ''}`}
+                      >
                         <div className="flex items-center mb-1">
                           <div className="h-4 w-4 rounded-full mr-2" style={{ backgroundColor: segment.color }}></div>
                           <p className="text-sm font-medium">{segment.name}</p>

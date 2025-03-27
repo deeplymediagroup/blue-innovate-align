@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { AnimatedBlob } from "./AnimatedBlob";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export const CTASection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -101,28 +102,30 @@ export const CTASection: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <Button 
-                  className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-6 text-lg group relative overflow-hidden"
-                >
-                  <span className="relative z-10 flex items-center">
-                    Get Started 
-                    <motion.div
-                      initial={{ x: -5 }}
-                      animate={{ x: 0 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 10,
-                        repeat: Infinity,
-                        repeatType: "mirror",
-                        repeatDelay: 0.5,
-                      }}
-                    >
-                      <ArrowRight className="h-5 w-5 ml-2" />
-                    </motion.div>
-                  </span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-blue-100 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                </Button>
+                <Link to="/contact">
+                  <Button 
+                    className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-6 text-lg group relative overflow-hidden"
+                  >
+                    <span className="relative z-10 flex items-center">
+                      Get Started 
+                      <motion.div
+                        initial={{ x: -5 }}
+                        animate={{ x: 0 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 10,
+                          repeat: Infinity,
+                          repeatType: "mirror",
+                          repeatDelay: 0.5,
+                        }}
+                      >
+                        <ArrowRight className="h-5 w-5 ml-2" />
+                      </motion.div>
+                    </span>
+                    <span className="absolute inset-0 bg-gradient-to-r from-blue-100 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  </Button>
+                </Link>
               </motion.div>
             </motion.div>
           </motion.div>

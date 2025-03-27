@@ -18,6 +18,11 @@ export const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
               <li>
+                <Link to="/claiming" className="text-gray-400 hover:text-white transition-colors">
+                  Claiming
+                </Link>
+              </li>
+              <li>
                 <Link to="/distribution" className="text-gray-400 hover:text-white transition-colors">
                   Distribution
                 </Link>

@@ -4,6 +4,7 @@ import { GlassmorphicCard } from "./GlassmorphicCard";
 import { CheckCircle, Shield, DollarSign, Youtube } from "lucide-react";
 import { Button } from "./ui/button";
 import { PricingPlans } from "./PricingPlans";
+import { Link } from "react-router-dom";
 
 export const Services: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -143,9 +144,11 @@ export const Services: React.FC = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-              Learn More About Our Services
-            </Button>
+            <Link to="/contact">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                Learn More About Our Services
+              </Button>
+            </Link>
           </div>
         </div>
         
