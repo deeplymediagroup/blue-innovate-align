@@ -73,14 +73,6 @@ export const Navbar: React.FC<{ extraNavLinks?: { title: string; href: string; }
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => scrollToSection("clients")}
-                className="text-foreground/70 hover:text-foreground"
-              >
-                About
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
                 onClick={() => scrollToSection("claiming")}
                 className="text-foreground/70 hover:text-foreground"
               >
@@ -157,14 +149,6 @@ export const Navbar: React.FC<{ extraNavLinks?: { title: string; href: string; }
             transition={{ duration: 0.3 }}
           >
             <div className="container mx-auto px-4 py-6 flex flex-col space-y-4">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => scrollToSection("clients")}
-                className="justify-start h-10"
-              >
-                About
-              </Button>
               <Button
                 variant="ghost"
                 size="sm"

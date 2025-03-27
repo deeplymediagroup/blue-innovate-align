@@ -72,7 +72,7 @@ const AlanWattsCase: React.FC = () => {
       <text
         x={x}
         y={y}
-        fill="white"
+        fill="black"
         textAnchor={x > cx ? 'start' : 'end'}
         dominantBaseline="central"
         className="font-bold"
@@ -132,11 +132,11 @@ const AlanWattsCase: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                  <div>
+                  <div className="flex justify-center">
                     <img 
                       src="/lovable-uploads/2d1dd468-78c1-4f89-81f8-fae7a806fb6b.png" 
                       alt="Alan Watts" 
-                      className="rounded-lg shadow-lg w-full aspect-[4/5] object-cover"
+                      className="rounded-lg shadow-lg w-full aspect-[4/5] object-cover object-center"
                     />
                   </div>
                 </div>
@@ -302,12 +302,9 @@ const AlanWattsCase: React.FC = () => {
                 
                 <GlassmorphicCard className="p-6">
                   <h3 className="text-xl font-bold mb-4">Gender Demographics</h3>
-                  <p className="text-foreground/70 mb-4">
-                    Gender distribution of Alan Watts content viewers across YouTube.
-                  </p>
                   <div className="h-[300px] mt-4">
                     <ResponsiveContainer width="100%" height="100%">
-                      <PieChart>
+                      <PieChart margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
                         <Pie
                           data={genderData}
                           cx="50%"
@@ -372,11 +369,6 @@ const AlanWattsCase: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-10 items-center">
                   <div className="md:col-span-1 flex justify-start">
                     <div className="flex flex-col items-start">
-                      <img
-                        src="https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/1499894519482-41FQGF6DIL22BICUIYOC/MarkWatts.jpg"
-                        alt="Mark Watts"
-                        className="w-24 h-24 rounded-full object-cover mb-2"
-                      />
                       <h4 className="font-bold">Mark Watts</h4>
                       <p className="text-sm text-foreground/60">Alan Watts Organization</p>
                     </div>

@@ -127,7 +127,7 @@ const Index: React.FC = () => {
             
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
               {channelStats.map((channel, index) => (
-                <div key={index} className="bg-blue-50 p-4 rounded-lg border border-blue-100 transition-all duration-300 hover:shadow-md">
+                <div key={index} className="bg-blue-50 p-4 rounded-lg border border-blue-100">
                   <div className="flex items-center mb-3">
                     <img 
                       src={channel.icon} 
@@ -218,7 +218,7 @@ const Index: React.FC = () => {
                           cx="50%"
                           cy="50%"
                           innerRadius={90}
-                          outerRadius={170}
+                          outerRadius={160}
                           paddingAngle={3}
                           startAngle={90}
                           endAngle={-270}
@@ -245,19 +245,19 @@ const Index: React.FC = () => {
                                     dy={-10}
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
-                                    className="text-2xl font-bold fill-blue-800"
-                                    style={{ fontSize: '24px', fontWeight: 'bold' }}
+                                    className="fill-blue-800"
+                                    style={{ fontSize: '20px', fontWeight: 'bold' }}
                                   >
                                     Revenue Split
                                   </text>
                                   <text 
                                     x="50%" 
                                     y="50%" 
-                                    dy={20}
+                                    dy={16}
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
-                                    className="text-base fill-blue-600"
-                                    style={{ fontSize: '16px' }}
+                                    className="fill-blue-600"
+                                    style={{ fontSize: '14px' }}
                                   >
                                     Sustainable ecosystem
                                   </text>

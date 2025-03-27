@@ -19,10 +19,10 @@ export const CTASection: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to take control of your content?
+            Let's talk about your content.
           </h2>
           <p className="text-xl text-white/80 mb-10 max-w-3xl mx-auto">
-            Join thousands of content creators and rights holders who trust us to protect and monetize their content on YouTube
+            Join top creators and brands who trust us to protect and monetize their digital assets.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact">
