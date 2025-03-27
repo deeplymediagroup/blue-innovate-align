@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
@@ -227,14 +228,13 @@ const Index: React.FC = () => {
                           <Label
                             content={(props) => {
                               const viewBox = props.viewBox || {};
-                              const cx = typeof viewBox.cx === 'number' ? viewBox.cx : 150;
-                              const cy = typeof viewBox.cy === 'number' ? viewBox.cy : 150;
-                              
+                              // Use fixed coordinates instead of relying on viewBox properties
+                              // that may not exist on all ViewBox types
                               return (
                                 <g>
                                   <text 
-                                    x={cx} 
-                                    y={cy - 15} 
+                                    x={150} 
+                                    y={135} 
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
                                     className="fill-foreground text-base font-bold"
@@ -242,8 +242,8 @@ const Index: React.FC = () => {
                                     Revenue Split
                                   </text>
                                   <text 
-                                    x={cx} 
-                                    y={cy + 15} 
+                                    x={150} 
+                                    y={165} 
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
                                     className="fill-foreground/60 text-xs"
