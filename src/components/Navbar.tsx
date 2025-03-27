@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useMobile } from "@/hooks/use-mobile";
+import { useIsMobile } from "@/hooks/use-mobile";
 
-export const Navbar: React.FC = () => {
+export const Navbar: React.FC<{ extraNavLinks?: { title: string; href: string; }[] }> = ({ extraNavLinks }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const isMobile = useMobile();
+  const isMobile = useIsMobile();
   const location = useLocation();
 
   useEffect(() => {
@@ -111,6 +111,17 @@ export const Navbar: React.FC = () => {
                   Case Studies
                 </Button>
               </Link>
+              {extraNavLinks?.map((link) => (
+                <Link key={link.href} to={link.href}>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-foreground/70 hover:text-foreground"
+                  >
+                    {link.title}
+                  </Button>
+                </Link>
+              ))}
             </nav>
             <Link to="/contact">
               <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
@@ -187,6 +198,17 @@ export const Navbar: React.FC = () => {
                   Case Studies
                 </Button>
               </Link>
+              {extraNavLinks?.map((link) => (
+                <Link key={link.href} to={link.href} className="w-full">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="justify-start h-10 w-full"
+                  >
+                    {link.title}
+                  </Button>
+                </Link>
+              ))}
               <Link to="/contact" className="w-full">
                 <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700">
                   Get Started
