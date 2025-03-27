@@ -24,7 +24,7 @@ const CreatorCard: React.FC<CreatorCardProps> = ({ name, image, category }) => {
         <img
           src={image}
           alt={name}
-          className="object-cover w-full h-full"
+          className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
         <div className="absolute bottom-0 left-0 right-0 p-6 text-white">

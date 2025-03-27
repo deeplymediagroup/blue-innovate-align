@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
@@ -24,9 +23,9 @@ import {
 
 const Index: React.FC = () => {
   const revenueData = [
-    { name: "Rights Holder", value: 40, color: "#1e40af" },
-    { name: "Creator", value: 50, color: "#3b82f6" },
-    { name: "Mindset", value: 10, color: "#93c5fd" },
+    { name: "Rights Holder", value: 40, color: "#2563eb" },
+    { name: "Creator", value: 50, color: "#16a34a" },
+    { name: "Mindset", value: 10, color: "#f59e0b" },
   ];
   
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -127,7 +126,7 @@ const Index: React.FC = () => {
             
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
               {channelStats.map((channel, index) => (
-                <div key={index} className="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                <div key={index} className="bg-blue-50 p-4 rounded-lg border border-blue-100 transition-all duration-300 hover:shadow-md">
                   <div className="flex items-center mb-3">
                     <img 
                       src={channel.icon} 
@@ -136,7 +135,7 @@ const Index: React.FC = () => {
                     />
                     <h4 className="font-bold text-blue-800">{channel.name}</h4>
                   </div>
-                  <div className="grid grid-cols-2 gap-0 mt-2">
+                  <div className="grid grid-cols-2 gap-2 mt-2">
                     <div className="flex flex-col">
                       <p className="text-xs text-gray-500">Subscribers</p>
                       <p className="font-bold text-blue-600">{channel.subscribers}</p>
@@ -206,9 +205,9 @@ const Index: React.FC = () => {
                 transition={{ duration: 0.5 }}
                 className="flex justify-center"
               >
-                <div className="w-full max-w-sm">
+                <div className="w-full max-w-md">
                   <div className="w-full aspect-square flex items-center justify-center">
-                    <ResponsiveContainer width="100%" height={300}>
+                    <ResponsiveContainer width="100%" height={350}>
                       <PieChart>
                         <Tooltip content={<CustomTooltip />} />
                         <Pie
@@ -217,8 +216,8 @@ const Index: React.FC = () => {
                           nameKey="name"
                           cx="50%"
                           cy="50%"
-                          innerRadius={70}
-                          outerRadius={120}
+                          innerRadius={80}
+                          outerRadius={130}
                           paddingAngle={3}
                           startAngle={90}
                           endAngle={-270}
@@ -240,24 +239,20 @@ const Index: React.FC = () => {
                               return (
                                 <g>
                                   <text 
-                                    x="50%" 
-                                    y="50%" 
-                                    dy={-8}
+                                    x={175} 
+                                    y={160} 
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
-                                    className="fill-blue-800"
-                                    style={{ fontSize: '14px', fontWeight: 'bold' }}
+                                    className="fill-foreground text-base font-bold"
                                   >
                                     Revenue Split
                                   </text>
                                   <text 
-                                    x="50%" 
-                                    y="50%" 
-                                    dy={12}
+                                    x={175} 
+                                    y={190} 
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
-                                    className="fill-blue-600"
-                                    style={{ fontSize: '10px' }}
+                                    className="fill-foreground/60 text-xs"
                                   >
                                     Sustainable ecosystem
                                   </text>
@@ -280,7 +275,7 @@ const Index: React.FC = () => {
                           <div className="h-4 w-4 rounded-full mr-2" style={{ backgroundColor: segment.color }}></div>
                           <p className="text-sm font-medium">{segment.name}</p>
                         </div>
-                        <p className="text-xl font-bold" style={{ color: segment.color }}>{segment.value}%</p>
+                        <p className="text-2xl font-bold" style={{ color: segment.color }}>{segment.value}%</p>
                       </div>
                     ))}
                   </div>

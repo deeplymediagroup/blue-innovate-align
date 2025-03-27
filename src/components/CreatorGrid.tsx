@@ -21,7 +21,7 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
   // Updated images with correct creator profile images and adjusted for Jim Rohn
   const images = [
     { 
-      url: "/lovable-uploads/2d1dd468-78c1-4f89-81f8-fae7a806fb6b.png", 
+      url: "/lovable-uploads/bc4f51e9-4d69-4861-952c-094cb60fbf09.png", 
       name: "Alan Watts", 
       role: "Philosopher"
     },
