@@ -151,7 +151,6 @@ const Distribution: React.FC = () => {
                         strokeWidth="20"
                         strokeDasharray="251.2"
                         strokeDashoffset="125.6"
-                        strokeDashoffset="0"
                         transform="rotate(-90 50 50)"
                         pathLength="0.5"
                       />
