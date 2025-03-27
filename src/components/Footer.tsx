@@ -1,19 +1,25 @@
 
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { scrollToElement } from "@/hooks/use-mobile";
 
 export const Footer: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   
   // Helper function to scroll to a section if on homepage, or navigate if not
-  const scrollToSectionOrNavigate = (sectionId: string, path: string) => {
+  const scrollToSectionOrNavigate = (sectionId: string) => {
     if (location.pathname === "/") {
       // If on homepage, scroll to the section
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+      scrollToElement(sectionId);
       return `/#${sectionId}`;
     } else {
-      // If not on homepage, prepare to navigate to homepage + section
-      return `/${path}`;
+      // If not on homepage, navigate to homepage + section
+      navigate("/");
+      setTimeout(() => {
+        scrollToElement(sectionId);
+      }, 100);
+      return "/";
     }
   };
 
@@ -33,7 +39,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2">
               <li>
                 <Link 
-                  to={scrollToSectionOrNavigate("services", "")} 
+                  to={scrollToSectionOrNavigate("services")} 
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Claiming
@@ -41,7 +47,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link 
-                  to={scrollToSectionOrNavigate("distribution", "")} 
+                  to={scrollToSectionOrNavigate("distribution")} 
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Distribution
@@ -49,7 +55,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link 
-                  to={scrollToSectionOrNavigate("licensing", "")} 
+                  to={scrollToSectionOrNavigate("licensing")} 
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Licensing
@@ -62,9 +68,9 @@ export const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-4">Resources</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/dashboard" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://studio.mindsetdrm.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                   Dashboard
-                </Link>
+                </a>
               </li>
               <li>
                 <Link to="/case-studies" className="text-gray-400 hover:text-white transition-colors">

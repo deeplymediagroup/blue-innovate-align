@@ -24,3 +24,15 @@ export function useIsMobile() {
 
   return isMobile === undefined ? false : isMobile;
 }
+
+// Add scroll functions
+export function scrollToElement(elementId: string) {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+export function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}

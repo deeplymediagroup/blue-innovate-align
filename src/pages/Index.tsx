@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
@@ -12,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { scrollToTop } from "@/hooks/use-mobile";
 import {
   PieChart,
   Pie,
@@ -60,6 +62,9 @@ const Index: React.FC = () => {
     document.querySelectorAll(".reveal-section").forEach((el) => {
       observer.observe(el);
     });
+
+    // Scroll to top when the page loads
+    scrollToTop();
 
     return () => {
       observer.disconnect();
@@ -217,8 +222,7 @@ const Index: React.FC = () => {
                           cx="50%"
                           cy="50%"
                           innerRadius={80}
-                          outerRadius={130}
-                          paddingAngle={3}
+                          outerRadius={140}
                           startAngle={90}
                           endAngle={-270}
                           isAnimationActive={true}
@@ -230,8 +234,7 @@ const Index: React.FC = () => {
                               key={`cell-${index}`} 
                               fill={entry.color} 
                               stroke="#fff"
-                              strokeWidth={activeIndex === index ? 3 : 2}
-                              scale={activeIndex === index ? 1.05 : 1}
+                              strokeWidth={2}
                             />
                           ))}
                           <Label
@@ -267,8 +270,11 @@ const Index: React.FC = () => {
                   
                   <div className="mt-4 grid grid-cols-3 gap-4 w-full">
                     {revenueData.map((segment, index) => (
-                      <div 
-                        key={index} 
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
                         className={`flex flex-col items-center transition-all duration-300 ${activeIndex === index ? 'scale-110' : ''}`}
                       >
                         <div className="flex items-center mb-1">
@@ -276,7 +282,7 @@ const Index: React.FC = () => {
                           <p className="text-sm font-medium">{segment.name}</p>
                         </div>
                         <p className="text-2xl font-bold" style={{ color: segment.color }}>{segment.value}%</p>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>

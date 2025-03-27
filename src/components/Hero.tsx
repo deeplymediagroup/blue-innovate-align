@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, ArrowDown } from "lucide-react";
 import { AnimatedBlob } from "./AnimatedBlob";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Link } from "react-router-dom";
+import { scrollToElement } from "@/hooks/use-mobile";
 
 export const Hero: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -136,9 +138,11 @@ export const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg button-shimmer">
-              Get Started <ChevronRight className="h-5 w-5 ml-2" />
-            </Button>
+            <Link to="/contact">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg button-shimmer">
+                Get Started <ChevronRight className="h-5 w-5 ml-2" />
+              </Button>
+            </Link>
           </div>
 
           <motion.div 
@@ -147,7 +151,14 @@ export const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.5 }}
           >
-            <a href="#clients" className="inline-flex flex-col items-center">
+            <a 
+              href="#clients" 
+              className="inline-flex flex-col items-center"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToElement("clients");
+              }}
+            >
               <p className="text-sm text-foreground/70 mb-2">Trusted by World-Class Brands</p>
               <motion.div 
                 animate={{ y: [0, 5, 0] }}

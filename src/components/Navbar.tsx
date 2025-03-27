@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link, useLocation } from "react-router-dom";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useIsMobile, scrollToElement } from "@/hooks/use-mobile";
 
 interface NavbarProps {
   extraNavLinks?: { title: string; href: string; }[];
@@ -14,6 +14,7 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,10 +33,14 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
   const scrollToSectionOrNavigate = (sectionId: string, path: string) => {
     if (location.pathname === "/") {
       // If on homepage, scroll to the section
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+      scrollToElement(sectionId);
       return `/#${sectionId}`;
     } else {
-      // If not on homepage, prepare to navigate to homepage + section
+      // If not on homepage, navigate to homepage + section
+      navigate("/");
+      setTimeout(() => {
+        scrollToElement(sectionId);
+      }, 100);
       return `/${path}`;
     }
   };
@@ -52,29 +57,29 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <span className="font-display text-lg font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+              <span className="font-display text-base font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
                 MindsetDRM
               </span>
             </Link>
           </div>
 
-          <nav className="hidden md:flex items-center justify-center flex-1">
-            <div className="flex items-center space-x-8">
+          <nav className="flex items-center justify-center flex-1">
+            <div className="flex items-center space-x-8 mx-auto">
               <Link
                 to={scrollToSectionOrNavigate("services", "")}
-                className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
+                className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors hidden md:inline-block"
               >
                 Claiming
               </Link>
               <Link
                 to={scrollToSectionOrNavigate("distribution", "")}
-                className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
+                className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors hidden md:inline-block"
               >
                 Distribution
               </Link>
               <Link
                 to={scrollToSectionOrNavigate("licensing", "")}
-                className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
+                className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors hidden md:inline-block"
               >
                 Licensing
               </Link>
@@ -82,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
                 <Link
                   key={index}
                   to={link.href}
-                  className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
+                  className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors hidden md:inline-block"
                 >
                   {link.title}
                 </Link>
@@ -92,7 +97,7 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
 
           <div className="hidden md:flex items-center">
             <Link to="/contact">
-              <Button className="bg-blue-600 text-white hover:bg-blue-700 button-shimmer group">
+              <Button className="bg-blue-600 text-white hover:bg-blue-700 button-shimmer group text-base px-6">
                 <span className="relative z-10 group-hover:translate-x-1 transition-all duration-300">Connect</span>
               </Button>
             </Link>
