@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
@@ -24,8 +25,8 @@ import {
 const Index: React.FC = () => {
   const revenueData = [
     { name: "Rights Holder", value: 40, color: "#2563eb" },
-    { name: "Creator", value: 50, color: "#16a34a" },
-    { name: "Mindset", value: 10, color: "#f59e0b" },
+    { name: "Creator", value: 50, color: "#60a5fa" },
+    { name: "Mindset", value: 10, color: "#93c5fd" },
   ];
   
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -61,8 +62,25 @@ const Index: React.FC = () => {
       observer.observe(el);
     });
 
+    // Handle hash navigation for smooth scrolling
+    const handleHashNavigation = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        setTimeout(() => {
+          const element = document.querySelector(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }
+    };
+
+    handleHashNavigation();
+    window.addEventListener('hashchange', handleHashNavigation);
+
     return () => {
       observer.disconnect();
+      window.removeEventListener('hashchange', handleHashNavigation);
     };
   }, []);
 
@@ -207,7 +225,7 @@ const Index: React.FC = () => {
               >
                 <div className="w-full max-w-md">
                   <div className="w-full aspect-square flex items-center justify-center">
-                    <ResponsiveContainer width="100%" height={350}>
+                    <ResponsiveContainer width="100%" height={400}>
                       <PieChart>
                         <Tooltip content={<CustomTooltip />} />
                         <Pie
@@ -216,8 +234,8 @@ const Index: React.FC = () => {
                           nameKey="name"
                           cx="50%"
                           cy="50%"
-                          innerRadius={80}
-                          outerRadius={130}
+                          innerRadius={100}
+                          outerRadius={160}
                           paddingAngle={3}
                           startAngle={90}
                           endAngle={-270}
@@ -240,19 +258,19 @@ const Index: React.FC = () => {
                                 <g>
                                   <text 
                                     x={175} 
-                                    y={160} 
+                                    y={175} 
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
-                                    className="fill-foreground text-base font-bold"
+                                    className="fill-blue-600 text-lg font-bold"
                                   >
                                     Revenue Split
                                   </text>
                                   <text 
                                     x={175} 
-                                    y={190} 
+                                    y={200} 
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
-                                    className="fill-foreground/60 text-xs"
+                                    className="fill-blue-400 text-sm"
                                   >
                                     Sustainable ecosystem
                                   </text>

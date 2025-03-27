@@ -1,9 +1,10 @@
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, ArrowDown } from "lucide-react";
 import { AnimatedBlob } from "./AnimatedBlob";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export const Hero: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -12,53 +13,14 @@ export const Hero: React.FC = () => {
     offset: ["start start", "end start"]
   });
   
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: e.clientX / window.innerWidth,
-        y: e.clientY / window.innerHeight,
-      });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("revealed");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
 
   return (
     <section className="min-safe-h-screen relative flex items-center overflow-hidden pt-24 pb-20">
       {/* Dynamic background that moves with cursor */}
       <div 
         className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-blue-100 z-0"
-        style={{
-          backgroundPosition: `${mousePosition.x * 100}% ${mousePosition.y * 100}%`,
-          transition: "background-position 0.2s ease-out",
-        }}
       />
       
       {/* Animated background blobs with parallax effect */}
@@ -136,9 +98,11 @@ export const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg button-shimmer">
-              Get Started <ChevronRight className="h-5 w-5 ml-2" />
-            </Button>
+            <Link to="/contact">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg button-shimmer">
+                Get Started <ChevronRight className="h-5 w-5 ml-2" />
+              </Button>
+            </Link>
           </div>
 
           <motion.div 
