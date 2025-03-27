@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, ArrowDown } from "lucide-react";
 import { AnimatedBlob } from "./AnimatedBlob";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Link } from "react-router-dom";
 
 export const Hero: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -137,11 +136,9 @@ export const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-            <Link to="/contact">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg button-shimmer">
-                Get Started <ChevronRight className="h-5 w-5 ml-2" />
-              </Button>
-            </Link>
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg button-shimmer">
+              Get Started <ChevronRight className="h-5 w-5 ml-2" />
+            </Button>
           </div>
 
           <motion.div 
