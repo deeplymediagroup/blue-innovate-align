@@ -1,13 +1,47 @@
-// Update this page (the content is just a fallback if you fail to update the page)
 
-const Index = () => {
+import React, { useEffect } from "react";
+import { Layout } from "@/components/Layout";
+import { Hero } from "@/components/Hero";
+import { Features } from "@/components/Features";
+import { Testimonials } from "@/components/Testimonials";
+import { Pricing } from "@/components/Pricing";
+import { CTASection } from "@/components/CTASection";
+
+const Index: React.FC = () => {
+  useEffect(() => {
+    // Add intersection observer for scroll animations
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll(".reveal-section").forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <Layout>
+      <Hero />
+      <Features />
+      <Testimonials />
+      <Pricing />
+      <CTASection />
+    </Layout>
   );
 };
 

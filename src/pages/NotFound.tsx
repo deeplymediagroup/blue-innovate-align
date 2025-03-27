@@ -1,26 +1,30 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 
-const NotFound = () => {
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Layout } from "@/components/Layout";
+import { useLocation } from "react-router-dom";
+
+const NotFound: React.FC = () => {
   const location = useLocation();
 
-  useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
-  }, [location.pathname]);
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
-          Return to Home
-        </a>
+    <Layout>
+      <div className="min-h-[80vh] flex flex-col items-center justify-center px-4 py-12">
+        <div className="text-center max-w-lg">
+          <p className="inline-block px-3 py-1 text-sm font-medium text-blue-600 bg-blue-100 rounded-full mb-4">
+            404 Error
+          </p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Page not found</h1>
+          <p className="text-lg text-foreground/70 mb-8">
+            Sorry, we couldn't find the page you're looking for. The URL{" "}
+            <span className="font-medium">{location.pathname}</span> doesn't exist or has been moved.
+          </p>
+          <Button asChild className="bg-blue-600 hover:bg-blue-700">
+            <a href="/">Return to homepage</a>
+          </Button>
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 
