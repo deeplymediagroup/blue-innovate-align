@@ -6,10 +6,10 @@ import { ClientLogos } from "@/components/ClientLogos";
 import { Services } from "@/components/Services";
 import { HowItWorks } from "@/components/HowItWorks";
 import { PricingPlans } from "@/components/PricingPlans";
-import { CreatorShowcase } from "@/components/CreatorShowcase";
 import { CTASection } from "@/components/CTASection";
 import { ScrollingStats } from "@/components/ScrollingStats";
 import { CreatorGrid } from "@/components/CreatorGrid";
+import { AlanWattsShowcase } from "@/components/AlanWattsShowcase";
 
 const Index: React.FC = () => {
   useEffect(() => {
@@ -41,8 +41,8 @@ const Index: React.FC = () => {
   return (
     <Layout>
       <Hero />
+      <AlanWattsShowcase />
       <ClientLogos />
-      <ScrollingStats />
       <Services />
       <div className="py-16 container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
@@ -56,8 +56,8 @@ const Index: React.FC = () => {
         <CreatorGrid className="max-w-5xl mx-auto" />
       </div>
       <HowItWorks />
+      <ScrollingStats />
       <PricingPlans />
-      <CreatorShowcase />
       <CTASection />
     </Layout>
   );

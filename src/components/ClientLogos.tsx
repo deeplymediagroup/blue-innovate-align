@@ -1,5 +1,5 @@
 
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
 interface ClientLogosProps {
@@ -7,9 +7,7 @@ interface ClientLogosProps {
 }
 
 export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // List of client logos - replace these with your actual client logos
+  // List of client logos
   const clients = [
     { name: "Alan Watts Organization", logo: "/lovable-uploads/69525235-ccf5-4f40-8b34-66d1a1be5e58.png" },
     { name: "ICONS Collective", text: "ICONS COLLECTIVE" },
