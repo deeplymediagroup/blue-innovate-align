@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Layout } from "@/components/Layout";
 import { GlassmorphicCard } from "@/components/GlassmorphicCard";
@@ -64,7 +65,6 @@ const AlanWattsCase: React.FC = () => {
   };
 
   return (
-    
     <Layout>
       <div className="pt-24 md:pt-32 pb-16">
         <div className="container mx-auto px-4 md:px-6">
