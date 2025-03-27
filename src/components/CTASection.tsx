@@ -2,6 +2,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const CTASection: React.FC = () => {
   return (
@@ -24,11 +25,11 @@ export const CTASection: React.FC = () => {
             Join thousands of content creators and rights holders who trust us to protect and monetize their content on YouTube
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact">
+            <Link to="/contact">
               <Button className="bg-white text-blue-700 hover:bg-blue-50 px-8 py-6 text-lg rounded-lg hover:shadow-lg">
                 Get Started <ArrowRight className="h-5 w-5 ml-2" />
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

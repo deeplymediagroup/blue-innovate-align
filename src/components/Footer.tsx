@@ -18,17 +18,17 @@ export const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/claiming" className="text-gray-400 hover:text-white transition-colors">
+                <Link to="/#claiming" className="text-gray-400 hover:text-white transition-colors">
                   Claiming
                 </Link>
               </li>
               <li>
-                <Link to="/distribution" className="text-gray-400 hover:text-white transition-colors">
+                <Link to="/#distribution" className="text-gray-400 hover:text-white transition-colors">
                   Distribution
                 </Link>
               </li>
               <li>
-                <Link to="/licensing" className="text-gray-400 hover:text-white transition-colors">
+                <Link to="/#licensing" className="text-gray-400 hover:text-white transition-colors">
                   Licensing
                 </Link>
               </li>
@@ -44,9 +44,9 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/dashboard" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://studio.mindsetdrm.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                   Dashboard
-                </Link>
+                </a>
               </li>
               <li>
                 <Link to="/case-studies" className="text-gray-400 hover:text-white transition-colors">

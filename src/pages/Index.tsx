@@ -208,7 +208,7 @@ const Index: React.FC = () => {
               >
                 <div className="w-full max-w-md">
                   <div className="w-full aspect-square flex items-center justify-center">
-                    <ResponsiveContainer width="100%" height={350}>
+                    <ResponsiveContainer width="100%" height={400}>
                       <PieChart>
                         <Tooltip content={<CustomTooltip />} />
                         <Pie
@@ -217,8 +217,8 @@ const Index: React.FC = () => {
                           nameKey="name"
                           cx="50%"
                           cy="50%"
-                          innerRadius={80}
-                          outerRadius={160}
+                          innerRadius={90}
+                          outerRadius={170}
                           paddingAngle={3}
                           startAngle={90}
                           endAngle={-270}
@@ -240,20 +240,24 @@ const Index: React.FC = () => {
                               return (
                                 <g>
                                   <text 
-                                    x={175} 
-                                    y={160} 
+                                    x="50%" 
+                                    y="50%" 
+                                    dy={-10}
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
-                                    className="fill-foreground text-xl font-bold"
+                                    className="text-2xl font-bold fill-blue-800"
+                                    style={{ fontSize: '24px', fontWeight: 'bold' }}
                                   >
                                     Revenue Split
                                   </text>
                                   <text 
-                                    x={175} 
-                                    y={185} 
+                                    x="50%" 
+                                    y="50%" 
+                                    dy={20}
                                     textAnchor="middle" 
                                     dominantBaseline="central" 
-                                    className="fill-foreground/60 text-sm"
+                                    className="text-base fill-blue-600"
+                                    style={{ fontSize: '16px' }}
                                   >
                                     Sustainable ecosystem
                                   </text>

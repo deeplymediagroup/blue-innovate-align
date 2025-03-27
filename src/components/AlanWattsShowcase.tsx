@@ -47,20 +47,6 @@ export const AlanWattsShowcase: React.FC = () => {
               </div>
             </div>
             
-            <div className="flex items-center mb-10">
-              <div className="h-14 w-14 rounded-full bg-gray-200 mr-4 overflow-hidden">
-                <img 
-                  src="https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png" 
-                  alt="Mark Watts" 
-                  className="h-full w-full object-cover object-top"
-                />
-              </div>
-              <div>
-                <p className="font-medium">Mark Watts</p>
-                <p className="text-sm text-gray-600">Director, Alan Watts Organization</p>
-              </div>
-            </div>
-            
             <Link to="/case-studies/alan-watts">
               <Button variant="link" className="text-blue-600 group flex items-center">
                 View full case study 
@@ -88,7 +74,7 @@ export const AlanWattsShowcase: React.FC = () => {
             <div className="absolute bottom-4 left-4 bg-white/80 backdrop-blur-sm py-2 px-3 rounded shadow-md flex items-center">
               <div className="h-6 w-6 bg-red-600 rounded flex items-center justify-center mr-2">
                 <svg className="h-4 w-4 text-white" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z" />
+                  <path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28 1.3-.07 2.49-.1 3.59-.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z" />
                 </svg>
               </div>
               <div>
