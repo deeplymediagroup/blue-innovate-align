@@ -3,6 +3,7 @@ import React from "react";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export const AlanWattsShowcase: React.FC = () => {
   return (
@@ -60,10 +61,12 @@ export const AlanWattsShowcase: React.FC = () => {
               </div>
             </div>
             
-            <Button variant="link" className="text-blue-600 group flex items-center">
-              View full case study 
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
-            </Button>
+            <Link to="/case-studies/alan-watts">
+              <Button variant="link" className="text-blue-600 group flex items-center">
+                View full case study 
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+              </Button>
+            </Link>
           </div>
           
           <div className="relative">

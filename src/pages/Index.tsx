@@ -9,21 +9,20 @@ import { CTASection } from "@/components/CTASection";
 import { CreatorGrid } from "@/components/CreatorGrid";
 import { AlanWattsShowcase } from "@/components/AlanWattsShowcase";
 import { YoutubeContentGrid } from "@/components/YoutubeContentGrid";
-import { GlassmorphicCard } from "@/components/GlassmorphicCard";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { PieChart, Pie, Cell, Label } from "recharts";
 
 const Index: React.FC = () => {
   const revenueData = [
-    { name: "Rights Holder", value: 40 },
-    { name: "Creator", value: 50 },
-    { name: "Mindset", value: 10 },
+    { name: "Rights Holder", value: 40, color: "#3b82f6" },
+    { name: "Creator", value: 50, color: "#93c5fd" },
+    { name: "Mindset", value: 10, color: "#60a5fa" },
   ];
   
-  const COLORS = ["#3b82f6", "#93c5fd", "#60a5fa"];
-  
+  // Sorted by views (descending)
   const channelStats = [
     { name: "Motiversity", subscribers: "3.8M", views: "530M+", icon: "/lovable-uploads/89599c4a-2943-430b-a348-cf1f039ac933.png" },
     { name: "MotivationHub", subscribers: "3.5M", views: "380M+", icon: "/lovable-uploads/1bf57caa-d1c1-40fc-823d-edd080e2b5db.png" },
@@ -82,15 +81,14 @@ const Index: React.FC = () => {
       <HowItWorks />
 
       {/* Largest Motivational Media Network Section - Improved Layout */}
-      <section id="distribution" className="py-16 bg-gradient-to-b from-white to-blue-50/30">
+      <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-12 text-center">
             <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
               We Power The Largest Motivational YouTube Network
             </h2>
             <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
-              Our network manages rights for leading motivational content creators, helping them protect 
-              their intellectual property and grow their distribution reach
+              Our network manages rights for leading motivational content creators
             </p>
           </div>
           
@@ -104,7 +102,7 @@ const Index: React.FC = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
               {channelStats.map((channel, index) => (
                 <div key={index} className="bg-blue-50 p-4 rounded-lg border border-blue-100 transition-all duration-300 hover:shadow-md">
-                  <div className="flex items-center mb-2">
+                  <div className="flex items-center mb-3">
                     <img 
                       src={channel.icon} 
                       alt={channel.name} 
@@ -112,12 +110,12 @@ const Index: React.FC = () => {
                     />
                     <h4 className="font-bold text-blue-800">{channel.name}</h4>
                   </div>
-                  <div className="flex flex-col mt-2">
-                    <div className="mb-1">
+                  <div className="flex justify-between mt-2">
+                    <div className="flex flex-col">
                       <p className="text-xs text-gray-500">Subscribers</p>
                       <p className="font-bold text-blue-600">{channel.subscribers}</p>
                     </div>
-                    <div>
+                    <div className="flex flex-col">
                       <p className="text-xs text-gray-500">Views</p>
                       <p className="font-bold text-blue-600">{channel.views}</p>
                     </div>
@@ -141,7 +139,7 @@ const Index: React.FC = () => {
       </section>
 
       {/* Optional Licensing Section - Updated title and description */}
-      <section id="licensing" className="py-16 bg-gradient-to-b from-blue-50/30 to-white">
+      <section id="licensing" className="py-16 pt-24 bg-gradient-to-b from-blue-50/30 to-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -183,45 +181,49 @@ const Index: React.FC = () => {
                 transition={{ duration: 0.5 }}
                 className="flex justify-center"
               >
-                <div className="relative w-full max-w-md aspect-square p-8">
-                  <div className="w-full h-full flex items-center justify-center">
-                    {/* Corrected Revenue Split Visualization */}
-                    <svg viewBox="0 0 200 200" className="w-full">
-                      {/* Base circle */}
-                      <circle cx="100" cy="100" r="100" fill="#f1f5f9" />
-                      
-                      {/* Rights Holder: 40% - Blue */}
-                      <path
-                        d="M 100 100 L 100 0 A 100 100 0 0 1 186.6 65 Z"
-                        fill="#3b82f6"
-                      />
-                      
-                      {/* Creator: 50% - Light Blue */}
-                      <path
-                        d="M 100 100 L 186.6 65 A 100 100 0 0 1 65 186.6 Z"
-                        fill="#93c5fd"
-                      />
-                      
-                      {/* Mindset: 10% - Sky Blue */}
-                      <path
-                        d="M 100 100 L 65 186.6 A 100 100 0 0 1 0 100 A 100 100 0 0 1 100 0 Z"
-                        fill="#60a5fa"
-                      />
-                      
-                      {/* Inner white circle */}
-                      <circle cx="100" cy="100" r="60" fill="white" />
-                      
-                      {/* Text in the middle */}
-                      <text x="100" y="95" textAnchor="middle" fontWeight="bold" fontSize="14" fill="#0f172a">Revenue Split</text>
-                      <text x="100" y="115" textAnchor="middle" fontSize="10" fill="#64748b">Sustainable ecosystem</text>
-                    </svg>
+                <div className="w-full max-w-md">
+                  <div className="w-full aspect-square flex items-center justify-center">
+                    {/* Revenue Split Chart using Recharts */}
+                    <PieChart width={300} height={300}>
+                      <Pie
+                        data={revenueData}
+                        dataKey="value"
+                        nameKey="name"
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={60}
+                        outerRadius={100}
+                        startAngle={90}
+                        endAngle={-270}
+                      >
+                        {revenueData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={entry.color} />
+                        ))}
+                        <Label
+                          content={({ viewBox }) => {
+                            if (!viewBox) return null;
+                            const { cx, cy } = viewBox;
+                            return (
+                              <g>
+                                <text x={cx} y={cy - 10} textAnchor="middle" dominantBaseline="central" className="fill-foreground text-base font-bold">
+                                  Revenue Split
+                                </text>
+                                <text x={cx} y={cy + 10} textAnchor="middle" dominantBaseline="central" className="fill-foreground/60 text-xs">
+                                  Sustainable ecosystem
+                                </text>
+                              </g>
+                            );
+                          }}
+                        />
+                      </Pie>
+                    </PieChart>
                   </div>
                   
                   <div className="mt-4 grid grid-cols-3 gap-4 w-full">
                     {revenueData.map((segment, index) => (
                       <div key={index} className="flex flex-col items-center">
                         <div className="flex items-center mb-1">
-                          <div className="h-4 w-4 rounded-full mr-2" style={{ backgroundColor: COLORS[index] }}></div>
+                          <div className="h-4 w-4 rounded-full mr-2" style={{ backgroundColor: segment.color }}></div>
                           <p className="text-sm font-medium">{segment.name}</p>
                         </div>
                         <p className="text-2xl font-bold text-blue-600">{segment.value}%</p>

@@ -84,7 +84,7 @@ export const YoutubeContentGrid: React.FC = () => {
             <CarouselContent className="-ml-2 md:-ml-4">
               {videos.map((video, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                  <div className="transition-transform duration-300 hover:scale-105 hover:shadow-xl mb-6">
+                  <div className="transition-transform duration-300 hover:scale-105 hover:shadow-xl mb-10">
                     <YoutubeContentCard
                       title={video.title}
                       channel={video.channel}
@@ -101,16 +101,6 @@ export const YoutubeContentGrid: React.FC = () => {
               <CarouselNext className="relative static transform-none" />
             </div>
           </Carousel>
-          
-          {/* Subtle indicator for horizontal scroll */}
-          <div className="flex justify-center mt-4">
-            <div className="flex space-x-1">
-              <span className="text-xs text-gray-400">Scroll to see more</span>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-          </div>
         </div>
       </div>
     </section>

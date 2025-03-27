@@ -17,6 +17,9 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
     { name: "Coach Pain", text: "COACH PAIN" },
   ];
 
+  // Using same duration for all counters to ensure they finish together
+  const counterDuration = 2500;
+
   return (
     <section id="clients" className={`py-16 relative overflow-hidden ${className}`}>
       <div className="container mx-auto px-4 md:px-6 mb-8 text-center">
@@ -28,7 +31,7 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
               <h3 className="text-5xl font-bold mb-2">
                 <CountUp 
                   end={26.8} 
-                  duration={2000} 
+                  duration={counterDuration} 
                   suffix="M+" 
                   decimals={1}
                   className="text-5xl font-bold"
@@ -42,13 +45,13 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
             <div className="text-center">
               <h3 className="text-5xl font-bold mb-2">
                 <CountUp 
-                  end={25000} 
-                  duration={2000} 
+                  end={40000} 
+                  duration={counterDuration} 
                   suffix="+" 
                   className="text-5xl font-bold"
                 />
               </h3>
-              <p className="text-blue-100">Live Monitoring</p>
+              <p className="text-blue-100">Active Videos Claimed</p>
             </div>
           </div>
 
@@ -57,7 +60,7 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
               <h3 className="text-5xl font-bold mb-2">
                 <CountUp 
                   end={8.4} 
-                  duration={2000} 
+                  duration={counterDuration} 
                   suffix="M+" 
                   decimals={1}
                   className="text-5xl font-bold"
@@ -72,7 +75,6 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
       <div className="py-12 mt-4">
         <p className="text-center text-sm font-medium text-blue-600 mb-20">TRUSTED BY WORLD-CLASS BRANDS</p>
         
-        {/* Single sliding row - moved down by 50px by increasing margin bottom (mb-20) */}
         <div className="flex overflow-hidden">
           <motion.div
             className="flex space-x-16 min-w-full"

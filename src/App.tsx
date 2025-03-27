@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import CaseStudies from "./pages/CaseStudies";
+import AlanWattsCase from "./pages/AlanWattsCase";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/case-studies" element={<CaseStudies />} />
+          <Route path="/case-studies/alan-watts" element={<AlanWattsCase />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
