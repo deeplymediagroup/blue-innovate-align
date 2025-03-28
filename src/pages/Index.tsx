@@ -164,7 +164,6 @@ const Index: React.FC = () => {
     <Layout>
       <Hero />
       <ClientLogos />
-      <AlanWattsShowcase />
       
       <div className="py-16 container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
@@ -178,67 +177,9 @@ const Index: React.FC = () => {
         <CreatorGrid className="max-w-5xl mx-auto" />
       </div>
       
+      <AlanWattsShowcase />
       <Services />
-      <YoutubeContentGrid />
-      <HowItWorks />
-
-      <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-5xl mx-auto mb-12 text-center">
-            <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
-              We Power The Largest Motivational YouTube Network
-            </h2>
-            <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
-              Our network manages rights for leading motivational content creators
-            </p>
-          </div>
-          
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 max-w-5xl mx-auto">
-            <h3 className="text-2xl font-bold mb-6 text-blue-600">Distribution Partners</h3>
-            <p className="mb-6 text-foreground/70">
-              We help speakers and podcasters reach millions through our established distribution network.
-              Our partners have over 2 billion total views across YouTube.
-            </p>
-            
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-              {channelStats.map((channel, index) => (
-                <div key={index} className="bg-blue-50 p-4 rounded-lg border border-blue-100 transition-all duration-300 hover:shadow-md">
-                  <div className="flex items-center mb-3">
-                    <img 
-                      src={channel.icon} 
-                      alt={channel.name} 
-                      className="w-8 h-8 rounded-full mr-2 object-cover"
-                    />
-                    <h4 className="font-bold text-blue-800">{channel.name}</h4>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2 mt-2">
-                    <div className="flex flex-col">
-                      <p className="text-xs text-gray-500">Subscribers</p>
-                      <p className="font-bold text-blue-600">{channel.subscribers}</p>
-                    </div>
-                    <div className="flex flex-col">
-                      <p className="text-xs text-gray-500">Views</p>
-                      <p className="font-bold text-blue-600">{channel.views}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            <div className="flex flex-wrap justify-center gap-6 md:gap-12 py-4 bg-blue-50 rounded-lg p-4">
-              <div>
-                <p className="text-3xl font-bold text-blue-600">2B+</p>
-                <p className="text-sm text-foreground/60">Total Views</p>
-              </div>
-              <div>
-                <p className="text-3xl font-bold text-blue-600">20M+</p>
-                <p className="text-sm text-foreground/60">Subscribers</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      
       <section id="licensing" className="py-16 pt-24 bg-gradient-to-b from-blue-50/30 to-white w-full">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-8">
@@ -380,6 +321,65 @@ const Index: React.FC = () => {
         </div>
       </section>
 
+      <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-5xl mx-auto mb-12 text-center">
+            <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
+              We Power The Largest Motivational YouTube Network
+            </h2>
+            <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
+              Our network manages rights for leading motivational content creators
+            </p>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 max-w-5xl mx-auto">
+            <h3 className="text-2xl font-bold mb-6 text-blue-600">Distribution Partners</h3>
+            <p className="mb-6 text-foreground/70">
+              We help speakers and podcasters reach millions through our established distribution network.
+              Our partners have over 2 billion total views across YouTube.
+            </p>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+              {channelStats.map((channel, index) => (
+                <div key={index} className="bg-blue-50 p-4 rounded-lg border border-blue-100 transition-all duration-300 hover:shadow-md">
+                  <div className="flex items-center mb-3">
+                    <img 
+                      src={channel.icon} 
+                      alt={channel.name} 
+                      className="w-8 h-8 rounded-full mr-2 object-cover"
+                    />
+                    <h4 className="font-bold text-blue-800">{channel.name}</h4>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2 mt-2">
+                    <div className="flex flex-col">
+                      <p className="text-xs text-gray-500">Subscribers</p>
+                      <p className="font-bold text-blue-600">{channel.subscribers}</p>
+                    </div>
+                    <div className="flex flex-col">
+                      <p className="text-xs text-gray-500">Views</p>
+                      <p className="font-bold text-blue-600">{channel.views}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            <div className="flex flex-wrap justify-center gap-6 md:gap-12 py-4 bg-blue-50 rounded-lg p-4">
+              <div>
+                <p className="text-3xl font-bold text-blue-600">2B+</p>
+                <p className="text-sm text-foreground/60">Total Views</p>
+              </div>
+              <div>
+                <p className="text-3xl font-bold text-blue-600">20M+</p>
+                <p className="text-sm text-foreground/60">Subscribers</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <HowItWorks />
+      <YoutubeContentGrid />
       <CTASection />
     </Layout>
   );

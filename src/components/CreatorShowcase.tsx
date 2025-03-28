@@ -1,5 +1,14 @@
+
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { GlassmorphicCard } from "./GlassmorphicCard";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface CreatorCardProps {
   name: string;

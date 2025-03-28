@@ -398,7 +398,7 @@ const AlanWattsCase: React.FC = () => {
                             labelLine={false}
                           >
                             {genderData.map((entry, index) => (
-                              <Cell key={`cell-${index}`} fill={entry.color} />
+                              <Cell key={`cell-${index}`} fill={entry.color} name={index.toString()} />
                             ))}
                           </Pie>
                           <Tooltip formatter={(value) => `${value}%`} />
