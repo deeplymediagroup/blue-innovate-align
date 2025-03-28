@@ -131,6 +131,19 @@ export default {
 					'100%': {
 						transform: 'translate(0px, 0px) scale(1)'
 					}
+				},
+				'shimmer': {
+					'0%': { transform: 'translateX(-100%)' },
+					'100%': { transform: 'translateX(100%)' }
+				},
+				'tilt': {
+					'0%, 50%, 100%': { transform: 'rotate(0deg)' },
+					'25%': { transform: 'rotate(2deg)' },
+					'75%': { transform: 'rotate(-2deg)' }
+				},
+				'bounce-light': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
 				}
 			},
 			animation: {
@@ -142,7 +155,10 @@ export default {
 				'slide-down': 'slide-down 0.5s ease-out forwards',
 				'float': 'float 6s ease-in-out infinite',
 				'pulse-light': 'pulse-light 3s ease-in-out infinite',
-				'blob': 'blob 15s ease-in-out infinite'
+				'blob': 'blob 15s ease-in-out infinite',
+				'shimmer': 'shimmer 2.5s infinite',
+				'tilt': 'tilt 10s ease-in-out infinite',
+				'bounce-light': 'bounce-light 3s ease-in-out infinite'
 			},
 			fontFamily: {
 				sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
