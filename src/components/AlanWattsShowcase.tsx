@@ -72,9 +72,9 @@ export const AlanWattsShowcase: React.FC = () => {
                   alt="Alan Watts" 
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute bottom-0 left-0 right-0 py-3 px-4 text-white">
-                  <p className="font-medium text-xl">Alan Watts</p>
-                  <p className="text-sm text-gray-300">British philosopher known for interpreting Eastern philosophy for Western audiences</p>
+                <div className="absolute bottom-0 left-0 right-0 py-3 px-4 bg-gradient-to-t from-black/60 to-transparent">
+                  <p className="font-medium text-xl text-white">Alan Watts</p>
+                  <p className="text-sm text-gray-200">British philosopher known for interpreting Eastern philosophy for Western audiences</p>
                 </div>
               </div>
             </div>
