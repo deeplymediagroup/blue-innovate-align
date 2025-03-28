@@ -9,12 +9,16 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useMobile } from "@/hooks/use-mobile";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 type NavItem = {
   label: string;
   href: string;
 };
+
+interface NavbarProps {
+  extraNavLinks?: { title: string; href: string; }[];
+}
 
 const navItems: NavItem[] = [
   { label: "Services", href: "#services" },
@@ -23,10 +27,10 @@ const navItems: NavItem[] = [
   { label: "Case Studies", href: "/case-studies" },
 ];
 
-export const Navbar: React.FC = () => {
+export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const isMobile = useMobile();
+  const isMobile = useIsMobile();
   const navigate = useNavigate();
 
   // Handle scroll event to change navbar appearance
