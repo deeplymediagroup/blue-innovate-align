@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
@@ -22,6 +21,7 @@ import {
   ResponsiveContainer,
   Tooltip
 } from "recharts";
+import { CreatorShowcase } from "@/components/CreatorShowcase";
 
 const Index: React.FC = () => {
   const [rightHolderValue, setRightHolderValue] = useState(40);
@@ -179,10 +179,40 @@ const Index: React.FC = () => {
       
       <AlanWattsShowcase />
 
-      {/* Services section - Moved above Licensing */}
-      <Services />
+      {/* What We Do - Comprehensive YouTube Content Protection */}
+      <section id="services" className="py-24 bg-gradient-to-b from-background to-blue-50/50">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="reveal-section max-w-5xl mx-auto">
+            <div className="mb-20 text-center">
+              <div className="inline-block mb-6">
+                <div className="py-1 px-3 bg-blue-100 border border-blue-200 rounded-full">
+                  <p className="text-xs font-medium text-blue-700">
+                    What We Do
+                  </p>
+                </div>
+              </div>
+              <h2 className="font-display font-bold">
+                Comprehensive YouTube Content Protection
+              </h2>
+              <p className="mt-4 text-xl text-foreground/70 max-w-2xl mx-auto">
+                We help creators and brands take control of their content across YouTube
+              </p>
+            </div>
 
-      {/* Optional Licensing Section - Moved below Services */}
+            <Services />
+
+            <div className="text-center mt-12">
+              <Link to="/contact">
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                  Learn More About Our Services
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Optional Licensing Section - Moved above PricingPlans */}
       <section id="licensing" className="py-16 pt-24 bg-gradient-to-b from-blue-50/30 to-white w-full">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-8">
@@ -325,6 +355,15 @@ const Index: React.FC = () => {
         </div>
       </section>
       
+      {/* Pricing Plans - Moved below the Licensing section */}
+      <div className="py-12 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-5xl mx-auto">
+            <PricingPlans />
+          </div>
+        </div>
+      </div>
+      
       {/* How It Works section */}
       <HowItWorks />
 
@@ -404,6 +443,9 @@ const Index: React.FC = () => {
 
       <YoutubeContentGrid />
       <CTASection />
+      
+      {/* Add CreatorShowcase component if needed */}
+      <CreatorShowcase />
     </Layout>
   );
 };
