@@ -1,10 +1,9 @@
-
 import React from "react";
 import { Layout } from "@/components/Layout";
 import { GlassmorphicCard } from "@/components/GlassmorphicCard";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowLeft, CheckCircle2, PlayCircle, TrendingUp } from "lucide-react";
+import { ArrowRight, ArrowLeft, CheckCircle2, PlayCircle, TrendingUp, Database, Shield, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { 
   AreaChart, 
@@ -47,7 +46,7 @@ const AlanWattsCase: React.FC = () => {
     { age: "65+", percentage: 5.0 },
   ];
 
-  // Gender demographics data - updated as requested
+  // Gender demographics data - updated values and colors
   const genderData = [
     { name: "Male", value: 80.4, color: "#3E92CC" }, // Lighter blue
     { name: "Female", value: 19.6, color: "#FF8FAB" }, // Pink color
@@ -57,8 +56,8 @@ const AlanWattsCase: React.FC = () => {
   const formatTooltipValue = (value: any, name: string) => {
     if (name === 'Claims Processed') return `${value} claims`;
     if (name === 'Revenue') {
-      // Check if value is a number and can use toFixed
-      return typeof value === 'number' ? `$${value.toFixed(2)}` : `$${value}`;
+      // Fixed TypeScript error by ensuring value is treated as a string
+      return typeof value === 'number' ? `$${value.toFixed(2)}` : `$${String(value)}`;
     }
     return value;
   };
@@ -67,8 +66,8 @@ const AlanWattsCase: React.FC = () => {
     <Layout>
       <div className="pt-24 md:pt-32 pb-16">
         <div className="container mx-auto px-4 md:px-6">
-          {/* New header section based on the provided image */}
-          <div className="mb-10">
+          {/* Updated header section with improved alignment */}
+          <div className="mb-10 max-w-5xl mx-auto">
             <Link to="/case-studies" className="flex items-center text-blue-500 hover:text-blue-700 mb-4">
               <ArrowLeft className="mr-1 h-4 w-4" /> Back to Case Studies
             </Link>
@@ -85,8 +84,9 @@ const AlanWattsCase: React.FC = () => {
                   where thousands of channels were using Alan Watts' content without permission.
                 </p>
                 <p className="text-gray-600 mb-8">
-                  Our solution provided comprehensive rights management to identify, claim, and monetize unauthorized usage, 
-                  resulting in significant revenue growth and improved content control.
+                  We provided strategic guidance and rights management solutions to identify, claim, and monetize unauthorized content. 
+                  Additionally, we built a licensing ecosystem that allows creators to legally use Alan Watt's content within content guidelines, 
+                  benefiting both the organization and creators.
                 </p>
                 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
@@ -229,7 +229,7 @@ const AlanWattsCase: React.FC = () => {
             </div>
           </section>
           
-          <section className="py-16 bg-gradient-to-b from-blue-50/30 to-white">
+          <section className="py-16 bg-gradient-to-b from-blue-50/30 to-white w-full">
             <div className="container mx-auto px-4 md:px-6">
               <div className="max-w-5xl mx-auto mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">The Challenge</h2>
@@ -271,7 +271,9 @@ const AlanWattsCase: React.FC = () => {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div>
                       <div className="flex items-start mb-4">
-                        <CheckCircle2 className="text-blue-600 h-6 w-6 mt-1 mr-3 flex-shrink-0" />
+                        <div className="text-blue-600 h-9 w-9 mt-1 mr-3 flex-shrink-0 bg-blue-100 rounded-full flex items-center justify-center">
+                          <Database className="h-5 w-5" />
+                        </div>
                         <div>
                           <h4 className="text-lg font-bold mb-2">Audio-Only Content ID Tool</h4>
                           <p className="text-foreground/70">
@@ -283,7 +285,9 @@ const AlanWattsCase: React.FC = () => {
                     
                     <div>
                       <div className="flex items-start mb-4">
-                        <CheckCircle2 className="text-blue-600 h-6 w-6 mt-1 mr-3 flex-shrink-0" />
+                        <div className="text-blue-600 h-9 w-9 mt-1 mr-3 flex-shrink-0 bg-blue-100 rounded-full flex items-center justify-center">
+                          <TrendingUp className="h-5 w-5" />
+                        </div>
                         <div>
                           <h4 className="text-lg font-bold mb-2">Custom Dashboard</h4>
                           <p className="text-foreground/70">
@@ -295,7 +299,9 @@ const AlanWattsCase: React.FC = () => {
                     
                     <div>
                       <div className="flex items-start mb-4">
-                        <CheckCircle2 className="text-blue-600 h-6 w-6 mt-1 mr-3 flex-shrink-0" />
+                        <div className="text-blue-600 h-9 w-9 mt-1 mr-3 flex-shrink-0 bg-blue-100 rounded-full flex items-center justify-center">
+                          <Users className="h-5 w-5" />
+                        </div>
                         <div>
                           <h4 className="text-lg font-bold mb-2">Creator Ecosystem</h4>
                           <p className="text-foreground/70">
@@ -307,7 +313,9 @@ const AlanWattsCase: React.FC = () => {
                     
                     <div>
                       <div className="flex items-start mb-4">
-                        <CheckCircle2 className="text-blue-600 h-6 w-6 mt-1 mr-3 flex-shrink-0" />
+                        <div className="text-blue-600 h-9 w-9 mt-1 mr-3 flex-shrink-0 bg-blue-100 rounded-full flex items-center justify-center">
+                          <Shield className="h-5 w-5" />
+                        </div>
                         <div>
                           <h4 className="text-lg font-bold mb-2">Content Guidelines</h4>
                           <p className="text-foreground/70">
@@ -451,7 +459,7 @@ const AlanWattsCase: React.FC = () => {
             </div>
           </section>
           
-          <section className="py-20 bg-gradient-to-b from-white to-blue-50">
+          <section className="py-20 bg-gradient-to-b from-white to-blue-50 w-full">
             <div className="container mx-auto px-4 md:px-6 text-center">
               <h2 className="text-3xl font-bold mb-8">Ready to protect and monetize your content?</h2>
               <Link to="/contact">

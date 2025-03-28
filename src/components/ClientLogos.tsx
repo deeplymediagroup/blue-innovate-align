@@ -13,7 +13,7 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
     { name: "Ziglar", text: "ZIGLAR" },
     { name: "Jim Rohn", text: "JIM ROHN" },
     { name: "Motivation Madness", text: "MOTIVATION MADNESS" },
-    { name: "Success Archive", text: "SUCCESS ARCHIVE" },
+    { name: "High Performance", text: "HIGH PERFORMANCE" },
     { name: "Coach Pain", text: "COACH PAIN" },
   ];
 

@@ -85,10 +85,13 @@ const Contact: React.FC = () => {
               transition={{ duration: 0.5 }}
               className="text-center mb-12"
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Send a message</h1>
-              <p className="text-xl text-foreground/70 mb-2">Received a claim? Have a question or a comment?</p>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">Send a message</h1>
+              <p className="text-xl text-foreground/70 mb-6">Received a claim? Have a question or a comment?</p>
               <p className="text-xl text-foreground/70">
-                Interested in working with MindsetDRM? Complete the form below, and we'll be in touch!
+                Interested in working with MindsetDRM? 
+              </p>
+              <p className="text-xl text-foreground/70 mt-6">
+                Complete the form below, and we'll be in touch!
               </p>
             </motion.div>
 
