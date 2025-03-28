@@ -66,13 +66,13 @@ export const AlanWattsShowcase: React.FC = () => {
             </div>
             
             <div className="relative h-full">
-              <div className="overflow-hidden rounded-md">
+              <div className="overflow-hidden rounded-md h-full">
                 <img 
-                  src="public/lovable-uploads/ffe4428d-13b7-4444-9dca-7a64aabe98b9.png" 
+                  src="public/lovable-uploads/15f1f912-7b6d-47ed-bcde-88e5d4c65f1e.png" 
                   alt="Alan Watts" 
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-black/70 backdrop-blur-sm py-3 px-4 text-white">
+                <div className="absolute bottom-0 left-0 right-0 py-3 px-4 text-white">
                   <p className="font-medium text-xl">Alan Watts</p>
                   <p className="text-sm text-gray-300">British philosopher known for interpreting Eastern philosophy for Western audiences</p>
                 </div>
