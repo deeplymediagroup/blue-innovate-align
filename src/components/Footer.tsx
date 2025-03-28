@@ -18,17 +18,17 @@ export const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
               <li>
-                <a href="https://preview--blue-innovate-align.lovable.app/services" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://preview--blue-innovate-align.lovable.app/#services" className="text-gray-400 hover:text-white transition-colors">
                   Claiming
                 </a>
               </li>
               <li>
-                <a href="https://preview--blue-innovate-align.lovable.app/distribution" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://preview--blue-innovate-align.lovable.app/#distribution" className="text-gray-400 hover:text-white transition-colors">
                   Distribution
                 </a>
               </li>
               <li>
-                <a href="https://preview--blue-innovate-align.lovable.app/licensing" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://preview--blue-innovate-align.lovable.app/#licensing" className="text-gray-400 hover:text-white transition-colors">
                   Licensing
                 </a>
               </li>
@@ -39,14 +39,14 @@ export const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-4">Resources</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/pricing" className="text-gray-400 hover:text-white transition-colors">
+                <a href="/#pricing" className="text-gray-400 hover:text-white transition-colors">
                   Pricing
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/dashboard" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://studio.mindsetdrm.com" className="text-gray-400 hover:text-white transition-colors">
                   Dashboard
-                </Link>
+                </a>
               </li>
               <li>
                 <Link to="/case-studies" className="text-gray-400 hover:text-white transition-colors">

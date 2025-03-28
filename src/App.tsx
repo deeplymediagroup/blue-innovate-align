@@ -51,10 +51,10 @@ const App = () => (
           <Route path="/case-studies/alan-watts" element={<AlanWattsCase />} />
           
           {/* Section redirects */}
-          <Route path="/services" element={<ExternalRedirect to="https://preview--blue-innovate-align.lovable.app/services" />} />
-          <Route path="/distribution" element={<ExternalRedirect to="https://preview--blue-innovate-align.lovable.app/distribution" />} />
-          <Route path="/licensing" element={<ExternalRedirect to="https://preview--blue-innovate-align.lovable.app/licensing" />} />
-          <Route path="/claiming" element={<ExternalRedirect to="https://preview--blue-innovate-align.lovable.app/services" />} />
+          <Route path="/services" element={<ExternalRedirect to="https://preview--blue-innovate-align.lovable.app/#services" />} />
+          <Route path="/distribution" element={<ExternalRedirect to="https://preview--blue-innovate-align.lovable.app/#distribution" />} />
+          <Route path="/licensing" element={<ExternalRedirect to="https://preview--blue-innovate-align.lovable.app/#licensing" />} />
+          <Route path="/claiming" element={<ExternalRedirect to="https://preview--blue-innovate-align.lovable.app/#services" />} />
           
           {/* Scale and Enterprise program redirects */}
           <Route path="/scale" element={<ExternalRedirect to="https://preview--blue-innovate-align.lovable.app/contact" />} />

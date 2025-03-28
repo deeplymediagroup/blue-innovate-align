@@ -14,7 +14,7 @@ const CaseStudies: React.FC = () => {
       title: "Alan Watts Organization",
       subtitle: "Transforming Alan Watts' Digital Legacy on YouTube",
       logo: "https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png",
-      background: "/lovable-uploads/f77b4901-1478-43fb-98ce-db9e4c3f1fbf.png",
+      background: "/lovable-uploads/a9921c76-fa95-4d2c-97a8-ce84b849dd16.png",
       metrics: [
         { value: "99.9%", label: "Content Claimed" },
         { value: "27K+", label: "Claims Processed" },

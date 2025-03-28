@@ -45,19 +45,19 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
 
           <nav className="hidden md:flex items-center space-x-8">
             <a
-              href="https://preview--blue-innovate-align.lovable.app/services"
+              href="https://preview--blue-innovate-align.lovable.app/#services"
               className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
             >
               Claiming
             </a>
             <a
-              href="https://preview--blue-innovate-align.lovable.app/distribution"
+              href="https://preview--blue-innovate-align.lovable.app/#distribution"
               className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
             >
               Distribution
             </a>
             <a
-              href="https://preview--blue-innovate-align.lovable.app/licensing"
+              href="https://preview--blue-innovate-align.lovable.app/#licensing"
               className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
             >
               Licensing
@@ -105,21 +105,21 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
         <div className="container mx-auto px-4 py-6 space-y-6">
           <nav className="flex flex-col space-y-4">
             <a
-              href="https://preview--blue-innovate-align.lovable.app/services"
+              href="https://preview--blue-innovate-align.lovable.app/#services"
               className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Claiming
             </a>
             <a
-              href="https://preview--blue-innovate-align.lovable.app/distribution"
+              href="https://preview--blue-innovate-align.lovable.app/#distribution"
               className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Distribution
             </a>
             <a
-              href="https://preview--blue-innovate-align.lovable.app/licensing"
+              href="https://preview--blue-innovate-align.lovable.app/#licensing"
               className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >

@@ -47,11 +47,10 @@ const AlanWattsCase: React.FC = () => {
     { age: "65+", percentage: 5.0 },
   ];
 
-  // Gender demographics data
+  // Gender demographics data - updated as requested
   const genderData = [
-    { name: "Male", value: 80.4, color: "#0A2463" }, // Darker blue
-    { name: "Female", value: 18.9, color: "#3E92CC" }, // Lighter blue
-    { name: "User Specified", value: 0.7, color: "#a855f7" },
+    { name: "Male", value: 80.4, color: "#3E92CC" }, // Lighter blue
+    { name: "Female", value: 19.6, color: "#FF8FAB" }, // Pink color
   ];
 
   // Fix for the TypeScript error - customized tooltip formatter
@@ -77,9 +76,9 @@ const AlanWattsCase: React.FC = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-8">Alan Watts Organization Case Study</h1>
           </div>
           
-          <GlassmorphicCard className="p-8 md:p-12 max-w-5xl mx-auto mb-16 bg-white">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-              <div>
+          <GlassmorphicCard className="p-8 md:p-12 mx-auto mb-16 bg-white">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+              <div className="md:col-span-2">
                 <h2 className="text-2xl font-bold mb-4">About the Project</h2>
                 <p className="text-gray-600 mb-6">
                   The Alan Watts Organization approached us to help protect their intellectual property across YouTube, 
@@ -106,20 +105,6 @@ const AlanWattsCase: React.FC = () => {
                   <div>
                     <p className="text-3xl font-bold text-blue-600">866+</p>
                     <p className="text-sm text-gray-500">Licensed Videos</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center mb-4">
-                  <div className="h-14 w-14 rounded-full bg-gray-200 mr-4 overflow-hidden">
-                    <img 
-                      src="https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png" 
-                      alt="Mark Watts" 
-                      className="h-full w-full object-cover object-top"
-                    />
-                  </div>
-                  <div>
-                    <p className="font-medium">Mark Watts</p>
-                    <p className="text-sm text-gray-600">Director, Alan Watts Organization</p>
                   </div>
                 </div>
               </div>

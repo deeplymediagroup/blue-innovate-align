@@ -61,12 +61,12 @@ export const AlanWattsShowcase: React.FC = () => {
               </div>
             </div>
             
-            <Link to="/case-studies/alan-watts">
+            <a href="/case-studies/alan-watts">
               <Button variant="link" className="text-blue-600 group flex items-center">
                 View full case study 
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
               </Button>
-            </Link>
+            </a>
           </div>
           
           <div className="relative">

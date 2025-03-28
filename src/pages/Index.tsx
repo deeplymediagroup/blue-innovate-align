@@ -24,9 +24,9 @@ import {
 
 const Index: React.FC = () => {
   const revenueData = [
-    { name: "Rights Holder", value: 40, color: "#2563eb" },
-    { name: "Creator", value: 50, color: "#60a5fa" },
-    { name: "Mindset", value: 10, color: "#93c5fd" },
+    { name: "Rights Holder", value: 40, color: "#0A2463" }, // Darker blue
+    { name: "Creator", value: 50, color: "#3E92CC" }, // Lighter blue
+    { name: "Mindset", value: 10, color: "#93c5fd" }, // Even lighter blue
   ];
   
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -257,19 +257,19 @@ const Index: React.FC = () => {
                               return (
                                 <g>
                                   <text 
-                                    x={175} 
-                                    y={175} 
+                                    x="50%" 
+                                    y="50%" 
                                     textAnchor="middle" 
-                                    dominantBaseline="central" 
+                                    dominantBaseline="middle" 
                                     className="fill-blue-600 text-lg font-bold"
                                   >
                                     Revenue Split
                                   </text>
                                   <text 
-                                    x={175} 
-                                    y={200} 
+                                    x="50%" 
+                                    y="60%" 
                                     textAnchor="middle" 
-                                    dominantBaseline="central" 
+                                    dominantBaseline="middle" 
                                     className="fill-blue-400 text-sm"
                                   >
                                     Sustainable ecosystem
