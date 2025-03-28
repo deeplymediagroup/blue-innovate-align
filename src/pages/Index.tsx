@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
@@ -32,14 +31,54 @@ const Index: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   
   const channelStats = [
-    { name: "Motiversity", subscribers: "3.8M", views: "530M+", icon: "/lovable-uploads/89599c4a-2943-430b-a348-cf1f039ac933.png" },
-    { name: "MotivationHub", subscribers: "3.5M", views: "380M+", icon: "/lovable-uploads/1bf57caa-d1c1-40fc-823d-edd080e2b5db.png" },
-    { name: "Motivation2Study", subscribers: "4.6M", views: "365M+", icon: "/lovable-uploads/7ad119b9-2029-4225-9db1-d52780651bd4.png" },
-    { name: "Motivation Madness", subscribers: "3.8M", views: "350M+", icon: "/lovable-uploads/120bfcd1-e00e-4b2f-ac25-ee49edfe0e22.png" },
-    { name: "After Skool", subscribers: "3.7M", views: "260M+", icon: "/lovable-uploads/67ff2ca5-79fd-44ed-b348-2dfb2dca0fb8.png" },
-    { name: "T&H Inspiration", subscribers: "758K", views: "140M+", icon: "/lovable-uploads/89599c4a-2943-430b-a348-cf1f039ac933.png" },
-    { name: "Alpha Leaders", subscribers: "767K", views: "56M+", icon: "/lovable-uploads/1bf57caa-d1c1-40fc-823d-edd080e2b5db.png" },
-    { name: "True Meaning", subscribers: "526K", views: "38M+", icon: "/lovable-uploads/13347a70-78da-4271-af11-b267957cfba5.png" },
+    { 
+      name: "Motiversity", 
+      subscribers: "3.8M", 
+      views: "530M+", 
+      icon: "/lovable-uploads/3ecb8aa9-4ef8-4d32-a070-462ae07a4d20.png" 
+    },
+    { 
+      name: "MotivationHub", 
+      subscribers: "3.5M", 
+      views: "380M+", 
+      icon: "/lovable-uploads/0cf3ba3e-8960-4ea0-8c73-dd2b371e4ce4.png" 
+    },
+    { 
+      name: "Motivation2Study", 
+      subscribers: "4.6M", 
+      views: "365M+", 
+      icon: "/lovable-uploads/7ad119b9-2029-4225-9db1-d52780651bd4.png" 
+    },
+    { 
+      name: "Motivation Madness", 
+      subscribers: "3.8M", 
+      views: "350M+", 
+      icon: "/lovable-uploads/120bfcd1-e00e-4b2f-ac25-ee49edfe0e22.png" 
+    },
+    { 
+      name: "After Skool", 
+      subscribers: "3.7M", 
+      views: "260M+", 
+      icon: "/lovable-uploads/67ff2ca5-79fd-44ed-b348-2dfb2dca0fb8.png" 
+    },
+    { 
+      name: "T&H Inspiration", 
+      subscribers: "758K", 
+      views: "140M+", 
+      icon: "/lovable-uploads/3a748cf2-80ce-4b01-bcd8-598759cbef81.png" 
+    },
+    { 
+      name: "Alpha Leaders", 
+      subscribers: "767K", 
+      views: "56M+", 
+      icon: "/lovable-uploads/a2298027-384a-4e1f-bd2e-5b75a4d22ef5.png" 
+    },
+    { 
+      name: "True Meaning", 
+      subscribers: "526K", 
+      views: "38M+", 
+      icon: "/lovable-uploads/13347a70-78da-4271-af11-b267957cfba5.png" 
+    },
   ];
 
   useEffect(() => {
