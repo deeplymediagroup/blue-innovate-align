@@ -124,7 +124,7 @@ const Index: React.FC = () => {
       </div>
       <HowItWorks />
 
-      <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30">
+      <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-12 text-center">
             <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
@@ -181,7 +181,7 @@ const Index: React.FC = () => {
         </div>
       </section>
 
-      <section id="licensing" className="py-16 pt-24 bg-gradient-to-b from-blue-50/30 to-white">
+      <section id="licensing" className="py-16 pt-24 bg-gradient-to-b from-blue-50/30 to-white w-full">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -258,7 +258,7 @@ const Index: React.FC = () => {
                                 <g>
                                   <text 
                                     x="50%" 
-                                    y="50%" 
+                                    y="47%" 
                                     textAnchor="middle" 
                                     dominantBaseline="middle" 
                                     className="fill-blue-600 text-lg font-bold"
@@ -267,7 +267,7 @@ const Index: React.FC = () => {
                                   </text>
                                   <text 
                                     x="50%" 
-                                    y="60%" 
+                                    y="57%" 
                                     textAnchor="middle" 
                                     dominantBaseline="middle" 
                                     className="fill-blue-400 text-sm"

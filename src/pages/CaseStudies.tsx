@@ -70,13 +70,6 @@ const CaseStudies: React.FC = () => {
                         alt={study.title}
                         className="rounded-lg w-full aspect-[4/3] object-cover shadow-lg"
                       />
-                      <div className="absolute top-4 right-4 h-16 w-16 rounded-full bg-white p-1 shadow-md">
-                        <img 
-                          src={study.logo} 
-                          alt={`${study.title} logo`}
-                          className="w-full h-full rounded-full object-cover"
-                        />
-                      </div>
                     </motion.div>
                   </div>
                 </GlassmorphicCard>

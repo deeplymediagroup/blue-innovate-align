@@ -4,6 +4,7 @@ import { GlassmorphicCard } from "./GlassmorphicCard";
 import { Check, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
+import { Link } from "react-router-dom";
 
 export const PricingPlans: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -93,12 +94,16 @@ export const PricingPlans: React.FC = () => {
           </div>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 p-6">
-            <Button variant="outline" className="border-blue-300 text-blue-600 transition-transform duration-300 hover:scale-105">
-              Get Scale Program
-            </Button>
-            <Button className="bg-blue-600 hover:bg-blue-700 transition-transform duration-300 hover:scale-105">
-              Get Enterprise Program
-            </Button>
+            <Link to="/contact">
+              <Button variant="outline" className="border-blue-300 text-blue-600 transition-transform duration-300 hover:scale-105">
+                Get Scale Program
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button className="bg-blue-600 hover:bg-blue-700 transition-transform duration-300 hover:scale-105">
+                Get Enterprise Program
+              </Button>
+            </Link>
           </div>
         </GlassmorphicCard>
       </div>
