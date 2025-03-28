@@ -33,8 +33,8 @@ const AlanWattsCase: React.FC = () => {
     { month: "Month 2", revenue: 4165.18, claims: 6000, cumulativeClaims: 15000 },
     { month: "Month 3", revenue: 5729.14, claims: 4000, cumulativeClaims: 19000 },
     { month: "Month 4", revenue: 8921.30, claims: 4000, cumulativeClaims: 23000 },
-    { month: "Month 5", revenue: 9873.62, claims: 3000, cumulativeClaims: 26000 },
-    { month: "Month 6", revenue: 11500, claims: 962, cumulativeClaims: 26962 },
+    { month: "Month 5", revenue: 9873.62, claims: 1000, cumulativeClaims: 24000 },
+    { month: "Month 6", revenue: 11500, claims: 1000, cumulativeClaims: 25000 },
   ];
 
   // Age demographics data
@@ -62,29 +62,6 @@ const AlanWattsCase: React.FC = () => {
       return typeof value === 'number' ? `$${value.toFixed(2)}` : `$${String(value)}`;
     }
     return value;
-  };
-
-  // Custom label for gender pie chart
-  const renderCustomizedLabel = (props: any) => {
-    const { cx, cy, midAngle, innerRadius, outerRadius, name, value, fill, percent } = props;
-    const radius = outerRadius * 1.3;
-    const RADIAN = Math.PI / 180;
-    const x = cx + radius * Math.cos(-midAngle * RADIAN);
-    const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-    return (
-      <text 
-        x={x} 
-        y={y} 
-        fill={fill}
-        textAnchor={x > cx ? 'start' : 'end'} 
-        dominantBaseline="central"
-        fontSize="12"
-        fontWeight="500"
-      >
-        {`${name}: ${value}%`}
-      </text>
-    );
   };
 
   return (
@@ -120,7 +97,7 @@ const AlanWattsCase: React.FC = () => {
                     <p className="text-sm text-gray-500">Content Claimed</p>
                   </div>
                   <div>
-                    <p className="text-3xl font-bold text-blue-600">27K+</p>
+                    <p className="text-3xl font-bold text-blue-600">25K+</p>
                     <p className="text-sm text-gray-500">Claims Processed</p>
                   </div>
                   <div>
@@ -159,7 +136,7 @@ const AlanWattsCase: React.FC = () => {
                           <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </div>
-                      <p>0% claimed of 27,000 Alan Watts videos</p>
+                      <p>0% claimed of 25,000 Alan Watts videos</p>
                     </div>
                     <div className="flex items-center">
                       <div className="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center mr-4">
@@ -187,7 +164,7 @@ const AlanWattsCase: React.FC = () => {
                       <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center mr-4">
                         <CheckCircle2 className="h-5 w-5 text-green-600" />
                       </div>
-                      <p>99.9% claimed or 26,962 Alan Watts videos</p>
+                      <p>99.9% claimed or 25,000 Alan Watts videos</p>
                     </div>
                     <div className="flex items-center">
                       <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center mr-4">
@@ -369,7 +346,7 @@ const AlanWattsCase: React.FC = () => {
                     </div>
                     
                     <div className="bg-white p-6 rounded-lg shadow-md">
-                      <div className="text-4xl font-bold text-blue-600 mb-2">27K+</div>
+                      <div className="text-4xl font-bold text-blue-600 mb-2">25K+</div>
                       <p>Claims Processed</p>
                     </div>
                     
@@ -416,11 +393,10 @@ const AlanWattsCase: React.FC = () => {
                             data={genderData}
                             cx="50%"
                             cy="50%"
-                            labelLine={true}
+                            labelLine={false}
                             outerRadius={80}
                             fill="#8884d8"
                             dataKey="value"
-                            label={renderCustomizedLabel}
                             isAnimationActive={false}
                           >
                             {genderData.map((entry, index) => (
@@ -432,6 +408,10 @@ const AlanWattsCase: React.FC = () => {
                             ))}
                           </Pie>
                           <Legend 
+                            layout="horizontal"
+                            verticalAlign="bottom"
+                            align="center"
+                            wrapperStyle={{ paddingTop: "20px" }}
                             payload={
                               genderData.map(item => ({
                                 value: `${item.name}: ${item.value}%`,

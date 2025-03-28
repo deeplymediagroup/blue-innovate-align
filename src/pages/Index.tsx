@@ -22,6 +22,7 @@ import {
   ResponsiveContainer,
   Tooltip
 } from "recharts";
+import { PricingPlans } from "@/components/PricingPlans";
 
 const Index: React.FC = () => {
   const [rightHolderValue, setRightHolderValue] = useState(40);
@@ -179,10 +180,10 @@ const Index: React.FC = () => {
       
       <AlanWattsShowcase />
 
-      {/* Services section - Moved above Licensing */}
+      {/* Services section - What We Do */}
       <Services />
 
-      {/* Optional Licensing Section - Moved below Services */}
+      {/* Optional Licensing Section - Moved below Services but above Pricing */}
       <section id="licensing" className="py-16 pt-24 bg-gradient-to-b from-blue-50/30 to-white w-full">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-8">
@@ -321,6 +322,15 @@ const Index: React.FC = () => {
                 </div>
               </motion.div>
             </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Pricing Plans section */}
+      <section className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mt-0 max-w-5xl mx-auto">
+            <PricingPlans />
           </div>
         </div>
       </section>

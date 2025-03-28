@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from "react";
 import { GlassmorphicCard } from "./GlassmorphicCard";
 import { CheckCircle, Shield, DollarSign, Youtube } from "lucide-react";
 import { Button } from "./ui/button";
-import { PricingPlans } from "./PricingPlans";
 import { Link } from "react-router-dom";
 
 export const Services: React.FC = () => {
@@ -150,10 +149,6 @@ export const Services: React.FC = () => {
               </Button>
             </Link>
           </div>
-        </div>
-        
-        <div className="mt-24 max-w-5xl mx-auto">
-          <PricingPlans />
         </div>
       </div>
     </section>
