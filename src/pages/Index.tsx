@@ -180,6 +180,7 @@ const Index: React.FC = () => {
       <AlanWattsShowcase />
       <Services />
       
+      {/* Optional Licensing Section - Moved above pricing plans */}
       <section id="licensing" className="py-16 pt-24 bg-gradient-to-b from-blue-50/30 to-white w-full">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-8">
@@ -298,7 +299,7 @@ const Index: React.FC = () => {
                   </div>
                   
                   <div className="mt-6 text-center">
-                    <p className="text-sm text-gray-600 mb-2">Drag the slider to adjust revenue distribution</p>
+                    <p className="text-sm text-gray-600 mb-2">Drag the slider to adjust revenue share</p>
                     <div className="px-4">
                       <Slider
                         value={[rightHolderValue]}
@@ -320,6 +321,9 @@ const Index: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* How It Works section - Moved above Distribution */}
+      <HowItWorks />
 
       <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
         <div className="container mx-auto px-4 md:px-6">
@@ -378,7 +382,6 @@ const Index: React.FC = () => {
         </div>
       </section>
 
-      <HowItWorks />
       <YoutubeContentGrid />
       <CTASection />
     </Layout>

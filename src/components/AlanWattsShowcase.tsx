@@ -42,19 +42,19 @@ export const AlanWattsShowcase: React.FC = () => {
                 </div>
                 <div className="flex items-center">
                   <div className="h-2 w-2 rounded-full bg-green-500 mr-3"></div>
-                  <p className="text-gray-700">25,000+ Active Videos Claimed</p>
+                  <p className="text-gray-700">27,000+ Active Claims</p>
                 </div>
               </div>
             </div>
             
-            <Link to="/case-studies/alan-watts" className="block mb-8">
+            <Link to="/case-studies/alan-watts">
               <Button className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-medium text-lg py-6 px-8 rounded-lg flex items-center justify-center">
                 View full case study 
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
               </Button>
             </Link>
             
-            <div className="flex items-center">
+            <div className="mt-8 flex items-center">
               <div className="h-14 w-14 rounded-full bg-gray-200 mr-4 overflow-hidden">
                 <img 
                   src="https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png" 
@@ -67,6 +67,10 @@ export const AlanWattsShowcase: React.FC = () => {
                 <p className="text-sm text-gray-600">Director, Alan Watts Organization</p>
               </div>
             </div>
+            
+            <p className="mt-4 text-gray-600 italic border-l-4 border-blue-300 pl-4">
+              "MindsetDRM not only safeguarded my father's intellectual property but allowed it to flourish in the digital age. Their understanding of the balance between preservation and innovation has brought my fathers teachings to millions"
+            </p>
           </div>
           
           <div className="relative">
@@ -83,6 +87,11 @@ export const AlanWattsShowcase: React.FC = () => {
                   </svg>
                 </div>
               </div>
+              
+              <div className="absolute bottom-6 left-6 bg-black/70 backdrop-blur-sm py-2 px-3 rounded shadow-md text-white max-w-xs">
+                <p className="font-medium">Alan Watts</p>
+                <p className="text-sm text-gray-300">British philosopher known for interpreting Eastern philosophy for Western audiences</p>
+              </div>
             </div>
             
             <div className="absolute bottom-4 left-4 bg-white/80 backdrop-blur-sm py-2 px-3 rounded shadow-md flex items-center">
@@ -93,7 +102,7 @@ export const AlanWattsShowcase: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs font-medium">YouTube Content ID</p>
-                <p className="text-xs text-gray-600">25,000+ claims monitored</p>
+                <p className="text-xs text-gray-600">27,000+ claims monitored</p>
               </div>
             </div>
           </div>
