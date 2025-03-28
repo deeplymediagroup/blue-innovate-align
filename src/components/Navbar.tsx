@@ -7,7 +7,6 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
@@ -38,7 +37,7 @@ const NAV_ITEMS: NavItem[] = [
   { title: "Content", href: "/#content" },
 ];
 
-export const Navbar: React.FC<{extraNavLinks?: { title: string; href: string; }[]}> = ({ extraNavLinks }) => {
+const Navbar = ({ extraNavLinks }: {extraNavLinks?: { title: string; href: string; }[]}) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -165,4 +164,5 @@ export const Navbar: React.FC<{extraNavLinks?: { title: string; href: string; }[
   );
 };
 
+export { Navbar };
 export default Navbar;
