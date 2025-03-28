@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
@@ -163,8 +164,6 @@ const Index: React.FC = () => {
       <Hero />
       <ClientLogos />
       
-      <AlanWattsShowcase />
-      
       <div className="py-16 container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
@@ -176,6 +175,8 @@ const Index: React.FC = () => {
         </div>
         <CreatorGrid className="max-w-5xl mx-auto" />
       </div>
+      
+      <AlanWattsShowcase />
       
       <Services />
       
@@ -297,7 +298,7 @@ const Index: React.FC = () => {
                   </div>
                   
                   <div className="mt-6 text-center">
-                    <p className="text-sm text-gray-600 mb-2">Drag the slider to adjust revenue distribution</p>
+                    <p className="text-sm text-gray-600 mb-2">Drag the slider to adjust revenue share</p>
                     <div className="px-4">
                       <Slider
                         value={[rightHolderValue]}

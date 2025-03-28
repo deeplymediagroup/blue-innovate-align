@@ -52,11 +52,11 @@ export const ScrollingStats: React.FC = () => {
                   </div>
                   <div className="text-left">
                     <h3 className="font-medium text-lg">Alan Watts</h3>
-                    <p className="text-sm text-foreground/70">Revenue Recovery</p>
+                    <p className="text-sm text-foreground/70">Monthly Revenue Recovered</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-bold text-blue-600">$9,873.12</p>
+                  <p className="text-2xl font-bold text-blue-600">$9,873.68</p>
                   <p className="text-sm text-foreground/70">per month</p>
                 </div>
               </GlassmorphicCard>

@@ -46,7 +46,7 @@ export const AlanWattsShowcase: React.FC = () => {
 
                 <blockquote className="relative mb-6">
                   <div className="text-lg italic text-foreground/80 mb-4">
-                    "Mindset has helped us protect our father's work while also expanding his reach to new audiences. Their team has been responsive, transparent, and most importantly, effective."
+                    "MindsetDRM not only safeguarded my father's intellectual property but allowed it to flourish in the digital age. Their understanding of the balance between preservation and innovation has brought my fathers teachings to millions"
                   </div>
                 </blockquote>
 
@@ -61,7 +61,7 @@ export const AlanWattsShowcase: React.FC = () => {
                   </div>
                   <div className="bg-blue-50 rounded-lg p-4 text-center">
                     <p className="text-2xl font-bold text-blue-600">27k+</p>
-                    <p className="text-xs text-foreground/60">Claims Processed</p>
+                    <p className="text-xs text-foreground/60">Active Claims</p>
                   </div>
                 </div>
               </div>
@@ -73,7 +73,7 @@ export const AlanWattsShowcase: React.FC = () => {
                   className="w-full h-full object-cover"
                   style={{ maxHeight: "100%", minHeight: "300px" }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent flex items-center p-8">
+                <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent flex items-end p-8">
                   <div className="text-white max-w-xs">
                     <h3 className="text-2xl font-bold mb-2">Alan Watts</h3>
                     <p className="text-sm text-white/80">

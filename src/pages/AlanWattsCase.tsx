@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
@@ -49,10 +50,6 @@ const AlanWattsCase: React.FC = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const nameType = (index: number): string => {
-    return index.toString();
-  };
 
   return (
     <Layout>
