@@ -389,15 +389,12 @@ const AlanWattsCase: React.FC = () => {
                         <PieChart>
                           <Pie
                             data={genderData}
-                            dataKey="value"
-                            nameKey="name"
                             cx="50%"
                             cy="50%"
-                            outerRadius={80}
                             labelLine={false}
                           >
                             {genderData.map((entry, index) => (
-                              <Cell key={`cell-${index}`} fill={entry.color} />
+                              <Cell key={`cell-${index}`} fill={entry.color} name={String(entry.name)} />
                             ))}
                           </Pie>
                           <Tooltip formatter={(value) => `${value}%`} />

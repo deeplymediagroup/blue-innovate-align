@@ -150,10 +150,10 @@ export const Services: React.FC = () => {
               </Button>
             </Link>
           </div>
-          
-          <div className="mt-24 max-w-5xl mx-auto">
-            <PricingPlans />
-          </div>
+        </div>
+        
+        <div className="mt-24 max-w-5xl mx-auto">
+          <PricingPlans />
         </div>
       </div>
     </section>
