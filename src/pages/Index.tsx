@@ -13,6 +13,7 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Slider } from "@/components/ui/slider";
+import { PricingPlans } from "@/components/PricingPlans";
 import {
   PieChart,
   Pie,
@@ -26,15 +27,14 @@ import { CreatorShowcase } from "@/components/CreatorShowcase";
 const Index: React.FC = () => {
   const [rightHolderValue, setRightHolderValue] = useState(40);
   const [revenueData, setRevenueData] = useState([
-    { name: "Rights Holder", value: 40, color: "#0A2463" }, // Darker blue
-    { name: "Creator", value: 50, color: "#3E92CC" }, // Lighter blue
-    { name: "Mindset", value: 10, color: "#93c5fd" }, // Even lighter blue
+    { name: "Rights Holder", value: 40, color: "#0A2463" },
+    { name: "Creator", value: 50, color: "#3E92CC" },
+    { name: "Mindset", value: 10, color: "#93c5fd" },
   ]);
   
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   
   useEffect(() => {
-    // Update the pie chart data when rightHolderValue changes
     const creatorValue = 90 - rightHolderValue;
     setRevenueData([
       { name: "Rights Holder", value: rightHolderValue, color: "#0A2463" },
@@ -114,7 +114,6 @@ const Index: React.FC = () => {
       observer.observe(el);
     });
 
-    // Handle hash navigation for smooth scrolling
     const handleHashNavigation = () => {
       const hash = window.location.hash;
       if (hash) {
@@ -444,7 +443,6 @@ const Index: React.FC = () => {
       <YoutubeContentGrid />
       <CTASection />
       
-      {/* Add CreatorShowcase component if needed */}
       <CreatorShowcase />
     </Layout>
   );
