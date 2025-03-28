@@ -18,11 +18,11 @@ export const AlanWattsShowcase: React.FC = () => {
         </div>
         
         <div className="max-w-5xl mx-auto rounded-lg border border-blue-200 bg-white overflow-hidden shadow-sm">
-          <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-            <div className="flex flex-col justify-between h-full">
+          <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-3 items-center">
+            <div className="flex flex-col justify-between h-full pr-4">
               <Link 
                 to="/case-studies/alan-watts" 
-                className="mb-6 inline-block"
+                className="mb-6 inline-block mt-2 ml-1"
                 onClick={() => window.scrollTo(0, 0)}
               >
                 <Button className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-md flex items-center justify-center">
