@@ -1,7 +1,7 @@
 
 import React, { useRef, useEffect } from "react";
 import { GlassmorphicCard } from "./GlassmorphicCard";
-import { CheckCircle, Shield, DollarSign, Youtube, Lock, Workflow, Zap } from "lucide-react";
+import { Shield, DollarSign, Youtube, Lock, ChartBar, Zap } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
@@ -48,7 +48,7 @@ const FeatureItem = ({ children, delay = 0 }) => {
         whileHover={{ scale: 1.2, rotate: 5 }}
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
       >
-        <CheckCircle className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+        <Shield className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
       </motion.div>
       <span className="group-hover:text-blue-600 transition-colors">{children}</span>
     </motion.li>
@@ -129,7 +129,7 @@ export const Services: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              Comprehensive YouTube Content Protection
+              YouTube Content Management
             </motion.h2>
             
             <motion.p 
@@ -139,7 +139,7 @@ export const Services: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              We help creators and brands take control of their content across YouTube
+              Complete control of your content across the YouTube ecosystem
             </motion.p>
           </div>
 
@@ -153,7 +153,7 @@ export const Services: React.FC = () => {
                 variant="bordered"
                 className="relative overflow-hidden transition-all duration-500 hover:shadow-xl h-full backdrop-blur-md border-blue-200/50 z-10"
               >
-                <ServiceIllustration icon={Youtube} color="blue" delay={0.1} />
+                <ServiceIllustration icon={Shield} color="blue" delay={0.1} />
                 
                 <motion.h3 
                   className="text-xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-500"
@@ -162,7 +162,7 @@ export const Services: React.FC = () => {
                   transition={{ duration: 0.4, delay: 0.1 }}
                   viewport={{ once: true }}
                 >
-                  Discover Your Content
+                  Protect
                 </motion.h3>
                 
                 <motion.p 
@@ -172,7 +172,7 @@ export const Services: React.FC = () => {
                   transition={{ duration: 0.4, delay: 0.2 }}
                   viewport={{ once: true }}
                 >
-                  We identify where your content is being used across YouTube, giving you complete visibility.
+                  Secure your intellectual property across YouTube with our automated content protection system.
                 </motion.p>
                 
                 <motion.ul 
@@ -182,9 +182,9 @@ export const Services: React.FC = () => {
                   transition={{ duration: 0.3 }}
                   viewport={{ once: true }}
                 >
-                  <FeatureItem delay={0.3}>Automated content scanning</FeatureItem>
-                  <FeatureItem delay={0.4}>Personalized Dashboard</FeatureItem>
-                  <FeatureItem delay={0.5}>Usage analytics</FeatureItem>
+                  <FeatureItem delay={0.3}>Content identification</FeatureItem>
+                  <FeatureItem delay={0.4}>Automated claiming</FeatureItem>
+                  <FeatureItem delay={0.5}>Takedown management</FeatureItem>
                 </motion.ul>
                 
                 <motion.div 
@@ -207,7 +207,7 @@ export const Services: React.FC = () => {
                 variant="highlight"
                 className="relative overflow-hidden md:-translate-y-4 transition-all duration-500 hover:shadow-2xl h-full backdrop-blur-md before:absolute before:inset-0 before:bg-gradient-to-br before:from-blue-100/50 before:to-transparent before:z-0 before:opacity-50 z-10"
               >
-                <ServiceIllustration icon={Shield} color="blue" delay={0.2} />
+                <ServiceIllustration icon={DollarSign} color="blue" delay={0.2} />
                 
                 <div className="relative z-10">
                   <motion.h3 
@@ -217,7 +217,7 @@ export const Services: React.FC = () => {
                     transition={{ duration: 0.4, delay: 0.1 }}
                     viewport={{ once: true }}
                   >
-                    Protect Your Content
+                    Monetize
                   </motion.h3>
                   
                   <motion.p 
@@ -227,7 +227,7 @@ export const Services: React.FC = () => {
                     transition={{ duration: 0.4, delay: 0.2 }}
                     viewport={{ once: true }}
                   >
-                    Choose how your content is used and manage unauthorized usage according to your preferences.
+                    Transform unauthorized usage into revenue streams while building creator partnerships.
                   </motion.p>
                   
                   <motion.ul 
@@ -237,10 +237,10 @@ export const Services: React.FC = () => {
                     transition={{ duration: 0.3 }}
                     viewport={{ once: true }}
                   >
-                    <FeatureItem delay={0.3}>Automated content claims</FeatureItem>
-                    <FeatureItem delay={0.4}>Protection options</FeatureItem>
-                    <FeatureItem delay={0.5}>Usage management options</FeatureItem>
-                    <FeatureItem delay={0.6}>Dedicated partner manager</FeatureItem>
+                    <FeatureItem delay={0.3}>Revenue optimization</FeatureItem>
+                    <FeatureItem delay={0.4}>Licensing opportunities</FeatureItem>
+                    <FeatureItem delay={0.5}>Royalty collection</FeatureItem>
+                    <FeatureItem delay={0.6}>Monthly payouts</FeatureItem>
                   </motion.ul>
                 </div>
                 
@@ -264,7 +264,7 @@ export const Services: React.FC = () => {
                 variant="bordered"
                 className="relative overflow-hidden transition-all duration-500 hover:shadow-xl h-full backdrop-blur-md border-blue-200/50 z-10"
               >
-                <ServiceIllustration icon={DollarSign} color="blue" delay={0.3} />
+                <ServiceIllustration icon={ChartBar} color="blue" delay={0.3} />
                 
                 <motion.h3 
                   className="text-xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-500"
@@ -273,7 +273,7 @@ export const Services: React.FC = () => {
                   transition={{ duration: 0.4, delay: 0.1 }}
                   viewport={{ once: true }}
                 >
-                  Monetize Your Content
+                  Grow
                 </motion.h3>
                 
                 <motion.p 
@@ -283,7 +283,7 @@ export const Services: React.FC = () => {
                   transition={{ duration: 0.4, delay: 0.2 }}
                   viewport={{ once: true }}
                 >
-                  Turn unauthorized usage into a revenue stream with our monetization options.
+                  Leverage data insights and partnerships to expand your reach and audience.
                 </motion.p>
                 
                 <motion.ul 
@@ -293,9 +293,9 @@ export const Services: React.FC = () => {
                   transition={{ duration: 0.3 }}
                   viewport={{ once: true }}
                 >
-                  <FeatureItem delay={0.3}>Unlock Revenue Potential</FeatureItem>
-                  <FeatureItem delay={0.4}>Creator partnerships</FeatureItem>
-                  <FeatureItem delay={0.5}>Reclaim Stolen Revenue</FeatureItem>
+                  <FeatureItem delay={0.3}>Performance analytics</FeatureItem>
+                  <FeatureItem delay={0.4}>Creator network access</FeatureItem>
+                  <FeatureItem delay={0.5}>Distribution opportunities</FeatureItem>
                 </motion.ul>
                 
                 <motion.div 

@@ -29,7 +29,7 @@ export const ScrollingStats: React.FC = () => {
         <motion.div
           ref={containerRef}
           style={{ opacity }}
-          className="relative overflow-hidden"
+          className="relative overflow-hidden pointer-events-none"
         >
           <motion.div 
             style={{ y }}

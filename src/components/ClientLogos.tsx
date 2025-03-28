@@ -36,10 +36,10 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
             <div className="text-center">
               <h3 className="text-5xl font-bold mb-2">
                 <CountUp 
-                  end={26.8} 
+                  end={26} 
                   duration={counterDuration} 
                   suffix="M+" 
-                  decimals={1}
+                  decimals={0}
                   className="text-5xl font-bold"
                 />
               </h3>

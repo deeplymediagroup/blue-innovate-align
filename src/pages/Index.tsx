@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
@@ -115,7 +114,6 @@ const Index: React.FC = () => {
       observer.observe(el);
     });
 
-    // Handle hash navigation for smooth scrolling
     const handleHashNavigation = () => {
       const hash = window.location.hash;
       if (hash) {
@@ -191,10 +189,7 @@ const Index: React.FC = () => {
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">Optional Licensing, Maximum Benefit</h2>
                 <p className="text-lg text-foreground/70 mb-6">
-                  We are one of the only digital rights management companies that combines claiming with licensing to create a sustainable ecosystem for creators.
-                </p>
-                <p className="text-lg text-foreground/70 mb-6">
-                  Our licensing model is an optional package that allows top creators to thrive. By working with creators, we help bring viral videos to life and create a broader content ecosystem.
+                  Create a thriving, long-term ecosystem with our licensing platform. Partner with creators to drive sustainable growth, while you earn passively with full control and end-to-end documentation.
                 </p>
                 <div className="bg-blue-50 p-6 rounded-lg border border-blue-100">
                   <h3 className="text-xl font-bold mb-4 text-blue-700">The Mindset Advantage</h3>
