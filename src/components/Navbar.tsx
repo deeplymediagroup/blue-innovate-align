@@ -1,168 +1,163 @@
 
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Link, useLocation } from "react-router-dom";
-import { cn } from "@/lib/utils";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import { 
-  Sheet,
-  SheetContent,
-  SheetTrigger
-} from "@/components/ui/sheet";
+import React, { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
-type NavItem = 
-  | { title: string; href: string; }
-  | { name: string; href: string; };
+interface NavbarProps {
+  extraNavLinks?: { title: string; href: string; }[];
+}
 
-// Helper function to get display name from nav item
-const getDisplayName = (item: NavItem): string => {
-  return 'title' in item ? item.title : item.name;
-};
-
-const NAV_ITEMS: NavItem[] = [
-  { title: "Services", href: "/#services" },
-  { title: "Licensing", href: "/#licensing" },
-  { title: "How It Works", href: "/#how-it-works" },
-  { title: "Distribution", href: "/#distribution" },
-  { title: "Case Studies", href: "/case-studies" },
-  { title: "Content", href: "/#content" },
-];
-
-const Navbar = ({ extraNavLinks }: {extraNavLinks?: { title: string; href: string; }[]}) => {
+export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const location = useLocation();
-  const [prevScrollY, setPrevScrollY] = useState(0);
-  const [navVisible, setNavVisible] = useState(true);
-  
-  // Handle scroll events
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 50);
-      
-      // Hide navbar on scroll down, show on scroll up
-      if (scrollPosition > prevScrollY && scrollPosition > 300) {
-        setNavVisible(false);
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
       } else {
-        setNavVisible(true);
+        setIsScrolled(false);
       }
-      
-      setPrevScrollY(scrollPosition);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollY]);
+  }, []);
 
-  // Close mobile menu when changing routes
-  useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [location]);
-
-  const navbarClasses = cn(
-    "fixed w-full z-50 transition-all duration-300",
-    isScrolled 
-      ? "py-2 backdrop-blur-md bg-white/80 shadow-sm" 
-      : "py-4 bg-transparent",
-    !navVisible && "transform -translate-y-full"
-  );
-
-  // Combine default nav items with any extra nav links
-  const allNavItems = extraNavLinks 
-    ? [...NAV_ITEMS, ...extraNavLinks]
-    : NAV_ITEMS;
+  const navLinkVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: (custom: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: 0.1 * custom, duration: 0.5 }
+    })
+  };
 
   return (
-    <header className={navbarClasses}>
-      <div className="container px-4 md:px-6 mx-auto">
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        isScrolled
+          ? "py-3 bg-white/90 backdrop-blur-md shadow-sm"
+          : "py-5 bg-transparent"
+      }`}
+    >
+      <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2">
-            <span className="font-bold text-xl md:text-2xl bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
-              MindsetDRM
-            </span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
-            <NavigationMenu>
-              <NavigationMenuList>
-                {allNavItems.map((item, index) => (
-                  <NavigationMenuItem key={index}>
-                    <Link 
-                      to={item.href} 
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                        "text-sm transition-all px-3",
-                        location.pathname === item.href || 
-                        (location.pathname === "/" && item.href.startsWith("/#"))
-                          ? "text-blue-600 font-medium"
-                          : "text-foreground/80 hover:text-foreground"
-                      )}
-                    >
-                      {getDisplayName(item)}
-                    </Link>
-                  </NavigationMenuItem>
-                ))}
-              </NavigationMenuList>
-            </NavigationMenu>
-            
-            <Button 
-              asChild
-              className="ml-2 bg-blue-600 hover:bg-blue-700 text-white"
+          <div className="flex items-center">
+            <motion.a 
+              href="/" 
+              className="flex items-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
             >
-              <Link to="/contact">Get Started</Link>
-            </Button>
+              <span className="font-display text-xl font-bold text-gradient">
+                MindsetDRM
+              </span>
+            </motion.a>
+          </div>
+
+          <nav className="hidden md:flex items-center space-x-8">
+            {[
+              { name: "Claiming", href: "https://preview--blue-innovate-align.lovable.app/#services" },
+              { name: "Distribution", href: "https://preview--blue-innovate-align.lovable.app/#distribution" },
+              { name: "Licensing", href: "https://preview--blue-innovate-align.lovable.app/#licensing" },
+              ...(extraNavLinks || [])
+            ].map((link, index) => (
+              <motion.a
+                key={index}
+                href={link.href}
+                className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors relative after:absolute after:bottom-[-5px] after:left-0 after:h-[2px] after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full"
+                custom={index}
+                initial="hidden"
+                animate="visible"
+                variants={navLinkVariants}
+              >
+                {link.title || link.name}
+              </motion.a>
+            ))}
           </nav>
 
-          {/* Mobile Menu Trigger */}
-          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon" className="h-9 w-9 p-0">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle menu</span>
+          <motion.div 
+            className="hidden md:flex items-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+          >
+            <a href="/contact">
+              <Button className="bg-blue-600 text-white hover:bg-blue-700 button-shimmer shadow-sm hover-glow">
+                Connect
               </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="flex flex-col pt-16">
-              <div className="flex flex-col space-y-4">
-                {allNavItems.map((item, index) => (
-                  <Link
-                    key={index}
-                    to={item.href}
-                    className={cn(
-                      "py-2 text-lg transition-colors",
-                      location.pathname === item.href || 
-                      (location.pathname === "/" && item.href.startsWith("/#"))
-                        ? "text-blue-600 font-medium"
-                        : "text-foreground/80 hover:text-foreground"
-                    )}
-                  >
-                    {getDisplayName(item)}
-                  </Link>
-                ))}
-                <Button 
-                  asChild
-                  className="mt-4 bg-blue-600 hover:bg-blue-700 text-white w-full"
-                >
-                  <Link to="/contact">Get Started</Link>
-                </Button>
-              </div>
-            </SheetContent>
-          </Sheet>
+            </a>
+          </motion.div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden flex items-center"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle Menu"
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6 text-foreground" />
+            ) : (
+              <Menu className="h-6 w-6 text-foreground" />
+            )}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg shadow-lg"
+          >
+            <div className="container mx-auto px-4 py-6 space-y-6">
+              <nav className="flex flex-col space-y-4">
+                {[
+                  { name: "Claiming", href: "https://preview--blue-innovate-align.lovable.app/#services" },
+                  { name: "Distribution", href: "https://preview--blue-innovate-align.lovable.app/#distribution" },
+                  { name: "Licensing", href: "https://preview--blue-innovate-align.lovable.app/#licensing" },
+                  ...(extraNavLinks || [])
+                ].map((link, index) => (
+                  <motion.a
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 * index, duration: 0.3 }}
+                    href={link.href}
+                    className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.title || link.name}
+                  </motion.a>
+                ))}
+              </nav>
+              <motion.div 
+                className="grid gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.3 }}
+              >
+                <a href="/contact">
+                  <Button
+                    className="w-full bg-blue-600 text-white hover:bg-blue-700 button-shimmer"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Connect
+                  </Button>
+                </a>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
-
-export { Navbar };
-export default Navbar;

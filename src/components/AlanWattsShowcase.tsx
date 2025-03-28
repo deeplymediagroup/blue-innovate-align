@@ -83,7 +83,7 @@ export const AlanWattsShowcase: React.FC = () => {
             <div className="md:col-span-5 h-full flex items-center">
               <div className="relative overflow-hidden rounded-md h-full w-full">
                 <img 
-                  src="/lovable-uploads/ef8d07d9-25b6-4921-85c1-b7d8e7ca3be6.png" 
+                  src="public/lovable-uploads/ef8d07d9-25b6-4921-85c1-b7d8e7ca3be6.png" 
                   alt="Alan Watts" 
                   className="w-full h-[300px] md:h-[350px] object-cover hover:scale-105 transition-transform duration-700"
                 />
