@@ -47,7 +47,14 @@ export const AlanWattsShowcase: React.FC = () => {
               </div>
             </div>
             
-            <div className="flex items-center mb-10">
+            <Link to="/case-studies/alan-watts" className="block mb-8">
+              <Button className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-medium text-lg py-6 px-8 rounded-lg flex items-center justify-center">
+                View full case study 
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
+              </Button>
+            </Link>
+            
+            <div className="flex items-center">
               <div className="h-14 w-14 rounded-full bg-gray-200 mr-4 overflow-hidden">
                 <img 
                   src="https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png" 
@@ -60,13 +67,6 @@ export const AlanWattsShowcase: React.FC = () => {
                 <p className="text-sm text-gray-600">Director, Alan Watts Organization</p>
               </div>
             </div>
-            
-            <a href="/case-studies/alan-watts">
-              <Button variant="link" className="text-blue-600 group flex items-center">
-                View full case study 
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
-              </Button>
-            </a>
           </div>
           
           <div className="relative">

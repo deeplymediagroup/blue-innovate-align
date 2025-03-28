@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
@@ -12,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Slider } from "@/components/ui/slider";
 import {
   PieChart,
   Pie,
@@ -22,13 +24,24 @@ import {
 } from "recharts";
 
 const Index: React.FC = () => {
-  const revenueData = [
+  const [rightHolderValue, setRightHolderValue] = useState(40);
+  const [revenueData, setRevenueData] = useState([
     { name: "Rights Holder", value: 40, color: "#0A2463" }, // Darker blue
     { name: "Creator", value: 50, color: "#3E92CC" }, // Lighter blue
     { name: "Mindset", value: 10, color: "#93c5fd" }, // Even lighter blue
-  ];
+  ]);
   
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  
+  useEffect(() => {
+    // Update the pie chart data when rightHolderValue changes
+    const creatorValue = 90 - rightHolderValue;
+    setRevenueData([
+      { name: "Rights Holder", value: rightHolderValue, color: "#0A2463" },
+      { name: "Creator", value: creatorValue, color: "#3E92CC" },
+      { name: "Mindset", value: 10, color: "#93c5fd" },
+    ]);
+  }, [rightHolderValue]);
   
   const channelStats = [
     { 
@@ -143,13 +156,16 @@ const Index: React.FC = () => {
     setActiveIndex(null);
   };
 
+  const handleSliderChange = (value: number[]) => {
+    setRightHolderValue(value[0]);
+  };
+
   return (
     <Layout>
       <Hero />
       <ClientLogos />
       <AlanWattsShowcase />
-      <Services />
-      <YoutubeContentGrid />
+      
       <div className="py-16 container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
@@ -161,6 +177,9 @@ const Index: React.FC = () => {
         </div>
         <CreatorGrid className="max-w-5xl mx-auto" />
       </div>
+      
+      <Services />
+      <YoutubeContentGrid />
       <HowItWorks />
 
       <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
@@ -260,7 +279,7 @@ const Index: React.FC = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="flex justify-center"
+                className="flex justify-center flex-col items-center"
               >
                 <div className="w-full max-w-md">
                   <div className="w-full aspect-square flex items-center justify-center">
@@ -335,6 +354,24 @@ const Index: React.FC = () => {
                         <p className="text-2xl font-bold" style={{ color: segment.color }}>{segment.value}%</p>
                       </div>
                     ))}
+                  </div>
+                  
+                  <div className="mt-6 text-center">
+                    <p className="text-sm text-gray-600 mb-2">Drag the slider to adjust revenue distribution</p>
+                    <div className="px-4">
+                      <Slider
+                        value={[rightHolderValue]}
+                        onValueChange={handleSliderChange}
+                        max={90}
+                        min={0}
+                        step={1}
+                        className="mb-2"
+                      />
+                      <div className="flex justify-between">
+                        <span className="text-xs text-gray-500">0%</span>
+                        <span className="text-xs text-gray-500">90%</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
