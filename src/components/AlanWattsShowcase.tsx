@@ -9,68 +9,100 @@ export const AlanWattsShowcase: React.FC = () => {
   return (
     <section className="py-20 bg-gradient-to-b from-blue-50 via-white to-blue-50/80 relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-8">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-            Featured Client
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            How we're helping to protect and monetize Alan Watts' digital legacy
-          </p>
+        <div className="mb-4">
+          <span className="text-sm uppercase tracking-wider text-blue-600">FEATURED CLIENT</span>
         </div>
         
-        <div className="bg-white rounded-xl shadow-md overflow-hidden max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-8">
-              <Link to="/case-studies/alan-watts">
-                <Button className="mb-8 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-full flex items-center justify-center">
-                  View Full Case Study 
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              
-              <div className="flex items-center mb-4">
-                <div className="h-12 w-12 rounded-full bg-gray-200 mr-3 overflow-hidden">
-                  <img 
-                    src="https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png" 
-                    alt="Mark Watts" 
-                    className="h-full w-full object-cover object-top"
-                  />
-                </div>
-                <div>
-                  <p className="font-bold text-lg">Mark Watts</p>
-                  <p className="text-blue-600">Alan Watts Organization</p>
-                </div>
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">
+          Alan Watts Organization
+        </h2>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <p className="text-lg text-gray-700 mb-12 max-w-xl">
+              We've helped the Alan Watts Organization recover and monetize
+              unauthorized usage of their content across YouTube.
+            </p>
+            
+            <div className="bg-white/90 shadow-lg backdrop-blur-sm rounded-lg p-8 mb-8 transition-transform duration-300 hover:shadow-xl">
+              <div className="mb-4">
+                <p className="text-gray-600">Monthly Revenue Recovered</p>
               </div>
               
-              <p className="mb-8 text-gray-700 italic">
-                "MindsetDRM not only safeguarded my father's intellectual property but allowed it to flourish in the digital age. Their understanding of the balance between preservation and innovation has brought my fathers teachings to millions"
-              </p>
+              <div className="flex items-baseline">
+                <h3 className="text-5xl font-bold text-blue-600">$9,873</h3>
+                <span className="text-2xl ml-1 text-gray-400">.68</span>
+                <span className="ml-2 text-gray-400">/month</span>
+              </div>
               
-              <div className="grid grid-cols-3 gap-4">
-                <div className="bg-blue-50 p-4 rounded-lg text-center">
-                  <p className="text-2xl font-bold text-blue-600">99.9%</p>
-                  <p className="text-sm text-gray-600">Content Claimed</p>
+              <div className="mt-6 space-y-3">
+                <div className="flex items-center">
+                  <div className="h-2 w-2 rounded-full bg-green-500 mr-3"></div>
+                  <p className="text-gray-700">Live Monitoring</p>
                 </div>
-                <div className="bg-blue-50 p-4 rounded-lg text-center">
-                  <p className="text-2xl font-bold text-blue-600">660%</p>
-                  <p className="text-sm text-gray-600">Revenue Growth</p>
-                </div>
-                <div className="bg-blue-50 p-4 rounded-lg text-center">
-                  <p className="text-2xl font-bold text-blue-600">27k+</p>
-                  <p className="text-sm text-gray-600">Active Claims</p>
+                <div className="flex items-center">
+                  <div className="h-2 w-2 rounded-full bg-green-500 mr-3"></div>
+                  <p className="text-gray-700">27,000+ Active Claims</p>
                 </div>
               </div>
             </div>
             
-            <div className="relative h-full">
+            <Link to="/case-studies/alan-watts">
+              <Button className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-medium text-lg py-6 px-8 rounded-lg flex items-center justify-center">
+                View full case study 
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
+              </Button>
+            </Link>
+            
+            <div className="mt-8 flex items-center">
+              <div className="h-14 w-14 rounded-full bg-gray-200 mr-4 overflow-hidden">
+                <img 
+                  src="https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png" 
+                  alt="Mark Watts" 
+                  className="h-full w-full object-cover object-top"
+                />
+              </div>
+              <div>
+                <p className="font-medium">Mark Watts</p>
+                <p className="text-sm text-gray-600">Director, Alan Watts Organization</p>
+              </div>
+            </div>
+            
+            <p className="mt-4 text-gray-600 italic border-l-4 border-blue-300 pl-4">
+              "MindsetDRM not only safeguarded my father's intellectual property but allowed it to flourish in the digital age. Their understanding of the balance between preservation and innovation has brought my fathers teachings to millions"
+            </p>
+          </div>
+          
+          <div className="relative">
+            <div className="bg-gray-200 rounded-xl aspect-video flex items-center justify-center overflow-hidden">
               <img 
                 src="https://img.youtube.com/vi/dYSQ1NF1hvw/maxresdefault.jpg" 
                 alt="Alan Watts content" 
                 className="w-full h-full object-cover"
               />
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-black/60 text-white">
-                <p className="font-bold text-xl">Alan Watts</p>
-                <p className="text-sm">British philosopher known for interpreting Eastern philosophy for Western audiences</p>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="h-16 w-16 bg-white/80 rounded-full flex items-center justify-center">
+                  <svg className="h-8 w-8 text-blue-600 ml-1" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
+              
+              <div className="absolute bottom-6 left-6 bg-black/70 backdrop-blur-sm py-2 px-3 rounded shadow-md text-white max-w-xs">
+                <p className="font-medium">Alan Watts</p>
+                <p className="text-sm text-gray-300">British philosopher known for interpreting Eastern philosophy for Western audiences</p>
+              </div>
+            </div>
+            
+            <div className="absolute bottom-4 left-4 bg-white/80 backdrop-blur-sm py-2 px-3 rounded shadow-md flex items-center">
+              <div className="h-6 w-6 bg-red-600 rounded flex items-center justify-center mr-2">
+                <svg className="h-4 w-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-xs font-medium">YouTube Content ID</p>
+                <p className="text-xs text-gray-600">27,000+ claims monitored</p>
               </div>
             </div>
           </div>
