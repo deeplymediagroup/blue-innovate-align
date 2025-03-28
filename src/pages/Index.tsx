@@ -388,3 +388,5 @@ const Index: React.FC = () => {
     </Layout>
   );
 };
+
+export default Index;
