@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Layout } from "@/components/Layout";
 import { GlassmorphicCard } from "@/components/GlassmorphicCard";
@@ -21,7 +22,8 @@ import {
   PieChart,
   Pie,
   Cell,
-  ComposedChart
+  ComposedChart,
+  LabelList
 } from "recharts";
 
 const AlanWattsCase: React.FC = () => {
@@ -60,6 +62,29 @@ const AlanWattsCase: React.FC = () => {
       return typeof value === 'number' ? `$${value.toFixed(2)}` : `$${String(value)}`;
     }
     return value;
+  };
+
+  // Custom label for gender pie chart
+  const renderCustomizedLabel = (props: any) => {
+    const { cx, cy, midAngle, innerRadius, outerRadius, name, value, fill, percent } = props;
+    const radius = outerRadius * 1.3;
+    const RADIAN = Math.PI / 180;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+    return (
+      <text 
+        x={x} 
+        y={y} 
+        fill={fill}
+        textAnchor={x > cx ? 'start' : 'end'} 
+        dominantBaseline="central"
+        fontSize="12"
+        fontWeight="500"
+      >
+        {`${name}: ${value}%`}
+      </text>
+    );
   };
 
   return (
@@ -194,7 +219,7 @@ const AlanWattsCase: React.FC = () => {
                       <YAxis yAxisId="left" orientation="left" stroke="#3b82f6" />
                       <YAxis yAxisId="right" orientation="right" stroke="#10b981" />
                       <Tooltip 
-                        formatter={(value, name) => formatTooltipValue(value, name)}
+                        formatter={formatTooltipValue}
                       />
                       <Legend />
                       <Line 
@@ -305,7 +330,7 @@ const AlanWattsCase: React.FC = () => {
                         <div>
                           <h4 className="text-lg font-bold mb-2">Creator Ecosystem</h4>
                           <p className="text-foreground/70">
-                            MindsetDRM built an ecosystem where creators could engage with Alan Watts' teachings in a legitimate and profitable way through a licensing program.
+                            MindsetDRM built an ecosystem where creators could engage with Alan Watts' work in a legitimate and profitable way through a licensing program.
                           </p>
                         </div>
                       </div>
@@ -391,12 +416,30 @@ const AlanWattsCase: React.FC = () => {
                             data={genderData}
                             cx="50%"
                             cy="50%"
-                            labelLine={false}
+                            labelLine={true}
+                            outerRadius={80}
+                            fill="#8884d8"
+                            dataKey="value"
+                            label={renderCustomizedLabel}
+                            isAnimationActive={false}
                           >
                             {genderData.map((entry, index) => (
-                              <Cell key={`cell-${index}`} fill={entry.color} name={String(entry.name)} />
+                              <Cell 
+                                key={`cell-${index}`} 
+                                fill={entry.color} 
+                                stroke={entry.color}
+                              />
                             ))}
                           </Pie>
+                          <Legend 
+                            payload={
+                              genderData.map(item => ({
+                                value: `${item.name}: ${item.value}%`,
+                                color: item.color,
+                                type: "circle",
+                              }))
+                            }
+                          />
                           <Tooltip formatter={(value) => `${value}%`} />
                         </PieChart>
                       </ResponsiveContainer>

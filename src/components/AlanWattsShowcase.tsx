@@ -31,14 +31,15 @@ export const AlanWattsShowcase: React.FC = () => {
           viewport={{ once: true, margin: "-50px" }}
           className="max-w-5xl mx-auto rounded-lg border border-blue-200 bg-white overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
         >
-          <div className="p-8 grid grid-cols-1 md:grid-cols-5 gap-6 items-center">
-            <div className="md:col-span-3 flex flex-col justify-between h-full space-y-6">
+          <div className="p-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+            <div className="md:col-span-7 flex flex-col justify-between h-full space-y-6">
               <div className="flex flex-col space-y-6">
                 <Link 
                   to="/case-studies/alan-watts" 
                   onClick={() => window.scrollTo(0, 0)}
+                  className="w-fit"
                 >
-                  <Button className="w-fit bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-md flex items-center justify-center shadow-sm hover:shadow transition-all">
+                  <Button className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-md flex items-center justify-center shadow-sm hover:shadow transition-all">
                     View Full Case Study 
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
@@ -79,10 +80,10 @@ export const AlanWattsShowcase: React.FC = () => {
               </div>
             </div>
             
-            <div className="md:col-span-2 h-full flex items-center">
+            <div className="md:col-span-5 h-full flex items-center">
               <div className="relative overflow-hidden rounded-md h-full w-full">
                 <img 
-                  src="public/lovable-uploads/cc93ab06-52d9-4bc6-982c-e27b607f63cf.png" 
+                  src="public/lovable-uploads/ef8d07d9-25b6-4921-85c1-b7d8e7ca3be6.png" 
                   alt="Alan Watts" 
                   className="w-full h-[300px] md:h-[350px] object-cover hover:scale-105 transition-transform duration-700"
                 />

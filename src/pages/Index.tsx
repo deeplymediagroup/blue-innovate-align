@@ -178,8 +178,11 @@ const Index: React.FC = () => {
       </div>
       
       <AlanWattsShowcase />
-      
-      {/* Optional Licensing Section - Moved above Services */}
+
+      {/* Services section - Moved above Licensing */}
+      <Services />
+
+      {/* Optional Licensing Section - Moved below Services */}
       <section id="licensing" className="py-16 pt-24 bg-gradient-to-b from-blue-50/30 to-white w-full">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-8">
@@ -322,9 +325,7 @@ const Index: React.FC = () => {
         </div>
       </section>
       
-      <Services />
-      
-      {/* How It Works section - Moved above Distribution */}
+      {/* How It Works section */}
       <HowItWorks />
 
       <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
