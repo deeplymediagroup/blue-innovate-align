@@ -23,12 +23,12 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="/#distribution" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://preview--blue-innovate-align.lovable.app/distribution" className="text-gray-400 hover:text-white transition-colors">
                   Distribution
                 </a>
               </li>
               <li>
-                <a href="/#licensing" className="text-gray-400 hover:text-white transition-colors">
+                <a href="https://preview--blue-innovate-align.lovable.app/licensing" className="text-gray-400 hover:text-white transition-colors">
                   Licensing
                 </a>
               </li>

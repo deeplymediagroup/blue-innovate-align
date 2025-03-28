@@ -51,13 +51,13 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
               Claiming
             </a>
             <a
-              href="#distribution"
+              href="https://preview--blue-innovate-align.lovable.app/distribution"
               className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
             >
               Distribution
             </a>
             <a
-              href="#licensing"
+              href="https://preview--blue-innovate-align.lovable.app/licensing"
               className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors"
             >
               Licensing
@@ -112,14 +112,14 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
               Claiming
             </a>
             <a
-              href="#distribution"
+              href="https://preview--blue-innovate-align.lovable.app/distribution"
               className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Distribution
             </a>
             <a
-              href="#licensing"
+              href="https://preview--blue-innovate-align.lovable.app/licensing"
               className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >

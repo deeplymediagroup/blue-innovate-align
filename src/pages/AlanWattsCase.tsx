@@ -1,9 +1,10 @@
+
 import React from "react";
 import { Layout } from "@/components/Layout";
 import { GlassmorphicCard } from "@/components/GlassmorphicCard";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowDown, CheckCircle2, PlayCircle, TrendingUp } from "lucide-react";
+import { ArrowRight, ArrowLeft, CheckCircle2, PlayCircle, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import { 
   AreaChart, 
@@ -48,8 +49,8 @@ const AlanWattsCase: React.FC = () => {
 
   // Gender demographics data
   const genderData = [
-    { name: "Male", value: 80.4, color: "#1e40af" }, // Darker blue
-    { name: "Female", value: 18.9, color: "#60a5fa" }, // Lighter blue
+    { name: "Male", value: 80.4, color: "#0A2463" }, // Darker blue
+    { name: "Female", value: 18.9, color: "#3E92CC" }, // Lighter blue
     { name: "User Specified", value: 0.7, color: "#a855f7" },
   ];
 
@@ -67,16 +68,47 @@ const AlanWattsCase: React.FC = () => {
     <Layout>
       <div className="pt-24 md:pt-32 pb-16">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Case Study</h1>
-            <p className="text-xl text-foreground/70">
-              Transforming Alan Watts' Digital Legacy on YouTube: A Partnership with YouTube and MindsetDRM
-            </p>
+          {/* New header section based on the provided image */}
+          <div className="mb-10">
+            <Link to="/case-studies" className="flex items-center text-blue-500 hover:text-blue-700 mb-4">
+              <ArrowLeft className="mr-1 h-4 w-4" /> Back to Case Studies
+            </Link>
+            
+            <h1 className="text-4xl md:text-5xl font-bold mb-8">Alan Watts Organization Case Study</h1>
           </div>
           
-          <GlassmorphicCard className="p-8 md:p-12 max-w-5xl mx-auto mt-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <GlassmorphicCard className="p-8 md:p-12 max-w-5xl mx-auto mb-16 bg-white">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div>
+                <h2 className="text-2xl font-bold mb-4">About the Project</h2>
+                <p className="text-gray-600 mb-6">
+                  The Alan Watts Organization approached us to help protect their intellectual property across YouTube, 
+                  where thousands of channels were using Alan Watts' content without permission.
+                </p>
+                <p className="text-gray-600 mb-8">
+                  Our solution provided comprehensive rights management to identify, claim, and monetize unauthorized usage, 
+                  resulting in significant revenue growth and improved content control.
+                </p>
+                
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+                  <div>
+                    <p className="text-3xl font-bold text-blue-600">99.9%</p>
+                    <p className="text-sm text-gray-500">Content Claimed</p>
+                  </div>
+                  <div>
+                    <p className="text-3xl font-bold text-blue-600">27K+</p>
+                    <p className="text-sm text-gray-500">Claims Processed</p>
+                  </div>
+                  <div>
+                    <p className="text-3xl font-bold text-blue-600">660%</p>
+                    <p className="text-sm text-gray-500">Revenue Growth</p>
+                  </div>
+                  <div>
+                    <p className="text-3xl font-bold text-blue-600">866+</p>
+                    <p className="text-sm text-gray-500">Licensed Videos</p>
+                  </div>
+                </div>
+                
                 <div className="flex items-center mb-4">
                   <div className="h-14 w-14 rounded-full bg-gray-200 mr-4 overflow-hidden">
                     <img 
@@ -90,39 +122,14 @@ const AlanWattsCase: React.FC = () => {
                     <p className="text-sm text-gray-600">Director, Alan Watts Organization</p>
                   </div>
                 </div>
-                <h3 className="text-3xl font-bold mb-4">
-                  The Alan Watts Organization
-                </h3>
-                <p className="text-foreground/70 mb-6">
-                  When Mark Watts, along with the Alan Watts Organization (AWEU), sought to protect and properly monetize the vast collection of Alan Watts' teachings across YouTube, the digital landscape posed significant challenges.
-                </p>
-                <div className="flex space-x-8 mb-8">
-                  <div>
-                    <p className="text-3xl font-bold text-blue-600">99.9%</p>
-                    <p className="text-sm text-foreground/60">Content Claimed</p>
-                  </div>
-                  <div>
-                    <p className="text-3xl font-bold text-blue-600">27K+</p>
-                    <p className="text-sm text-foreground/60">Claims Processed</p>
-                  </div>
-                  <div>
-                    <p className="text-3xl font-bold text-blue-600">660%</p>
-                    <p className="text-sm text-foreground/60">Revenue Growth</p>
-                  </div>
-                </div>
               </div>
-              <div className="relative">
-                <motion.div 
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <img
-                    src="/lovable-uploads/52177375-4183-4a15-b829-d9af2a03b1ef.png"
-                    alt="Alan Watts"
-                    className="rounded-lg w-full relative z-0 shadow-lg aspect-[4/3] object-cover"
-                  />
-                </motion.div>
+              
+              <div>
+                <img 
+                  src="/lovable-uploads/8bb8bfe7-75d6-4f96-8a7a-3a9bfcb30dd3.png" 
+                  alt="Alan Watts" 
+                  className="rounded-lg w-full h-full object-cover shadow-lg"
+                />
               </div>
             </div>
           </GlassmorphicCard>
