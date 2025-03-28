@@ -77,7 +77,7 @@ const Index: React.FC = () => {
       name: "True Meaning", 
       subscribers: "526K", 
       views: "38M+", 
-      icon: "/lovable-uploads/207c40c2-b866-4be5-be78-b3f27b4b69db.png" 
+      icon: "/lovable-uploads/6860289e-a663-4308-98bc-ef73a755ad49.png" 
     },
   ];
 
