@@ -50,11 +50,12 @@ const App = () => (
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/case-studies/alan-watts" element={<AlanWattsCase />} />
           
-          {/* Section redirects */}
+          {/* Section redirects - updated for better navigation */}
           <Route path="/services" element={<SectionRedirect to="/#services" />} />
           <Route path="/distribution" element={<SectionRedirect to="/#distribution" />} />
           <Route path="/licensing" element={<SectionRedirect to="/#licensing" />} />
           <Route path="/claiming" element={<SectionRedirect to="/#services" />} />
+          <Route path="/protect" element={<SectionRedirect to="/#services" />} />
           
           {/* Scale and Enterprise program redirects */}
           <Route path="/scale" element={<SectionRedirect to="/#pricing" />} />

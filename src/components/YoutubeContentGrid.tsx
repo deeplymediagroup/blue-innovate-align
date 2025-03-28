@@ -8,6 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { motion } from "framer-motion";
 
 export const YoutubeContentGrid: React.FC = () => {
   // Updated YouTube content data with accurate popular videos and correct thumbnails
@@ -63,15 +64,42 @@ export const YoutubeContentGrid: React.FC = () => {
     }
   ];
 
+  // Add decorative elements for more visual interest
+  const Decoration = ({ className }) => (
+    <motion.div 
+      className={`absolute rounded-full bg-blue-100/50 backdrop-blur-sm z-0 ${className}`}
+      animate={{ 
+        scale: [1, 1.2, 1],
+        opacity: [0.2, 0.4, 0.2]
+      }}
+      transition={{ 
+        duration: 8, 
+        ease: "easeInOut", 
+        repeat: Infinity,
+        repeatType: "mirror" 
+      }}
+    />
+  );
+
   return (
-    <section className="py-16 pb-24 bg-gradient-to-b from-blue-50 to-white overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12">
+    <section className="py-16 pb-24 bg-gradient-to-b from-blue-50 to-white overflow-hidden relative">
+      {/* Decorative elements */}
+      <Decoration className="w-64 h-64 -top-32 right-0 transform rotate-45" />
+      <Decoration className="w-80 h-80 -bottom-40 -left-20 transform -rotate-15" />
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="text-center mb-12"
+        >
           <h2 className="text-3xl font-bold mb-3">Content We Amplify</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             We work with world-class creators to distribute your content
           </p>
-        </div>
+        </motion.div>
 
         <div className="relative">
           <Carousel
@@ -84,13 +112,20 @@ export const YoutubeContentGrid: React.FC = () => {
             <CarouselContent className="-ml-2 md:-ml-4">
               {videos.map((video, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                  <YoutubeContentCard
-                    title={video.title}
-                    channel={video.channel}
-                    views={video.views}
-                    timeAgo={video.timeAgo}
-                    thumbnail={video.thumbnail}
-                  />
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.05 }}
+                    viewport={{ once: true }}
+                  >
+                    <YoutubeContentCard
+                      title={video.title}
+                      channel={video.channel}
+                      views={video.views}
+                      timeAgo={video.timeAgo}
+                      thumbnail={video.thumbnail}
+                    />
+                  </motion.div>
                 </CarouselItem>
               ))}
             </CarouselContent>

@@ -1,81 +1,112 @@
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { GlassmorphicCard } from "./GlassmorphicCard";
-import { Shield, DollarSign, Youtube, Lock, ChartBar, Zap } from "lucide-react";
+import { Shield, DollarSign, ChartBar } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 
-// Service illustration component
-const ServiceIllustration = ({ icon: Icon, color, delay = 0 }) => {
+// Animated SVG decorator
+const DecorativeSVG = ({ className = "" }) => {
   return (
-    <motion.div 
-      className="absolute -top-10 -right-10 w-28 h-28 pointer-events-none"
-      initial={{ opacity: 0, y: 20, rotate: 5 }}
-      whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-      transition={{ delay, duration: 0.5 }}
-      viewport={{ once: true, margin: "-50px" }}
+    <motion.svg 
+      className={`absolute pointer-events-none ${className}`}
+      width="180" 
+      height="180" 
+      viewBox="0 0 100 100" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ 
+        opacity: [0.2, 0.5, 0.2],
+        scale: [0.8, 1.1, 0.8],
+        rotate: [0, 10, 0]
+      }}
+      transition={{ 
+        duration: 12, 
+        ease: "easeInOut", 
+        repeat: Infinity,
+        repeatType: "mirror" 
+      }}
     >
-      <motion.div 
-        className={`w-full h-full rounded-full bg-${color}/10 flex items-center justify-center transform rotate-12`}
-        animate={{ 
-          rotate: [12, 5, 12],
-          scale: [1, 1.05, 1] 
-        }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <motion.div 
-          className={`w-20 h-20 rounded-full bg-gradient-to-br from-${color}/20 to-${color}/5 backdrop-blur-sm border border-${color}/20 shadow-lg flex items-center justify-center`}
-        >
-          <Icon className={`h-10 w-10 text-${color}-500`} />
-        </motion.div>
-      </motion.div>
-    </motion.div>
+      <path 
+        d="M50 5C25.1 5 5 25.1 5 50s20.1 45 45 45 45-20.1 45-45S74.9 5 50 5zm0 80c-19.3 0-35-15.7-35-35s15.7-35 35-35 35 15.7 35 35-15.7 35-35 35z" 
+        fill="rgba(59, 130, 246, 0.1)" 
+      />
+      <circle cx="50" cy="50" r="20" stroke="rgba(59, 130, 246, 0.2)" strokeWidth="4" fill="none" />
+    </motion.svg>
   );
 };
 
-// Animated feature item
-const FeatureItem = ({ children, delay = 0 }) => {
+// Service card component
+const ServiceCard = ({ title, description, icon: Icon, features, delay = 0, highlight = false }) => {
+  const isInView = useInView({ once: true, amount: 0.3 });
+  
   return (
-    <motion.li 
-      className="flex items-start group"
-      initial={{ opacity: 0, x: -10 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ delay, duration: 0.4 }}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay }}
       viewport={{ once: true }}
+      className="h-full"
     >
-      <motion.div
-        whileHover={{ scale: 1.2, rotate: 5 }}
-        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+      <GlassmorphicCard
+        variant={highlight ? "highlight" : "bordered"}
+        className={`relative h-full ${highlight ? 'md:-translate-y-4' : ''} overflow-hidden transition-all duration-500 hover:shadow-xl backdrop-blur-md z-10`}
       >
-        <Shield className="h-5 w-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
-      </motion.div>
-      <span className="group-hover:text-blue-600 transition-colors">{children}</span>
-    </motion.li>
-  );
-};
-
-// Abstract shapes for decoration
-const AbstractShapes = () => {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <motion.div 
-        className="absolute top-20 right-20 w-64 h-64 bg-blue-300/10 rounded-full blur-3xl"
-        animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3]
-        }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div 
-        className="absolute bottom-40 left-20 w-80 h-80 bg-blue-400/10 rounded-full blur-3xl"
-        animate={{ 
-          scale: [1.2, 1, 1.2],
-          opacity: [0.4, 0.2, 0.4]
-        }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-      />
-    </div>
+        <div className="absolute top-6 right-6">
+          <div className={`p-3 rounded-full bg-gradient-to-br from-blue-100 to-blue-50 shadow-sm`}>
+            <Icon className="h-7 w-7 text-blue-600" />
+          </div>
+        </div>
+        
+        <motion.h3 
+          className="text-2xl font-bold mb-5 bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-500 mt-10"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: delay + 0.1 }}
+          viewport={{ once: true }}
+        >
+          {title}
+        </motion.h3>
+        
+        <motion.p 
+          className="text-foreground/70 mb-6"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: delay + 0.2 }}
+          viewport={{ once: true }}
+        >
+          {description}
+        </motion.p>
+        
+        <motion.ul 
+          className="space-y-3 mb-6"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          viewport={{ once: true }}
+        >
+          {features.map((feature, index) => (
+            <motion.li 
+              key={index}
+              className="flex items-start"
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: delay + 0.3 + (index * 0.1) }}
+              viewport={{ once: true }}
+            >
+              <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5">
+                <div className="h-2.5 w-2.5 rounded-full bg-blue-600"></div>
+              </div>
+              <span>{feature}</span>
+            </motion.li>
+          ))}
+        </motion.ul>
+        
+        <DecorativeSVG className="-bottom-20 -left-20 opacity-30" />
+      </GlassmorphicCard>
+    </motion.div>
   );
 };
 
@@ -89,20 +120,62 @@ export const Services: React.FC = () => {
   
   const y1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
   const y2 = useTransform(scrollYProgress, [0, 1], [50, -50]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [150, -50]);
   
-  useEffect(() => {
-    if (isInView && sectionRef.current) {
-      sectionRef.current.classList.add("revealed");
+  const servicesData = [
+    {
+      title: "Protect",
+      description: "Secure your intellectual property across YouTube with our automated content protection system.",
+      icon: Shield,
+      features: [
+        "Content identification technology",
+        "Claim unauthorized uploads",
+        "Block infringing content",
+        "Monitor usage across YouTube"
+      ],
+      delay: 0.1
+    },
+    {
+      title: "License",
+      description: "Transform unauthorized usage into revenue streams while building creator partnerships.",
+      icon: DollarSign,
+      features: [
+        "Create sustainable revenue",
+        "Build creator partnerships",
+        "Expand content reach",
+        "Monthly passive income"
+      ],
+      delay: 0.2,
+      highlight: true
     }
-  }, [isInView]);
+  ];
+
+  // Decorative elements
+  const FloatingElement = ({ className, delay = 0, duration = 20 }) => (
+    <motion.div
+      className={`absolute rounded-full bg-blue-400/5 backdrop-blur-3xl z-0 ${className}`}
+      animate={{ 
+        y: [20, -20, 20],
+        x: [10, -10, 10],
+        scale: [1, 1.1, 1],
+        rotate: [0, 5, 0],
+      }}
+      transition={{ 
+        duration, 
+        ease: "easeInOut", 
+        delay, 
+        repeat: Infinity,
+        repeatType: "mirror" 
+      }}
+    />
+  );
 
   return (
     <section id="services" className="py-24 bg-gradient-to-b from-background to-blue-50/50 relative overflow-hidden">
-      {/* Abstract background shapes */}
-      <AbstractShapes />
+      {/* Decorative background elements */}
+      <FloatingElement className="w-96 h-96 top-20 -right-48 opacity-40" delay={0} duration={25} />
+      <FloatingElement className="w-80 h-80 bottom-40 -left-40 opacity-30" delay={5} duration={20} />
       
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div
           ref={sectionRef}
           className="reveal-section max-w-5xl mx-auto"
@@ -123,7 +196,7 @@ export const Services: React.FC = () => {
             </motion.div>
             
             <motion.h2 
-              className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-gradient"
+              className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-gradient bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-500"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -143,171 +216,15 @@ export const Services: React.FC = () => {
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-16">
-            <motion.div
-              style={{ y: y1 }}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="h-full"
-            >
-              <GlassmorphicCard
-                variant="bordered"
-                className="relative overflow-hidden transition-all duration-500 hover:shadow-xl h-full backdrop-blur-md border-blue-200/50 z-10"
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16">
+            {servicesData.map((service, index) => (
+              <motion.div
+                key={index}
+                style={{ y: index === 0 ? y1 : y2 }}
               >
-                <ServiceIllustration icon={Shield} color="blue" delay={0.1} />
-                
-                <motion.h3 
-                  className="text-xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-500"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  Protect
-                </motion.h3>
-                
-                <motion.p 
-                  className="text-foreground/70 mb-6"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  Secure your intellectual property across YouTube with our automated content protection system.
-                </motion.p>
-                
-                <motion.ul 
-                  className="space-y-2 mb-6"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  viewport={{ once: true }}
-                >
-                  <FeatureItem delay={0.3}>Content identification</FeatureItem>
-                  <FeatureItem delay={0.4}>Automated claiming</FeatureItem>
-                  <FeatureItem delay={0.5}>Takedown management</FeatureItem>
-                </motion.ul>
-                
-                <motion.div 
-                  className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-blue-50 blur-3xl opacity-50 z-0"
-                  animate={{ 
-                    scale: [1, 1.2, 1],
-                    opacity: [0.5, 0.3, 0.5]
-                  }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                />
-              </GlassmorphicCard>
-            </motion.div>
-
-            <motion.div
-              style={{ y: y2 }}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="h-full"
-            >
-              <GlassmorphicCard
-                variant="highlight"
-                className="relative overflow-hidden md:-translate-y-4 transition-all duration-500 hover:shadow-2xl h-full backdrop-blur-md before:absolute before:inset-0 before:bg-gradient-to-br before:from-blue-100/50 before:to-transparent before:z-0 before:opacity-50 z-10"
-              >
-                <ServiceIllustration icon={DollarSign} color="blue" delay={0.2} />
-                
-                <div className="relative z-10">
-                  <motion.h3 
-                    className="text-xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-500"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    Monetize
-                  </motion.h3>
-                  
-                  <motion.p 
-                    className="text-foreground/70 mb-6"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    Transform unauthorized usage into revenue streams while building creator partnerships.
-                  </motion.p>
-                  
-                  <motion.ul 
-                    className="space-y-2 mb-6"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    viewport={{ once: true }}
-                  >
-                    <FeatureItem delay={0.3}>Revenue optimization</FeatureItem>
-                    <FeatureItem delay={0.4}>Licensing opportunities</FeatureItem>
-                    <FeatureItem delay={0.5}>Royalty collection</FeatureItem>
-                    <FeatureItem delay={0.6}>Monthly payouts</FeatureItem>
-                  </motion.ul>
-                </div>
-                
-                <motion.div 
-                  className="absolute -bottom-10 right-0 w-60 h-60 rounded-full bg-blue-200/20 blur-3xl opacity-40 z-0"
-                  animate={{ 
-                    scale: [1, 1.3, 1],
-                    opacity: [0.4, 0.2, 0.4]
-                  }}
-                  transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                />
-              </GlassmorphicCard>
-            </motion.div>
-
-            <motion.div
-              style={{ y: y3 }}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="h-full"
-            >
-              <GlassmorphicCard
-                variant="bordered"
-                className="relative overflow-hidden transition-all duration-500 hover:shadow-xl h-full backdrop-blur-md border-blue-200/50 z-10"
-              >
-                <ServiceIllustration icon={ChartBar} color="blue" delay={0.3} />
-                
-                <motion.h3 
-                  className="text-xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-500"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  Grow
-                </motion.h3>
-                
-                <motion.p 
-                  className="text-foreground/70 mb-6"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  Leverage data insights and partnerships to expand your reach and audience.
-                </motion.p>
-                
-                <motion.ul 
-                  className="space-y-2 mb-6"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  viewport={{ once: true }}
-                >
-                  <FeatureItem delay={0.3}>Performance analytics</FeatureItem>
-                  <FeatureItem delay={0.4}>Creator network access</FeatureItem>
-                  <FeatureItem delay={0.5}>Distribution opportunities</FeatureItem>
-                </motion.ul>
-                
-                <motion.div 
-                  className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-blue-100/30 blur-3xl opacity-40 z-0"
-                  animate={{ 
-                    scale: [1, 1.2, 1],
-                    opacity: [0.4, 0.2, 0.4]
-                  }}
-                  transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-                />
-              </GlassmorphicCard>
-            </motion.div>
+                <ServiceCard {...service} />
+              </motion.div>
+            ))}
           </div>
 
           <div className="text-center mt-16">
@@ -318,7 +235,12 @@ export const Services: React.FC = () => {
               >
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-full relative overflow-hidden group">
                   <span className="relative z-10">Learn More About Our Services</span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  <motion.span 
+                    className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "0%" }}
+                    transition={{ duration: 0.4 }}
+                  />
                 </Button>
               </motion.div>
             </Link>

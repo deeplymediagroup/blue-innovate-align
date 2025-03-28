@@ -32,7 +32,7 @@ export const AlanWattsShowcase: React.FC = () => {
           className="max-w-5xl mx-auto rounded-lg border border-blue-200 bg-white overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
         >
           <div className="p-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-            <div className="md:col-span-7 flex flex-col justify-between h-full space-y-6">
+            <div className="md:col-span-8 flex flex-col justify-between h-full space-y-6">
               <div className="flex flex-col space-y-6">
                 <Link 
                   to="/case-studies/alan-watts" 
@@ -64,7 +64,11 @@ export const AlanWattsShowcase: React.FC = () => {
                 </p>
               </div>
               
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-4 gap-4">
+                <div className="bg-blue-50 p-4 rounded-lg text-center transition-all duration-300 hover:bg-blue-100">
+                  <p className="text-2xl font-bold text-blue-600">100M+</p>
+                  <p className="text-xs text-gray-500">Total Views</p>
+                </div>
                 <div className="bg-blue-50 p-4 rounded-lg text-center transition-all duration-300 hover:bg-blue-100">
                   <p className="text-2xl font-bold text-blue-600">99.9%</p>
                   <p className="text-xs text-gray-500">Content Claimed</p>
@@ -80,7 +84,7 @@ export const AlanWattsShowcase: React.FC = () => {
               </div>
             </div>
             
-            <div className="md:col-span-5 h-full flex items-center">
+            <div className="md:col-span-4 h-full flex items-center">
               <div className="relative overflow-hidden rounded-md h-full w-full">
                 <img 
                   src="public/lovable-uploads/06398809-4801-4451-b433-d94226f52860.png" 
