@@ -1,5 +1,5 @@
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, ArrowDown } from "lucide-react";
 import { AnimatedBlob } from "./AnimatedBlob";
@@ -15,12 +15,47 @@ export const Hero: React.FC = () => {
   
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  
+  // Create a scroll indicator effect
+  useEffect(() => {
+    const updateScrollIndicator = () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const docHeight = document.body.offsetHeight;
+      const totalScrollableDistance = docHeight - windowHeight;
+      const scrolled = (scrollPosition / totalScrollableDistance) * 100;
+      
+      const indicator = document.getElementById('scroll-indicator');
+      if (indicator) {
+        indicator.style.width = `${scrolled}%`;
+      }
+    };
+    
+    // Create the indicator element if it doesn't exist
+    if (!document.getElementById('scroll-indicator')) {
+      const indicator = document.createElement('div');
+      indicator.id = 'scroll-indicator';
+      indicator.className = 'scroll-indicator';
+      document.body.appendChild(indicator);
+    }
+    
+    window.addEventListener('scroll', updateScrollIndicator);
+    updateScrollIndicator(); // Initial call
+    
+    return () => {
+      window.removeEventListener('scroll', updateScrollIndicator);
+      const indicator = document.getElementById('scroll-indicator');
+      if (indicator) {
+        indicator.remove();
+      }
+    };
+  }, []);
 
   return (
     <section className="min-safe-h-screen relative flex items-center overflow-hidden pt-24 pb-20">
-      {/* Dynamic background that moves with cursor */}
+      {/* Dynamic background with gradient */}
       <div 
-        className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-blue-100 z-0"
+        className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-blue-100 z-0 animated-gradient"
       />
       
       {/* Animated background blobs with parallax effect */}
@@ -80,44 +115,65 @@ export const Hero: React.FC = () => {
           ref={sectionRef}
           className="reveal-section max-w-4xl mx-auto text-center space-y-6"
         >
-          <div className="inline-block mb-3">
-            <div className="py-1 px-3 bg-blue-100 border border-blue-200 rounded-full">
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-block mb-3"
+          >
+            <div className="py-1 px-3 bg-blue-100 border border-blue-200 rounded-full hover-lift">
               <p className="text-xs font-medium text-blue-700">
                 Global Leader in Digital Rights Management
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          <h1 className="font-display font-bold text-5xl md:text-7xl bg-gradient-to-r from-foreground via-foreground/90 to-foreground/80 bg-clip-text text-transparent leading-tight">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="font-display font-bold text-5xl md:text-7xl bg-gradient-to-r from-foreground via-foreground/90 to-foreground/80 bg-clip-text text-transparent leading-tight"
+          >
             Protect and Monetize <br />
             Your Content on YouTube
-          </h1>
+          </motion.h1>
 
-          <p className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto text-balance">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto text-balance"
+          >
             We help creators and brands recover and monetize unauthorized usage of their content across YouTube.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center pt-6"
+          >
             <Link to="/contact">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg button-shimmer">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg button-shimmer hover-glow shadow-sm">
                 Get Started <ChevronRight className="h-5 w-5 ml-2" />
               </Button>
             </Link>
-          </div>
+          </motion.div>
 
           <motion.div 
-            className="mt-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.5 }}
+            className="mt-16"
           >
-            <a href="#clients" className="inline-flex flex-col items-center">
-              <p className="text-sm text-foreground/70 mb-2">Trusted by World-Class Brands</p>
+            <a href="#clients" className="inline-flex flex-col items-center group">
+              <p className="text-sm text-foreground/70 mb-2 group-hover:text-blue-600 transition-colors">Trusted by World-Class Brands</p>
               <motion.div 
                 animate={{ y: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
+                className="bg-blue-100 rounded-full p-2 group-hover:bg-blue-200 transition-colors"
               >
-                <ArrowDown className="h-5 w-5" />
+                <ArrowDown className="h-5 w-5 text-blue-600" />
               </motion.div>
             </a>
           </motion.div>
