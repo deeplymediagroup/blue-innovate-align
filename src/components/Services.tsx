@@ -1,10 +1,10 @@
 
 import React, { useRef } from "react";
 import { GlassmorphicCard } from "./GlassmorphicCard";
-import { Shield, DollarSign, ChartBar } from "lucide-react";
+import { Shield, DollarSign } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 // Animated SVG decorator
 const DecorativeSVG = ({ className = "" }) => {
@@ -40,8 +40,6 @@ const DecorativeSVG = ({ className = "" }) => {
 
 // Service card component
 const ServiceCard = ({ title, description, icon: Icon, features, delay = 0, highlight = false }) => {
-  const isInView = useInView({ once: true, amount: 0.3 });
-  
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -112,7 +110,6 @@ const ServiceCard = ({ title, description, icon: Icon, features, delay = 0, high
 
 export const Services: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
