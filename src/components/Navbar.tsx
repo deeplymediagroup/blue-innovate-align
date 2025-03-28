@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Icon } from '@iconify/react';
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import {
@@ -39,7 +38,7 @@ const NAV_ITEMS: NavItem[] = [
   { title: "Content", href: "/#content" },
 ];
 
-const Navbar: React.FC = () => {
+export const Navbar: React.FC<{extraNavLinks?: { title: string; href: string; }[]}> = ({ extraNavLinks }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -79,6 +78,11 @@ const Navbar: React.FC = () => {
     !navVisible && "transform -translate-y-full"
   );
 
+  // Combine default nav items with any extra nav links
+  const allNavItems = extraNavLinks 
+    ? [...NAV_ITEMS, ...extraNavLinks]
+    : NAV_ITEMS;
+
   return (
     <header className={navbarClasses}>
       <div className="container px-4 md:px-6 mx-auto">
@@ -93,7 +97,7 @@ const Navbar: React.FC = () => {
           <nav className="hidden md:flex items-center space-x-1">
             <NavigationMenu>
               <NavigationMenuList>
-                {NAV_ITEMS.map((item, index) => (
+                {allNavItems.map((item, index) => (
                   <NavigationMenuItem key={index}>
                     <Link 
                       to={item.href} 
@@ -131,7 +135,7 @@ const Navbar: React.FC = () => {
             </SheetTrigger>
             <SheetContent side="right" className="flex flex-col pt-16">
               <div className="flex flex-col space-y-4">
-                {NAV_ITEMS.map((item, index) => (
+                {allNavItems.map((item, index) => (
                   <Link
                     key={index}
                     to={item.href}

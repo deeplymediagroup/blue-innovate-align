@@ -4,7 +4,6 @@ import { GlassmorphicCard } from "./GlassmorphicCard";
 import { CheckCircle, Shield, DollarSign, Youtube } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
-import { PricingPlans } from "./PricingPlans";
 
 export const Services: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
