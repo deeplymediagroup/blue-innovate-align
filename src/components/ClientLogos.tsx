@@ -36,6 +36,21 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
             <div className="text-center">
               <h3 className="text-5xl font-bold mb-2">
                 <CountUp 
+                  end={250} 
+                  duration={counterDuration} 
+                  prefix="$" 
+                  suffix="k+" 
+                  className="text-5xl font-bold"
+                />
+              </h3>
+              <p className="text-blue-100">Paid to Creators</p>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-blue-600 to-blue-400 text-white rounded-lg p-8 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
+            <div className="text-center">
+              <h3 className="text-5xl font-bold mb-2">
+                <CountUp 
                   end={40} 
                   duration={counterDuration} 
                   suffix="k+" 
@@ -58,20 +73,6 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
                 />
               </h3>
               <p className="text-blue-100">Watch Hours Recaptured</p>
-            </div>
-          </div>
-          
-          <div className="bg-gradient-to-r from-blue-600 to-blue-400 text-white rounded-lg p-8 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
-            <div className="text-center">
-              <h3 className="text-5xl font-bold mb-2">
-                <CountUp 
-                  end={250} 
-                  duration={counterDuration} 
-                  suffix="k+" 
-                  className="text-5xl font-bold"
-                />
-              </h3>
-              <p className="text-blue-100">Paid to Creators</p>
             </div>
           </div>
         </div>

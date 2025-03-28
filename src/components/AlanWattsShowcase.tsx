@@ -66,9 +66,9 @@ export const AlanWattsShowcase: React.FC = () => {
             </div>
             
             <div className="relative h-full">
-              <div className="overflow-hidden rounded-md h-full">
+              <div className="overflow-hidden rounded-md h-full w-3/4 ml-auto">
                 <img 
-                  src="public/lovable-uploads/15f1f912-7b6d-47ed-bcde-88e5d4c65f1e.png" 
+                  src="public/lovable-uploads/cc93ab06-52d9-4bc6-982c-e27b607f63cf.png" 
                   alt="Alan Watts" 
                   className="w-full h-full object-cover"
                 />
