@@ -163,9 +163,8 @@ const Index: React.FC = () => {
     <Layout>
       <Hero />
       <ClientLogos />
-      <AlanWattsShowcase />
       
-      {/* Content Creators We Work With - Moved to under Featured Client */}
+      {/* Content Creators We Work With - Moved to top */}
       <div className="py-16 container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
@@ -178,6 +177,7 @@ const Index: React.FC = () => {
         <CreatorGrid className="max-w-5xl mx-auto" />
       </div>
       
+      <AlanWattsShowcase />
       <Services />
       <YoutubeContentGrid />
       <HowItWorks />

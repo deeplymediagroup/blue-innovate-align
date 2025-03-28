@@ -36,9 +36,9 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
             <div className="text-center">
               <h3 className="text-5xl font-bold mb-2">
                 <CountUp 
-                  end={40000} 
+                  end={40} 
                   duration={counterDuration} 
-                  suffix="+" 
+                  suffix="k+" 
                   className="text-5xl font-bold"
                 />
               </h3>
@@ -65,9 +65,9 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
             <div className="text-center">
               <h3 className="text-5xl font-bold mb-2">
                 <CountUp 
-                  end={250000} 
+                  end={250} 
                   duration={counterDuration} 
-                  suffix="+" 
+                  suffix="k+" 
                   className="text-5xl font-bold"
                 />
               </h3>

@@ -1,393 +1,182 @@
-import React, { useEffect, useState } from "react";
-import { Layout } from "@/components/Layout";
-import { Hero } from "@/components/Hero";
-import { ClientLogos } from "@/components/ClientLogos";
-import { Services } from "@/components/Services";
-import { HowItWorks } from "@/components/HowItWorks";
-import { CTASection } from "@/components/CTASection";
-import { CreatorGrid } from "@/components/CreatorGrid";
-import { AlanWattsShowcase } from "@/components/AlanWattsShowcase";
-import { YoutubeContentGrid } from "@/components/YoutubeContentGrid";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { Slider } from "@/components/ui/slider";
-import {
-  PieChart,
-  Pie,
-  Cell,
-  Label,
-  ResponsiveContainer,
-  Tooltip
-} from "recharts";
 
-const Index: React.FC = () => {
-  const [sliderValue, setSliderValue] = useState<number[]>([40]);
-  const [revenueData, setRevenueData] = useState([
-    { name: "Rights Holder", value: 40, color: "#0A2463" }, // Darker blue
-    { name: "Creator", value: 50, color: "#3E92CC" }, // Lighter blue
-    { name: "Mindset", value: 10, color: "#93c5fd" }, // Even lighter blue
-  ]);
-  
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  
-  const channelStats = [
-    { 
-      name: "Motiversity", 
-      subscribers: "3.8M", 
-      views: "530M+", 
-      icon: "/lovable-uploads/3ecb8aa9-4ef8-4d32-a070-462ae07a4d20.png" 
-    },
-    { 
-      name: "MotivationHub", 
-      subscribers: "3.5M", 
-      views: "380M+", 
-      icon: "/lovable-uploads/0cf3ba3e-8960-4ea0-8c73-dd2b371e4ce4.png" 
-    },
-    { 
-      name: "Motivation2Study", 
-      subscribers: "4.6M", 
-      views: "365M+", 
-      icon: "/lovable-uploads/7ad119b9-2029-4225-9db1-d52780651bd4.png" 
-    },
-    { 
-      name: "Motivation Madness", 
-      subscribers: "3.8M", 
-      views: "350M+", 
-      icon: "/lovable-uploads/120bfcd1-e00e-4b2f-ac25-ee49edfe0e22.png" 
-    },
-    { 
-      name: "After Skool", 
-      subscribers: "3.7M", 
-      views: "260M+", 
-      icon: "/lovable-uploads/67ff2ca5-79fd-44ed-b348-2dfb2dca0fb8.png" 
-    },
-    { 
-      name: "T&H Inspiration", 
-      subscribers: "758K", 
-      views: "140M+", 
-      icon: "/lovable-uploads/3a748cf2-80ce-4b01-bcd8-598759cbef81.png" 
-    },
-    { 
-      name: "Alpha Leaders", 
-      subscribers: "767K", 
-      views: "56M+", 
-      icon: "/lovable-uploads/a2298027-384a-4e1f-bd2e-5b75a4d22ef5.png" 
-    },
-    { 
-      name: "True Meaning", 
-      subscribers: "526K", 
-      views: "38M+", 
-      icon: "/lovable-uploads/6860289e-a663-4308-98bc-ef73a755ad49.png" 
-    },
+import React from "react";
+import { Layout } from "@/components/Layout";
+import { ArrowRight, CheckCircle } from "lucide-react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+
+const AlanWattsCase: React.FC = () => {
+  const results = [
+    { metric: "$9,873.68", label: "Monthly Revenue" },
+    { metric: "25,000+", label: "Videos Claimed" },
+    { metric: "660%", label: "Revenue Growth" },
   ];
 
-  useEffect(() => {
-    // Update revenue data based on slider value
-    const rightsHolderValue = sliderValue[0];
-    const creatorValue = 90 - rightsHolderValue;
-    const mindsetValue = 10; // Always 10%
-
-    setRevenueData([
-      { name: "Rights Holder", value: rightsHolderValue, color: "#0A2463" },
-      { name: "Creator", value: creatorValue, color: "#3E92CC" },
-      { name: "Mindset", value: mindsetValue, color: "#93c5fd" },
-    ]);
-  }, [sliderValue]);
-
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.1,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("revealed");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll(".reveal-section").forEach((el) => {
-      observer.observe(el);
-    });
-
-    // Handle hash navigation for smooth scrolling
-    const handleHashNavigation = () => {
-      const hash = window.location.hash;
-      if (hash) {
-        setTimeout(() => {
-          const element = document.querySelector(hash);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }
-        }, 100);
-      }
-    };
-
-    handleHashNavigation();
-    window.addEventListener('hashchange', handleHashNavigation);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('hashchange', handleHashNavigation);
-    };
-  }, []);
-
-  const CustomTooltip = ({ active, payload }: any) => {
-    if (active && payload && payload.length) {
-      const data = payload[0].payload;
-      return (
-        <div className="bg-white p-2 rounded-md shadow-md border border-gray-200">
-          <p className="font-bold">{data.name}: {data.value}%</p>
-        </div>
-      );
+  const testimonials = [
+    {
+      quote: "Mindset Media has been instrumental in helping us protect Alan's legacy in the digital age.",
+      author: "Mark Watts",
+      role: "Director, Alan Watts Organization",
+      image: "https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png",
     }
-    return null;
-  };
-
-  const onPieEnter = (_: any, index: number) => {
-    setActiveIndex(index);
-  };
-
-  const onPieLeave = () => {
-    setActiveIndex(null);
-  };
+  ];
 
   return (
     <Layout>
-      <Hero />
-      <ClientLogos />
-      <AlanWattsShowcase />
-      
-      {/* Content Creators We Work With - Moved to under Featured Client */}
-      <div className="py-16 container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12">
-          <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
-            Content Creators We Work With
-          </h2>
-          <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
-            From individual creators to large media companies, we help protect and monetize valuable content
-          </p>
-        </div>
-        <CreatorGrid className="max-w-5xl mx-auto" />
-      </div>
-      
-      <Services />
-      <YoutubeContentGrid />
-      <HowItWorks />
-
-      <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
+      <section className="pt-24 pb-16 bg-gradient-to-b from-blue-50 via-white to-blue-50/50">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-5xl mx-auto mb-12 text-center">
-            <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
-              We Power The Largest Motivational YouTube Network
-            </h2>
-            <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
-              Our network manages rights for leading motivational content creators
-            </p>
-          </div>
-          
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 max-w-5xl mx-auto">
-            <h3 className="text-2xl font-bold mb-6 text-blue-600">Distribution Partners</h3>
-            <p className="mb-6 text-foreground/70">
-              We help speakers and podcasters reach millions through our established distribution network.
-              Our partners have over 2 billion total views across YouTube.
-            </p>
-            
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-              {channelStats.map((channel, index) => (
-                <div key={index} className="bg-blue-50 p-4 rounded-lg border border-blue-100 transition-all duration-300 hover:shadow-md">
-                  <div className="flex items-center mb-3">
-                    <img 
-                      src={channel.icon} 
-                      alt={channel.name} 
-                      className="w-8 h-8 rounded-full mr-2 object-cover"
-                    />
-                    <h4 className="font-bold text-blue-800">{channel.name}</h4>
+          <div className="flex flex-col lg:flex-row gap-12 items-start">
+            <div className="lg:w-1/2">
+              <Link to="/case-studies" className="inline-flex items-center text-blue-600 mb-6 hover:underline">
+                <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Case Studies
+              </Link>
+              
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">Alan Watts Organization Case Study</h1>
+              
+              <p className="text-xl mb-6 text-foreground/70">
+                How we helped the Alan Watts Organization recover lost revenue and protect their content across YouTube
+              </p>
+              
+              <div className="flex flex-wrap gap-8 mb-8">
+                {results.map((result, i) => (
+                  <div key={i} className="bg-white shadow-md rounded-lg p-6">
+                    <p className="text-3xl font-bold text-blue-600">{result.metric}</p>
+                    <p className="text-sm text-foreground/60">{result.label}</p>
                   </div>
-                  <div className="grid grid-cols-2 gap-2 mt-2">
-                    <div className="flex flex-col">
-                      <p className="text-xs text-gray-500">Subscribers</p>
-                      <p className="font-bold text-blue-600">{channel.subscribers}</p>
-                    </div>
-                    <div className="flex flex-col">
-                      <p className="text-xs text-gray-500">Views</p>
-                      <p className="font-bold text-blue-600">{channel.views}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
             
-            <div className="flex flex-wrap justify-center gap-6 md:gap-12 py-4 bg-blue-50 rounded-lg p-4">
-              <div>
-                <p className="text-3xl font-bold text-blue-600">2B+</p>
-                <p className="text-sm text-foreground/60">Total Views</p>
-              </div>
-              <div>
-                <p className="text-3xl font-bold text-blue-600">20M+</p>
-                <p className="text-sm text-foreground/60">Subscribers</p>
+            <div className="lg:w-1/2">
+              <div className="rounded-xl overflow-hidden shadow-xl">
+                <img 
+                  src="/lovable-uploads/a9921c76-fa95-4d2c-97a8-ce84b849dd16.png" 
+                  alt="Alan Watts" 
+                  className="w-full h-auto"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="licensing" className="py-16 pt-24 bg-gradient-to-b from-blue-50/30 to-white w-full">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-5xl mx-auto mb-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">Optional Licensing, Maximum Benefit</h2>
-                <p className="text-lg text-foreground/70 mb-6">
-                  We are one of the only digital rights management companies that combines claiming with licensing to create a sustainable ecosystem for creators.
-                </p>
-                <p className="text-lg text-foreground/70 mb-6">
-                  Our licensing model is an optional package that allows top creators to thrive. By working with creators, we help bring viral videos to life and create a broader content ecosystem.
-                </p>
-                <div className="bg-blue-50 p-6 rounded-lg border border-blue-100">
-                  <h3 className="text-xl font-bold mb-4 text-blue-700">The Mindset Advantage</h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start">
-                      <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5">
-                        <div className="h-2.5 w-2.5 rounded-full bg-blue-600"></div>
-                      </div>
-                      <span>Sustainable licensing model that benefits everyone</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5">
-                        <div className="h-2.5 w-2.5 rounded-full bg-blue-600"></div>
-                      </div>
-                      <span>Monthly passive income from your content</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5">
-                        <div className="h-2.5 w-2.5 rounded-full bg-blue-600"></div>
-                      </div>
-                      <span>Highest accuracy in the world for audio match</span>
-                    </li>
-                  </ul>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-8">The Challenge</h2>
+            
+            <p className="text-lg mb-6">
+              The Alan Watts Organization faced significant challenges with unauthorized use of their content across YouTube. 
+              As custodians of Alan Watts' intellectual property, they needed a solution to:
+            </p>
+            
+            <ul className="space-y-4 mb-8">
+              <li className="flex items-start">
+                <CheckCircle className="h-6 w-6 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                <span>Identify and monitor thousands of unauthorized uploads</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="h-6 w-6 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                <span>Recover lost revenue from content being monetized by others</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="h-6 w-6 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                <span>Protect the integrity and quality of Alan Watts' lectures</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="h-6 w-6 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                <span>Create a sustainable model for maintaining their digital presence</span>
+              </li>
+            </ul>
+            
+            <h2 className="text-3xl font-bold mb-8 mt-12">Our Solution</h2>
+            
+            <p className="text-lg mb-6">
+              We implemented a comprehensive content protection strategy that included:
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <h3 className="text-xl font-bold mb-3 text-blue-700">Content Identification</h3>
+                <p>We scanned YouTube to identify all instances of Alan Watts content, creating a complete catalog of usage.</p>
+              </div>
+              
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <h3 className="text-xl font-bold mb-3 text-blue-700">Rights Management</h3>
+                <p>We established Content ID claims on over 25,000 videos, ensuring proper attribution and monetization.</p>
+              </div>
+              
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <h3 className="text-xl font-bold mb-3 text-blue-700">Revenue Recovery</h3>
+                <p>We implemented a fair monetization strategy that recovered significant monthly revenue.</p>
+              </div>
+              
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <h3 className="text-xl font-bold mb-3 text-blue-700">Ongoing Monitoring</h3>
+                <p>We continue to monitor for new uploads and changes, ensuring continuous protection.</p>
+              </div>
+            </div>
+            
+            <h2 className="text-3xl font-bold mb-8 mt-12">The Results</h2>
+            
+            <p className="text-lg mb-6">
+              Our partnership with the Alan Watts Organization has led to remarkable outcomes:
+            </p>
+            
+            <div className="bg-blue-600 text-white p-8 rounded-lg mb-12">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="text-center">
+                  <p className="text-5xl font-bold">$9.8K+</p>
+                  <p className="mt-2">Monthly Revenue</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-5xl font-bold">25K+</p>
+                  <p className="mt-2">Videos Claimed</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-5xl font-bold">660%</p>
+                  <p className="mt-2">Revenue Growth</p>
                 </div>
               </div>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                className="flex justify-center"
-              >
-                <div className="w-full max-w-md">
-                  <div className="w-full aspect-square flex items-center justify-center">
-                    <ResponsiveContainer width="100%" height={400}>
-                      <PieChart>
-                        <Tooltip content={<CustomTooltip />} />
-                        <Pie
-                          data={revenueData}
-                          dataKey="value"
-                          nameKey="name"
-                          cx="50%"
-                          cy="50%"
-                          innerRadius={100}
-                          outerRadius={160}
-                          paddingAngle={3}
-                          startAngle={90}
-                          endAngle={-270}
-                          isAnimationActive={true}
-                          onMouseEnter={onPieEnter}
-                          onMouseLeave={onPieLeave}
-                        >
-                          {revenueData.map((entry, index) => (
-                            <Cell 
-                              key={`cell-${index}`} 
-                              fill={entry.color} 
-                              stroke="#fff"
-                              strokeWidth={activeIndex === index ? 3 : 2}
-                              scale={activeIndex === index ? 1.05 : 1}
-                            />
-                          ))}
-                          <Label
-                            content={() => {
-                              return (
-                                <g>
-                                  <text 
-                                    x="50%" 
-                                    y="47%" 
-                                    textAnchor="middle" 
-                                    dominantBaseline="middle" 
-                                    className="fill-blue-600 text-lg font-bold"
-                                  >
-                                    Revenue Split
-                                  </text>
-                                  <text 
-                                    x="50%" 
-                                    y="57%" 
-                                    textAnchor="middle" 
-                                    dominantBaseline="middle" 
-                                    className="fill-blue-400 text-sm"
-                                  >
-                                    Sustainable ecosystem
-                                  </text>
-                                </g>
-                              );
-                            }}
-                          />
-                        </Pie>
-                      </PieChart>
-                    </ResponsiveContainer>
-                  </div>
-                  
-                  <div className="mt-4 grid grid-cols-3 gap-4 w-full">
-                    {revenueData.map((segment, index) => (
-                      <div 
-                        key={index} 
-                        className={`flex flex-col items-center transition-all duration-300 ${activeIndex === index ? 'scale-110' : ''}`}
-                      >
-                        <div className="flex items-center mb-1">
-                          <div className="h-4 w-4 rounded-full mr-2" style={{ backgroundColor: segment.color }}></div>
-                          <p className="text-sm font-medium">{segment.name}</p>
-                        </div>
-                        <p className="text-2xl font-bold" style={{ color: segment.color }}>{segment.value}%</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-8 px-4">
-                    <div className="mb-2 flex justify-between">
-                      <span className="text-sm text-gray-500">Rights Holder</span>
-                      <span className="text-sm font-medium">{sliderValue[0]}%</span>
-                    </div>
-                    <Slider
-                      defaultValue={[40]}
-                      value={sliderValue}
-                      max={90}
-                      min={0}
-                      step={1}
-                      onValueChange={setSliderValue}
-                      className="mb-6"
-                    />
-                    <div className="flex justify-between text-xs text-gray-500">
-                      <span>0%</span>
-                      <span>45%</span>
-                      <span>90%</span>
-                    </div>
-                    <p className="text-center text-sm text-gray-600 mt-4">
-                      Drag the slider to adjust revenue distribution
-                    </p>
+            </div>
+            
+            {testimonials.map((testimonial, i) => (
+              <div key={i} className="bg-blue-50 p-8 rounded-lg mb-8 relative">
+                <div className="text-blue-600 text-6xl absolute top-4 left-4 opacity-20">"</div>
+                <p className="text-xl italic mb-6 relative z-10">
+                  {testimonial.quote}
+                </p>
+                <div className="flex items-center">
+                  <img 
+                    src={testimonial.image} 
+                    alt={testimonial.author}
+                    className="h-12 w-12 rounded-full mr-4 object-cover" 
+                  />
+                  <div>
+                    <p className="font-bold">{testimonial.author}</p>
+                    <p className="text-sm text-foreground/70">{testimonial.role}</p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
+            ))}
+            
+            <div className="mt-12 text-center">
+              <Link to="/contact">
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md">
+                  Contact Us About Your Content
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       </section>
-
-      <CTASection />
     </Layout>
   );
 };
 
-export default Index;
+export default AlanWattsCase;
