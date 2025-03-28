@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
@@ -12,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Slider } from "@/components/ui/slider";
 import {
   PieChart,
   Pie,
@@ -22,11 +24,12 @@ import {
 } from "recharts";
 
 const Index: React.FC = () => {
-  const revenueData = [
+  const [sliderValue, setSliderValue] = useState<number[]>([40]);
+  const [revenueData, setRevenueData] = useState([
     { name: "Rights Holder", value: 40, color: "#0A2463" }, // Darker blue
     { name: "Creator", value: 50, color: "#3E92CC" }, // Lighter blue
     { name: "Mindset", value: 10, color: "#93c5fd" }, // Even lighter blue
-  ];
+  ]);
   
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   
@@ -80,6 +83,19 @@ const Index: React.FC = () => {
       icon: "/lovable-uploads/6860289e-a663-4308-98bc-ef73a755ad49.png" 
     },
   ];
+
+  useEffect(() => {
+    // Update revenue data based on slider value
+    const rightsHolderValue = sliderValue[0];
+    const creatorValue = 90 - rightsHolderValue;
+    const mindsetValue = 10; // Always 10%
+
+    setRevenueData([
+      { name: "Rights Holder", value: rightsHolderValue, color: "#0A2463" },
+      { name: "Creator", value: creatorValue, color: "#3E92CC" },
+      { name: "Mindset", value: mindsetValue, color: "#93c5fd" },
+    ]);
+  }, [sliderValue]);
 
   useEffect(() => {
     const observerOptions = {
@@ -148,8 +164,8 @@ const Index: React.FC = () => {
       <Hero />
       <ClientLogos />
       <AlanWattsShowcase />
-      <Services />
-      <YoutubeContentGrid />
+      
+      {/* Content Creators We Work With - Moved to under Featured Client */}
       <div className="py-16 container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
@@ -161,6 +177,9 @@ const Index: React.FC = () => {
         </div>
         <CreatorGrid className="max-w-5xl mx-auto" />
       </div>
+      
+      <Services />
+      <YoutubeContentGrid />
       <HowItWorks />
 
       <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
@@ -335,6 +354,30 @@ const Index: React.FC = () => {
                         <p className="text-2xl font-bold" style={{ color: segment.color }}>{segment.value}%</p>
                       </div>
                     ))}
+                  </div>
+
+                  <div className="mt-8 px-4">
+                    <div className="mb-2 flex justify-between">
+                      <span className="text-sm text-gray-500">Rights Holder</span>
+                      <span className="text-sm font-medium">{sliderValue[0]}%</span>
+                    </div>
+                    <Slider
+                      defaultValue={[40]}
+                      value={sliderValue}
+                      max={90}
+                      min={0}
+                      step={1}
+                      onValueChange={setSliderValue}
+                      className="mb-6"
+                    />
+                    <div className="flex justify-between text-xs text-gray-500">
+                      <span>0%</span>
+                      <span>45%</span>
+                      <span>90%</span>
+                    </div>
+                    <p className="text-center text-sm text-gray-600 mt-4">
+                      Drag the slider to adjust revenue distribution
+                    </p>
                   </div>
                 </div>
               </motion.div>
