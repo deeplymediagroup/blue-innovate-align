@@ -68,7 +68,6 @@ export const ClientLogos: React.FC<ClientLogosProps> = ({ className = "" }) => {
                   end={250} 
                   duration={counterDuration} 
                   suffix="k+" 
-                  prefix="$"
                   className="text-5xl font-bold"
                 />
               </h3>

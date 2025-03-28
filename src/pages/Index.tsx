@@ -14,7 +14,6 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Slider } from "@/components/ui/slider";
-import { PricingPlans } from "@/components/PricingPlans";
 import {
   PieChart,
   Pie,
@@ -27,14 +26,15 @@ import {
 const Index: React.FC = () => {
   const [rightHolderValue, setRightHolderValue] = useState(40);
   const [revenueData, setRevenueData] = useState([
-    { name: "Rights Holder", value: 40, color: "#0A2463" },
-    { name: "Creator", value: 50, color: "#3E92CC" },
-    { name: "Mindset", value: 10, color: "#93c5fd" },
+    { name: "Rights Holder", value: 40, color: "#0A2463" }, // Darker blue
+    { name: "Creator", value: 50, color: "#3E92CC" }, // Lighter blue
+    { name: "Mindset", value: 10, color: "#93c5fd" }, // Even lighter blue
   ]);
   
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   
   useEffect(() => {
+    // Update the pie chart data when rightHolderValue changes
     const creatorValue = 90 - rightHolderValue;
     setRevenueData([
       { name: "Rights Holder", value: rightHolderValue, color: "#0A2463" },
@@ -114,6 +114,7 @@ const Index: React.FC = () => {
       observer.observe(el);
     });
 
+    // Handle hash navigation for smooth scrolling
     const handleHashNavigation = () => {
       const hash = window.location.hash;
       if (hash) {
@@ -177,7 +178,6 @@ const Index: React.FC = () => {
       </div>
       
       <AlanWattsShowcase />
-      
       <Services />
       
       <section id="licensing" className="py-16 pt-24 bg-gradient-to-b from-blue-50/30 to-white w-full">
@@ -298,7 +298,7 @@ const Index: React.FC = () => {
                   </div>
                   
                   <div className="mt-6 text-center">
-                    <p className="text-sm text-gray-600 mb-2">Drag the slider to adjust revenue share</p>
+                    <p className="text-sm text-gray-600 mb-2">Drag the slider to adjust revenue distribution</p>
                     <div className="px-4">
                       <Slider
                         value={[rightHolderValue]}
@@ -320,13 +320,7 @@ const Index: React.FC = () => {
           </div>
         </div>
       </section>
-      
-      <div id="pricing" className="py-16 container mx-auto px-4 md:px-6">
-        <PricingPlans />
-      </div>
-      
-      <HowItWorks />
-      
+
       <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-12 text-center">
@@ -383,7 +377,8 @@ const Index: React.FC = () => {
           </div>
         </div>
       </section>
-      
+
+      <HowItWorks />
       <YoutubeContentGrid />
       <CTASection />
     </Layout>
