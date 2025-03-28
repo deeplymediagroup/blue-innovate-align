@@ -1,10 +1,11 @@
+
 import React, { useRef } from "react";
 import { GlassmorphicCard } from "./GlassmorphicCard";
 import { Shield, DollarSign, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { GeometricShape, DotPattern, FloatingTile } from "./DecorativeElements";
+import { FloatingTile } from "./DecorativeElements";
 
 // Animated SVG decorator
 const DecorativeSVG = ({ className = "" }) => {
@@ -38,8 +39,8 @@ const DecorativeSVG = ({ className = "" }) => {
   );
 };
 
-// Geometric shape decorator
-const GeometricShape = ({ className, color = "blue", size = 80, delay = 0 }) => {
+// Geometric shape decorator - renamed to avoid conflict
+const ShapeDecorator = ({ className, color = "blue", size = 80, delay = 0 }) => {
   return (
     <motion.div
       className={`absolute pointer-events-none ${className}`}
@@ -58,15 +59,15 @@ const GeometricShape = ({ className, color = "blue", size = 80, delay = 0 }) => 
       }}
     >
       <div 
-        className={`w-${size} h-${size} bg-${color}-100/40 backdrop-blur-3xl rounded-xl rotate-12`} 
+        className={`bg-${color}-100/40 backdrop-blur-3xl rounded-xl rotate-12`} 
         style={{ width: size, height: size }}
       />
     </motion.div>
   );
 };
 
-// Floating dot pattern
-const DotPattern = ({ className }) => {
+// Floating dot pattern - renamed to avoid conflict
+const PatternDecorator = ({ className }) => {
   return (
     <motion.div 
       className={`absolute pointer-events-none ${className}`}
@@ -219,10 +220,10 @@ export const Services: React.FC = () => {
       <FloatingElement className="w-80 h-80 bottom-40 -left-40 opacity-30" delay={5} duration={20} />
       
       {/* Additional decorative elements */}
-      <GeometricShape className="top-20 left-[10%]" color="blue" size={120} delay={0.5} />
-      <GeometricShape className="bottom-40 right-[15%]" color="purple" size={100} delay={1.5} />
-      <DotPattern className="top-40 right-[5%]" />
-      <DotPattern className="bottom-20 left-[8%]" />
+      <ShapeDecorator className="top-20 left-[10%]" color="blue" size={120} delay={0.5} />
+      <ShapeDecorator className="bottom-40 right-[15%]" color="purple" size={100} delay={1.5} />
+      <PatternDecorator className="top-40 right-[5%]" />
+      <PatternDecorator className="bottom-20 left-[8%]" />
       
       {/* Floating tiles */}
       <FloatingTile className="absolute right-[10%] top-[30%] z-0 w-20 h-20 rounded-lg bg-gradient-to-r from-blue-200/20 to-blue-100/20 backdrop-blur-md border border-white/10" />

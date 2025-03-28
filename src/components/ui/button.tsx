@@ -54,12 +54,32 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = "Button"
 
-const AnimatedButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
+// Define proper types for the AnimatedButton component
+interface AnimatedButtonProps extends ButtonProps {
+  children: React.ReactNode
+}
+
+const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
   ({ className, variant, size, asChild = false, children, ...props }, ref) => {
-    const Comp = asChild ? Slot : motion.button
+    if (asChild) {
+      // When using asChild, we fall back to the regular Button
+      return (
+        <Button 
+          ref={ref}
+          className={className}
+          variant={variant}
+          size={size}
+          asChild={asChild}
+          {...props}
+        >
+          {children}
+        </Button>
+      )
+    }
     
+    // Use motion.button directly without Slot when not using asChild
     return (
-      <Comp
+      <motion.button
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         whileHover={{ scale: 1.03 }}
@@ -68,7 +88,7 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {children}
         <span className="absolute inset-0 bg-gradient-to-r from-blue-700/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      </Comp>
+      </motion.button>
     )
   }
 )
