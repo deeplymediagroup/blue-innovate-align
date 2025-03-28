@@ -34,16 +34,30 @@ export const AlanWattsShowcase: React.FC = () => {
           <div className="p-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
             <div className="md:col-span-8 flex flex-col justify-between h-full space-y-6">
               <div className="flex flex-col space-y-6">
-                <Link 
-                  to="/case-studies/alan-watts" 
-                  onClick={() => window.scrollTo(0, 0)}
-                  className="w-fit"
-                >
-                  <Button className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-md flex items-center justify-center shadow-sm hover:shadow transition-all">
-                    View Full Case Study 
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
+                <div className="flex justify-between items-center w-full">
+                  <Link 
+                    to="/case-studies/alan-watts" 
+                    onClick={() => window.scrollTo(0, 0)}
+                    className="w-fit"
+                  >
+                    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+                      <Button className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-md flex items-center justify-center shadow-sm hover:shadow transition-all group">
+                        View Full Case Study 
+                        <motion.span
+                          initial={{ x: 0 }}
+                          animate={{ x: [0, 5, 0] }}
+                          transition={{ 
+                            duration: 1.5, 
+                            repeat: Infinity, 
+                            repeatType: "reverse"
+                          }}
+                        >
+                          <ArrowRight className="ml-2 h-5 w-5" />
+                        </motion.span>
+                      </Button>
+                    </motion.div>
+                  </Link>
+                </div>
                 
                 <div className="flex items-center">
                   <div className="h-14 w-14 rounded-full bg-gray-200 mr-4 overflow-hidden">
@@ -100,6 +114,36 @@ export const AlanWattsShowcase: React.FC = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Add decorative elements */}
+      <motion.div 
+        className="absolute -right-20 top-40 w-40 h-40 rounded-full bg-blue-100/50 blur-3xl"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3],
+          rotate: [0, 15, 0]
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          repeatType: "reverse"
+        }}
+      />
+      
+      <motion.div 
+        className="absolute -left-16 bottom-16 w-32 h-32 rounded-full bg-purple-100/40 blur-2xl"
+        animate={{
+          scale: [1, 1.3, 1],
+          opacity: [0.2, 0.4, 0.2],
+          rotate: [0, -10, 0]
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          repeatType: "reverse",
+          delay: 2
+        }}
+      />
     </section>
   );
 };

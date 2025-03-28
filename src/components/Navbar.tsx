@@ -103,16 +103,40 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Link to="/contact">
-              <Button
-                className={`rounded-full transition-all duration-300 ${
-                  isScrolled
-                    ? "bg-blue-600 hover:bg-blue-700 text-white"
-                    : "bg-blue-600 hover:bg-blue-700 text-white"
-                }`}
+              <motion.div 
+                whileHover={{ scale: 1.03 }} 
+                whileTap={{ scale: 0.97 }}
+                className="relative overflow-hidden rounded-full"
               >
-                Get Started
-                <ChevronRight className="ml-1 h-4 w-4" />
-              </Button>
+                <Button
+                  className={`rounded-full transition-all duration-300 ${
+                    isScrolled
+                      ? "bg-blue-600 hover:bg-blue-700 text-white"
+                      : "bg-blue-600 hover:bg-blue-700 text-white"
+                  } relative z-10 group`}
+                >
+                  <span className="relative z-10 flex items-center">
+                    Connect
+                    <motion.div
+                      initial={{ x: 0 }}
+                      animate={{ x: [0, 3, 0] }}
+                      transition={{ 
+                        duration: 1.5, 
+                        repeat: Infinity, 
+                        repeatType: "reverse" 
+                      }}
+                    >
+                      <ChevronRight className="ml-1 h-4 w-4" />
+                    </motion.div>
+                  </span>
+                  <motion.span 
+                    className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "0%" }}
+                    transition={{ duration: 0.4 }}
+                  />
+                </Button>
+              </motion.div>
             </Link>
           </div>
 
@@ -158,10 +182,24 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
                   className="w-full" 
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                    Get Started
-                    <ChevronRight className="ml-1 h-4 w-4" />
-                  </Button>
+                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white group">
+                      <span className="relative z-10 flex items-center">
+                        Connect
+                        <motion.div
+                          initial={{ x: 0 }}
+                          animate={{ x: [0, 3, 0] }}
+                          transition={{ 
+                            duration: 1.5, 
+                            repeat: Infinity, 
+                            repeatType: "reverse" 
+                          }}
+                        >
+                          <ChevronRight className="ml-1 h-4 w-4" />
+                        </motion.div>
+                      </span>
+                    </Button>
+                  </motion.div>
                 </Link>
               </nav>
             </div>

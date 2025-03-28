@@ -1,10 +1,10 @@
-
 import React, { useRef } from "react";
 import { GlassmorphicCard } from "./GlassmorphicCard";
-import { Shield, DollarSign } from "lucide-react";
+import { Shield, DollarSign, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { GeometricShape, DotPattern, FloatingTile } from "./DecorativeElements";
 
 // Animated SVG decorator
 const DecorativeSVG = ({ className = "" }) => {
@@ -35,6 +35,52 @@ const DecorativeSVG = ({ className = "" }) => {
       />
       <circle cx="50" cy="50" r="20" stroke="rgba(59, 130, 246, 0.2)" strokeWidth="4" fill="none" />
     </motion.svg>
+  );
+};
+
+// Geometric shape decorator
+const GeometricShape = ({ className, color = "blue", size = 80, delay = 0 }) => {
+  return (
+    <motion.div
+      className={`absolute pointer-events-none ${className}`}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ 
+        opacity: [0.3, 0.5, 0.3],
+        scale: [0.9, 1.1, 0.9],
+        rotate: [0, 15, 0],
+      }}
+      transition={{ 
+        duration: 12 + Math.random() * 5, 
+        ease: "easeInOut", 
+        repeat: Infinity,
+        repeatType: "mirror",
+        delay 
+      }}
+    >
+      <div 
+        className={`w-${size} h-${size} bg-${color}-100/40 backdrop-blur-3xl rounded-xl rotate-12`} 
+        style={{ width: size, height: size }}
+      />
+    </motion.div>
+  );
+};
+
+// Floating dot pattern
+const DotPattern = ({ className }) => {
+  return (
+    <motion.div 
+      className={`absolute pointer-events-none ${className}`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 0.7 }}
+      transition={{ duration: 1 }}
+    >
+      <svg width="200" height="200" viewBox="0 0 100 100">
+        <pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1" fill="rgba(59, 130, 246, 0.3)" />
+        </pattern>
+        <rect width="100%" height="100%" fill="url(#dots)" />
+      </svg>
+    </motion.div>
   );
 };
 
@@ -172,6 +218,17 @@ export const Services: React.FC = () => {
       <FloatingElement className="w-96 h-96 top-20 -right-48 opacity-40" delay={0} duration={25} />
       <FloatingElement className="w-80 h-80 bottom-40 -left-40 opacity-30" delay={5} duration={20} />
       
+      {/* Additional decorative elements */}
+      <GeometricShape className="top-20 left-[10%]" color="blue" size={120} delay={0.5} />
+      <GeometricShape className="bottom-40 right-[15%]" color="purple" size={100} delay={1.5} />
+      <DotPattern className="top-40 right-[5%]" />
+      <DotPattern className="bottom-20 left-[8%]" />
+      
+      {/* Floating tiles */}
+      <FloatingTile className="absolute right-[10%] top-[30%] z-0 w-20 h-20 rounded-lg bg-gradient-to-r from-blue-200/20 to-blue-100/20 backdrop-blur-md border border-white/10" />
+      
+      <FloatingTile className="absolute left-[5%] bottom-[25%] z-0 w-16 h-16 rounded-lg bg-gradient-to-r from-purple-200/20 to-blue-100/20 backdrop-blur-md border border-white/10 rotate-12" />
+      
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div
           ref={sectionRef}
@@ -231,7 +288,20 @@ export const Services: React.FC = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-full relative overflow-hidden group">
-                  <span className="relative z-10">Learn More About Our Services</span>
+                  <span className="relative z-10 flex items-center">
+                    Learn More About Our Services
+                    <motion.div
+                      initial={{ x: 0 }}
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ 
+                        duration: 1.5, 
+                        repeat: Infinity, 
+                        repeatType: "reverse" 
+                      }}
+                    >
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </motion.div>
+                  </span>
                   <motion.span 
                     className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     initial={{ x: "-100%" }}
