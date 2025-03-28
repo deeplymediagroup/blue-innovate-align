@@ -1,103 +1,122 @@
 
-import React, { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  ChevronRight,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useMobile } from "@/hooks/use-mobile";
 
-interface NavbarProps {
-  extraNavLinks?: { title: string; href: string; }[];
-}
+type NavItem = {
+  label: string;
+  href: string;
+};
 
-export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
+const navItems: NavItem[] = [
+  { label: "Services", href: "#services" },
+  { label: "Distribution", href: "#distribution" },
+  { label: "Licensing", href: "#licensing" },
+  { label: "Case Studies", href: "/case-studies" },
+];
+
+export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const isMobile = useMobile();
+  const navigate = useNavigate();
 
+  // Handle scroll event to change navbar appearance
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  const navLinkVariants = {
-    hidden: { opacity: 0, y: -10 },
-    visible: (custom: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: 0.1 * custom, duration: 0.5 }
-    })
+  // Handle navigation
+  const handleNavigation = (href: string) => {
+    if (href.startsWith('#')) {
+      // Handle in-page anchor navigation
+      const element = document.querySelector(href);
+      if (element) {
+        window.scrollTo({
+          top: element.getBoundingClientRect().top + window.scrollY - 100,
+          behavior: "smooth",
+        });
+      }
+    } else {
+      // Handle external page navigation
+      navigate(href);
+    }
+    // Close mobile menu after navigation
+    setIsMobileMenuOpen(false);
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "py-3 bg-white/90 backdrop-blur-md shadow-sm"
-          : "py-5 bg-transparent"
+          ? "bg-white/95 backdrop-blur-md shadow-sm py-3"
+          : "bg-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <motion.a 
-              href="/" 
-              className="flex items-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <span className="font-display text-xl font-bold text-gradient">
-                MindsetDRM
-              </span>
-            </motion.a>
-          </div>
+          {/* Logo */}
+          <Link 
+            to="/" 
+            className="flex items-center"
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              setIsMobileMenuOpen(false);
+            }}
+          >
+            <span className="text-xl font-bold text-blue-600">MindsetDRM</span>
+          </Link>
 
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {[
-              { name: "Claiming", href: "https://preview--blue-innovate-align.lovable.app/#services" },
-              { name: "Distribution", href: "https://preview--blue-innovate-align.lovable.app/#distribution" },
-              { name: "Licensing", href: "https://preview--blue-innovate-align.lovable.app/#licensing" },
-              ...(extraNavLinks || [])
-            ].map((link, index) => (
-              <motion.a
+            {navItems.map((item, index) => (
+              <button
                 key={index}
-                href={link.href}
-                className="text-sm font-medium text-foreground/80 hover:text-blue-600 transition-colors relative after:absolute after:bottom-[-5px] after:left-0 after:h-[2px] after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full"
-                custom={index}
-                initial="hidden"
-                animate="visible"
-                variants={navLinkVariants}
+                onClick={() => handleNavigation(item.href)}
+                className="text-foreground/80 hover:text-blue-600 transition-colors text-sm font-medium"
               >
-                {link.title || link.name}
-              </motion.a>
+                {item.label}
+              </button>
             ))}
           </nav>
 
-          <motion.div 
-            className="hidden md:flex items-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-          >
-            <a href="/contact">
-              <Button className="bg-blue-600 text-white hover:bg-blue-700 button-shimmer shadow-sm hover-glow">
-                Connect
+          {/* CTA Button */}
+          <div className="hidden md:block">
+            <Link to="/contact">
+              <Button
+                className={`rounded-full transition-all duration-300 ${
+                  isScrolled
+                    ? "bg-blue-600 hover:bg-blue-700 text-white"
+                    : "bg-blue-600 hover:bg-blue-700 text-white"
+                }`}
+              >
+                Get Started
+                <ChevronRight className="ml-1 h-4 w-4" />
               </Button>
-            </a>
-          </motion.div>
+            </Link>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
             className="md:hidden flex items-center"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle Menu"
+            aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
               <X className="h-6 w-6 text-foreground" />
@@ -113,47 +132,34 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg shadow-lg"
+            className="md:hidden bg-white border-t border-gray-100 shadow-lg overflow-hidden"
           >
-            <div className="container mx-auto px-4 py-6 space-y-6">
+            <div className="container mx-auto px-4 py-4">
               <nav className="flex flex-col space-y-4">
-                {[
-                  { name: "Claiming", href: "https://preview--blue-innovate-align.lovable.app/#services" },
-                  { name: "Distribution", href: "https://preview--blue-innovate-align.lovable.app/#distribution" },
-                  { name: "Licensing", href: "https://preview--blue-innovate-align.lovable.app/#licensing" },
-                  ...(extraNavLinks || [])
-                ].map((link, index) => (
-                  <motion.a
+                {navItems.map((item, index) => (
+                  <button
                     key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 * index, duration: 0.3 }}
-                    href={link.href}
-                    className="text-base font-medium text-foreground/80 hover:text-blue-600 transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={() => handleNavigation(item.href)}
+                    className="py-2 text-foreground/80 hover:text-blue-600 transition-colors flex items-center justify-between"
                   >
-                    {link.title || link.name}
-                  </motion.a>
+                    {item.label}
+                    <ChevronRight className="h-4 w-4" />
+                  </button>
                 ))}
-              </nav>
-              <motion.div 
-                className="grid gap-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.3 }}
-              >
-                <a href="/contact">
-                  <Button
-                    className="w-full bg-blue-600 text-white hover:bg-blue-700 button-shimmer"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Connect
+                <Link 
+                  to="/contact" 
+                  className="w-full" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                    Get Started
+                    <ChevronRight className="ml-1 h-4 w-4" />
                   </Button>
-                </a>
-              </motion.div>
+                </Link>
+              </nav>
             </div>
           </motion.div>
         )}

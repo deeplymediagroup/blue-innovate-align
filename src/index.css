@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -383,6 +384,88 @@
   /* Modern card styles */
   .modern-card {
     @apply bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300;
+  }
+  
+  /* Morphing shape animation */
+  .morph-shape {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: morph 10s ease-in-out infinite;
+  }
+
+  /* Pulsing ring animation for elements */
+  .pulse-ring {
+    position: relative;
+  }
+
+  .pulse-ring::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: inherit;
+    border: 3px solid currentColor;
+    opacity: 0.8;
+    animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+  }
+
+  /* Text reveal animation for headings */
+  .text-reveal {
+    overflow: hidden;
+  }
+
+  .text-reveal > span {
+    display: inline-block;
+    transform: translateY(100%);
+    opacity: 0;
+    animation: reveal-text 0.8s ease-out forwards;
+  }
+
+  /* Staggered animation delays for lists */
+  .stagger-animation > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .stagger-animation > *:nth-child(1) { transition-delay: 0.1s; }
+  .stagger-animation > *:nth-child(2) { transition-delay: 0.2s; }
+  .stagger-animation > *:nth-child(3) { transition-delay: 0.3s; }
+  .stagger-animation > *:nth-child(4) { transition-delay: 0.4s; }
+  .stagger-animation > *:nth-child(5) { transition-delay: 0.5s; }
+  .stagger-animation > *:nth-child(6) { transition-delay: 0.6s; }
+
+  .stagger-animation.revealed > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Floating icons with parallax effect */
+  .parallax-float {
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+  }
+  
+  /* Spinning wheel animation */
+  .wheel-spin {
+    animation: wheel-spin 10s linear infinite;
+  }
+  
+  /* Fluid card design */
+  .fluid-card {
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 
+      0 4px 24px -1px rgba(0, 0, 0, 0.1),
+      0 1px 6px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+  
+  .fluid-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+      0 10px 30px -5px rgba(0, 0, 0, 0.1),
+      0 1px 6px -1px rgba(0, 0, 0, 0.06);
   }
 }
 

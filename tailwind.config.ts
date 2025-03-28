@@ -144,6 +144,40 @@ export default {
 				'bounce-light': {
 					'0%, 100%': { transform: 'translateY(0)' },
 					'50%': { transform: 'translateY(-10px)' }
+				},
+				'morph': {
+					'0%': { borderRadius: '60% 40% 30% 70%/60% 30% 70% 40%' },
+					'50%': { borderRadius: '30% 60% 70% 40%/50% 60% 30% 60%' },
+					'100%': { borderRadius: '60% 40% 30% 70%/60% 30% 70% 40%' }
+				},
+				'pulse-ring': {
+					'0%': { transform: 'scale(0.8)', opacity: '0.8' },
+					'70%, 100%': { transform: 'scale(1.3)', opacity: '0' }
+				},
+				'rotate-slow': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
+				},
+				'flow': {
+					'0%, 100%': { transform: 'translateY(0) translateX(0) rotate(0)' },
+					'25%': { transform: 'translateY(-10px) translateX(10px) rotate(2deg)' },
+					'75%': { transform: 'translateY(10px) translateX(-10px) rotate(-2deg)' }
+				},
+				'reveal-text': {
+					'0%': { transform: 'translateY(100%)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
+				'scale-up-center': {
+					'0%': { transform: 'scale(0.8)' },
+					'100%': { transform: 'scale(1)' }
+				},
+				'wheel-spin': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
+				},
+				'float-horizontal': {
+					'0%, 100%': { transform: 'translateX(0)' },
+					'50%': { transform: 'translateX(15px)' }
 				}
 			},
 			animation: {
@@ -158,7 +192,15 @@ export default {
 				'blob': 'blob 15s ease-in-out infinite',
 				'shimmer': 'shimmer 2.5s infinite',
 				'tilt': 'tilt 10s ease-in-out infinite',
-				'bounce-light': 'bounce-light 3s ease-in-out infinite'
+				'bounce-light': 'bounce-light 3s ease-in-out infinite',
+				'morph': 'morph 10s ease-in-out infinite',
+				'pulse-ring': 'pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite',
+				'rotate-slow': 'rotate-slow 20s linear infinite',
+				'flow': 'flow 8s ease-in-out infinite',
+				'reveal-text': 'reveal-text 0.8s ease-out forwards',
+				'scale-up-center': 'scale-up-center 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both',
+				'wheel-spin': 'wheel-spin 10s linear infinite',
+				'float-horizontal': 'float-horizontal 5s ease-in-out infinite',
 			},
 			fontFamily: {
 				sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
