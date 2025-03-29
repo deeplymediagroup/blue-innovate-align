@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
-import { Hero } from "@/components/Hero";
 import { ClientLogos } from "@/components/ClientLogos";
 import { Services } from "@/components/Services";
 import { HowItWorks } from "@/components/HowItWorks";
@@ -22,6 +21,11 @@ import {
   Tooltip
 } from "recharts";
 import { PricingPlans } from "@/components/PricingPlans";
+import { ModernHero } from "@/components/ModernHero";
+import { ModernClientLogos } from "@/components/ModernClientLogos";
+import { ModernFeatures } from "@/components/ModernFeatures";
+import { ModernHowItWorks } from "@/components/ModernHowItWorks";
+import { ModernCTASection } from "@/components/ModernCTASection";
 
 const Index: React.FC = () => {
   const [rightHolderValue, setRightHolderValue] = useState(40);
@@ -160,41 +164,45 @@ const Index: React.FC = () => {
 
   return (
     <Layout>
-      <Hero />
-      <ClientLogos />
+      <ModernHero />
+      <ModernClientLogos />
       
-      <div className="py-16 container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12">
-          <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
+      <div className="py-16 container mx-auto px-4 md:px-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-blue-900/50 z-0" />
+        
+        <div className="text-center mb-12 relative z-10">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4 text-white">
             Rights Holders We Work With
           </h2>
-          <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
+          <p className="text-xl text-blue-200 max-w-2xl mx-auto">
             From individual creators to large media companies, we help protect and monetize valuable content
           </p>
         </div>
-        <CreatorGrid className="max-w-5xl mx-auto" />
+        <CreatorGrid className="max-w-5xl mx-auto relative z-10" />
       </div>
       
       <AlanWattsShowcase />
 
-      {/* Services section - What We Do */}
       <Services />
+      
+      <ModernFeatures />
 
-      {/* Distribution Partners Section - Switching position with YoutubeContentGrid */}
-      <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
-        <div className="container mx-auto px-4 md:px-6">
+      <section id="distribution" className="py-16 pt-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/50 to-gray-900" />
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-5xl mx-auto mb-12 text-center">
-            <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
+            <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4 text-white">
               We Power The Largest Motivational YouTube Network
             </h2>
-            <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
+            <p className="text-xl text-blue-200 max-w-2xl mx-auto">
               Our network manages rights for leading motivational content creators
             </p>
           </div>
           
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 max-w-5xl mx-auto">
-            <h3 className="text-2xl font-bold mb-6 text-blue-600">Distribution Partners</h3>
-            <p className="mb-6 text-foreground/70">
+          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl border border-blue-500/30 shadow-lg p-6 max-w-5xl mx-auto">
+            <h3 className="text-2xl font-bold mb-6 text-blue-400">Distribution Partners</h3>
+            <p className="mb-6 text-blue-100">
               We help speakers and podcasters reach millions through our established distribution network.
               Our partners have over 2 billion total views across YouTube.
             </p>
@@ -231,15 +239,15 @@ const Index: React.FC = () => {
               ))}
             </div>
             
-            <div className="flex flex-wrap justify-center gap-6 md:gap-12 py-4 bg-blue-50 rounded-lg p-4">
+            <div className="flex flex-wrap justify-center gap-6 md:gap-12 py-4 bg-blue-900/50 rounded-lg p-4 border border-blue-500/20">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                <p className="text-3xl font-bold text-blue-600">2B+</p>
-                <p className="text-sm text-foreground/60">Total Views</p>
+                <p className="text-3xl font-bold text-blue-400">2B+</p>
+                <p className="text-sm text-blue-200">Total Views</p>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -247,48 +255,50 @@ const Index: React.FC = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <p className="text-3xl font-bold text-blue-600">20M+</p>
-                <p className="text-sm text-foreground/60">Subscribers</p>
+                <p className="text-3xl font-bold text-blue-400">20M+</p>
+                <p className="text-sm text-blue-200">Subscribers</p>
               </motion.div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Optional Licensing Section - Updated text */}
-      <section id="licensing" className="py-16 pt-24 bg-gradient-to-b from-blue-50/30 to-white w-full">
-        <div className="container mx-auto px-4 md:px-6">
+      <section id="licensing" className="py-16 pt-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-blue-900/50" />
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-5xl mx-auto mb-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">Optional Licensing, Maximum Benefit</h2>
-                <p className="text-lg text-foreground/70 mb-6">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Optional Licensing, Maximum Benefit</h2>
+                <p className="text-lg text-blue-100 mb-6">
                   Create a thriving, long-term ecosystem with our licensing platform. Partner with creators to drive sustainable growth, while you earn passively with full control and end-to-end documentation.
                 </p>
-                <div className="bg-blue-50 p-6 rounded-lg border border-blue-100">
-                  <h3 className="text-xl font-bold mb-4 text-blue-700">The Mindset Advantage</h3>
+                <div className="bg-slate-900/80 backdrop-blur-sm p-6 rounded-lg border border-blue-500/30">
+                  <h3 className="text-xl font-bold mb-4 text-blue-400">The Mindset Advantage</h3>
                   <ul className="space-y-3">
                     <li className="flex items-start">
-                      <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5">
-                        <div className="h-2.5 w-2.5 rounded-full bg-blue-600"></div>
+                      <div className="h-5 w-5 rounded-full bg-blue-900/80 flex items-center justify-center mr-3 mt-0.5 border border-blue-500/30">
+                        <div className="h-2.5 w-2.5 rounded-full bg-blue-400"></div>
                       </div>
-                      <span>Sustainable licensing model that benefits everyone</span>
+                      <span className="text-blue-100">Sustainable licensing model that benefits everyone</span>
                     </li>
                     <li className="flex items-start">
-                      <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5">
-                        <div className="h-2.5 w-2.5 rounded-full bg-blue-600"></div>
+                      <div className="h-5 w-5 rounded-full bg-blue-900/80 flex items-center justify-center mr-3 mt-0.5 border border-blue-500/30">
+                        <div className="h-2.5 w-2.5 rounded-full bg-blue-400"></div>
                       </div>
-                      <span>Monthly passive income from your content</span>
+                      <span className="text-blue-100">Monthly passive income from your content</span>
                     </li>
                     <li className="flex items-start">
-                      <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5">
-                        <div className="h-2.5 w-2.5 rounded-full bg-blue-600"></div>
+                      <div className="h-5 w-5 rounded-full bg-blue-900/80 flex items-center justify-center mr-3 mt-0.5 border border-blue-500/30">
+                        <div className="h-2.5 w-2.5 rounded-full bg-blue-400"></div>
                       </div>
-                      <span>Highest accuracy in the world for audio match</span>
+                      <span className="text-blue-100">Highest accuracy in the world for audio match</span>
                     </li>
                   </ul>
                 </div>
               </div>
+              
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -395,21 +405,21 @@ const Index: React.FC = () => {
         </div>
       </section>
       
-      {/* Pricing Plans section */}
-      <section className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="py-16 pt-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/50 to-gray-900" />
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="mt-0 max-w-5xl mx-auto">
             <PricingPlans />
           </div>
         </div>
       </section>
       
-      {/* How It Works section */}
-      <HowItWorks />
+      <ModernHowItWorks />
       
-      {/* Moving Content We Amplify section after How It Works */}
       <YoutubeContentGrid />
-      <CTASection />
+      
+      <ModernCTASection />
     </Layout>
   );
 };
