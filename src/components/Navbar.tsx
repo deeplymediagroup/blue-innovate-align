@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Button, AnimatedButton } from "@/components/ui/button";
 import {
   Menu,
   X,
@@ -84,19 +84,21 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
               setIsMobileMenuOpen(false);
             }}
           >
-            <span className="text-xl font-bold text-blue-600">MindsetDRM</span>
+            <span className="text-xl font-bold bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent">MindsetDRM</span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => (
-              <button
+              <motion.button
                 key={index}
                 onClick={() => handleNavigation(item.href)}
                 className="text-foreground/80 hover:text-blue-600 transition-colors text-sm font-medium"
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
               >
                 {item.label}
-              </button>
+              </motion.button>
             ))}
           </nav>
 
@@ -108,11 +110,11 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
                 whileTap={{ scale: 0.97 }}
                 className="relative overflow-hidden rounded-full"
               >
-                <Button
+                <AnimatedButton
                   className={`rounded-full transition-all duration-300 ${
                     isScrolled
-                      ? "bg-blue-600 hover:bg-blue-700 text-white"
-                      : "bg-blue-600 hover:bg-blue-700 text-white"
+                      ? "bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white"
+                      : "bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white"
                   } relative z-10 group`}
                 >
                   <span className="relative z-10 flex items-center">
@@ -135,7 +137,7 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
                     whileHover={{ x: "0%" }}
                     transition={{ duration: 0.4 }}
                   />
-                </Button>
+                </AnimatedButton>
               </motion.div>
             </Link>
           </div>
@@ -183,7 +185,7 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white group">
+                    <AnimatedButton className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white group">
                       <span className="relative z-10 flex items-center">
                         Connect
                         <motion.div
@@ -198,7 +200,7 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
                           <ChevronRight className="ml-1 h-4 w-4" />
                         </motion.div>
                       </span>
-                    </Button>
+                    </AnimatedButton>
                   </motion.div>
                 </Link>
               </nav>
