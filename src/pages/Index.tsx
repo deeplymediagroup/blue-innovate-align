@@ -1,8 +1,7 @@
+
 import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
-import { ClientLogos } from "@/components/ClientLogos";
 import { Services } from "@/components/Services";
-import { HowItWorks } from "@/components/HowItWorks";
 import { CTASection } from "@/components/CTASection";
 import { CreatorGrid } from "@/components/CreatorGrid";
 import { AlanWattsShowcase } from "@/components/AlanWattsShowcase";
@@ -21,18 +20,22 @@ import {
   Tooltip
 } from "recharts";
 import { PricingPlans } from "@/components/PricingPlans";
-import { ModernHero } from "@/components/ModernHero";
-import { ModernClientLogos } from "@/components/ModernClientLogos";
-import { ModernFeatures } from "@/components/ModernFeatures";
-import { ModernHowItWorks } from "@/components/ModernHowItWorks";
-import { ModernCTASection } from "@/components/ModernCTASection";
+import { Features } from "@/components/Features";
+import { HowItWorks } from "@/components/HowItWorks";
+
+// New light-themed components
+import { LightHero } from "@/components/LightHero";
+import { LightClientLogos } from "@/components/LightClientLogos";
+import { LightFeatures } from "@/components/LightFeatures";
+import { LightHowItWorks } from "@/components/LightHowItWorks";
+import { LightCTASection } from "@/components/LightCTASection";
 
 const Index: React.FC = () => {
   const [rightHolderValue, setRightHolderValue] = useState(40);
   const [revenueData, setRevenueData] = useState([
-    { name: "Rights Holder", value: 40, color: "#0A2463" },
-    { name: "Creator", value: 50, color: "#3E92CC" },
-    { name: "Mindset", value: 10, color: "#93c5fd" },
+    { name: "Rights Holder", value: 40, color: "#3b82f6" },
+    { name: "Creator", value: 50, color: "#93c5fd" },
+    { name: "Mindset", value: 10, color: "#dbeafe" },
   ]);
   
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -40,9 +43,9 @@ const Index: React.FC = () => {
   useEffect(() => {
     const creatorValue = 90 - rightHolderValue;
     setRevenueData([
-      { name: "Rights Holder", value: rightHolderValue, color: "#0A2463" },
-      { name: "Creator", value: creatorValue, color: "#3E92CC" },
-      { name: "Mindset", value: 10, color: "#93c5fd" },
+      { name: "Rights Holder", value: rightHolderValue, color: "#3b82f6" },
+      { name: "Creator", value: creatorValue, color: "#93c5fd" },
+      { name: "Mindset", value: 10, color: "#dbeafe" },
     ]);
   }, [rightHolderValue]);
   
@@ -164,45 +167,43 @@ const Index: React.FC = () => {
 
   return (
     <Layout>
-      <ModernHero />
-      <ModernClientLogos />
+      <LightHero />
+      <LightClientLogos />
       
-      <div className="py-16 container mx-auto px-4 md:px-6 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-blue-900/50 z-0" />
-        
+      <div className="py-16 container mx-auto px-4 md:px-6 bg-gradient-to-b from-white to-blue-50/30 relative">
         <div className="text-center mb-12 relative z-10">
-          <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4 text-white">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4 text-gray-900">
             Rights Holders We Work With
           </h2>
-          <p className="text-xl text-blue-200 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             From individual creators to large media companies, we help protect and monetize valuable content
           </p>
         </div>
         <CreatorGrid className="max-w-5xl mx-auto relative z-10" />
       </div>
       
-      <AlanWattsShowcase />
+      <div className="bg-gradient-to-b from-blue-50/30 to-white py-16">
+        <AlanWattsShowcase />
+      </div>
 
-      <Services />
+      <div className="bg-white py-16">
+        <LightFeatures />
+      </div>
       
-      <ModernFeatures />
-
-      <section id="distribution" className="py-16 pt-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/50 to-gray-900" />
-        
+      <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-5xl mx-auto mb-12 text-center">
-            <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4 text-white">
+            <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4 text-gray-900">
               We Power The Largest Motivational YouTube Network
             </h2>
-            <p className="text-xl text-blue-200 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Our network manages rights for leading motivational content creators
             </p>
           </div>
           
-          <div className="bg-slate-900/90 backdrop-blur-sm rounded-xl border border-blue-500/30 shadow-lg p-6 max-w-5xl mx-auto">
-            <h3 className="text-2xl font-bold mb-6 text-blue-400">Distribution Partners</h3>
-            <p className="mb-6 text-blue-100">
+          <div className="bg-white rounded-xl shadow-md border border-gray-100 p-8 max-w-5xl mx-auto">
+            <h3 className="text-2xl font-bold mb-6 text-gray-900">Distribution Partners</h3>
+            <p className="mb-6 text-gray-600">
               We help speakers and podcasters reach millions through our established distribution network.
               Our partners have over 2 billion total views across YouTube.
             </p>
@@ -239,15 +240,15 @@ const Index: React.FC = () => {
               ))}
             </div>
             
-            <div className="flex flex-wrap justify-center gap-6 md:gap-12 py-4 bg-blue-900/50 rounded-lg p-4 border border-blue-500/20">
+            <div className="flex flex-wrap justify-center gap-6 md:gap-12 py-4 bg-blue-50 rounded-lg p-4 border border-blue-100">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                <p className="text-3xl font-bold text-blue-400">2B+</p>
-                <p className="text-sm text-blue-200">Total Views</p>
+                <p className="text-3xl font-bold text-blue-600">2B+</p>
+                <p className="text-sm text-gray-600">Total Views</p>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -255,45 +256,43 @@ const Index: React.FC = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <p className="text-3xl font-bold text-blue-400">20M+</p>
-                <p className="text-sm text-blue-200">Subscribers</p>
+                <p className="text-3xl font-bold text-blue-600">20M+</p>
+                <p className="text-sm text-gray-600">Subscribers</p>
               </motion.div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="licensing" className="py-16 pt-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-blue-900/50" />
-        
+      <section id="licensing" className="py-16 pt-24 bg-gradient-to-b from-blue-50/30 to-white relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-5xl mx-auto mb-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Optional Licensing, Maximum Benefit</h2>
-                <p className="text-lg text-blue-100 mb-6">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Optional Licensing, Maximum Benefit</h2>
+                <p className="text-lg text-gray-600 mb-6">
                   Create a thriving, long-term ecosystem with our licensing platform. Partner with creators to drive sustainable growth, while you earn passively with full control and end-to-end documentation.
                 </p>
-                <div className="bg-slate-900/80 backdrop-blur-sm p-6 rounded-lg border border-blue-500/30">
-                  <h3 className="text-xl font-bold mb-4 text-blue-400">The Mindset Advantage</h3>
+                <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
+                  <h3 className="text-xl font-bold mb-4 text-gray-900">The Mindset Advantage</h3>
                   <ul className="space-y-3">
                     <li className="flex items-start">
-                      <div className="h-5 w-5 rounded-full bg-blue-900/80 flex items-center justify-center mr-3 mt-0.5 border border-blue-500/30">
-                        <div className="h-2.5 w-2.5 rounded-full bg-blue-400"></div>
+                      <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5 border border-blue-200">
+                        <div className="h-2.5 w-2.5 rounded-full bg-blue-600"></div>
                       </div>
-                      <span className="text-blue-100">Sustainable licensing model that benefits everyone</span>
+                      <span className="text-gray-600">Sustainable licensing model that benefits everyone</span>
                     </li>
                     <li className="flex items-start">
-                      <div className="h-5 w-5 rounded-full bg-blue-900/80 flex items-center justify-center mr-3 mt-0.5 border border-blue-500/30">
-                        <div className="h-2.5 w-2.5 rounded-full bg-blue-400"></div>
+                      <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5 border border-blue-200">
+                        <div className="h-2.5 w-2.5 rounded-full bg-blue-600"></div>
                       </div>
-                      <span className="text-blue-100">Monthly passive income from your content</span>
+                      <span className="text-gray-600">Monthly passive income from your content</span>
                     </li>
                     <li className="flex items-start">
-                      <div className="h-5 w-5 rounded-full bg-blue-900/80 flex items-center justify-center mr-3 mt-0.5 border border-blue-500/30">
-                        <div className="h-2.5 w-2.5 rounded-full bg-blue-400"></div>
+                      <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5 border border-blue-200">
+                        <div className="h-2.5 w-2.5 rounded-full bg-blue-600"></div>
                       </div>
-                      <span className="text-blue-100">Highest accuracy in the world for audio match</span>
+                      <span className="text-gray-600">Highest accuracy in the world for audio match</span>
                     </li>
                   </ul>
                 </div>
@@ -306,7 +305,7 @@ const Index: React.FC = () => {
                 viewport={{ once: true }}
                 className="flex justify-center flex-col items-center"
               >
-                <div className="w-full max-w-md">
+                <div className="w-full max-w-md bg-white p-6 rounded-xl shadow-md border border-gray-100">
                   <div className="w-full aspect-square flex items-center justify-center">
                     <ResponsiveContainer width="100%" height={400}>
                       <PieChart>
@@ -405,9 +404,7 @@ const Index: React.FC = () => {
         </div>
       </section>
       
-      <section className="py-16 pt-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/50 to-gray-900" />
-        
+      <section className="py-16 pt-24 bg-white relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="mt-0 max-w-5xl mx-auto">
             <PricingPlans />
@@ -415,11 +412,13 @@ const Index: React.FC = () => {
         </div>
       </section>
       
-      <ModernHowItWorks />
+      <LightHowItWorks />
       
-      <YoutubeContentGrid />
+      <div className="bg-gradient-to-b from-white to-blue-50/30 py-16">
+        <YoutubeContentGrid />
+      </div>
       
-      <ModernCTASection />
+      <LightCTASection />
     </Layout>
   );
 };

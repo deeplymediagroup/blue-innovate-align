@@ -21,9 +21,9 @@ export const NeonGlow: React.FC<NeonGlowProps> = ({
 }) => {
   const getGlowStyles = () => {
     const intensityMap = {
-      low: { textShadow: `0 0 5px ${color}80, 0 0 10px ${color}40`, boxShadow: `0 0 5px ${color}80, 0 0 10px ${color}40` },
-      medium: { textShadow: `0 0 5px ${color}, 0 0 10px ${color}80, 0 0 15px ${color}40`, boxShadow: `0 0 5px ${color}, 0 0 10px ${color}80, 0 0 15px ${color}40` },
-      high: { textShadow: `0 0 5px ${color}, 0 0 10px ${color}, 0 0 15px ${color}80, 0 0 20px ${color}40`, boxShadow: `0 0 5px ${color}, 0 0 10px ${color}, 0 0 15px ${color}80, 0 0 20px ${color}40` },
+      low: { textShadow: `0 0 5px ${color}50, 0 0 10px ${color}30`, boxShadow: `0 0 5px ${color}50, 0 0 10px ${color}30` },
+      medium: { textShadow: `0 0 5px ${color}70, 0 0 10px ${color}50, 0 0 15px ${color}30`, boxShadow: `0 0 5px ${color}70, 0 0 10px ${color}50, 0 0 15px ${color}30` },
+      high: { textShadow: `0 0 5px ${color}90, 0 0 10px ${color}70, 0 0 15px ${color}50, 0 0 20px ${color}30`, boxShadow: `0 0 5px ${color}90, 0 0 10px ${color}70, 0 0 15px ${color}50, 0 0 20px ${color}30` },
     };
     
     return type === "text" ? 
@@ -43,7 +43,7 @@ export const NeonGlow: React.FC<NeonGlowProps> = ({
   
   const pulseVariants = {
     animate: {
-      opacity: [1, 0.7, 1],
+      opacity: [1, 0.85, 1],
       transition: {
         duration: 2,
         repeat: Infinity,

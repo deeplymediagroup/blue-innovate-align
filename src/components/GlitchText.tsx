@@ -31,9 +31,9 @@ export const GlitchText: React.FC<GlitchTextProps> = ({
   const getGlitchIntensity = () => {
     switch (intensity) {
       case "low": return 2;
-      case "medium": return 4;
-      case "high": return 6;
-      default: return 4;
+      case "medium": return 3;
+      case "high": return 4;
+      default: return 3;
     }
   };
 
@@ -42,11 +42,11 @@ export const GlitchText: React.FC<GlitchTextProps> = ({
   const textVariants = {
     glitching: {
       textShadow: [
-        "0 0 0 #fff",
-        `1px 1px 2px #3b82f6, -${glitchIntensity}px -${glitchIntensity}px 0 rgba(255,0,0,0.7), ${glitchIntensity}px ${glitchIntensity}px 0 rgba(0,255,0,0.7)`,
-        "0 0 0 #fff",
-        `${glitchIntensity}px -${glitchIntensity}px 0 rgba(255,0,0,0.7), -${glitchIntensity}px ${glitchIntensity}px 0 rgba(0,255,0,0.7)`,
-        "0 0 0 #fff"
+        "0 0 0 #000",
+        `1px 1px 2px #3b82f6, -${glitchIntensity}px -${glitchIntensity}px 0 rgba(255,100,100,0.5), ${glitchIntensity}px ${glitchIntensity}px 0 rgba(100,255,100,0.5)`,
+        "0 0 0 #000",
+        `${glitchIntensity}px -${glitchIntensity}px 0 rgba(255,100,100,0.5), -${glitchIntensity}px ${glitchIntensity}px 0 rgba(100,255,100,0.5)`,
+        "0 0 0 #000"
       ],
       x: [0, -2, 2, -1, 0],
       y: [0, 1, -1, 1, 0],
@@ -57,7 +57,7 @@ export const GlitchText: React.FC<GlitchTextProps> = ({
       }
     },
     normal: {
-      textShadow: "0 0 0 #fff",
+      textShadow: "0 0 0 #000",
       x: 0,
       y: 0,
     }

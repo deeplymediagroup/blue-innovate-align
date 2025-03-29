@@ -13,7 +13,7 @@ interface TechGridProps {
 export const TechGrid: React.FC<TechGridProps> = ({
   className = "",
   color = "#3b82f6",
-  opacity = 0.15,
+  opacity = 0.1,
   size = 40,
   speed = 20
 }) => {
