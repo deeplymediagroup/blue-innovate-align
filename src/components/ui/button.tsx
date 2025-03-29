@@ -60,6 +60,14 @@ interface AnimatedButtonProps extends ButtonProps {
   children: React.ReactNode
 }
 
+// Create a list of event handler props that conflict between React and Framer Motion
+const conflictingEventProps = [
+  'onDrag', 'onDragEnd', 'onDragStart', 
+  'onAnimationStart', 'onAnimationComplete',
+  'onHoverStart', 'onHoverEnd', 'onPointerDown',
+  'onViewportEnter', 'onViewportLeave'
+];
+
 const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
   ({ className, variant, size, asChild = false, children, ...props }, ref) => {
     if (asChild) {
@@ -78,14 +86,19 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
       )
     }
     
-    // Define motion props separately to avoid type conflicts
+    // Define motion props separately
     const motionProps = {
       whileHover: { scale: 1.03 },
       whileTap: { scale: 0.97 }
     };
     
-    // Extract React button props that conflict with Framer Motion
-    const { onDrag, onDragEnd, onDragStart, ...buttonProps } = props;
+    // Filter out all potentially conflicting event handlers
+    const buttonProps = { ...props };
+    conflictingEventProps.forEach(prop => {
+      if (prop in buttonProps) {
+        delete buttonProps[prop as keyof typeof buttonProps];
+      }
+    });
     
     return (
       <motion.button
