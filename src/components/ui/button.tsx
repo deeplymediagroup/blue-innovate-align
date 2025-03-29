@@ -59,7 +59,6 @@ interface AnimatedButtonProps extends ButtonProps {
   children: React.ReactNode
 }
 
-// Fix the TypeScript error by properly handling the event handlers
 const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
   ({ className, variant, size, asChild = false, children, ...props }, ref) => {
     if (asChild) {
@@ -78,9 +77,6 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
       )
     }
     
-    // Extract drag event handlers that are causing type issues
-    const { onDrag, onDragEnd, onDragStart, ...restProps } = props;
-    
     // Use motion.button directly without Slot when not using asChild
     return (
       <motion.button
@@ -88,7 +84,7 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
         ref={ref}
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
-        {...restProps}
+        {...props}
       >
         {children}
         <span className="absolute inset-0 bg-gradient-to-r from-blue-700/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

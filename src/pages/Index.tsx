@@ -1,7 +1,9 @@
-
 import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
+import { Hero } from "@/components/Hero";
+import { ClientLogos } from "@/components/ClientLogos";
 import { Services } from "@/components/Services";
+import { HowItWorks } from "@/components/HowItWorks";
 import { CTASection } from "@/components/CTASection";
 import { CreatorGrid } from "@/components/CreatorGrid";
 import { AlanWattsShowcase } from "@/components/AlanWattsShowcase";
@@ -20,22 +22,13 @@ import {
   Tooltip
 } from "recharts";
 import { PricingPlans } from "@/components/PricingPlans";
-import { Features } from "@/components/Features";
-import { HowItWorks } from "@/components/HowItWorks";
-
-// New light-themed components
-import { LightHero } from "@/components/LightHero";
-import { LightClientLogos } from "@/components/LightClientLogos";
-import { LightFeatures } from "@/components/LightFeatures";
-import { LightHowItWorks } from "@/components/LightHowItWorks";
-import { LightCTASection } from "@/components/LightCTASection";
 
 const Index: React.FC = () => {
   const [rightHolderValue, setRightHolderValue] = useState(40);
   const [revenueData, setRevenueData] = useState([
-    { name: "Rights Holder", value: 40, color: "#3b82f6" },
-    { name: "Creator", value: 50, color: "#93c5fd" },
-    { name: "Mindset", value: 10, color: "#dbeafe" },
+    { name: "Rights Holder", value: 40, color: "#0A2463" },
+    { name: "Creator", value: 50, color: "#3E92CC" },
+    { name: "Mindset", value: 10, color: "#93c5fd" },
   ]);
   
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -43,9 +36,9 @@ const Index: React.FC = () => {
   useEffect(() => {
     const creatorValue = 90 - rightHolderValue;
     setRevenueData([
-      { name: "Rights Holder", value: rightHolderValue, color: "#3b82f6" },
-      { name: "Creator", value: creatorValue, color: "#93c5fd" },
-      { name: "Mindset", value: 10, color: "#dbeafe" },
+      { name: "Rights Holder", value: rightHolderValue, color: "#0A2463" },
+      { name: "Creator", value: creatorValue, color: "#3E92CC" },
+      { name: "Mindset", value: 10, color: "#93c5fd" },
     ]);
   }, [rightHolderValue]);
   
@@ -167,43 +160,41 @@ const Index: React.FC = () => {
 
   return (
     <Layout>
-      <LightHero />
-      <LightClientLogos />
+      <Hero />
+      <ClientLogos />
       
-      <div className="py-16 container mx-auto px-4 md:px-6 bg-gradient-to-b from-white to-blue-50/30 relative">
-        <div className="text-center mb-12 relative z-10">
-          <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4 text-gray-900">
+      <div className="py-16 container mx-auto px-4 md:px-6">
+        <div className="text-center mb-12">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
             Rights Holders We Work With
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
             From individual creators to large media companies, we help protect and monetize valuable content
           </p>
         </div>
-        <CreatorGrid className="max-w-5xl mx-auto relative z-10" />
+        <CreatorGrid className="max-w-5xl mx-auto" />
       </div>
       
-      <div className="bg-gradient-to-b from-blue-50/30 to-white py-16">
-        <AlanWattsShowcase />
-      </div>
+      <AlanWattsShowcase />
 
-      <div className="bg-white py-16">
-        <LightFeatures />
-      </div>
-      
-      <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+      {/* Services section - What We Do */}
+      <Services />
+
+      {/* Distribution Partners Section - Switching position with YoutubeContentGrid */}
+      <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-12 text-center">
-            <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4 text-gray-900">
+            <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
               We Power The Largest Motivational YouTube Network
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
               Our network manages rights for leading motivational content creators
             </p>
           </div>
           
-          <div className="bg-white rounded-xl shadow-md border border-gray-100 p-8 max-w-5xl mx-auto">
-            <h3 className="text-2xl font-bold mb-6 text-gray-900">Distribution Partners</h3>
-            <p className="mb-6 text-gray-600">
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 max-w-5xl mx-auto">
+            <h3 className="text-2xl font-bold mb-6 text-blue-600">Distribution Partners</h3>
+            <p className="mb-6 text-foreground/70">
               We help speakers and podcasters reach millions through our established distribution network.
               Our partners have over 2 billion total views across YouTube.
             </p>
@@ -240,7 +231,7 @@ const Index: React.FC = () => {
               ))}
             </div>
             
-            <div className="flex flex-wrap justify-center gap-6 md:gap-12 py-4 bg-blue-50 rounded-lg p-4 border border-blue-100">
+            <div className="flex flex-wrap justify-center gap-6 md:gap-12 py-4 bg-blue-50 rounded-lg p-4">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -248,7 +239,7 @@ const Index: React.FC = () => {
                 viewport={{ once: true }}
               >
                 <p className="text-3xl font-bold text-blue-600">2B+</p>
-                <p className="text-sm text-gray-600">Total Views</p>
+                <p className="text-sm text-foreground/60">Total Views</p>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -257,47 +248,47 @@ const Index: React.FC = () => {
                 viewport={{ once: true }}
               >
                 <p className="text-3xl font-bold text-blue-600">20M+</p>
-                <p className="text-sm text-gray-600">Subscribers</p>
+                <p className="text-sm text-foreground/60">Subscribers</p>
               </motion.div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="licensing" className="py-16 pt-24 bg-gradient-to-b from-blue-50/30 to-white relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+      {/* Optional Licensing Section - Updated text */}
+      <section id="licensing" className="py-16 pt-24 bg-gradient-to-b from-blue-50/30 to-white w-full">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Optional Licensing, Maximum Benefit</h2>
-                <p className="text-lg text-gray-600 mb-6">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">Optional Licensing, Maximum Benefit</h2>
+                <p className="text-lg text-foreground/70 mb-6">
                   Create a thriving, long-term ecosystem with our licensing platform. Partner with creators to drive sustainable growth, while you earn passively with full control and end-to-end documentation.
                 </p>
-                <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-                  <h3 className="text-xl font-bold mb-4 text-gray-900">The Mindset Advantage</h3>
+                <div className="bg-blue-50 p-6 rounded-lg border border-blue-100">
+                  <h3 className="text-xl font-bold mb-4 text-blue-700">The Mindset Advantage</h3>
                   <ul className="space-y-3">
                     <li className="flex items-start">
-                      <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5 border border-blue-200">
+                      <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5">
                         <div className="h-2.5 w-2.5 rounded-full bg-blue-600"></div>
                       </div>
-                      <span className="text-gray-600">Sustainable licensing model that benefits everyone</span>
+                      <span>Sustainable licensing model that benefits everyone</span>
                     </li>
                     <li className="flex items-start">
-                      <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5 border border-blue-200">
+                      <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5">
                         <div className="h-2.5 w-2.5 rounded-full bg-blue-600"></div>
                       </div>
-                      <span className="text-gray-600">Monthly passive income from your content</span>
+                      <span>Monthly passive income from your content</span>
                     </li>
                     <li className="flex items-start">
-                      <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5 border border-blue-200">
+                      <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5">
                         <div className="h-2.5 w-2.5 rounded-full bg-blue-600"></div>
                       </div>
-                      <span className="text-gray-600">Highest accuracy in the world for audio match</span>
+                      <span>Highest accuracy in the world for audio match</span>
                     </li>
                   </ul>
                 </div>
               </div>
-              
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -305,7 +296,7 @@ const Index: React.FC = () => {
                 viewport={{ once: true }}
                 className="flex justify-center flex-col items-center"
               >
-                <div className="w-full max-w-md bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                <div className="w-full max-w-md">
                   <div className="w-full aspect-square flex items-center justify-center">
                     <ResponsiveContainer width="100%" height={400}>
                       <PieChart>
@@ -404,21 +395,21 @@ const Index: React.FC = () => {
         </div>
       </section>
       
-      <section className="py-16 pt-24 bg-white relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+      {/* Pricing Plans section */}
+      <section className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="mt-0 max-w-5xl mx-auto">
             <PricingPlans />
           </div>
         </div>
       </section>
       
-      <LightHowItWorks />
+      {/* How It Works section */}
+      <HowItWorks />
       
-      <div className="bg-gradient-to-b from-white to-blue-50/30 py-16">
-        <YoutubeContentGrid />
-      </div>
-      
-      <LightCTASection />
+      {/* Moving Content We Amplify section after How It Works */}
+      <YoutubeContentGrid />
+      <CTASection />
     </Layout>
   );
 };
