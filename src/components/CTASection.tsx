@@ -1,12 +1,11 @@
 
 import React, { useRef } from "react";
-import { Button, AnimatedButton } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { AnimatedBlob } from "./AnimatedBlob";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
 import { GeometricShape, DotPattern, FloatingTile } from "./DecorativeElements";
-import { FloatingCube, FloatingPyramid, FloatingSphere, FloatingRing } from "./3DElements";
 
 export const CTASection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -31,36 +30,6 @@ export const CTASection: React.FC = () => {
         position="bottom-[-200px] right-[-200px]" 
         color="blue"
         delay="2s"
-      />
-
-      {/* Add 3D decorative elements */}
-      <FloatingCube 
-        position="top-[10%] right-[15%]" 
-        size={60} 
-        color="blue" 
-        delay={0.3} 
-      />
-      
-      <FloatingPyramid 
-        position="bottom-[12%] left-[10%]" 
-        size={70} 
-        color="purple" 
-        delay={0.6} 
-      />
-      
-      <FloatingSphere 
-        position="top-[45%] left-[8%]" 
-        size={50} 
-        color="blue" 
-        delay={0.9} 
-      />
-      
-      <FloatingRing 
-        position="bottom-[30%] right-[12%]" 
-        size={80} 
-        thickness={4} 
-        color="purple" 
-        delay={1.2} 
       />
 
       {/* Additional decorative elements */}
@@ -180,7 +149,7 @@ export const CTASection: React.FC = () => {
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
                 <Link to="/contact">
-                  <AnimatedButton 
+                  <Button 
                     className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-6 text-lg group relative overflow-hidden"
                   >
                     <span className="relative z-10 flex items-center">
@@ -198,7 +167,7 @@ export const CTASection: React.FC = () => {
                       </motion.div>
                     </span>
                     <span className="absolute inset-0 bg-gradient-to-r from-blue-100 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                  </AnimatedButton>
+                  </Button>
                 </Link>
               </motion.div>
             </motion.div>

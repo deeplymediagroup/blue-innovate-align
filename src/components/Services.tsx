@@ -2,18 +2,10 @@
 import React, { useRef } from "react";
 import { GlassmorphicCard } from "./GlassmorphicCard";
 import { Shield, DollarSign, ArrowRight } from "lucide-react";
-import { Button, AnimatedButton } from "./ui/button";
+import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FloatingTile } from "./DecorativeElements";
-import { 
-  GeometricShape as ShapeDecorator, 
-  GradientBlob, 
-  FloatingElement, 
-  DotPattern as PatternDecorator, 
-  GlowingOrb 
-} from "./ParallaxElements";
-import { FloatingCube, FloatingPyramid, FloatingSphere } from "./3DElements";
 
 // Animated SVG decorator
 const DecorativeSVG = ({ className = "" }) => {
@@ -44,6 +36,52 @@ const DecorativeSVG = ({ className = "" }) => {
       />
       <circle cx="50" cy="50" r="20" stroke="rgba(59, 130, 246, 0.2)" strokeWidth="4" fill="none" />
     </motion.svg>
+  );
+};
+
+// Geometric shape decorator - renamed to avoid conflict
+const ShapeDecorator = ({ className, color = "blue", size = 80, delay = 0 }) => {
+  return (
+    <motion.div
+      className={`absolute pointer-events-none ${className}`}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ 
+        opacity: [0.3, 0.5, 0.3],
+        scale: [0.9, 1.1, 0.9],
+        rotate: [0, 15, 0],
+      }}
+      transition={{ 
+        duration: 12 + Math.random() * 5, 
+        ease: "easeInOut", 
+        repeat: Infinity,
+        repeatType: "mirror",
+        delay 
+      }}
+    >
+      <div 
+        className={`bg-${color}-100/40 backdrop-blur-3xl rounded-xl rotate-12`} 
+        style={{ width: size, height: size }}
+      />
+    </motion.div>
+  );
+};
+
+// Floating dot pattern - renamed to avoid conflict
+const PatternDecorator = ({ className }) => {
+  return (
+    <motion.div 
+      className={`absolute pointer-events-none ${className}`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 0.7 }}
+      transition={{ duration: 1 }}
+    >
+      <svg width="200" height="200" viewBox="0 0 100 100">
+        <pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1" fill="rgba(59, 130, 246, 0.3)" />
+        </pattern>
+        <rect width="100%" height="100%" fill="url(#dots)" />
+      </svg>
+    </motion.div>
   );
 };
 
@@ -130,79 +168,62 @@ export const Services: React.FC = () => {
   const servicesData = [
     {
       title: "Protect",
-      description: "Our innovative content identification system is designed to safeguard your intellectual property across YouTube's vast ecosystem, ensuring your content remains protected while maximizing its potential.",
+      description: "Secure your intellectual property across YouTube with our automated content protection system.",
       icon: Shield,
       features: [
-        "Precision fingerprinting technology",
-        "Real-time unauthorized usage alerts",
-        "Flexible content control options",
-        "Comprehensive analytics dashboard"
+        "Content identification technology",
+        "Claim unauthorized uploads",
+        "Block infringing content",
+        "Monitor usage across YouTube"
       ],
       delay: 0.1
     },
     {
-      title: "Monetize",
-      description: "Transform unauthorized content usage into valuable revenue streams with our sophisticated licensing platform. Create sustainable partnerships while generating passive income from your content across global platforms.",
+      title: "License",
+      description: "Transform unauthorized usage into revenue streams while building creator partnerships.",
       icon: DollarSign,
       features: [
-        "Maximize passive revenue potential",
-        "Develop strategic creator partnerships",
-        "Expand global content reach",
-        "Detailed performance analytics"
+        "Create sustainable revenue",
+        "Build creator partnerships",
+        "Expand content reach",
+        "Monthly passive income"
       ],
       delay: 0.2,
       highlight: true
     }
   ];
 
+  // Decorative elements
+  const FloatingElement = ({ className, delay = 0, duration = 20 }) => (
+    <motion.div
+      className={`absolute rounded-full bg-blue-400/5 backdrop-blur-3xl z-0 ${className}`}
+      animate={{ 
+        y: [20, -20, 20],
+        x: [10, -10, 10],
+        scale: [1, 1.1, 1],
+        rotate: [0, 5, 0],
+      }}
+      transition={{ 
+        duration, 
+        ease: "easeInOut", 
+        delay, 
+        repeat: Infinity,
+        repeatType: "mirror" 
+      }}
+    />
+  );
+
   return (
     <section id="services" className="py-24 bg-gradient-to-b from-background to-blue-50/50 relative overflow-hidden">
-      {/* Enhanced decorative background elements */}
+      {/* Decorative background elements */}
       <FloatingElement className="w-96 h-96 top-20 -right-48 opacity-40" delay={0} duration={25} />
       <FloatingElement className="w-80 h-80 bottom-40 -left-40 opacity-30" delay={5} duration={20} />
       
-      {/* New 3D decorative elements */}
-      <FloatingCube 
-        position="top-[15%] right-[10%]" 
-        size={70} 
-        color="blue" 
-        delay={0.2} 
-      />
-      
-      <FloatingPyramid 
-        position="bottom-[20%] left-[12%]" 
-        size={80} 
-        color="purple" 
-        delay={0.5} 
-      />
-      
-      <FloatingSphere 
-        position="top-[30%] left-[5%]" 
-        size={60} 
-        color="blue" 
-        delay={0.8} 
-      />
-      
       {/* Additional decorative elements */}
-      <ShapeDecorator position="top-20 left-[10%]" color="blue" size={120} delay={0.5} />
-      <ShapeDecorator position="bottom-40 right-[15%]" color="purple" size={100} delay={1.5} />
-      <PatternDecorator position="top-40 right-[5%]" />
-      <PatternDecorator position="bottom-20 left-[8%]" />
-      
-      {/* Enhanced decorative elements */}
-      <GradientBlob 
-        position="top-0 right-0" 
-        size="w-[700px] h-[700px]" 
-        colors="from-blue-300/10 to-blue-200/5" 
-      />
-      <GradientBlob 
-        position="bottom-0 left-0" 
-        size="w-[600px] h-[600px]" 
-        colors="from-purple-300/10 to-blue-200/5"
-        delay={2} 
-      />
-      <GlowingOrb position="top-[30%] left-[20%]" size="w-24 h-24" color="blue" />
-      <GlowingOrb position="bottom-[25%] right-[18%]" size="w-16 h-16" color="purple" delay={1} />
+      <ShapeDecorator className="top-20 left-[10%]" color="blue" size={120} delay={0.5} />
+      <ShapeDecorator className="bottom-40 right-[15%]" color="purple" size={100} delay={1.5} />
+      <PatternDecorator className="top-40 right-[5%]" />
+      <PatternDecorator className="bottom-20 left-[8%]" />
       
       {/* Floating tiles */}
       <FloatingTile className="absolute right-[10%] top-[30%] z-0 w-20 h-20 rounded-lg bg-gradient-to-r from-blue-200/20 to-blue-100/20 backdrop-blur-md border border-white/10" />
@@ -224,7 +245,7 @@ export const Services: React.FC = () => {
             >
               <div className="py-1 px-3 bg-blue-100 border border-blue-200 rounded-full hover:shadow-lg transition-all duration-300">
                 <p className="text-xs font-medium text-blue-700">
-                  Our Services
+                  What We Do
                 </p>
               </div>
             </motion.div>
@@ -236,7 +257,7 @@ export const Services: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              Complete YouTube Content Management
+              YouTube Content Management
             </motion.h2>
             
             <motion.p 
@@ -246,7 +267,7 @@ export const Services: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Take full control of your intellectual property across YouTube with our innovative rights management platform
+              Complete control of your content across the YouTube ecosystem
             </motion.p>
           </div>
 
@@ -263,28 +284,33 @@ export const Services: React.FC = () => {
 
           <div className="text-center mt-16">
             <Link to="/contact">
-              <AnimatedButton className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-8 py-6 text-lg rounded-full relative overflow-hidden group">
-                <span className="relative z-10 flex items-center">
-                  Learn More About Our Services
-                  <motion.div
-                    initial={{ x: 0 }}
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ 
-                      duration: 1.5, 
-                      repeat: Infinity, 
-                      repeatType: "reverse" 
-                    }}
-                  >
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </motion.div>
-                </span>
-                <motion.span 
-                  className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "0%" }}
-                  transition={{ duration: 0.4 }}
-                />
-              </AnimatedButton>
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-full relative overflow-hidden group">
+                  <span className="relative z-10 flex items-center">
+                    Learn More About Our Services
+                    <motion.div
+                      initial={{ x: 0 }}
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ 
+                        duration: 1.5, 
+                        repeat: Infinity, 
+                        repeatType: "reverse" 
+                      }}
+                    >
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </motion.div>
+                  </span>
+                  <motion.span 
+                    className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "0%" }}
+                    transition={{ duration: 0.4 }}
+                  />
+                </Button>
+              </motion.div>
             </Link>
           </div>
         </div>

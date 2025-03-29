@@ -4,7 +4,6 @@ import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
-import type { PanInfo } from "framer-motion"
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative overflow-hidden group",
@@ -60,14 +59,6 @@ interface AnimatedButtonProps extends ButtonProps {
   children: React.ReactNode
 }
 
-// Create a list of event handler props that conflict between React and Framer Motion
-const conflictingEventProps = [
-  'onDrag', 'onDragEnd', 'onDragStart', 
-  'onAnimationStart', 'onAnimationComplete',
-  'onHoverStart', 'onHoverEnd', 'onPointerDown',
-  'onViewportEnter', 'onViewportLeave'
-];
-
 const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
   ({ className, variant, size, asChild = false, children, ...props }, ref) => {
     if (asChild) {
@@ -86,27 +77,14 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
       )
     }
     
-    // Define motion props separately
-    const motionProps = {
-      whileHover: { scale: 1.03 },
-      whileTap: { scale: 0.97 }
-    };
-    
-    // Filter out all potentially conflicting event handlers
-    const filteredProps = { ...props };
-    // Extract and remove conflicting props
-    for (const prop of conflictingEventProps) {
-      if (prop in filteredProps) {
-        delete filteredProps[prop as keyof typeof filteredProps];
-      }
-    }
-    
+    // Use motion.button directly without Slot when not using asChild
     return (
       <motion.button
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
-        {...motionProps}
-        {...filteredProps}
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
+        {...props}
       >
         {children}
         <span className="absolute inset-0 bg-gradient-to-r from-blue-700/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

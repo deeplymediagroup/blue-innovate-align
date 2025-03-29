@@ -1,11 +1,10 @@
 
 import React, { useRef, useEffect } from "react";
-import { Button, AnimatedButton } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { ChevronRight, ArrowDown, ShieldCheck, Zap, Lock } from "lucide-react";
 import { AnimatedBlob } from "./AnimatedBlob";
 import { motion, useScroll, useTransform, useSpring, useMotionValue, useAnimationFrame } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FloatingCube, FloatingPyramid, FloatingSphere, FloatingRing, FloatingPlate } from "./3DElements";
 
 // Creative floating elements Component
 const FloatingIllustration = ({ 
@@ -231,45 +230,6 @@ export const Hero: React.FC = () => {
       {/* Particle field background */}
       <ParticleField />
       
-      {/* 3D Elements - Add new dynamic elements */}
-      <FloatingCube 
-        position="top-[15%] left-[12%]" 
-        size={50} 
-        color="blue" 
-        delay={0.2} 
-      />
-      
-      <FloatingPyramid 
-        position="bottom-[18%] right-[15%]" 
-        size={60} 
-        color="purple" 
-        delay={0.4} 
-      />
-      
-      <FloatingSphere 
-        position="top-[35%] right-[15%]" 
-        size={70} 
-        color="blue" 
-        delay={0.6} 
-      />
-      
-      <FloatingRing 
-        position="bottom-[25%] left-[20%]" 
-        size={90} 
-        thickness={5} 
-        color="purple" 
-        delay={0.8} 
-      />
-      
-      <FloatingPlate 
-        position="top-[45%] left-[45%]" 
-        width={100} 
-        height={60} 
-        color="blue" 
-        rotation={[30, -20, 5]} 
-        delay={1}
-      />
-      
       {/* Animated background blobs with parallax effect */}
       <motion.div style={{ y: parallaxY, opacity }} className="absolute inset-0 pointer-events-none">
         <AnimatedBlob 
@@ -427,9 +387,11 @@ export const Hero: React.FC = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center pt-6"
           >
             <Link to="/contact">
-              <AnimatedButton className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg button-shimmer hover-glow shadow-sm">
-                Get Started <ChevronRight className="h-5 w-5 ml-2" />
-              </AnimatedButton>
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg button-shimmer hover-glow shadow-sm">
+                  Get Started <ChevronRight className="h-5 w-5 ml-2" />
+                </Button>
+              </motion.div>
             </Link>
           </motion.div>
 
