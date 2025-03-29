@@ -78,19 +78,21 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
       )
     }
     
-    // Use motion.button directly without Slot when not using asChild
-    // Fix type issues by carefully selecting allowed props
+    // Define motion props separately to avoid type conflicts
     const motionProps = {
       whileHover: { scale: 1.03 },
       whileTap: { scale: 0.97 }
     };
+    
+    // Extract React button props that conflict with Framer Motion
+    const { onDrag, onDragEnd, onDragStart, ...buttonProps } = props;
     
     return (
       <motion.button
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...motionProps}
-        {...props}
+        {...buttonProps}
       >
         {children}
         <span className="absolute inset-0 bg-gradient-to-r from-blue-700/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
