@@ -1,8 +1,6 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "./ui/button";
-import { ArrowRight } from "lucide-react";
 
 export const Footer: React.FC = () => {
   return (
@@ -12,14 +10,8 @@ export const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-1">
             <h3 className="text-xl font-bold mb-4">MindsetDRM</h3>
             <p className="mb-4 text-gray-400">
-              Protecting and monetizing your content on YouTube
+              Helping rights holders protect, monetize, and grow their content on YouTube
             </p>
-            
-            <Link to="/contact">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white mt-2 flex items-center">
-                Contact Us <ArrowRight className="ml-1 h-4 w-4" />
-              </Button>
-            </Link>
           </div>
           
           <div>

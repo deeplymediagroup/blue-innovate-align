@@ -7,6 +7,84 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FloatingTile } from "./DecorativeElements";
 
+// Animated SVG decorator
+const DecorativeSVG = ({ className = "" }) => {
+  return (
+    <motion.svg 
+      className={`absolute pointer-events-none ${className}`}
+      width="180" 
+      height="180" 
+      viewBox="0 0 100 100" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ 
+        opacity: [0.2, 0.5, 0.2],
+        scale: [0.8, 1.1, 0.8],
+        rotate: [0, 10, 0]
+      }}
+      transition={{ 
+        duration: 12, 
+        ease: "easeInOut", 
+        repeat: Infinity,
+        repeatType: "mirror" 
+      }}
+    >
+      <path 
+        d="M50 5C25.1 5 5 25.1 5 50s20.1 45 45 45 45-20.1 45-45S74.9 5 50 5zm0 80c-19.3 0-35-15.7-35-35s15.7-35 35-35 35 15.7 35 35-15.7 35-35 35z" 
+        fill="rgba(59, 130, 246, 0.1)" 
+      />
+      <circle cx="50" cy="50" r="20" stroke="rgba(59, 130, 246, 0.2)" strokeWidth="4" fill="none" />
+    </motion.svg>
+  );
+};
+
+// Geometric shape decorator - renamed to avoid conflict
+const ShapeDecorator = ({ className, color = "blue", size = 80, delay = 0 }) => {
+  return (
+    <motion.div
+      className={`absolute pointer-events-none ${className}`}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ 
+        opacity: [0.3, 0.5, 0.3],
+        scale: [0.9, 1.1, 0.9],
+        rotate: [0, 15, 0],
+      }}
+      transition={{ 
+        duration: 12 + Math.random() * 5, 
+        ease: "easeInOut", 
+        repeat: Infinity,
+        repeatType: "mirror",
+        delay 
+      }}
+    >
+      <div 
+        className={`bg-${color}-100/40 backdrop-blur-3xl rounded-xl rotate-12`} 
+        style={{ width: size, height: size }}
+      />
+    </motion.div>
+  );
+};
+
+// Floating dot pattern - renamed to avoid conflict
+const PatternDecorator = ({ className }) => {
+  return (
+    <motion.div 
+      className={`absolute pointer-events-none ${className}`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 0.7 }}
+      transition={{ duration: 1 }}
+    >
+      <svg width="200" height="200" viewBox="0 0 100 100">
+        <pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1" fill="rgba(59, 130, 246, 0.3)" />
+        </pattern>
+        <rect width="100%" height="100%" fill="url(#dots)" />
+      </svg>
+    </motion.div>
+  );
+};
+
 // Service card component
 const ServiceCard = ({ title, description, icon: Icon, features, delay = 0, highlight = false }) => {
   return (
@@ -70,6 +148,8 @@ const ServiceCard = ({ title, description, icon: Icon, features, delay = 0, high
             </motion.li>
           ))}
         </motion.ul>
+        
+        <DecorativeSVG className="-bottom-20 -left-20 opacity-30" />
       </GlassmorphicCard>
     </motion.div>
   );
@@ -88,25 +168,25 @@ export const Services: React.FC = () => {
   const servicesData = [
     {
       title: "Protect",
-      description: "Secure your intellectual property across YouTube",
+      description: "Secure your intellectual property across YouTube with our automated content protection system.",
       icon: Shield,
       features: [
-        "Identify unauthorized uploads",
+        "Content identification technology",
+        "Claim unauthorized uploads",
         "Block infringing content",
-        "Monitor usage across YouTube",
-        "Safeguard your brand identity"
+        "Monitor usage across YouTube"
       ],
       delay: 0.1
     },
     {
       title: "License",
-      description: "Transform unauthorized usage into revenue streams",
+      description: "Transform unauthorized usage into revenue streams while building creator partnerships.",
       icon: DollarSign,
       features: [
         "Create sustainable revenue",
         "Build creator partnerships",
         "Expand content reach",
-        "Generate monthly passive income"
+        "Monthly passive income"
       ],
       delay: 0.2,
       highlight: true
@@ -139,6 +219,12 @@ export const Services: React.FC = () => {
       <FloatingElement className="w-96 h-96 top-20 -right-48 opacity-40" delay={0} duration={25} />
       <FloatingElement className="w-80 h-80 bottom-40 -left-40 opacity-30" delay={5} duration={20} />
       
+      {/* Additional decorative elements */}
+      <ShapeDecorator className="top-20 left-[10%]" color="blue" size={120} delay={0.5} />
+      <ShapeDecorator className="bottom-40 right-[15%]" color="purple" size={100} delay={1.5} />
+      <PatternDecorator className="top-40 right-[5%]" />
+      <PatternDecorator className="bottom-20 left-[8%]" />
+      
       {/* Floating tiles */}
       <FloatingTile className="absolute right-[10%] top-[30%] z-0 w-20 h-20 rounded-lg bg-gradient-to-r from-blue-200/20 to-blue-100/20 backdrop-blur-md border border-white/10" />
       
@@ -149,7 +235,7 @@ export const Services: React.FC = () => {
           ref={sectionRef}
           className="reveal-section max-w-5xl mx-auto"
         >
-          <div className="mb-16 text-center">
+          <div className="mb-20 text-center">
             <motion.div 
               className="inline-block mb-6"
               initial={{ opacity: 0, y: 20 }}
@@ -173,6 +259,16 @@ export const Services: React.FC = () => {
             >
               YouTube Content Management
             </motion.h2>
+            
+            <motion.p 
+              className="mt-4 text-xl text-foreground/70 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              Complete control of your content across the YouTube ecosystem
+            </motion.p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16">
@@ -194,7 +290,7 @@ export const Services: React.FC = () => {
               >
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-full relative overflow-hidden group">
                   <span className="relative z-10 flex items-center">
-                    Start Now
+                    Learn More About Our Services
                     <motion.div
                       initial={{ x: 0 }}
                       animate={{ x: [0, 5, 0] }}
