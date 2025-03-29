@@ -93,19 +93,20 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
     };
     
     // Filter out all potentially conflicting event handlers
-    const buttonProps = { ...props };
-    conflictingEventProps.forEach(prop => {
-      if (prop in buttonProps) {
-        delete buttonProps[prop as keyof typeof buttonProps];
+    const filteredProps = { ...props };
+    // Extract and remove conflicting props
+    for (const prop of conflictingEventProps) {
+      if (prop in filteredProps) {
+        delete filteredProps[prop as keyof typeof filteredProps];
       }
-    });
+    }
     
     return (
       <motion.button
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...motionProps}
-        {...buttonProps}
+        {...filteredProps}
       >
         {children}
         <span className="absolute inset-0 bg-gradient-to-r from-blue-700/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

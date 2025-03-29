@@ -10,7 +10,8 @@ export const FloatingElement = ({
   position = "", 
   delay = 0, 
   intensity = 1,
-  rotation = true 
+  rotation = true,
+  duration = 15
 }) => {
   return (
     <motion.div
@@ -24,7 +25,7 @@ export const FloatingElement = ({
         x: [0, 10, 0, -10, 0],
       }}
       transition={{ 
-        duration: 15 + Math.random() * 10, 
+        duration: duration + Math.random() * 10, 
         ease: "easeInOut", 
         repeat: Infinity,
         delay: delay,
@@ -231,3 +232,220 @@ export const ParallaxContainer = ({
     </motion.div>
   );
 };
+
+// Stars background effect (new)
+export const StarsBackground = ({
+  className = "",
+  starCount = 50,
+  starSize = 2,
+}) => {
+  const stars = Array.from({ length: starCount }).map((_, i) => ({
+    size: Math.random() * starSize + 1,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    opacity: Math.random() * 0.7 + 0.3,
+    duration: Math.random() * 10 + 5,
+    delay: Math.random() * 5,
+  }));
+
+  return (
+    <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
+      {stars.map((star, i) => (
+        <motion.div
+          key={i}
+          className="absolute bg-white rounded-full"
+          style={{
+            width: star.size,
+            height: star.size,
+            top: `${star.y}%`,
+            left: `${star.x}%`,
+            opacity: star.opacity,
+          }}
+          animate={{
+            scale: [1, 1.5, 1],
+            opacity: [star.opacity, star.opacity * 1.5, star.opacity],
+          }}
+          transition={{
+            duration: star.duration,
+            repeat: Infinity,
+            delay: star.delay,
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+// Neon Glow Effect (new)
+export const NeonGlow = ({
+  className = "",
+  position = "",
+  color = "blue",
+  size = "w-24 h-24",
+  intensity = 1,
+  pulsate = true,
+}) => {
+  const glowColor = color === "blue" 
+    ? "0 0 20px rgba(59, 130, 246, 0.8), 0 0 40px rgba(59, 130, 246, 0.4)" 
+    : color === "purple" 
+      ? "0 0 20px rgba(147, 51, 234, 0.8), 0 0 40px rgba(147, 51, 234, 0.4)"
+      : color === "green"
+        ? "0 0 20px rgba(16, 185, 129, 0.8), 0 0 40px rgba(16, 185, 129, 0.4)"
+        : "0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.4)";
+
+  return (
+    <motion.div
+      className={`absolute ${position} ${size} ${className} rounded-full pointer-events-none`}
+      style={{ boxShadow: glowColor, opacity: 0.8 * intensity }}
+      animate={pulsate ? {
+        opacity: [0.8 * intensity, 0.4 * intensity, 0.8 * intensity],
+        boxShadow: [
+          glowColor,
+          glowColor.replace("20px", "10px").replace("40px", "20px"),
+          glowColor,
+        ],
+      } : {}}
+      transition={pulsate ? {
+        duration: 3,
+        repeat: Infinity,
+        ease: "easeInOut",
+      } : {}}
+    />
+  );
+};
+
+// Cyberpunk Grid (new)
+export const CyberpunkGrid = ({
+  className = "",
+  position = "",
+  color = "blue",
+  size = "w-96 h-96",
+  spacing = 20,
+  lineWidth = 1,
+  rotation = 0,
+}) => {
+  const gridColor = color === "blue" 
+    ? "rgba(59, 130, 246, 0.3)" 
+    : color === "purple" 
+      ? "rgba(147, 51, 234, 0.3)"
+      : "rgba(255, 255, 255, 0.3)";
+
+  return (
+    <motion.div
+      className={`absolute ${position} ${size} ${className} overflow-hidden pointer-events-none`}
+      style={{
+        backgroundImage: `
+          linear-gradient(0deg, ${gridColor} ${lineWidth}px, transparent ${lineWidth}px),
+          linear-gradient(90deg, ${gridColor} ${lineWidth}px, transparent ${lineWidth}px)
+        `,
+        backgroundSize: `${spacing}px ${spacing}px`,
+        transform: `rotate(${rotation}deg)`,
+      }}
+      animate={{
+        backgroundPosition: ["0px 0px", `${spacing}px ${spacing}px`],
+      }}
+      transition={{
+        duration: 20,
+        repeat: Infinity,
+        ease: "linear",
+      }}
+    />
+  );
+};
+
+// Digital Circuit (new)
+export const DigitalCircuit = ({
+  className = "",
+  position = "",
+  color = "blue",
+  width = 200,
+  height = 2,
+  complexity = 0.7,
+  speed = 3,
+}) => {
+  const lineColor = color === "blue" 
+    ? "rgba(59, 130, 246, 0.6)" 
+    : color === "purple" 
+      ? "rgba(147, 51, 234, 0.6)"
+      : color === "green"
+        ? "rgba(16, 185, 129, 0.6)"
+        : "rgba(255, 255, 255, 0.6)";
+  
+  // Generate random circuit path
+  const pathData = generateCircuitPath(complexity);
+  
+  return (
+    <div className={`absolute ${position} ${className} pointer-events-none`}>
+      <svg width={width} height={50} viewBox="0 0 200 50">
+        <motion.path
+          d={pathData}
+          stroke={lineColor}
+          strokeWidth={height}
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ 
+            pathLength: [0, 1, 1, 0], 
+            opacity: [0, 1, 1, 0],
+            strokeDashoffset: [200, 0],
+          }}
+          transition={{ 
+            duration: speed * 2,
+            times: [0, 0.4, 0.6, 1],
+            repeat: Infinity, 
+            repeatDelay: Math.random() * 2,
+          }}
+        />
+      </svg>
+    </div>
+  );
+};
+
+// Helper function to generate random circuit path
+function generateCircuitPath(complexity = 0.7) {
+  const points = [];
+  let x = 0;
+  
+  // Start point
+  points.push(`M0,25`);
+  
+  // Generate random segments
+  while (x < 200) {
+    const stepSize = 10 + Math.random() * 30;
+    x += stepSize;
+    
+    if (x > 200) x = 200;
+    
+    if (Math.random() > 0.5) {
+      // Horizontal line
+      points.push(`H${x}`);
+    } else {
+      // Line with vertical component
+      const y = Math.random() > 0.5 ? 
+        25 - Math.random() * 15 * complexity : 
+        25 + Math.random() * 15 * complexity;
+      
+      points.push(`L${x},${y}`);
+    }
+    
+    // Add corners with certain probability
+    if (Math.random() < 0.3 * complexity && x < 180) {
+      const cornerSize = 5 + Math.random() * 10;
+      const y = Math.random() > 0.5 ? 
+        25 - cornerSize : 
+        25 + cornerSize;
+        
+      points.push(`V${y}`);
+      x += cornerSize;
+      points.push(`H${x}`);
+    }
+  }
+  
+  // Ensure path ends at right edge
+  if (x < 200) {
+    points.push(`H200`);
+  }
+  
+  return points.join(' ');
+}

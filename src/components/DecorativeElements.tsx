@@ -1,6 +1,13 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { CyberCard, GlowEffect, GlowText } from "./GlowEffect";
+import { 
+  NeonGlow, 
+  StarsBackground, 
+  CyberpunkGrid, 
+  DigitalCircuit 
+} from "./ParallaxElements";
 
 interface FloatingBlobProps {
   className?: string;
@@ -263,45 +270,232 @@ export const FloatingTile: React.FC<FloatingTileProps> = ({
   );
 };
 
+// New cyber line element
+export const CyberLine: React.FC<{
+  className?: string;
+  top?: string;
+  right?: string;
+  bottom?: string;
+  left?: string;
+  width?: number;
+  height?: number;
+  color?: "blue" | "purple" | "green" | "pink";
+  opacity?: number;
+  animated?: boolean;
+}> = ({
+  className = "",
+  top,
+  right,
+  bottom,
+  left,
+  width = 100,
+  height = 2,
+  color = "blue",
+  opacity = 0.7,
+  animated = true
+}) => {
+  const position = { top, right, bottom, left };
+  
+  const getColor = () => {
+    switch (color) {
+      case "blue": return "rgba(59, 130, 246, " + opacity + ")";
+      case "purple": return "rgba(147, 51, 234, " + opacity + ")";
+      case "green": return "rgba(16, 185, 129, " + opacity + ")";
+      case "pink": return "rgba(236, 72, 153, " + opacity + ")";
+      default: return "rgba(59, 130, 246, " + opacity + ")";
+    }
+  };
+  
+  return (
+    <motion.div
+      className={`absolute ${className}`}
+      style={{ 
+        ...position,
+        height,
+        width,
+        background: getColor(),
+        boxShadow: `0 0 10px ${getColor()}`,
+      }}
+      animate={animated ? { 
+        opacity: [opacity, opacity * 0.7, opacity],
+        boxShadow: [
+          `0 0 10px ${getColor()}`,
+          `0 0 20px ${getColor()}`,
+          `0 0 10px ${getColor()}`
+        ]
+      } : {}}
+      transition={animated ? {
+        duration: 2,
+        repeat: Infinity,
+        ease: "easeInOut"
+      } : {}}
+    />
+  );
+};
+
+// New tech grid element based on the design
+export const TechGrid: React.FC<{
+  className?: string;
+  opacity?: number;
+  spacing?: number;
+  color?: "blue" | "purple" | "green" | "pink";
+  animated?: boolean;
+}> = ({
+  className = "",
+  opacity = 0.15,
+  spacing = 20,
+  color = "blue",
+  animated = true
+}) => {
+  const getColor = () => {
+    switch (color) {
+      case "blue": return `rgba(59, 130, 246, ${opacity})`;
+      case "purple": return `rgba(147, 51, 234, ${opacity})`;
+      case "green": return `rgba(16, 185, 129, ${opacity})`;
+      case "pink": return `rgba(236, 72, 153, ${opacity})`;
+      default: return `rgba(59, 130, 246, ${opacity})`;
+    }
+  };
+  
+  return (
+    <motion.div
+      className={`absolute inset-0 pointer-events-none ${className}`}
+      style={{
+        backgroundImage: `
+          linear-gradient(to top, ${getColor()} 1px, transparent 1px),
+          linear-gradient(to left, ${getColor()} 1px, transparent 1px)
+        `,
+        backgroundSize: `${spacing}px ${spacing}px`,
+        opacity: opacity
+      }}
+      animate={animated ? {
+        backgroundPosition: ["0px 0px", `${spacing/2}px ${spacing/2}px`]
+      } : {}}
+      transition={animated ? {
+        duration: 20,
+        repeat: Infinity,
+        ease: "linear"
+      } : {}}
+    />
+  );
+};
+
 export const DecorativeElements: React.FC = () => {
   return (
     <>
+      {/* Modern cyberpunk design elements inspired by the image */}
+      <StarsBackground starCount={100} className="opacity-40" />
+      
+      <TechGrid color="blue" spacing={25} opacity={0.07} />
+      
+      <NeonGlow 
+        position="top-[5%] right-[10%]" 
+        size="w-40 h-40" 
+        color="blue" 
+        intensity={0.7} 
+      />
+      
+      <NeonGlow 
+        position="bottom-[10%] left-[5%]" 
+        size="w-32 h-32" 
+        color="purple" 
+        intensity={0.6}
+      />
+      
+      <CyberpunkGrid
+        position="top-[20%] left-[5%]"
+        size="w-60 h-60"
+        color="blue"
+        spacing={15}
+        lineWidth={1}
+        rotation={-10}
+      />
+      
+      <CyberpunkGrid
+        position="bottom-[15%] right-[5%]"
+        size="w-80 h-80"
+        color="purple"
+        spacing={20}
+        lineWidth={1}
+        rotation={15}
+      />
+      
+      <DigitalCircuit
+        position="top-[30%] right-[8%]"
+        color="blue"
+        width={180}
+        height={1.5}
+        complexity={0.8}
+        speed={4}
+      />
+      
+      <DigitalCircuit
+        position="bottom-[25%] left-[8%]"
+        color="purple"
+        width={150}
+        height={1.5}
+        complexity={0.6}
+        speed={3.5}
+      />
+      
+      {/* Original elements with tweaked properties */}
       <FloatingBlob 
         top="5%" 
         right="-10%" 
         size="w-96 h-96" 
         color="blue" 
-        opacity={0.2} 
+        opacity={0.15} 
       />
+      
       <FloatingBlob 
         bottom="5%" 
         left="-10%" 
         size="w-80 h-80" 
         color="purple" 
-        opacity={0.15} 
+        opacity={0.12} 
         delay={2} 
       />
+      
       <GeometricShape 
         top="20%" 
         left="10%" 
         color="blue" 
-        size={120} 
+        size={100} 
         delay={0.5} 
       />
+      
       <GeometricShape 
         bottom="15%" 
         right="12%" 
         color="purple" 
-        size={100} 
+        size={90} 
         type="triangle" 
         delay={1.5} 
       />
+      
       <DotPattern 
         top="40%" 
         right="8%" 
         dotSpacing={15} 
         size={250} 
       />
+      
+      <CyberLine
+        top="15%"
+        left="5%"
+        width={120}
+        height={1.5}
+        color="blue"
+      />
+      
+      <CyberLine
+        bottom="20%"
+        right="10%"
+        width={100}
+        height={1.5}
+        color="purple"
+      />
+      
       <FloatingTile 
         top="30%" 
         right="5%" 
@@ -309,6 +503,7 @@ export const DecorativeElements: React.FC = () => {
         height={60} 
         rotate={10} 
       />
+      
       <FloatingTile 
         bottom="25%" 
         left="8%" 
