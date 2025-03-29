@@ -2,8 +2,8 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
-import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
+import { MotionProps, motion } from "framer-motion"
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative overflow-hidden group",
@@ -55,9 +55,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button"
 
 // Define proper types for the AnimatedButton component
-interface AnimatedButtonProps extends ButtonProps {
-  children: React.ReactNode
+type AnimatedButtonProps = ButtonProps & {
+  children: React.ReactNode;
 }
+
+// Create a constant for standard animation props
+const buttonAnimationProps = {
+  whileHover: { scale: 1.03 },
+  whileTap: { scale: 0.97 }
+};
 
 const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
   ({ className, variant, size, asChild = false, children, ...props }, ref) => {
@@ -77,13 +83,12 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
       )
     }
     
-    // Use motion.button directly without Slot when not using asChild
+    // For regular buttons (not using asChild), create a standard button with motion
     return (
       <motion.button
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.97 }}
+        {...buttonAnimationProps}
         {...props}
       >
         {children}
