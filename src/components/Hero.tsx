@@ -1,9 +1,50 @@
 import React, { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, ArrowDown, ShieldCheck, Zap, Lock } from "lucide-react";
+import { ChevronRight, ArrowDown, Heart, ThumbsUp } from "lucide-react";
 import { AnimatedBlob } from "./AnimatedBlob";
-import { motion, useScroll, useTransform, useSpring, useMotionValue, useAnimationFrame } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { Link } from "react-router-dom";
+
+// Modern floating animation for icons
+const FloatingIcon = ({ 
+  icon: Icon,
+  delay = 0,
+  position,
+  size = 24,
+  opacity = 0.06
+}) => {
+  return (
+    <motion.div
+      className="absolute pointer-events-none"
+      style={{ ...position }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ 
+        opacity: opacity,
+        y: [0, -15, 0],
+        x: [0, 5, 0]
+      }}
+      transition={{
+        y: {
+          repeat: Infinity,
+          duration: 4,
+          ease: "easeInOut",
+          delay
+        },
+        x: {
+          repeat: Infinity,
+          duration: 5,
+          ease: "easeInOut",
+          delay
+        },
+        opacity: {
+          duration: 0.4
+        }
+      }}
+    >
+      <Icon size={size} className="text-blue-600" />
+    </motion.div>
+  );
+};
 
 // Creative floating elements Component
 const FloatingIllustration = ({ 
@@ -221,11 +262,26 @@ export const Hero: React.FC = () => {
 
   return (
     <section className="min-safe-h-screen relative flex items-center overflow-hidden pt-24 pb-20">
-      {/* Dynamic background with gradient */}
-      <div 
-        className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-blue-100 z-0 animated-gradient"
-      />
+      {/* Modern gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-blue-50/20 dark:to-blue-950/20 z-0" />
       
+      {/* Background floating icons */}
+      <div className="absolute inset-0 overflow-hidden">
+        {Array.from({ length: 15 }).map((_, i) => (
+          <FloatingIcon
+            key={i}
+            icon={i % 2 === 0 ? Heart : ThumbsUp}
+            position={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`
+            }}
+            delay={i * 0.2}
+            size={24 + Math.random() * 16}
+            opacity={0.04 + Math.random() * 0.04}
+          />
+        ))}
+      </div>
+
       {/* Particle field background */}
       <ParticleField />
       

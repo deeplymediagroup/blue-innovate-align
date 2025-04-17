@@ -1,4 +1,3 @@
-
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -54,40 +53,22 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = "Button"
 
-// Define proper types for the AnimatedButton component
-interface AnimatedButtonProps extends ButtonProps {
-  children: React.ReactNode
+interface AnimatedButtonProps extends Omit<ButtonProps, keyof React.DOMAttributes<HTMLButtonElement>> {
+  children: React.ReactNode;
 }
 
 const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
-  ({ className, variant, size, asChild = false, children, ...props }, ref) => {
-    if (asChild) {
-      // When using asChild, we fall back to the regular Button
-      return (
-        <Button 
-          ref={ref}
-          className={className}
-          variant={variant}
-          size={size}
-          asChild={asChild}
-          {...props}
-        >
-          {children}
-        </Button>
-      )
-    }
-    
-    // Use motion.button directly without Slot when not using asChild
+  ({ className, variant, size, children, ...props }, ref) => {
     return (
       <motion.button
-        className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.97 }}
+        className={cn(buttonVariants({ variant, size, className }))}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        transition={{ duration: 0.2 }}
         {...props}
       >
         {children}
-        <span className="absolute inset-0 bg-gradient-to-r from-blue-700/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </motion.button>
     )
   }
