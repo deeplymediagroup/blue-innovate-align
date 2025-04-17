@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -22,8 +21,6 @@ interface NavbarProps {
 
 const navItems: NavItem[] = [
   { label: "Services", href: "#services" },
-  { label: "Distribution", href: "#distribution" },
-  { label: "Licensing", href: "#licensing" },
   { label: "Case Studies", href: "/case-studies" },
 ];
 
@@ -33,7 +30,6 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
 
-  // Handle scroll event to change navbar appearance
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -46,10 +42,8 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
     };
   }, []);
 
-  // Handle navigation
   const handleNavigation = (href: string) => {
     if (href.startsWith('#')) {
-      // Handle in-page anchor navigation
       const element = document.querySelector(href);
       if (element) {
         window.scrollTo({
@@ -58,10 +52,8 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
         });
       }
     } else {
-      // Handle external page navigation
       navigate(href);
     }
-    // Close mobile menu after navigation
     setIsMobileMenuOpen(false);
   };
 
@@ -75,7 +67,6 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <Link 
             to="/" 
             className="flex items-center"
@@ -87,7 +78,6 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
             <span className="text-xl font-bold text-blue-600">MindsetDRM</span>
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => (
               <button
@@ -100,7 +90,6 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
             ))}
           </nav>
 
-          {/* CTA Button */}
           <div className="hidden md:block">
             <Link to="/contact">
               <motion.div 
@@ -140,7 +129,6 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             className="md:hidden flex items-center"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -155,7 +143,6 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div

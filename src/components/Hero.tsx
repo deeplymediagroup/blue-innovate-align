@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, ArrowDown, ShieldCheck, Zap, Lock } from "lucide-react";
@@ -342,7 +341,7 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="inline-block"
             >
-              Protect
+              Claim
             </motion.span>{" "}
             <motion.span
               initial={{ y: 50, opacity: 0 }}
@@ -358,7 +357,7 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.7, delay: 0.5 }}
               className="inline-block"
             >
-              Monetize
+              License
             </motion.span>{" "}
             <br />
             <motion.span
@@ -375,7 +374,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.7 }}
-            className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto text-balance"
+            className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto text-balance mt-6"
           >
             We help creators and brands recover and monetize unauthorized usage of their content across YouTube.
           </motion.p>
@@ -386,13 +385,13 @@ export const Hero: React.FC = () => {
             transition={{ duration: 0.7, delay: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center pt-6"
           >
-            <Link to="/contact">
+            <a href="#services">
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg button-shimmer hover-glow shadow-sm">
-                  Get Started <ChevronRight className="h-5 w-5 ml-2" />
+                  Learn More <ChevronRight className="h-5 w-5 ml-2" />
                 </Button>
               </motion.div>
-            </Link>
+            </a>
           </motion.div>
 
           <motion.div 
@@ -402,7 +401,6 @@ export const Hero: React.FC = () => {
             className="mt-16"
           >
             <a href="#clients" className="inline-flex flex-col items-center group">
-              <p className="text-sm text-foreground/70 mb-2 group-hover:text-blue-600 transition-colors">Trusted by World-Class Brands</p>
               <motion.div 
                 animate={{ y: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}

@@ -290,7 +290,7 @@ export const Services: React.FC = () => {
               >
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-full relative overflow-hidden group">
                   <span className="relative z-10 flex items-center">
-                    Learn More About Our Services
+                    Start Earning
                     <motion.div
                       initial={{ x: 0 }}
                       animate={{ x: [0, 5, 0] }}

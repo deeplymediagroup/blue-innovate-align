@@ -8,6 +8,8 @@ import { CTASection } from "@/components/CTASection";
 import { CreatorGrid } from "@/components/CreatorGrid";
 import { AlanWattsShowcase } from "@/components/AlanWattsShowcase";
 import { YoutubeContentGrid } from "@/components/YoutubeContentGrid";
+import { RevenueCalculator } from "@/components/RevenueCalculator";
+import { UltimateSolution } from "@/components/UltimateSolution";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
@@ -179,82 +181,16 @@ const Index: React.FC = () => {
 
       {/* Services section - What We Do */}
       <Services />
+      
+      {/* Revenue Calculator - New Section */}
+      <RevenueCalculator />
+      
+      {/* Ultimate Solution - New Section */}
+      <UltimateSolution />
 
-      {/* Distribution Partners Section - Switching position with YoutubeContentGrid */}
-      <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-5xl mx-auto mb-12 text-center">
-            <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
-              We Power The Largest Motivational YouTube Network
-            </h2>
-            <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
-              Our network manages rights for leading motivational content creators
-            </p>
-          </div>
-          
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 max-w-5xl mx-auto">
-            <h3 className="text-2xl font-bold mb-6 text-blue-600">Distribution Partners</h3>
-            <p className="mb-6 text-foreground/70">
-              We help speakers and podcasters reach millions through our established distribution network.
-              Our partners have over 2 billion total views across YouTube.
-            </p>
-            
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-              {channelStats.map((channel, index) => (
-                <motion.div 
-                  key={index} 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  className="bg-blue-50 p-4 rounded-lg border border-blue-100 transition-all duration-300 hover:shadow-md hover:bg-blue-100"
-                >
-                  <div className="flex items-center mb-3">
-                    <img 
-                      src={channel.icon} 
-                      alt={channel.name} 
-                      className="w-8 h-8 rounded-full mr-2 object-cover"
-                    />
-                    <h4 className="font-bold text-blue-800">{channel.name}</h4>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2 mt-2">
-                    <div className="flex flex-col">
-                      <p className="text-xs text-gray-500">Subscribers</p>
-                      <p className="font-bold text-blue-600">{channel.subscribers}</p>
-                    </div>
-                    <div className="flex flex-col">
-                      <p className="text-xs text-gray-500">Views</p>
-                      <p className="font-bold text-blue-600">{channel.views}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            
-            <div className="flex flex-wrap justify-center gap-6 md:gap-12 py-4 bg-blue-50 rounded-lg p-4">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-              >
-                <p className="text-3xl font-bold text-blue-600">2B+</p>
-                <p className="text-sm text-foreground/60">Total Views</p>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <p className="text-3xl font-bold text-blue-600">20M+</p>
-                <p className="text-sm text-foreground/60">Subscribers</p>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      {/* How It Works section - renamed to "This Is How We Do It" */}
+      <HowItWorks />
+      
       {/* Optional Licensing Section - Updated text */}
       <section id="licensing" className="py-16 pt-24 bg-gradient-to-b from-blue-50/30 to-white w-full">
         <div className="container mx-auto px-4 md:px-6">
@@ -395,6 +331,81 @@ const Index: React.FC = () => {
         </div>
       </section>
       
+      {/* Distribution Partners Section - Switching position with YoutubeContentGrid */}
+      <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-5xl mx-auto mb-12 text-center">
+            <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
+              We Power The Largest Motivational YouTube Network
+            </h2>
+            <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
+              Our network manages rights for leading motivational content creators
+            </p>
+          </div>
+          
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 max-w-5xl mx-auto">
+            <h3 className="text-2xl font-bold mb-6 text-blue-600">Distribution Partners</h3>
+            <p className="mb-6 text-foreground/70">
+              We help speakers and podcasters reach millions through our established distribution network.
+              Our partners have over 2 billion total views across YouTube.
+            </p>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+              {channelStats.map((channel, index) => (
+                <motion.div 
+                  key={index} 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="bg-blue-50 p-4 rounded-lg border border-blue-100 transition-all duration-300 hover:shadow-md hover:bg-blue-100"
+                >
+                  <div className="flex items-center mb-3">
+                    <img 
+                      src={channel.icon} 
+                      alt={channel.name} 
+                      className="w-8 h-8 rounded-full mr-2 object-cover"
+                    />
+                    <h4 className="font-bold text-blue-800">{channel.name}</h4>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2 mt-2">
+                    <div className="flex flex-col">
+                      <p className="text-xs text-gray-500">Subscribers</p>
+                      <p className="font-bold text-blue-600">{channel.subscribers}</p>
+                    </div>
+                    <div className="flex flex-col">
+                      <p className="text-xs text-gray-500">Views</p>
+                      <p className="font-bold text-blue-600">{channel.views}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            
+            <div className="flex flex-wrap justify-center gap-6 md:gap-12 py-4 bg-blue-50 rounded-lg p-4">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
+                <p className="text-3xl font-bold text-blue-600">2B+</p>
+                <p className="text-sm text-foreground/60">Total Views</p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                <p className="text-3xl font-bold text-blue-600">20M+</p>
+                <p className="text-sm text-foreground/60">Subscribers</p>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       {/* Pricing Plans section */}
       <section className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
         <div className="container mx-auto px-4 md:px-6">
@@ -403,9 +414,6 @@ const Index: React.FC = () => {
           </div>
         </div>
       </section>
-      
-      {/* How It Works section */}
-      <HowItWorks />
       
       {/* Moving Content We Amplify section after How It Works */}
       <YoutubeContentGrid />
