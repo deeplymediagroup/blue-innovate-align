@@ -1,4 +1,3 @@
-
 import React, { useRef } from "react";
 import { GlassmorphicCard } from "./GlassmorphicCard";
 import { Shield, DollarSign, ArrowRight } from "lucide-react";
@@ -7,7 +6,6 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FloatingTile } from "./DecorativeElements";
 
-// Animated SVG decorator
 const DecorativeSVG = ({ className = "" }) => {
   return (
     <motion.svg 
@@ -39,7 +37,6 @@ const DecorativeSVG = ({ className = "" }) => {
   );
 };
 
-// Geometric shape decorator - renamed to avoid conflict
 const ShapeDecorator = ({ className, color = "blue", size = 80, delay = 0 }) => {
   return (
     <motion.div
@@ -66,7 +63,6 @@ const ShapeDecorator = ({ className, color = "blue", size = 80, delay = 0 }) => 
   );
 };
 
-// Floating dot pattern - renamed to avoid conflict
 const PatternDecorator = ({ className }) => {
   return (
     <motion.div 
@@ -85,7 +81,6 @@ const PatternDecorator = ({ className }) => {
   );
 };
 
-// Service card component
 const ServiceCard = ({ title, description, icon: Icon, features, delay = 0, highlight = false }) => {
   return (
     <motion.div
@@ -193,7 +188,6 @@ export const Services: React.FC = () => {
     }
   ];
 
-  // Decorative elements
   const FloatingElement = ({ className, delay = 0, duration = 20 }) => (
     <motion.div
       className={`absolute rounded-full bg-blue-400/5 backdrop-blur-3xl z-0 ${className}`}
@@ -215,17 +209,14 @@ export const Services: React.FC = () => {
 
   return (
     <section id="services" className="py-24 bg-gradient-to-b from-background to-blue-50/50 relative overflow-hidden">
-      {/* Decorative background elements */}
       <FloatingElement className="w-96 h-96 top-20 -right-48 opacity-40" delay={0} duration={25} />
       <FloatingElement className="w-80 h-80 bottom-40 -left-40 opacity-30" delay={5} duration={20} />
       
-      {/* Additional decorative elements */}
       <ShapeDecorator className="top-20 left-[10%]" color="blue" size={120} delay={0.5} />
       <ShapeDecorator className="bottom-40 right-[15%]" color="purple" size={100} delay={1.5} />
       <PatternDecorator className="top-40 right-[5%]" />
       <PatternDecorator className="bottom-20 left-[8%]" />
       
-      {/* Floating tiles */}
       <FloatingTile className="absolute right-[10%] top-[30%] z-0 w-20 h-20 rounded-lg bg-gradient-to-r from-blue-200/20 to-blue-100/20 backdrop-blur-md border border-white/10" />
       
       <FloatingTile className="absolute left-[5%] bottom-[25%] z-0 w-16 h-16 rounded-lg bg-gradient-to-r from-purple-200/20 to-blue-100/20 backdrop-blur-md border border-white/10 rotate-12" />
@@ -290,7 +281,7 @@ export const Services: React.FC = () => {
               >
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-full relative overflow-hidden group">
                   <span className="relative z-10 flex items-center">
-                    Learn More About Our Services
+                    Start Earning
                     <motion.div
                       initial={{ x: 0 }}
                       animate={{ x: [0, 5, 0] }}
