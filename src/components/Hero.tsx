@@ -332,7 +332,7 @@ export const Hero: React.FC = () => {
           <motion.h1 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            transition={{ duration: 0.7 }}
             className="font-display font-bold text-5xl md:text-7xl bg-gradient-to-r from-foreground via-foreground/90 to-foreground/80 bg-clip-text text-transparent leading-tight"
           >
             <motion.span
@@ -357,7 +357,7 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.7, delay: 0.5 }}
               className="inline-block text-gradient"
             >
-              License
+              License Your Content on YouTube
             </motion.span>
           </motion.h1>
 
