@@ -59,19 +59,24 @@ const FloatingIcon: React.FC<FloatingIconProps> = ({
 export const FloatingIcons: React.FC = () => {
   return (
     <div className="absolute inset-0 overflow-hidden">
-      {Array.from({ length: 15 }).map((_, i) => (
-        <FloatingIcon
-          key={i}
-          icon={i % 2 === 0 ? Heart : ThumbsUp}
-          position={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`
-          }}
-          delay={i * 0.2}
-          size={24 + Math.random() * 16}
-          opacity={0.04 + Math.random() * 0.04}
-        />
-      ))}
+      {Array.from({ length: 15 }).map((_, i) => {
+        const side = i % 2 === 0 ? 'left' : 'right';
+        const position = {
+          [side]: `${10 + Math.random() * 20}%`,
+          top: `${Math.random() * 100}%`
+        };
+        
+        return (
+          <FloatingIcon
+            key={i}
+            icon={i % 2 === 0 ? Heart : ThumbsUp}
+            position={position}
+            delay={i * 0.2}
+            size={24 + Math.random() * 16}
+            opacity={0.04 + Math.random() * 0.04}
+          />
+        );
+      })}
     </div>
   );
 };

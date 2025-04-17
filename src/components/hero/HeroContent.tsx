@@ -27,37 +27,44 @@ export const HeroContent: React.FC = () => {
           transition={{ duration: 0.7 }}
           className="font-display font-bold text-5xl md:text-7xl bg-gradient-to-r from-foreground via-foreground/90 to-foreground/80 bg-clip-text text-transparent leading-tight"
         >
-          <motion.span
+          <div className="inline-flex gap-4 justify-center">
+            <motion.span
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+            >
+              Claim
+            </motion.span>
+            <motion.span
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+            >
+              and
+            </motion.span>
+            <motion.span
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.5 }}
+            >
+              License
+            </motion.span>
+          </div>
+          <motion.div
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="inline-block"
+            transition={{ duration: 0.7, delay: 0.6 }}
+            className="mt-2 text-gradient"
           >
-            Claim
-          </motion.span>{" "}
-          <motion.span
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="inline-block"
-          >
-            and
-          </motion.span>{" "}
-          <motion.span
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="inline-block text-gradient"
-          >
-            License Your Content on YouTube
-          </motion.span>
+            Your Content on YouTube
+          </motion.div>
         </motion.h1>
 
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.7 }}
-          className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto text-balance"
+          className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto text-balance mt-8"
         >
           We help creators and brands recover and monetize unauthorized usage of their content across YouTube.
         </motion.p>
