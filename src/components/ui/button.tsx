@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -53,23 +54,21 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = "Button"
 
-interface AnimatedButtonProps extends Omit<ButtonProps, keyof React.DOMAttributes<HTMLButtonElement>> {
-  children: React.ReactNode;
-}
-
-const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
-  ({ className, variant, size, children, ...props }, ref) => {
+const AnimatedButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, children, ...props }, ref) => {
+    const Comp = asChild ? Slot : motion.button
+    
     return (
-      <motion.button
-        ref={ref}
+      <Comp
         className={cn(buttonVariants({ variant, size, className }))}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        transition={{ duration: 0.2 }}
+        ref={ref}
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
         {...props}
       >
         {children}
-      </motion.button>
+        <span className="absolute inset-0 bg-gradient-to-r from-blue-700/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </Comp>
     )
   }
 )
