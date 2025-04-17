@@ -1,3 +1,4 @@
+
 import React, { useRef } from "react";
 import { GlassmorphicCard } from "./GlassmorphicCard";
 import { Shield, DollarSign, ArrowRight } from "lucide-react";
@@ -38,8 +39,8 @@ const DecorativeSVG = ({ className = "" }) => {
   );
 };
 
-// Geometric shape decorator
-const GeometricShape = ({ className, color = "blue", size = 80, delay = 0 }) => {
+// Geometric shape decorator - renamed to LocalGeometricShape to avoid conflicts
+const LocalGeometricShape = ({ className, color = "blue", size = 80, delay = 0 }) => {
   return (
     <motion.div
       className={`absolute pointer-events-none ${className}`}
@@ -65,8 +66,8 @@ const GeometricShape = ({ className, color = "blue", size = 80, delay = 0 }) => 
   );
 };
 
-// Floating dot pattern
-const DotPattern = ({ className }) => {
+// Floating dot pattern - renamed to LocalDotPattern to avoid conflicts
+const LocalDotPattern = ({ className }) => {
   return (
     <motion.div 
       className={`absolute pointer-events-none ${className}`}
@@ -218,7 +219,7 @@ export const Services: React.FC = () => {
       <FloatingElement className="w-96 h-96 top-20 -right-48 opacity-40" delay={0} duration={25} />
       <FloatingElement className="w-80 h-80 bottom-40 -left-40 opacity-30" delay={5} duration={20} />
       
-      {/* Additional decorative elements */}
+      {/* Additional decorative elements - use imported components instead of local ones */}
       <GeometricShape className="top-20 left-[10%]" color="blue" size={120} delay={0.5} />
       <GeometricShape className="bottom-40 right-[15%]" color="purple" size={100} delay={1.5} />
       <DotPattern className="top-40 right-[5%]" />
