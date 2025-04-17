@@ -1,6 +1,7 @@
+
 import React, { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, ArrowDown, Heart, ThumbsUp } from "lucide-react";
+import { ChevronRight, ArrowDown, Heart, ThumbsUp, Shield, Lock, Zap } from "lucide-react";
 import { AnimatedBlob } from "./AnimatedBlob";
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -151,7 +152,7 @@ const ShieldIllustration = () => {
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         >
           <div className="w-32 h-32 bg-gradient-to-br from-blue-100 to-white rounded-2xl shadow-lg flex items-center justify-center transform rotate-12 backdrop-blur-sm border border-white/50">
-            <ShieldCheck className="h-16 w-16 text-blue-500" />
+            <Shield className="h-16 w-16 text-blue-500" />
           </div>
         </motion.div>
       </div>
@@ -349,7 +350,7 @@ export const Hero: React.FC = () => {
       
       {/* Floating icon elements */}
       <FloatingIllustration 
-        icon={ShieldCheck} 
+        icon={Shield} 
         position={{ top: "30%", left: "20%" }} 
         delay={0.3}
         size={50}
