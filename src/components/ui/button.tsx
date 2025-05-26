@@ -2,7 +2,7 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
-import { motion, type HTMLMotionProps } from "framer-motion"
+import { motion, type HTMLMotionProps, type TargetAndTransition } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
@@ -55,8 +55,8 @@ Button.displayName = "Button"
 export interface AnimatedButtonProps 
   extends Omit<ButtonProps, 'onDrag'>,
     VariantProps<typeof buttonVariants> {
-  whileHover?: object;
-  whileTap?: object;
+  whileHover?: TargetAndTransition;
+  whileTap?: TargetAndTransition;
 }
 
 const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
