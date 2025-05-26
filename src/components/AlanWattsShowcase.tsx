@@ -20,7 +20,7 @@ export const AlanWattsShowcase: React.FC = () => {
             Featured Client
           </h2>
           <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-            How we're helping to protect and monetize Alan Watts' digital legacy
+            How we're helping to protect and monetize a family estate's digital legacy
           </p>
         </motion.div>
         
@@ -61,21 +61,15 @@ export const AlanWattsShowcase: React.FC = () => {
                 
                 <div className="flex items-center">
                   <div className="h-14 w-14 rounded-full bg-gray-200 mr-4 overflow-hidden">
-                    <img 
-                      src="https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png" 
-                      alt="Mark Watts" 
-                      className="h-full w-full object-cover object-top"
-                    />
+                    <div className="h-full w-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                      <span className="text-white font-bold text-lg">FE</span>
+                    </div>
                   </div>
                   <div>
-                    <p className="font-medium">Mark Watts</p>
-                    <p className="text-sm text-blue-500">Alan Watts Organization</p>
+                    <p className="font-medium">Family Estate</p>
+                    <p className="text-sm text-blue-500">Intellectual Property Owner</p>
                   </div>
                 </div>
-                
-                <p className="text-gray-600 italic">
-                  "MindsetDRM not only safeguarded my father's intellectual property but allowed it to flourish in the digital age. Their understanding of the balance between preservation and innovation has brought my fathers teachings to millions"
-                </p>
               </div>
               
               <div className="grid grid-cols-4 gap-4">
@@ -101,13 +95,13 @@ export const AlanWattsShowcase: React.FC = () => {
             <div className="md:col-span-4 h-full flex items-center">
               <div className="relative overflow-hidden rounded-md h-full w-full">
                 <img 
-                  src="public/lovable-uploads/06398809-4801-4451-b433-d94226f52860.png" 
-                  alt="Alan Watts" 
+                  src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=400&h=350&fit=crop&crop=center" 
+                  alt="Family Estate" 
                   className="w-full h-[300px] md:h-[350px] object-cover hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute bottom-0 left-0 right-0 py-4 px-5 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
-                  <p className="font-medium text-xl text-white mb-1">Alan Watts</p>
-                  <p className="text-sm text-gray-100">British philosopher known for interpreting Eastern philosophy for Western audiences</p>
+                  <p className="font-medium text-xl text-white mb-1">Family Estate</p>
+                  <p className="text-sm text-gray-100">High-value intellectual property with global digital presence</p>
                 </div>
               </div>
             </div>

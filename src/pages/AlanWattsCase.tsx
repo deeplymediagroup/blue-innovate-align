@@ -74,7 +74,7 @@ const AlanWattsCase: React.FC = () => {
               <ArrowLeft className="mr-1 h-4 w-4" /> Back to Case Studies
             </Link>
             
-            <h1 className="text-4xl md:text-5xl font-bold mb-8">Alan Watts Organization Case Study</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-8">Family Estate Case Study</h1>
           </div>
           
           <GlassmorphicCard className="p-8 md:p-12 mx-auto mb-16 bg-white max-w-5xl">
@@ -82,13 +82,13 @@ const AlanWattsCase: React.FC = () => {
               <div className="md:col-span-2">
                 <h2 className="text-2xl font-bold mb-4">About the Project</h2>
                 <p className="text-gray-600 mb-6">
-                  The Alan Watts Organization approached us to help protect their intellectual property across YouTube, 
-                  where thousands of channels were using Alan Watts' content without permission.
+                  A family estate approached us to help protect their intellectual property across YouTube, 
+                  where thousands of channels were using their content without permission.
                 </p>
                 <p className="text-gray-600 mb-8">
                   We provided strategic guidance and rights management solutions to identify, claim, and monetize unauthorized content. 
-                  Additionally, we built a licensing ecosystem that allows creators to legally use Alan Watt's content within content guidelines, 
-                  benefiting both the organization and creators.
+                  Additionally, we built a licensing ecosystem that allows creators to legally use the estate's content within content guidelines, 
+                  benefiting both the rights holders and creators.
                 </p>
                 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
@@ -113,8 +113,8 @@ const AlanWattsCase: React.FC = () => {
               
               <div>
                 <img 
-                  src="/lovable-uploads/8bb8bfe7-75d6-4f96-8a7a-3a9bfcb30dd3.png" 
-                  alt="Alan Watts" 
+                  src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=400&h=350&fit=crop&crop=center" 
+                  alt="Family Estate" 
                   className="rounded-lg w-full h-full object-cover shadow-lg"
                 />
               </div>
@@ -136,7 +136,7 @@ const AlanWattsCase: React.FC = () => {
                           <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </div>
-                      <p>0% claimed of 25,000 Alan Watts videos</p>
+                      <p>0% claimed of 25,000 family estate videos</p>
                     </div>
                     <div className="flex items-center">
                       <div className="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center mr-4">
@@ -164,7 +164,7 @@ const AlanWattsCase: React.FC = () => {
                       <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center mr-4">
                         <CheckCircle2 className="h-5 w-5 text-green-600" />
                       </div>
-                      <p>99.9% claimed or 25,000 Alan Watts videos</p>
+                      <p>99.9% claimed or 25,000 family estate videos</p>
                     </div>
                     <div className="flex items-center">
                       <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center mr-4">
@@ -243,7 +243,7 @@ const AlanWattsCase: React.FC = () => {
                     </div>
                     <h3 className="text-xl font-bold mb-3">Widespread Misuse</h3>
                     <p className="text-foreground/70">
-                      Alan Watts' speeches and lectures were being re-uploaded without permission or manipulated into formats that misrepresented his work.
+                      The family estate's video and audio content was being re-uploaded without permission or manipulated into formats that misrepresented the original work.
                     </p>
                   </div>
                   
@@ -253,7 +253,7 @@ const AlanWattsCase: React.FC = () => {
                     </div>
                     <h3 className="text-xl font-bold mb-3">Content Detection</h3>
                     <p className="text-foreground/70">
-                      YouTube's Content ID system was unable to effectively track audio-only content like Alan Watts' lectures.
+                      YouTube's Content ID system was unable to effectively track audio-only content like the family estate's archived materials.
                     </p>
                   </div>
                   
@@ -261,9 +261,9 @@ const AlanWattsCase: React.FC = () => {
                     <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mb-4">
                       <span className="text-blue-600 font-bold">3</span>
                     </div>
-                    <h3 className="text-xl font-bold mb-3">Posthumous Management</h3>
+                    <h3 className="text-xl font-bold mb-3">Estate Management</h3>
                     <p className="text-foreground/70">
-                      Managing the rights to someone's content after their death is inherently complex, especially with a large library spread across numerous channels.
+                      Managing the rights to intellectual property through an estate is inherently complex, especially with a large library spread across numerous channels.
                     </p>
                   </div>
                 </div>
@@ -279,7 +279,7 @@ const AlanWattsCase: React.FC = () => {
                         <div>
                           <h4 className="text-lg font-bold mb-2">Audio-Only Content ID Tool</h4>
                           <p className="text-foreground/70">
-                            MindsetDRM worked directly with YouTube to gain exclusive access and improve a new audio-only Content ID tool, enabling us to accurately track and claim Alan Watts' lectures across the platform.
+                            MindsetDRM worked directly with YouTube to gain exclusive access and improve a new audio-only Content ID tool, enabling us to accurately track and claim the family estate's content across the platform.
                           </p>
                         </div>
                       </div>
@@ -293,7 +293,7 @@ const AlanWattsCase: React.FC = () => {
                         <div>
                           <h4 className="text-lg font-bold mb-2">Custom Dashboard</h4>
                           <p className="text-foreground/70">
-                            We built a proprietary dashboard specifically designed for rights holders of Alan Watts' content, allowing them to track all content, manage claims & takedowns, and view real-time revenue reporting.
+                            We built a proprietary dashboard specifically designed for rights holders, allowing them to track all content, manage claims & takedowns, and view real-time revenue reporting.
                           </p>
                         </div>
                       </div>
@@ -307,7 +307,7 @@ const AlanWattsCase: React.FC = () => {
                         <div>
                           <h4 className="text-lg font-bold mb-2">Creator Ecosystem</h4>
                           <p className="text-foreground/70">
-                            MindsetDRM built an ecosystem where creators could engage with Alan Watts' work in a legitimate and profitable way through a licensing program.
+                            MindsetDRM built an ecosystem where creators could engage with the family estate's work in a legitimate and profitable way through a licensing program.
                           </p>
                         </div>
                       </div>
@@ -321,7 +321,7 @@ const AlanWattsCase: React.FC = () => {
                         <div>
                           <h4 className="text-lg font-bold mb-2">Content Guidelines</h4>
                           <p className="text-foreground/70">
-                            We ensured that creators understood the rules for using Alan Watts' teachings, maintaining high quality content that accurately represented his philosophy.
+                            We ensured that creators understood the rules for using the estate's content, maintaining high quality content that accurately represented the original work.
                           </p>
                         </div>
                       </div>
@@ -434,19 +434,19 @@ const AlanWattsCase: React.FC = () => {
                     <div>
                       <h4 className="text-lg font-bold mb-3">Data-Driven Content Strategy</h4>
                       <p className="text-foreground/70 mb-4">
-                        With MindsetDRM's technology, the Alan Watts Organization gained full visibility into how their content performs across YouTube. This allowed them to make strategic decisions based on actual audience preferences, trending topics, and engagement patterns.
+                        With MindsetDRM's technology, the family estate gained full visibility into how their content performs across YouTube. This allowed them to make strategic decisions based on actual audience preferences, trending topics, and engagement patterns.
                       </p>
                       <p className="text-foreground/70">
-                        By understanding which lectures resonated most with different audience segments, they could better focus their preservation and digitization efforts on high-value content.
+                        By understanding which content resonated most with different audience segments, they could better focus their preservation and digitization efforts on high-value content.
                       </p>
                     </div>
                     <div>
                       <h4 className="text-lg font-bold mb-3">Sustainable Revenue Model</h4>
                       <p className="text-foreground/70 mb-4">
-                        Beyond simply claiming content, MindsetDRM created a sustainable ecosystem that encourages creators to engage with Alan Watts' work appropriately. 
+                        Beyond simply claiming content, MindsetDRM created a sustainable ecosystem that encourages creators to engage with the estate's work appropriately. 
                       </p>
                       <p className="text-foreground/70">
-                        The licensing program provided a win-win: creators get to use high-quality content with permission, while the Alan Watts Organization receives fair compensation and maintains control over how Alan's teachings are presented.
+                        The licensing program provided a win-win: creators get to use high-quality content with permission, while the family estate receives fair compensation and maintains control over how their intellectual property is presented.
                       </p>
                     </div>
                   </div>
@@ -457,19 +457,15 @@ const AlanWattsCase: React.FC = () => {
                   <div className="bg-blue-50 p-8 border-t border-blue-100">
                     <h3 className="text-2xl font-bold mb-6 text-center">Testimonial</h3>
                     <blockquote className="text-lg italic mb-4">
-                      "Working with MindsetDRM has transformed how we manage my father's digital legacy. Their innovative approach to content protection and monetization has not only increased our revenue but ensured that Alan's teachings are shared authentically with the world."
+                      "Working with MindsetDRM has transformed how we manage our family's digital legacy. Their innovative approach to content protection and monetization has not only increased our revenue but ensured that our intellectual property is shared authentically with the world."
                     </blockquote>
                     <div className="flex items-center">
-                      <div className="h-12 w-12 rounded-full bg-gray-200 overflow-hidden mr-4">
-                        <img 
-                          src="https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png" 
-                          alt="Mark Watts" 
-                          className="h-full w-full object-cover object-top"
-                        />
+                      <div className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mr-4">
+                        <span className="text-white font-bold text-sm">FE</span>
                       </div>
                       <div>
-                        <p className="font-bold">Mark Watts</p>
-                        <p className="text-sm text-gray-600">Alan Watts Organization</p>
+                        <p className="font-bold">Family Estate Owner</p>
+                        <p className="text-sm text-gray-600">Intellectual Property Holder</p>
                       </div>
                     </div>
                   </div>
