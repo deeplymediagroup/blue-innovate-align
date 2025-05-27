@@ -46,19 +46,19 @@ export const AlanWattsShowcase: React.FC = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg text-center transition-all duration-300 hover:from-blue-100 hover:to-blue-200 border border-blue-200">
                   <p className="text-2xl font-bold text-blue-700">100M+</p>
-                  <p className="text-xs text-gray-600">Views Recaptured</p>
+                  <p className="text-xs text-gray-600">Total Views</p>
                 </div>
                 <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg text-center transition-all duration-300 hover:from-blue-100 hover:to-blue-200 border border-blue-200">
-                  <p className="text-2xl font-bold text-blue-700">80K+</p>
-                  <p className="text-xs text-gray-600">Claims Processed</p>
-                </div>
-                <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg text-center transition-all duration-300 hover:from-blue-100 hover:to-blue-200 border border-blue-200">
-                  <p className="text-2xl font-bold text-blue-700">36.4M</p>
-                  <p className="text-xs text-gray-600">Watch Time Hours</p>
+                  <p className="text-2xl font-bold text-blue-700">99.9%</p>
+                  <p className="text-xs text-gray-600">Content Claimed</p>
                 </div>
                 <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg text-center transition-all duration-300 hover:from-blue-100 hover:to-blue-200 border border-blue-200">
                   <p className="text-2xl font-bold text-blue-700">660%</p>
                   <p className="text-xs text-gray-600">Revenue Growth</p>
+                </div>
+                <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg text-center transition-all duration-300 hover:from-blue-100 hover:to-blue-200 border border-blue-200">
+                  <p className="text-2xl font-bold text-blue-700">27K+</p>
+                  <p className="text-xs text-gray-600">Active Claims</p>
                 </div>
               </div>
               

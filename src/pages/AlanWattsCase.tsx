@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Layout } from "@/components/Layout";
 import { GlassmorphicCard } from "@/components/GlassmorphicCard";
@@ -447,25 +448,6 @@ const AlanWattsCase: React.FC = () => {
                       <p className="text-foreground/70">
                         The licensing program provided a win-win: creators get to use high-quality content with permission, while the estate receives fair compensation and maintains control over how their intellectual property is presented.
                       </p>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Testimonial */}
-                <div className="bg-white rounded-lg overflow-hidden shadow-lg mb-16">
-                  <div className="bg-blue-50 p-8 border-t border-blue-100">
-                    <h3 className="text-2xl font-bold mb-6 text-center">Testimonial</h3>
-                    <blockquote className="text-lg italic mb-4">
-                      "Working with MindsetDRM has transformed how we manage our estate's digital legacy. Their innovative approach to content protection and monetization has not only increased our revenue but ensured that our intellectual property is shared authentically with the world."
-                    </blockquote>
-                    <div className="flex items-center">
-                      <div className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mr-4">
-                        <span className="text-white font-bold text-sm">FE</span>
-                      </div>
-                      <div>
-                        <p className="font-bold">Family Estate Owner</p>
-                        <p className="text-sm text-gray-600">Intellectual Property Holder</p>
-                      </div>
                     </div>
                   </div>
                 </div>
