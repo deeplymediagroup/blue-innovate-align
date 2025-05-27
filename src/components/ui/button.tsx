@@ -2,7 +2,7 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
-import { motion, type HTMLMotionProps, type TargetAndTransition } from "framer-motion"
+import { motion, type TargetAndTransition } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
@@ -51,9 +51,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = "Button"
 
-// Define specific interface for AnimatedButton to avoid type conflicts
+// Properly exclude conflicting properties for AnimatedButton
 export interface AnimatedButtonProps 
-  extends Omit<ButtonProps, 'onDrag'>,
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onDrag' | 'onDragEnd' | 'onDragStart'>,
     VariantProps<typeof buttonVariants> {
   whileHover?: TargetAndTransition;
   whileTap?: TargetAndTransition;

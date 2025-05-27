@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
@@ -7,7 +8,6 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { CTASection } from "@/components/CTASection";
 import { CreatorGrid } from "@/components/CreatorGrid";
 import { AlanWattsShowcase } from "@/components/AlanWattsShowcase";
-import { YoutubeContentGrid } from "@/components/YoutubeContentGrid";
 import { RevenueCalculator } from "@/components/RevenueCalculator";
 import { UltimateSolution } from "@/components/UltimateSolution";
 import { Button } from "@/components/ui/button";
@@ -43,57 +43,6 @@ const Index: React.FC = () => {
       { name: "Mindset", value: 10, color: "#93c5fd" },
     ]);
   }, [rightHolderValue]);
-  
-  const channelStats = [
-    { 
-      name: "Motiversity", 
-      subscribers: "3.8M", 
-      views: "530M+", 
-      icon: "/lovable-uploads/3ecb8aa9-4ef8-4d32-a070-462ae07a4d20.png" 
-    },
-    { 
-      name: "MotivationHub", 
-      subscribers: "3.5M", 
-      views: "380M+", 
-      icon: "/lovable-uploads/0cf3ba3e-8960-4ea0-8c73-dd2b371e4ce4.png" 
-    },
-    { 
-      name: "Motivation2Study", 
-      subscribers: "4.6M", 
-      views: "365M+", 
-      icon: "/lovable-uploads/7ad119b9-2029-4225-9db1-d52780651bd4.png" 
-    },
-    { 
-      name: "Motivation Madness", 
-      subscribers: "3.8M", 
-      views: "350M+", 
-      icon: "/lovable-uploads/120bfcd1-e00e-4b2f-ac25-ee49edfe0e22.png" 
-    },
-    { 
-      name: "After Skool", 
-      subscribers: "3.7M", 
-      views: "260M+", 
-      icon: "/lovable-uploads/67ff2ca5-79fd-44ed-b348-2dfb2dca0fb8.png" 
-    },
-    { 
-      name: "T&H Inspiration", 
-      subscribers: "758K", 
-      views: "140M+", 
-      icon: "/lovable-uploads/3a748cf2-80ce-4b01-bcd8-598759cbef81.png" 
-    },
-    { 
-      name: "Alpha Leaders", 
-      subscribers: "767K", 
-      views: "56M+", 
-      icon: "/lovable-uploads/a2298027-384a-4e1f-bd2e-5b75a4d22ef5.png" 
-    },
-    { 
-      name: "True Meaning", 
-      subscribers: "526K", 
-      views: "38M+", 
-      icon: "/lovable-uploads/6860289e-a663-4308-98bc-ef73a755ad49.png" 
-    },
-  ];
 
   useEffect(() => {
     const observerOptions = {
@@ -331,81 +280,6 @@ const Index: React.FC = () => {
         </div>
       </section>
       
-      {/* Distribution Partners Section - Switching position with YoutubeContentGrid */}
-      <section id="distribution" className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-5xl mx-auto mb-12 text-center">
-            <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
-              We Power The Largest Motivational YouTube Network
-            </h2>
-            <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
-              Our network manages rights for leading motivational content creators
-            </p>
-          </div>
-          
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 max-w-5xl mx-auto">
-            <h3 className="text-2xl font-bold mb-6 text-blue-600">Distribution Partners</h3>
-            <p className="mb-6 text-foreground/70">
-              We help speakers and podcasters reach millions through our established distribution network.
-              Our partners have over 2 billion total views across YouTube.
-            </p>
-            
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-              {channelStats.map((channel, index) => (
-                <motion.div 
-                  key={index} 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  className="bg-blue-50 p-4 rounded-lg border border-blue-100 transition-all duration-300 hover:shadow-md hover:bg-blue-100"
-                >
-                  <div className="flex items-center mb-3">
-                    <img 
-                      src={channel.icon} 
-                      alt={channel.name} 
-                      className="w-8 h-8 rounded-full mr-2 object-cover"
-                    />
-                    <h4 className="font-bold text-blue-800">{channel.name}</h4>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2 mt-2">
-                    <div className="flex flex-col">
-                      <p className="text-xs text-gray-500">Subscribers</p>
-                      <p className="font-bold text-blue-600">{channel.subscribers}</p>
-                    </div>
-                    <div className="flex flex-col">
-                      <p className="text-xs text-gray-500">Views</p>
-                      <p className="font-bold text-blue-600">{channel.views}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            
-            <div className="flex flex-wrap justify-center gap-6 md:gap-12 py-4 bg-blue-50 rounded-lg p-4">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-              >
-                <p className="text-3xl font-bold text-blue-600">2B+</p>
-                <p className="text-sm text-foreground/60">Total Views</p>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <p className="text-3xl font-bold text-blue-600">20M+</p>
-                <p className="text-sm text-foreground/60">Subscribers</p>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
       {/* Pricing Plans section */}
       <section className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
         <div className="container mx-auto px-4 md:px-6">
@@ -415,9 +289,44 @@ const Index: React.FC = () => {
         </div>
       </section>
       
-      {/* Moving Content We Amplify section after How It Works */}
-      <YoutubeContentGrid />
-      <CTASection />
+      {/* Enhanced CTA Section with more visibility */}
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white relative overflow-hidden">
+        <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Protect Your Content?</h2>
+            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+              Join thousands of rights holders who trust us to protect and monetize their valuable content.
+            </p>
+            <Link to="/contact">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="bg-white text-blue-600 hover:bg-blue-50 border-white text-lg px-12 py-4 shadow-2xl hover:shadow-3xl transition-all duration-300"
+                >
+                  Get Started Today
+                  <ArrowRight className="ml-2 h-6 w-6" />
+                </Button>
+              </motion.div>
+            </Link>
+          </motion.div>
+        </div>
+        
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-20 h-20 border border-white rounded-full"></div>
+          <div className="absolute bottom-10 right-10 w-32 h-32 border border-white rounded-full"></div>
+          <div className="absolute top-1/2 left-1/3 w-16 h-16 border border-white rounded-full"></div>
+        </div>
+      </section>
     </Layout>
   );
 };

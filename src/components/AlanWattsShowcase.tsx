@@ -31,9 +31,9 @@ export const AlanWattsShowcase: React.FC = () => {
           viewport={{ once: true, margin: "-50px" }}
           className="max-w-5xl mx-auto rounded-lg border border-blue-200 bg-white overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
         >
-          <div className="p-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-            <div className="md:col-span-8 flex flex-col justify-between h-full space-y-6">
-              <div className="flex flex-col space-y-6">
+          <div className="p-6 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+            <div className="md:col-span-8 flex flex-col justify-between h-full space-y-4">
+              <div className="flex flex-col space-y-4">
                 <div className="flex justify-between items-center w-full">
                   <Link 
                     to="/case-studies/alan-watts" 
@@ -72,21 +72,21 @@ export const AlanWattsShowcase: React.FC = () => {
                 </div>
               </div>
               
-              <div className="grid grid-cols-4 gap-4">
-                <div className="bg-blue-50 p-4 rounded-lg text-center transition-all duration-300 hover:bg-blue-100">
-                  <p className="text-2xl font-bold text-blue-600">100M+</p>
+              <div className="grid grid-cols-4 gap-3">
+                <div className="bg-blue-50 p-3 rounded-lg text-center transition-all duration-300 hover:bg-blue-100">
+                  <p className="text-xl font-bold text-blue-600">100M+</p>
                   <p className="text-xs text-gray-500">Total Views</p>
                 </div>
-                <div className="bg-blue-50 p-4 rounded-lg text-center transition-all duration-300 hover:bg-blue-100">
-                  <p className="text-2xl font-bold text-blue-600">99.9%</p>
+                <div className="bg-blue-50 p-3 rounded-lg text-center transition-all duration-300 hover:bg-blue-100">
+                  <p className="text-xl font-bold text-blue-600">99.9%</p>
                   <p className="text-xs text-gray-500">Content Claimed</p>
                 </div>
-                <div className="bg-blue-50 p-4 rounded-lg text-center transition-all duration-300 hover:bg-blue-100">
-                  <p className="text-2xl font-bold text-blue-600">660%</p>
+                <div className="bg-blue-50 p-3 rounded-lg text-center transition-all duration-300 hover:bg-blue-100">
+                  <p className="text-xl font-bold text-blue-600">660%</p>
                   <p className="text-xs text-gray-500">Revenue Growth</p>
                 </div>
-                <div className="bg-blue-50 p-4 rounded-lg text-center transition-all duration-300 hover:bg-blue-100">
-                  <p className="text-2xl font-bold text-blue-600">27k+</p>
+                <div className="bg-blue-50 p-3 rounded-lg text-center transition-all duration-300 hover:bg-blue-100">
+                  <p className="text-xl font-bold text-blue-600">27k+</p>
                   <p className="text-xs text-gray-500">Active Claims</p>
                 </div>
               </div>
@@ -95,12 +95,12 @@ export const AlanWattsShowcase: React.FC = () => {
             <div className="md:col-span-4 h-full flex items-center">
               <div className="relative overflow-hidden rounded-md h-full w-full">
                 <img 
-                  src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=400&h=350&fit=crop&crop=center" 
+                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop&crop=center" 
                   alt="Family Estate" 
-                  className="w-full h-[300px] md:h-[350px] object-cover hover:scale-105 transition-transform duration-700"
+                  className="w-full h-[280px] md:h-[300px] object-cover hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute bottom-0 left-0 right-0 py-4 px-5 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
-                  <p className="font-medium text-xl text-white mb-1">Family Estate</p>
+                <div className="absolute bottom-0 left-0 right-0 py-3 px-4 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+                  <p className="font-medium text-lg text-white mb-1">Family Estate</p>
                   <p className="text-sm text-gray-100">High-value intellectual property with global digital presence</p>
                 </div>
               </div>
