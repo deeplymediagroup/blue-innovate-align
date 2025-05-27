@@ -57,7 +57,7 @@ export const HowItWorks: React.FC = () => {
   return (
     <section 
       id="how-it-works" 
-      className="py-24 bg-gradient-to-b from-background to-blue-50/20 relative overflow-hidden"
+      className="py-16 bg-gradient-to-b from-background to-blue-50/20 relative overflow-hidden"
     >
       <motion.div 
         className="absolute inset-0 pointer-events-none z-0"
@@ -72,7 +72,7 @@ export const HowItWorks: React.FC = () => {
           ref={sectionRef}
           className="reveal-section max-w-6xl mx-auto"
         >
-          <div className="text-center mb-20">
+          <div className="text-center mb-16">
             <div className="inline-block mb-3">
               <div className="py-1 px-3 bg-blue-100 border border-blue-200 rounded-full">
                 <p className="text-xs font-medium text-blue-700">
@@ -113,7 +113,7 @@ export const HowItWorks: React.FC = () => {
             ))}
           </div>
 
-          <div className="text-center mt-16">
+          <div className="text-center mt-12">
             <Link to="/contact">
               <motion.div
                 whileHover={{ scale: 1.03 }}
