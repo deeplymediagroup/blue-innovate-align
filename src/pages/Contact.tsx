@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
@@ -33,6 +32,10 @@ const Contact: React.FC = () => {
     console.log("Form submitted:", formData);
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 3000);
+  };
+
+  const handleBookDemo = () => {
+    window.open('https://calendly.com/brandon-mindsetdrm/30min', '_blank');
   };
 
   return (
@@ -188,21 +191,21 @@ const Contact: React.FC = () => {
                   <h3 className="text-xl font-bold mb-4">Contact Information</h3>
                   
                   <div className="space-y-4">
-                    <div className="flex items-start">
-                      <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-4 mt-1">
+                    <div className="flex items-center">
+                      <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-4">
                         <Mail className="h-5 w-5 text-blue-600" />
                       </div>
-                      <div>
+                      <div className="flex-1">
                         <p className="font-medium">Email</p>
-                        <p className="text-foreground/70">hello@mindsetdrm.com</p>
+                        <p className="text-foreground/70">licensing@mindsetdrm.com</p>
                       </div>
                     </div>
                     
-                    <div className="flex items-start">
-                      <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-4 mt-1">
+                    <div className="flex items-center">
+                      <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-4">
                         <MessageSquare className="h-5 w-5 text-blue-600" />
                       </div>
-                      <div>
+                      <div className="flex-1">
                         <p className="font-medium">Response Time</p>
                         <p className="text-foreground/70">Within 24 hours</p>
                       </div>
@@ -241,6 +244,7 @@ const Contact: React.FC = () => {
                   <Button 
                     variant="outline" 
                     className="w-full border-blue-300 text-blue-700 hover:bg-blue-200"
+                    onClick={handleBookDemo}
                   >
                     Book Demo Call
                     <ArrowRight className="ml-2 h-4 w-4" />
