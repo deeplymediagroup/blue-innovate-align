@@ -51,9 +51,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = "Button"
 
-// Properly exclude conflicting properties for AnimatedButton
+// Fixed AnimatedButton props to avoid conflicts
 export interface AnimatedButtonProps 
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onAnimationStart' | 'onAnimationEnd' | 'onAnimationIteration'>,
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onAnimationStart' | 'onAnimationEnd' | 'onAnimationIteration' | 'onDrag' | 'onDragEnd' | 'onDragStart'>,
     VariantProps<typeof buttonVariants> {
   whileHover?: TargetAndTransition;
   whileTap?: TargetAndTransition;

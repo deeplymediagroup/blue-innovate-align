@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Layout } from "@/components/Layout";
 import { GlassmorphicCard } from "@/components/GlassmorphicCard";
@@ -78,8 +77,8 @@ const AlanWattsCase: React.FC = () => {
           </div>
           
           <GlassmorphicCard className="p-8 md:p-12 mx-auto mb-16 bg-white max-w-5xl">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-              <div className="md:col-span-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
                 <h2 className="text-2xl font-bold mb-4">About the Project</h2>
                 <p className="text-gray-600 mb-6">
                   A family estate approached us to help protect their intellectual property across YouTube, 
@@ -113,8 +112,8 @@ const AlanWattsCase: React.FC = () => {
               
               <div>
                 <img 
-                  src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=400&h=350&fit=crop&crop=center" 
-                  alt="Family Estate" 
+                  src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=400&h=350&fit=crop&crop=center" 
+                  alt="Family Estate Aerial View" 
                   className="rounded-lg w-full h-full object-cover shadow-lg"
                 />
               </div>
