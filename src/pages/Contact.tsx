@@ -244,26 +244,26 @@ const Contact: React.FC = () => {
                 className="space-y-8"
               >
                 <div className="bg-white rounded-lg shadow-lg p-6">
-                  <h3 className="text-xl font-bold mb-4">Contact Information</h3>
+                  <h3 className="text-xl font-bold mb-6">Contact Information</h3>
                   
-                  <div className="space-y-4">
-                    <div className="flex items-center">
-                      <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-4">
-                        <Mail className="h-5 w-5 text-blue-600" />
+                  <div className="space-y-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1">
+                        <Mail className="h-6 w-6 text-blue-600" />
                       </div>
-                      <div className="flex-1">
-                        <p className="font-medium">Email</p>
-                        <p className="text-foreground/70">licensing@mindsetdrm.com</p>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-medium text-gray-900 mb-1">Email</p>
+                        <p className="text-sm text-gray-600 break-words">licensing@mindsetdrm.com</p>
                       </div>
                     </div>
                     
-                    <div className="flex items-center">
-                      <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-4">
-                        <MessageSquare className="h-5 w-5 text-blue-600" />
+                    <div className="flex items-start space-x-4">
+                      <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1">
+                        <MessageSquare className="h-6 w-6 text-blue-600" />
                       </div>
-                      <div className="flex-1">
-                        <p className="font-medium">Response Time</p>
-                        <p className="text-foreground/70">Within 24 hours</p>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-medium text-gray-900 mb-1">Response Time</p>
+                        <p className="text-sm text-gray-600">Within 24 hours</p>
                       </div>
                     </div>
                   </div>
