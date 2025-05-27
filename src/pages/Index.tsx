@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
@@ -288,8 +289,8 @@ const Index: React.FC = () => {
         </div>
       </section>
       
-      {/* Enhanced Dynamic CTA Section with more opaque background */}
-      <section className="py-20 bg-gradient-to-br from-blue-900/95 via-blue-800/95 to-purple-900/95 text-white relative overflow-hidden">
+      {/* Light CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50/50 via-white to-blue-50/30 text-gray-900 relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -298,8 +299,8 @@ const Index: React.FC = () => {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto"
           >
-            {/* Animated gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 via-blue-500/30 to-purple-600/30 animate-pulse"></div>
+            {/* Light animated gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-100/30 via-cyan-50/30 to-blue-100/30 animate-pulse"></div>
             
             {/* Main content */}
             <div className="relative z-10">
@@ -308,7 +309,7 @@ const Index: React.FC = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-cyan-200 bg-clip-text text-transparent"
+                className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-800 via-blue-600 to-blue-700 bg-clip-text text-transparent"
               >
                 Ready to Transform Your Content Strategy?
               </motion.h2>
@@ -318,7 +319,7 @@ const Index: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
                 viewport={{ once: true }}
-                className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed"
+                className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed"
               >
                 Join an exclusive group of rights holders who've discovered the power of AI-driven content protection and monetization
               </motion.p>
@@ -330,13 +331,13 @@ const Index: React.FC = () => {
                 viewport={{ once: true }}
                 className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
               >
-                <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 border border-white/30">
-                  <div className="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></div>
-                  <span className="text-sm font-medium">AI-Powered Protection</span>
+                <div className="flex items-center bg-blue-50 backdrop-blur-sm rounded-full px-6 py-3 border border-blue-200">
+                  <div className="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></div>
+                  <span className="text-sm font-medium text-gray-700">AI-Powered Protection</span>
                 </div>
-                <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 border border-white/30">
-                  <div className="w-3 h-3 bg-cyan-400 rounded-full mr-3 animate-pulse"></div>
-                  <span className="text-sm font-medium">Real-Time Monetization</span>
+                <div className="flex items-center bg-blue-50 backdrop-blur-sm rounded-full px-6 py-3 border border-blue-200">
+                  <div className="w-3 h-3 bg-blue-500 rounded-full mr-3 animate-pulse"></div>
+                  <span className="text-sm font-medium text-gray-700">Real-Time Monetization</span>
                 </div>
               </motion.div>
               
@@ -348,7 +349,7 @@ const Index: React.FC = () => {
                 >
                   <Button 
                     size="lg" 
-                    className="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-white border-0 text-xl px-12 py-6 rounded-full shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 group"
+                    className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white border-0 text-xl px-12 py-6 rounded-full shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 group"
                   >
                     Start Your Journey Today
                     <motion.div
@@ -366,7 +367,7 @@ const Index: React.FC = () => {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
                 viewport={{ once: true }}
-                className="text-sm text-blue-200 mt-6"
+                className="text-sm text-gray-500 mt-6"
               >
                 No setup fees • Free consultation • Custom solutions available
               </motion.p>
@@ -374,28 +375,28 @@ const Index: React.FC = () => {
           </motion.div>
         </div>
         
-        {/* Enhanced background decoration with increased opacity */}
-        <div className="absolute inset-0 opacity-40">
+        {/* Light background decoration */}
+        <div className="absolute inset-0 opacity-20">
           <motion.div 
-            className="absolute top-20 left-10 w-32 h-32 border border-cyan-400 rounded-full"
+            className="absolute top-20 left-10 w-32 h-32 border border-blue-300 rounded-full"
             animate={{ rotate: 360, scale: [1, 1.1, 1] }}
             transition={{ duration: 20, repeat: Infinity }}
           />
           <motion.div 
-            className="absolute bottom-20 right-10 w-24 h-24 border border-purple-400 rounded-full"
+            className="absolute bottom-20 right-10 w-24 h-24 border border-cyan-300 rounded-full"
             animate={{ rotate: -360, scale: [1, 1.2, 1] }}
             transition={{ duration: 15, repeat: Infinity }}
           />
           <motion.div 
-            className="absolute top-1/2 left-1/4 w-16 h-16 border border-blue-300 rounded-full"
+            className="absolute top-1/2 left-1/4 w-16 h-16 border border-blue-200 rounded-full"
             animate={{ rotate: 180, scale: [1, 1.3, 1] }}
             transition={{ duration: 25, repeat: Infinity }}
           />
         </div>
         
-        {/* Animated gradient overlay with increased opacity */}
+        {/* Light animated gradient overlay */}
         <motion.div 
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent"
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-100/20 to-transparent"
           animate={{ x: ['-100%', '100%'] }}
           transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
         />
