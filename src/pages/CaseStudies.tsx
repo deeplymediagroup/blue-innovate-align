@@ -14,7 +14,7 @@ const CaseStudies: React.FC = () => {
       title: "Family Estate Intellectual Property Owners",
       subtitle: "Transforming Digital Legacy Management on YouTube",
       logo: "https://images.squarespace-cdn.com/content/v1/548b74c8e4b0d3ebe88e525d/a25f04e5-6440-4fd1-9d76-7e1a49b2690f/Screen+Shot+2022-03-21+at+4.17.56+PM.png",
-      background: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&h=400&fit=crop&crop=center",
+      background: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=600&h=400&fit=crop&crop=center",
       metrics: [
         { value: "99.9%", label: "Content Claimed" },
         { value: "27K+", label: "Claims Processed" },

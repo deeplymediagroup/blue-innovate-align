@@ -23,7 +23,7 @@ export const CTASection: React.FC = () => {
       {/* Dynamic animated background */}
       <div className="absolute inset-0">
         <motion.div 
-          className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-cyan-600/20"
+          className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-cyan-600/20 to-blue-600/20"
           animate={{
             backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
           }}
@@ -68,7 +68,7 @@ export const CTASection: React.FC = () => {
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       />
       <motion.div 
-        className="absolute bottom-10 right-10 w-24 h-24 border border-purple-400/30 rounded-full"
+        className="absolute bottom-10 right-10 w-24 h-24 border border-blue-400/30 rounded-full"
         animate={{ rotate: -360 }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
       />
@@ -90,14 +90,7 @@ export const CTASection: React.FC = () => {
           style={{ opacity, scale }}
           className="max-w-5xl mx-auto"
         >
-          <motion.div
-            className="bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm rounded-3xl p-12 text-white text-center shadow-2xl relative overflow-hidden border border-white/10"
-            whileHover={{ y: -5 }}
-            transition={{ duration: 0.3 }}
-          >
-            {/* Inner glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 rounded-3xl" />
-            
+          <div className="text-center text-white">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -176,7 +169,7 @@ export const CTASection: React.FC = () => {
             >
               No setup fees • Free consultation • Custom solutions available
             </motion.p>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
