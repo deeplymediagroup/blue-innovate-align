@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
@@ -289,8 +288,8 @@ const Index: React.FC = () => {
         </div>
       </section>
       
-      {/* Enhanced Dynamic CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 text-white relative overflow-hidden">
+      {/* Enhanced Dynamic CTA Section with more opaque background */}
+      <section className="py-20 bg-gradient-to-br from-blue-900/95 via-blue-800/95 to-purple-900/95 text-white relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -300,7 +299,7 @@ const Index: React.FC = () => {
             className="max-w-4xl mx-auto"
           >
             {/* Animated gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 via-blue-500/20 to-purple-600/20 animate-pulse"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 via-blue-500/30 to-purple-600/30 animate-pulse"></div>
             
             {/* Main content */}
             <div className="relative z-10">
@@ -331,11 +330,11 @@ const Index: React.FC = () => {
                 viewport={{ once: true }}
                 className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
               >
-                <div className="flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
+                <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 border border-white/30">
                   <div className="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></div>
                   <span className="text-sm font-medium">AI-Powered Protection</span>
                 </div>
-                <div className="flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
+                <div className="flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 border border-white/30">
                   <div className="w-3 h-3 bg-cyan-400 rounded-full mr-3 animate-pulse"></div>
                   <span className="text-sm font-medium">Real-Time Monetization</span>
                 </div>
@@ -375,8 +374,8 @@ const Index: React.FC = () => {
           </motion.div>
         </div>
         
-        {/* Enhanced background decoration */}
-        <div className="absolute inset-0 opacity-30">
+        {/* Enhanced background decoration with increased opacity */}
+        <div className="absolute inset-0 opacity-40">
           <motion.div 
             className="absolute top-20 left-10 w-32 h-32 border border-cyan-400 rounded-full"
             animate={{ rotate: 360, scale: [1, 1.1, 1] }}
@@ -394,9 +393,9 @@ const Index: React.FC = () => {
           />
         </div>
         
-        {/* Animated gradient overlay */}
+        {/* Animated gradient overlay with increased opacity */}
         <motion.div 
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent"
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent"
           animate={{ x: ['-100%', '100%'] }}
           transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
         />

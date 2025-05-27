@@ -1,10 +1,9 @@
-
 import React, { useState, useEffect } from "react";
 import { Slider } from "@/components/ui/slider";
 import { motion } from "framer-motion";
 
 export const RevenueCalculator: React.FC = () => {
-  const [viewsPerDay, setViewsPerDay] = useState<number>(10000);
+  const [viewsPerDay, setViewsPerDay] = useState<number>(100000);
   const [monthlyRevenueLost, setMonthlyRevenueLost] = useState<number>(0);
   const [yearlyRevenueLost, setYearlyRevenueLost] = useState<number>(0);
   
