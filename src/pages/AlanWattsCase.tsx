@@ -81,7 +81,7 @@ const AlanWattsCase: React.FC = () => {
               <div>
                 <h2 className="text-2xl font-bold mb-4">About the Project</h2>
                 <p className="text-gray-600 mb-6">
-                  A family estate approached us to help protect their intellectual property across YouTube, 
+                  An estate approached us to help protect their intellectual property across YouTube, 
                   where thousands of channels were using their content without permission.
                 </p>
                 <p className="text-gray-600 mb-8">
@@ -112,8 +112,8 @@ const AlanWattsCase: React.FC = () => {
               
               <div>
                 <img 
-                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=350&fit=crop&crop=center" 
-                  alt="Wine Estate Vineyard" 
+                  src="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?w=400&h=350&fit=crop&crop=center" 
+                  alt="Luxury Estate Aerial View" 
                   className="rounded-lg w-full h-full object-cover shadow-lg"
                 />
               </div>
@@ -135,7 +135,7 @@ const AlanWattsCase: React.FC = () => {
                           <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </div>
-                      <p>0% claimed of 25,000 family estate videos</p>
+                      <p>0% claimed of 25,000 pirated videos</p>
                     </div>
                     <div className="flex items-center">
                       <div className="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center mr-4">
@@ -163,7 +163,7 @@ const AlanWattsCase: React.FC = () => {
                       <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center mr-4">
                         <CheckCircle2 className="h-5 w-5 text-green-600" />
                       </div>
-                      <p>99.9% claimed or 25,000 family estate videos</p>
+                      <p>99.9% claimed or 25,000 estate videos</p>
                     </div>
                     <div className="flex items-center">
                       <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center mr-4">
@@ -242,7 +242,7 @@ const AlanWattsCase: React.FC = () => {
                     </div>
                     <h3 className="text-xl font-bold mb-3">Widespread Misuse</h3>
                     <p className="text-foreground/70">
-                      The family estate's video and audio content was being re-uploaded without permission or manipulated into formats that misrepresented the original work.
+                      The estate's video and audio content was being re-uploaded without permission or manipulated into formats that misrepresented the original work.
                     </p>
                   </div>
                   
@@ -252,7 +252,7 @@ const AlanWattsCase: React.FC = () => {
                     </div>
                     <h3 className="text-xl font-bold mb-3">Content Detection</h3>
                     <p className="text-foreground/70">
-                      YouTube's Content ID system was unable to effectively track audio-only content like the family estate's archived materials.
+                      YouTube's Content ID system was unable to effectively track audio-only content like the estate's archived materials.
                     </p>
                   </div>
                   
@@ -278,7 +278,7 @@ const AlanWattsCase: React.FC = () => {
                         <div>
                           <h4 className="text-lg font-bold mb-2">Audio-Only Content ID Tool</h4>
                           <p className="text-foreground/70">
-                            MindsetDRM worked directly with YouTube to gain exclusive access and improve a new audio-only Content ID tool, enabling us to accurately track and claim the family estate's content across the platform.
+                            MindsetDRM worked directly with YouTube to gain exclusive access and improve a new audio-only Content ID tool, enabling us to accurately track and claim the estate's content across the platform.
                           </p>
                         </div>
                       </div>
@@ -306,7 +306,7 @@ const AlanWattsCase: React.FC = () => {
                         <div>
                           <h4 className="text-lg font-bold mb-2">Creator Ecosystem</h4>
                           <p className="text-foreground/70">
-                            MindsetDRM built an ecosystem where creators could engage with the family estate's work in a legitimate and profitable way through a licensing program.
+                            MindsetDRM built an ecosystem where creators could engage with the estate's work in a legitimate and profitable way through a licensing program.
                           </p>
                         </div>
                       </div>
@@ -433,7 +433,7 @@ const AlanWattsCase: React.FC = () => {
                     <div>
                       <h4 className="text-lg font-bold mb-3">Data-Driven Content Strategy</h4>
                       <p className="text-foreground/70 mb-4">
-                        With MindsetDRM's technology, the family estate gained full visibility into how their content performs across YouTube. This allowed them to make strategic decisions based on actual audience preferences, trending topics, and engagement patterns.
+                        With MindsetDRM's technology, the estate gained full visibility into how their content performs across YouTube. This allowed them to make strategic decisions based on actual audience preferences, trending topics, and engagement patterns.
                       </p>
                       <p className="text-foreground/70">
                         By understanding which content resonated most with different audience segments, they could better focus their preservation and digitization efforts on high-value content.
@@ -445,7 +445,7 @@ const AlanWattsCase: React.FC = () => {
                         Beyond simply claiming content, MindsetDRM created a sustainable ecosystem that encourages creators to engage with the estate's work appropriately. 
                       </p>
                       <p className="text-foreground/70">
-                        The licensing program provided a win-win: creators get to use high-quality content with permission, while the family estate receives fair compensation and maintains control over how their intellectual property is presented.
+                        The licensing program provided a win-win: creators get to use high-quality content with permission, while the estate receives fair compensation and maintains control over how their intellectual property is presented.
                       </p>
                     </div>
                   </div>
@@ -456,7 +456,7 @@ const AlanWattsCase: React.FC = () => {
                   <div className="bg-blue-50 p-8 border-t border-blue-100">
                     <h3 className="text-2xl font-bold mb-6 text-center">Testimonial</h3>
                     <blockquote className="text-lg italic mb-4">
-                      "Working with MindsetDRM has transformed how we manage our family's digital legacy. Their innovative approach to content protection and monetization has not only increased our revenue but ensured that our intellectual property is shared authentically with the world."
+                      "Working with MindsetDRM has transformed how we manage our estate's digital legacy. Their innovative approach to content protection and monetization has not only increased our revenue but ensured that our intellectual property is shared authentically with the world."
                     </blockquote>
                     <div className="flex items-center">
                       <div className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mr-4">
