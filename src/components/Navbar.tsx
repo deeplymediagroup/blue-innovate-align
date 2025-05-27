@@ -1,5 +1,6 @@
+
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   Menu,
@@ -29,6 +30,7 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile();
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,12 +46,28 @@ export const Navbar: React.FC<NavbarProps> = ({ extraNavLinks }) => {
 
   const handleNavigation = (href: string) => {
     if (href.startsWith('#')) {
-      const element = document.querySelector(href);
-      if (element) {
-        window.scrollTo({
-          top: element.getBoundingClientRect().top + window.scrollY - 100,
-          behavior: "smooth",
-        });
+      // If we're not on the home page, navigate there first
+      if (location.pathname !== '/') {
+        navigate('/');
+        // Wait for navigation to complete, then scroll
+        setTimeout(() => {
+          const element = document.querySelector(href);
+          if (element) {
+            window.scrollTo({
+              top: element.getBoundingClientRect().top + window.scrollY - 100,
+              behavior: "smooth",
+            });
+          }
+        }, 100);
+      } else {
+        // We're already on the home page, just scroll
+        const element = document.querySelector(href);
+        if (element) {
+          window.scrollTo({
+            top: element.getBoundingClientRect().top + window.scrollY - 100,
+            behavior: "smooth",
+          });
+        }
       }
     } else {
       navigate(href);
