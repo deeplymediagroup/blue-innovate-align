@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
@@ -7,6 +8,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Label } from "@/components/ui/label";
 import { ArrowRight, CheckCircle, Send, MessageSquare, Mail, Phone } from "lucide-react";
 import { motion } from "framer-motion";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +22,8 @@ const Contact: React.FC = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
@@ -27,11 +32,55 @@ const Contact: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    setIsSubmitting(true);
+
+    try {
+      console.log("Submitting form with data:", formData);
+
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData,
+      });
+
+      if (error) {
+        console.error("Error sending email:", error);
+        toast({
+          title: "Error",
+          description: "Failed to send message. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      console.log("Email sent successfully:", data);
+      setSubmitted(true);
+      toast({
+        title: "Success!",
+        description: "Your message has been sent successfully. We'll get back to you soon.",
+      });
+
+      // Reset form after successful submission
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        role: "",
+        businessType: "",
+        message: "",
+      });
+
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch (error) {
+      console.error("Unexpected error:", error);
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleBookDemo = () => {
@@ -167,14 +216,21 @@ const Contact: React.FC = () => {
                     <Button 
                       type="submit" 
                       className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-                      disabled={submitted}
+                      disabled={isSubmitting || submitted}
                     >
-                      {submitted ? (
-                        <CheckCircle className="mr-2 h-4 w-4" />
+                      {isSubmitting ? (
+                        "Sending..."
+                      ) : submitted ? (
+                        <>
+                          <CheckCircle className="mr-2 h-4 w-4" />
+                          Message Sent!
+                        </>
                       ) : (
-                        <Send className="mr-2 h-4 w-4" />
+                        <>
+                          <Send className="mr-2 h-4 w-4" />
+                          Send Message
+                        </>
                       )}
-                      {submitted ? "Message Sent!" : "Send Message"}
                     </Button>
                   </form>
                 </div>
