@@ -26,14 +26,14 @@ import {
 } from "recharts";
 
 const AlanWattsCase: React.FC = () => {
-  // Data for the revenue growth data over time
+  // Data for the revenue growth data over time - updated to reflect 27,000 total claims
   const revenueData = [
-    { month: "Month 1", revenue: 2255.46, claims: 9000, cumulativeClaims: 9000 },
-    { month: "Month 2", revenue: 4165.18, claims: 6000, cumulativeClaims: 15000 },
-    { month: "Month 3", revenue: 5729.14, claims: 4000, cumulativeClaims: 19000 },
-    { month: "Month 4", revenue: 8921.30, claims: 4000, cumulativeClaims: 23000 },
-    { month: "Month 5", revenue: 9873.62, claims: 1000, cumulativeClaims: 24000 },
-    { month: "Month 6", revenue: 11500, claims: 1000, cumulativeClaims: 25000 },
+    { month: "Month 1", revenue: 2255.46, claims: 9720, cumulativeClaims: 9720 },
+    { month: "Month 2", revenue: 4165.18, claims: 6480, cumulativeClaims: 16200 },
+    { month: "Month 3", revenue: 5729.14, claims: 4320, cumulativeClaims: 20520 },
+    { month: "Month 4", revenue: 8921.30, claims: 4320, cumulativeClaims: 24840 },
+    { month: "Month 5", revenue: 9873.62, claims: 1080, cumulativeClaims: 25920 },
+    { month: "Month 6", revenue: 11500, claims: 1080, cumulativeClaims: 27000 },
   ];
 
   // Age demographics data
@@ -135,7 +135,7 @@ const AlanWattsCase: React.FC = () => {
                           <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </div>
-                      <p>0% claimed of 25,000 pirated videos</p>
+                      <p>0% claimed of 27,000 pirated videos</p>
                     </div>
                     <div className="flex items-center">
                       <div className="h-10 w-10 rounded-full bg-red-100 flex items-center justify-center mr-4">
@@ -163,7 +163,7 @@ const AlanWattsCase: React.FC = () => {
                       <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center mr-4">
                         <CheckCircle2 className="h-5 w-5 text-green-600" />
                       </div>
-                      <p>99.9% claimed or 25,000 estate videos</p>
+                      <p>99.9% claimed or 27,000 estate videos</p>
                     </div>
                     <div className="flex items-center">
                       <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center mr-4">
