@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { GeometricShape, DotPattern, FloatingTile } from "./DecorativeElements";
 
-// Optimized animated SVG decorator with reduced animations
+// Animated SVG decorator
 const DecorativeSVG = ({ className = "" }) => {
   return (
     <motion.svg 
@@ -21,9 +21,10 @@ const DecorativeSVG = ({ className = "" }) => {
       animate={{ 
         opacity: [0.2, 0.5, 0.2],
         scale: [0.8, 1.1, 0.8],
+        rotate: [0, 10, 0]
       }}
       transition={{ 
-        duration: 8, 
+        duration: 12, 
         ease: "easeInOut", 
         repeat: Infinity,
         repeatType: "mirror" 
@@ -38,19 +39,65 @@ const DecorativeSVG = ({ className = "" }) => {
   );
 };
 
-// Service card component with optimized animations
+// Geometric shape decorator - renamed to LocalGeometricShape to avoid conflicts
+const LocalGeometricShape = ({ className, color = "blue", size = 80, delay = 0 }) => {
+  return (
+    <motion.div
+      className={`absolute pointer-events-none ${className}`}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ 
+        opacity: [0.3, 0.5, 0.3],
+        scale: [0.9, 1.1, 0.9],
+        rotate: [0, 15, 0],
+      }}
+      transition={{ 
+        duration: 12 + Math.random() * 5, 
+        ease: "easeInOut", 
+        repeat: Infinity,
+        repeatType: "mirror",
+        delay 
+      }}
+    >
+      <div 
+        className={`w-${size} h-${size} bg-${color}-100/40 backdrop-blur-3xl rounded-xl rotate-12`} 
+        style={{ width: size, height: size }}
+      />
+    </motion.div>
+  );
+};
+
+// Floating dot pattern - renamed to LocalDotPattern to avoid conflicts
+const LocalDotPattern = ({ className }) => {
+  return (
+    <motion.div 
+      className={`absolute pointer-events-none ${className}`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 0.7 }}
+      transition={{ duration: 1 }}
+    >
+      <svg width="200" height="200" viewBox="0 0 100 100">
+        <pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1" fill="rgba(59, 130, 246, 0.3)" />
+        </pattern>
+        <rect width="100%" height="100%" fill="url(#dots)" />
+      </svg>
+    </motion.div>
+  );
+};
+
+// Service card component
 const ServiceCard = ({ title, description, icon: Icon, features, delay = 0, highlight = false }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true }}
       className="h-full"
     >
       <GlassmorphicCard
         variant={highlight ? "highlight" : "bordered"}
-        className={`relative h-full ${highlight ? 'md:-translate-y-4' : ''} overflow-hidden transition-all duration-500 hover:shadow-xl backdrop-blur-md z-10 will-change-transform`}
+        className={`relative h-full ${highlight ? 'md:-translate-y-4' : ''} overflow-hidden transition-all duration-500 hover:shadow-xl backdrop-blur-md z-10`}
       >
         <div className="absolute top-6 right-6">
           <div className={`p-3 rounded-full bg-gradient-to-br from-blue-100 to-blue-50 shadow-sm`}>
@@ -115,8 +162,8 @@ export const Services: React.FC = () => {
     offset: ["start end", "end start"]
   });
   
-  const y1 = useTransform(scrollYProgress, [0, 1], [50, -50]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [25, -25]);
+  const y1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [50, -50]);
   
   const servicesData = [
     {
@@ -146,13 +193,15 @@ export const Services: React.FC = () => {
     }
   ];
 
-  // Optimized floating element with reduced motion
+  // Decorative elements
   const FloatingElement = ({ className, delay = 0, duration = 20 }) => (
     <motion.div
       className={`absolute rounded-full bg-blue-400/5 backdrop-blur-3xl z-0 ${className}`}
       animate={{ 
-        y: [10, -10, 10],
-        scale: [1, 1.05, 1],
+        y: [20, -20, 20],
+        x: [10, -10, 10],
+        scale: [1, 1.1, 1],
+        rotate: [0, 5, 0],
       }}
       transition={{ 
         duration, 
@@ -170,7 +219,7 @@ export const Services: React.FC = () => {
       <FloatingElement className="w-96 h-96 top-20 -right-48 opacity-40" delay={0} duration={25} />
       <FloatingElement className="w-80 h-80 bottom-40 -left-40 opacity-30" delay={5} duration={20} />
       
-      {/* Additional decorative elements */}
+      {/* Additional decorative elements - use imported components instead of local ones */}
       <GeometricShape className="top-20 left-[10%]" color="blue" size={120} delay={0.5} />
       <GeometricShape className="bottom-40 right-[15%]" color="purple" size={100} delay={1.5} />
       <DotPattern className="top-40 right-[5%]" />
@@ -239,7 +288,7 @@ export const Services: React.FC = () => {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-full relative overflow-hidden group will-change-transform">
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-full relative overflow-hidden group">
                   <span className="relative z-10 flex items-center">
                     Start Earning
                     <motion.div

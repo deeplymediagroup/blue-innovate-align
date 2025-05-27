@@ -1,36 +1,29 @@
-import React, { useEffect, useState, lazy, Suspense } from "react";
+
+import React, { useEffect, useState } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { ClientLogos } from "@/components/ClientLogos";
 import { Services } from "@/components/Services";
+import { HowItWorks } from "@/components/HowItWorks";
+import { CTASection } from "@/components/CTASection";
 import { CreatorGrid } from "@/components/CreatorGrid";
+import { AlanWattsShowcase } from "@/components/AlanWattsShowcase";
+import { RevenueCalculator } from "@/components/RevenueCalculator";
+import { UltimateSolution } from "@/components/UltimateSolution";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-
-// Lazy load heavy components that are below the fold
-const HowItWorks = lazy(() => import("@/components/HowItWorks").then(module => ({ default: module.HowItWorks })));
-const AlanWattsShowcase = lazy(() => import("@/components/AlanWattsShowcase").then(module => ({ default: module.AlanWattsShowcase })));
-const RevenueCalculator = lazy(() => import("@/components/RevenueCalculator").then(module => ({ default: module.RevenueCalculator })));
-const UltimateSolution = lazy(() => import("@/components/UltimateSolution").then(module => ({ default: module.UltimateSolution })));
-const PricingPlans = lazy(() => import("@/components/PricingPlans").then(module => ({ default: module.PricingPlans })));
-
-// Lazy load recharts components to reduce initial bundle
-const PieChart = lazy(() => import("recharts").then(module => ({ default: module.PieChart })));
-const Pie = lazy(() => import("recharts").then(module => ({ default: module.Pie })));
-const Cell = lazy(() => import("recharts").then(module => ({ default: module.Cell })));
-const Label = lazy(() => import("recharts").then(module => ({ default: module.Label })));
-const ResponsiveContainer = lazy(() => import("recharts").then(module => ({ default: module.ResponsiveContainer })));
-const Tooltip = lazy(() => import("recharts").then(module => ({ default: module.Tooltip })));
-const Slider = lazy(() => import("@/components/ui/slider").then(module => ({ default: module.Slider })));
-
-// Loading component for suspense fallbacks
-const LoadingSpinner = () => (
-  <div className="flex items-center justify-center py-16">
-    <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-  </div>
-);
+import { Slider } from "@/components/ui/slider";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Label,
+  ResponsiveContainer,
+  Tooltip
+} from "recharts";
+import { PricingPlans } from "@/components/PricingPlans";
 
 const Index: React.FC = () => {
   const [rightHolderValue, setRightHolderValue] = useState(40);
@@ -54,7 +47,7 @@ const Index: React.FC = () => {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "50px", // Start loading slightly before element comes into view
+      rootMargin: "0px",
       threshold: 0.1,
     };
 
@@ -67,24 +60,9 @@ const Index: React.FC = () => {
       });
     }, observerOptions);
 
-    // Use requestIdleCallback to defer non-critical operations
-    const scheduleObserver = () => {
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => {
-          document.querySelectorAll(".reveal-section").forEach((el) => {
-            observer.observe(el);
-          });
-        });
-      } else {
-        setTimeout(() => {
-          document.querySelectorAll(".reveal-section").forEach((el) => {
-            observer.observe(el);
-          });
-        }, 0);
-      }
-    };
-
-    scheduleObserver();
+    document.querySelectorAll(".reveal-section").forEach((el) => {
+      observer.observe(el);
+    });
 
     const handleHashNavigation = () => {
       const hash = window.location.hash;
@@ -137,38 +115,33 @@ const Index: React.FC = () => {
       <ClientLogos />
       
       <div className="py-16 container mx-auto px-4 md:px-6">
-        <div className="text-center mb-8">
+        <div className="text-center mb-12">
           <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
             Rights Holders We Work With
           </h2>
+          <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
+            From individual creators to large media companies, we help protect and monetize valuable content
+          </p>
         </div>
         <CreatorGrid className="max-w-5xl mx-auto" />
       </div>
       
-      <Suspense fallback={<LoadingSpinner />}>
-        <AlanWattsShowcase />
-      </Suspense>
+      <AlanWattsShowcase />
 
       {/* Services section - What We Do */}
       <Services />
       
       {/* Revenue Calculator - New Section */}
-      <Suspense fallback={<LoadingSpinner />}>
-        <RevenueCalculator />
-      </Suspense>
+      <RevenueCalculator />
       
       {/* Ultimate Solution - New Section */}
-      <Suspense fallback={<LoadingSpinner />}>
-        <UltimateSolution />
-      </Suspense>
+      <UltimateSolution />
 
       {/* How It Works section - renamed to "This Is How We Do It" */}
-      <Suspense fallback={<LoadingSpinner />}>
-        <HowItWorks />
-      </Suspense>
+      <HowItWorks />
       
-      {/* Optional Licensing Section - Updated text with interactive pie chart */}
-      <section id="licensing" className="py-16 bg-gradient-to-b from-white to-blue-50/30 w-full">
+      {/* Optional Licensing Section - Updated text */}
+      <section id="licensing" className="py-16 pt-24 bg-gradient-to-b from-blue-50/30 to-white w-full">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -201,127 +174,123 @@ const Index: React.FC = () => {
                   </ul>
                 </div>
               </div>
-              <Suspense fallback={<div className="w-full h-96 bg-gray-100 animate-pulse rounded-lg"></div>}>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5 }}
-                  viewport={{ once: true }}
-                  className="flex justify-center flex-col items-center"
-                >
-                  <div className="w-full max-w-md">
-                    <div className="w-full aspect-square flex items-center justify-center">
-                      <ResponsiveContainer width="100%" height={400}>
-                        <PieChart>
-                          <Tooltip content={<CustomTooltip />} />
-                          <Pie
-                            data={revenueData}
-                            dataKey="value"
-                            nameKey="name"
-                            cx="50%"
-                            cy="50%"
-                            innerRadius={100}
-                            outerRadius={160}
-                            paddingAngle={3}
-                            startAngle={90}
-                            endAngle={-270}
-                            isAnimationActive={true}
-                            onMouseEnter={onPieEnter}
-                            onMouseLeave={onPieLeave}
-                          >
-                            {revenueData.map((entry, index) => (
-                              <Cell 
-                                key={`cell-${index}`} 
-                                fill={entry.color} 
-                                stroke="#fff"
-                                strokeWidth={activeIndex === index ? 3 : 2}
-                                scale={activeIndex === index ? 1.05 : 1}
-                              />
-                            ))}
-                            <Label
-                              content={() => {
-                                return (
-                                  <g>
-                                    <text 
-                                      x="50%" 
-                                      y="47%" 
-                                      textAnchor="middle" 
-                                      dominantBaseline="middle" 
-                                      className="fill-blue-600 text-lg font-bold"
-                                    >
-                                      Revenue Split
-                                    </text>
-                                    <text 
-                                      x="50%" 
-                                      y="57%" 
-                                      textAnchor="middle" 
-                                      dominantBaseline="middle" 
-                                      className="fill-blue-400 text-sm"
-                                    >
-                                      Sustainable ecosystem
-                                    </text>
-                                  </g>
-                                );
-                              }}
-                            />
-                          </Pie>
-                        </PieChart>
-                      </ResponsiveContainer>
-                    </div>
-                    
-                    <div className="mt-4 grid grid-cols-3 gap-4 w-full">
-                      {revenueData.map((segment, index) => (
-                        <div 
-                          key={index} 
-                          className={`flex flex-col items-center transition-all duration-300 ${activeIndex === index ? 'scale-110' : ''}`}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="flex justify-center flex-col items-center"
+              >
+                <div className="w-full max-w-md">
+                  <div className="w-full aspect-square flex items-center justify-center">
+                    <ResponsiveContainer width="100%" height={400}>
+                      <PieChart>
+                        <Tooltip content={<CustomTooltip />} />
+                        <Pie
+                          data={revenueData}
+                          dataKey="value"
+                          nameKey="name"
+                          cx="50%"
+                          cy="50%"
+                          innerRadius={100}
+                          outerRadius={160}
+                          paddingAngle={3}
+                          startAngle={90}
+                          endAngle={-270}
+                          isAnimationActive={true}
+                          onMouseEnter={onPieEnter}
+                          onMouseLeave={onPieLeave}
                         >
-                          <div className="flex items-center mb-1">
-                            <div className="h-4 w-4 rounded-full mr-2" style={{ backgroundColor: segment.color }}></div>
-                            <p className="text-sm font-medium">{segment.name}</p>
-                          </div>
-                          <p className="text-2xl font-bold" style={{ color: segment.color }}>{segment.value}%</p>
+                          {revenueData.map((entry, index) => (
+                            <Cell 
+                              key={`cell-${index}`} 
+                              fill={entry.color} 
+                              stroke="#fff"
+                              strokeWidth={activeIndex === index ? 3 : 2}
+                              scale={activeIndex === index ? 1.05 : 1}
+                            />
+                          ))}
+                          <Label
+                            content={() => {
+                              return (
+                                <g>
+                                  <text 
+                                    x="50%" 
+                                    y="47%" 
+                                    textAnchor="middle" 
+                                    dominantBaseline="middle" 
+                                    className="fill-blue-600 text-lg font-bold"
+                                  >
+                                    Revenue Split
+                                  </text>
+                                  <text 
+                                    x="50%" 
+                                    y="57%" 
+                                    textAnchor="middle" 
+                                    dominantBaseline="middle" 
+                                    className="fill-blue-400 text-sm"
+                                  >
+                                    Sustainable ecosystem
+                                  </text>
+                                </g>
+                              );
+                            }}
+                          />
+                        </Pie>
+                      </PieChart>
+                    </ResponsiveContainer>
+                  </div>
+                  
+                  <div className="mt-4 grid grid-cols-3 gap-4 w-full">
+                    {revenueData.map((segment, index) => (
+                      <div 
+                        key={index} 
+                        className={`flex flex-col items-center transition-all duration-300 ${activeIndex === index ? 'scale-110' : ''}`}
+                      >
+                        <div className="flex items-center mb-1">
+                          <div className="h-4 w-4 rounded-full mr-2" style={{ backgroundColor: segment.color }}></div>
+                          <p className="text-sm font-medium">{segment.name}</p>
                         </div>
-                      ))}
-                    </div>
-                    
-                    <div className="mt-6 text-center">
-                      <p className="text-sm text-gray-600 mb-2">Drag the slider to adjust revenue share</p>
-                      <div className="px-4">
-                        <Slider
-                          value={[rightHolderValue]}
-                          onValueChange={handleSliderChange}
-                          max={90}
-                          min={0}
-                          step={1}
-                          className="mb-2"
-                        />
-                        <div className="flex justify-between">
-                          <span className="text-xs text-gray-500">0%</span>
-                          <span className="text-xs text-gray-500">90%</span>
-                        </div>
+                        <p className="text-2xl font-bold" style={{ color: segment.color }}>{segment.value}%</p>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="mt-6 text-center">
+                    <p className="text-sm text-gray-600 mb-2">Drag the slider to adjust revenue share</p>
+                    <div className="px-4">
+                      <Slider
+                        value={[rightHolderValue]}
+                        onValueChange={handleSliderChange}
+                        max={90}
+                        min={0}
+                        step={1}
+                        className="mb-2"
+                      />
+                      <div className="flex justify-between">
+                        <span className="text-xs text-gray-500">0%</span>
+                        <span className="text-xs text-gray-500">90%</span>
                       </div>
                     </div>
                   </div>
-                </motion.div>
-              </Suspense>
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>
       </section>
       
       {/* Pricing Plans section */}
-      <section className="py-16 bg-gradient-to-b from-blue-50/30 to-white w-full">
+      <section className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mt-0 max-w-5xl mx-auto">
-            <Suspense fallback={<LoadingSpinner />}>
-              <PricingPlans />
-            </Suspense>
+            <PricingPlans />
           </div>
         </div>
       </section>
       
       {/* Light CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-blue-50/50 via-white to-blue-50/30 text-gray-900 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-blue-50/50 via-white to-blue-50/30 text-gray-900 relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
