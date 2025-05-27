@@ -1,29 +1,37 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
 import { ClientLogos } from "@/components/ClientLogos";
 import { Services } from "@/components/Services";
-import { HowItWorks } from "@/components/HowItWorks";
-import { CTASection } from "@/components/CTASection";
 import { CreatorGrid } from "@/components/CreatorGrid";
-import { AlanWattsShowcase } from "@/components/AlanWattsShowcase";
-import { RevenueCalculator } from "@/components/RevenueCalculator";
-import { UltimateSolution } from "@/components/UltimateSolution";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Slider } from "@/components/ui/slider";
-import {
-  PieChart,
-  Pie,
-  Cell,
-  Label,
-  ResponsiveContainer,
-  Tooltip
-} from "recharts";
-import { PricingPlans } from "@/components/PricingPlans";
+
+// Lazy load heavy components that are below the fold
+const HowItWorks = lazy(() => import("@/components/HowItWorks").then(module => ({ default: module.HowItWorks })));
+const AlanWattsShowcase = lazy(() => import("@/components/AlanWattsShowcase").then(module => ({ default: module.AlanWattsShowcase })));
+const RevenueCalculator = lazy(() => import("@/components/RevenueCalculator").then(module => ({ default: module.RevenueCalculator })));
+const UltimateSolution = lazy(() => import("@/components/UltimateSolution").then(module => ({ default: module.UltimateSolution })));
+const PricingPlans = lazy(() => import("@/components/PricingPlans").then(module => ({ default: module.PricingPlans })));
+
+// Lazy load recharts components to reduce initial bundle
+const PieChart = lazy(() => import("recharts").then(module => ({ default: module.PieChart })));
+const Pie = lazy(() => import("recharts").then(module => ({ default: module.Pie })));
+const Cell = lazy(() => import("recharts").then(module => ({ default: module.Cell })));
+const Label = lazy(() => import("recharts").then(module => ({ default: module.Label })));
+const ResponsiveContainer = lazy(() => import("recharts").then(module => ({ default: module.ResponsiveContainer })));
+const Tooltip = lazy(() => import("recharts").then(module => ({ default: module.Tooltip })));
+const Slider = lazy(() => import("@/components/ui/slider").then(module => ({ default: module.Slider })));
+
+// Loading component for suspense fallbacks
+const LoadingSpinner = () => (
+  <div className="flex items-center justify-center py-16">
+    <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+  </div>
+);
 
 const Index: React.FC = () => {
   const [rightHolderValue, setRightHolderValue] = useState(40);
@@ -47,7 +55,7 @@ const Index: React.FC = () => {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "0px",
+      rootMargin: "50px", // Start loading slightly before element comes into view
       threshold: 0.1,
     };
 
@@ -60,9 +68,24 @@ const Index: React.FC = () => {
       });
     }, observerOptions);
 
-    document.querySelectorAll(".reveal-section").forEach((el) => {
-      observer.observe(el);
-    });
+    // Use requestIdleCallback to defer non-critical operations
+    const scheduleObserver = () => {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+          document.querySelectorAll(".reveal-section").forEach((el) => {
+            observer.observe(el);
+          });
+        });
+      } else {
+        setTimeout(() => {
+          document.querySelectorAll(".reveal-section").forEach((el) => {
+            observer.observe(el);
+          });
+        }, 0);
+      }
+    };
+
+    scheduleObserver();
 
     const handleHashNavigation = () => {
       const hash = window.location.hash;
@@ -126,19 +149,27 @@ const Index: React.FC = () => {
         <CreatorGrid className="max-w-5xl mx-auto" />
       </div>
       
-      <AlanWattsShowcase />
+      <Suspense fallback={<LoadingSpinner />}>
+        <AlanWattsShowcase />
+      </Suspense>
 
       {/* Services section - What We Do */}
       <Services />
       
       {/* Revenue Calculator - New Section */}
-      <RevenueCalculator />
+      <Suspense fallback={<LoadingSpinner />}>
+        <RevenueCalculator />
+      </Suspense>
       
       {/* Ultimate Solution - New Section */}
-      <UltimateSolution />
+      <Suspense fallback={<LoadingSpinner />}>
+        <UltimateSolution />
+      </Suspense>
 
       {/* How It Works section - renamed to "This Is How We Do It" */}
-      <HowItWorks />
+      <Suspense fallback={<LoadingSpinner />}>
+        <HowItWorks />
+      </Suspense>
       
       {/* Optional Licensing Section - Updated text */}
       <section id="licensing" className="py-16 pt-24 bg-gradient-to-b from-blue-50/30 to-white w-full">
@@ -174,107 +205,109 @@ const Index: React.FC = () => {
                   </ul>
                 </div>
               </div>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="flex justify-center flex-col items-center"
-              >
-                <div className="w-full max-w-md">
-                  <div className="w-full aspect-square flex items-center justify-center">
-                    <ResponsiveContainer width="100%" height={400}>
-                      <PieChart>
-                        <Tooltip content={<CustomTooltip />} />
-                        <Pie
-                          data={revenueData}
-                          dataKey="value"
-                          nameKey="name"
-                          cx="50%"
-                          cy="50%"
-                          innerRadius={100}
-                          outerRadius={160}
-                          paddingAngle={3}
-                          startAngle={90}
-                          endAngle={-270}
-                          isAnimationActive={true}
-                          onMouseEnter={onPieEnter}
-                          onMouseLeave={onPieLeave}
-                        >
-                          {revenueData.map((entry, index) => (
-                            <Cell 
-                              key={`cell-${index}`} 
-                              fill={entry.color} 
-                              stroke="#fff"
-                              strokeWidth={activeIndex === index ? 3 : 2}
-                              scale={activeIndex === index ? 1.05 : 1}
+              <Suspense fallback={<div className="w-full h-96 bg-gray-100 animate-pulse rounded-lg"></div>}>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                  className="flex justify-center flex-col items-center"
+                >
+                  <div className="w-full max-w-md">
+                    <div className="w-full aspect-square flex items-center justify-center">
+                      <ResponsiveContainer width="100%" height={400}>
+                        <PieChart>
+                          <Tooltip content={<CustomTooltip />} />
+                          <Pie
+                            data={revenueData}
+                            dataKey="value"
+                            nameKey="name"
+                            cx="50%"
+                            cy="50%"
+                            innerRadius={100}
+                            outerRadius={160}
+                            paddingAngle={3}
+                            startAngle={90}
+                            endAngle={-270}
+                            isAnimationActive={true}
+                            onMouseEnter={onPieEnter}
+                            onMouseLeave={onPieLeave}
+                          >
+                            {revenueData.map((entry, index) => (
+                              <Cell 
+                                key={`cell-${index}`} 
+                                fill={entry.color} 
+                                stroke="#fff"
+                                strokeWidth={activeIndex === index ? 3 : 2}
+                                scale={activeIndex === index ? 1.05 : 1}
+                              />
+                            ))}
+                            <Label
+                              content={() => {
+                                return (
+                                  <g>
+                                    <text 
+                                      x="50%" 
+                                      y="47%" 
+                                      textAnchor="middle" 
+                                      dominantBaseline="middle" 
+                                      className="fill-blue-600 text-lg font-bold"
+                                    >
+                                      Revenue Split
+                                    </text>
+                                    <text 
+                                      x="50%" 
+                                      y="57%" 
+                                      textAnchor="middle" 
+                                      dominantBaseline="middle" 
+                                      className="fill-blue-400 text-sm"
+                                    >
+                                      Sustainable ecosystem
+                                    </text>
+                                  </g>
+                                );
+                              }}
                             />
-                          ))}
-                          <Label
-                            content={() => {
-                              return (
-                                <g>
-                                  <text 
-                                    x="50%" 
-                                    y="47%" 
-                                    textAnchor="middle" 
-                                    dominantBaseline="middle" 
-                                    className="fill-blue-600 text-lg font-bold"
-                                  >
-                                    Revenue Split
-                                  </text>
-                                  <text 
-                                    x="50%" 
-                                    y="57%" 
-                                    textAnchor="middle" 
-                                    dominantBaseline="middle" 
-                                    className="fill-blue-400 text-sm"
-                                  >
-                                    Sustainable ecosystem
-                                  </text>
-                                </g>
-                              );
-                            }}
-                          />
-                        </Pie>
-                      </PieChart>
-                    </ResponsiveContainer>
-                  </div>
-                  
-                  <div className="mt-4 grid grid-cols-3 gap-4 w-full">
-                    {revenueData.map((segment, index) => (
-                      <div 
-                        key={index} 
-                        className={`flex flex-col items-center transition-all duration-300 ${activeIndex === index ? 'scale-110' : ''}`}
-                      >
-                        <div className="flex items-center mb-1">
-                          <div className="h-4 w-4 rounded-full mr-2" style={{ backgroundColor: segment.color }}></div>
-                          <p className="text-sm font-medium">{segment.name}</p>
+                          </Pie>
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </div>
+                    
+                    <div className="mt-4 grid grid-cols-3 gap-4 w-full">
+                      {revenueData.map((segment, index) => (
+                        <div 
+                          key={index} 
+                          className={`flex flex-col items-center transition-all duration-300 ${activeIndex === index ? 'scale-110' : ''}`}
+                        >
+                          <div className="flex items-center mb-1">
+                            <div className="h-4 w-4 rounded-full mr-2" style={{ backgroundColor: segment.color }}></div>
+                            <p className="text-sm font-medium">{segment.name}</p>
+                          </div>
+                          <p className="text-2xl font-bold" style={{ color: segment.color }}>{segment.value}%</p>
                         </div>
-                        <p className="text-2xl font-bold" style={{ color: segment.color }}>{segment.value}%</p>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <div className="mt-6 text-center">
-                    <p className="text-sm text-gray-600 mb-2">Drag the slider to adjust revenue share</p>
-                    <div className="px-4">
-                      <Slider
-                        value={[rightHolderValue]}
-                        onValueChange={handleSliderChange}
-                        max={90}
-                        min={0}
-                        step={1}
-                        className="mb-2"
-                      />
-                      <div className="flex justify-between">
-                        <span className="text-xs text-gray-500">0%</span>
-                        <span className="text-xs text-gray-500">90%</span>
+                      ))}
+                    </div>
+                    
+                    <div className="mt-6 text-center">
+                      <p className="text-sm text-gray-600 mb-2">Drag the slider to adjust revenue share</p>
+                      <div className="px-4">
+                        <Slider
+                          value={[rightHolderValue]}
+                          onValueChange={handleSliderChange}
+                          max={90}
+                          min={0}
+                          step={1}
+                          className="mb-2"
+                        />
+                        <div className="flex justify-between">
+                          <span className="text-xs text-gray-500">0%</span>
+                          <span className="text-xs text-gray-500">90%</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </Suspense>
             </div>
           </div>
         </div>
@@ -284,7 +317,9 @@ const Index: React.FC = () => {
       <section className="py-16 pt-24 bg-gradient-to-b from-white to-blue-50/30 w-full">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mt-0 max-w-5xl mx-auto">
-            <PricingPlans />
+            <Suspense fallback={<LoadingSpinner />}>
+              <PricingPlans />
+            </Suspense>
           </div>
         </div>
       </section>
