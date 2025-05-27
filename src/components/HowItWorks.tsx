@@ -18,15 +18,39 @@ export const HowItWorks: React.FC = () => {
   const steps = [
     {
       number: "01",
-      title: "Understand Your Content",
-      description: "We analyze your content library to understand its unique characteristics and value. Our team identifies all instances of your content being used without permission.",
+      title: "Onboarding & Content Analysis",
+      description: "We begin by understanding your content library and analyzing its unique characteristics to identify potential unauthorized usage across YouTube.",
       delay: 0.1
     },
     {
       number: "02",
-      title: "Discuss Our Programs",
-      description: "We present customized strategies to protect and monetize your content, tailored to your specific goals and preferences, ensuring maximum value from your intellectual property.",
+      title: "Strategy Development",
+      description: "Our team develops a customized protection and monetization strategy tailored to your specific goals and content portfolio.",
+      delay: 0.15
+    },
+    {
+      number: "03",
+      title: "Implementation & Setup",
+      description: "We implement our advanced AI-powered content identification system and begin monitoring for unauthorized usage of your content.",
       delay: 0.2
+    },
+    {
+      number: "04",
+      title: "Active Monitoring & Claims",
+      description: "Our system continuously scans YouTube for unauthorized usage and automatically initiates claims on your behalf to protect your rights.",
+      delay: 0.25
+    },
+    {
+      number: "05",
+      title: "Revenue Recovery & Optimization",
+      description: "We actively recover lost revenue from unauthorized usage and optimize monetization strategies to maximize your content's earning potential.",
+      delay: 0.3
+    },
+    {
+      number: "06",
+      title: "Ongoing Management & Reporting",
+      description: "Receive detailed reports on claims, revenue recovery, and performance metrics while we handle all ongoing content protection activities.",
+      delay: 0.35
     }
   ];
 
@@ -60,11 +84,11 @@ export const HowItWorks: React.FC = () => {
               This Is How We Do It
             </h2>
             <p className="mt-4 text-xl text-foreground/70 max-w-2xl mx-auto">
-              Our streamlined approach helps you protect and monetize your content quickly and efficiently
+              Our comprehensive 6-step approach to protect and monetize your content
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-x-16 lg:gap-x-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {steps.map((step, index) => (
               <motion.div 
                 key={index}
@@ -72,17 +96,17 @@ export const HowItWorks: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: step.delay }}
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl shadow-lg border border-blue-100 p-8 h-full flex flex-col"
+                className="bg-white rounded-2xl shadow-lg border border-blue-100 p-6 h-full flex flex-col"
               >
-                <div className="mb-6">
-                  <span className="bg-blue-50 text-blue-700 text-2xl font-bold px-4 py-2 rounded-lg">
+                <div className="mb-4">
+                  <span className="bg-blue-50 text-blue-700 text-xl font-bold px-3 py-2 rounded-lg">
                     {step.number}
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-blue-800">
+                <h3 className="text-xl font-bold mb-3 text-blue-800">
                   {step.title}
                 </h3>
-                <p className="text-foreground/70 mb-6 flex-grow">
+                <p className="text-foreground/70 flex-grow text-sm leading-relaxed">
                   {step.description}
                 </p>
               </motion.div>
