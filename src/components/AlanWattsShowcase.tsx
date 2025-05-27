@@ -88,8 +88,8 @@ export const AlanWattsShowcase: React.FC = () => {
             <div className="h-full flex items-center">
               <div className="relative overflow-hidden rounded-lg h-full w-full">
                 <img 
-                  src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=500&h=300&fit=crop&crop=center" 
-                  alt="Celebrity Estate Aerial View" 
+                  src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=500&h=300&fit=crop&crop=center" 
+                  alt="Celebrity Estate with Orchid Gardens" 
                   className="w-full h-[280px] object-cover hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute bottom-0 left-0 right-0 py-3 px-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent">

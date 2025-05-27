@@ -112,8 +112,8 @@ const AlanWattsCase: React.FC = () => {
               
               <div>
                 <img 
-                  src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400&h=350&fit=crop&crop=center" 
-                  alt="Celebrity Estate Aerial View" 
+                  src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=400&h=350&fit=crop&crop=center" 
+                  alt="Celebrity Estate with Orchid Gardens" 
                   className="rounded-lg w-full h-full object-cover shadow-lg"
                 />
               </div>
