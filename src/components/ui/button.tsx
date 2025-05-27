@@ -53,7 +53,7 @@ Button.displayName = "Button"
 
 // Properly exclude conflicting properties for AnimatedButton
 export interface AnimatedButtonProps 
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onDrag' | 'onDragEnd' | 'onDragStart'>,
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onAnimationStart' | 'onAnimationEnd' | 'onAnimationIteration'>,
     VariantProps<typeof buttonVariants> {
   whileHover?: TargetAndTransition;
   whileTap?: TargetAndTransition;

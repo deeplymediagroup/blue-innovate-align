@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 export const AlanWattsShowcase: React.FC = () => {
   return (
-    <section className="py-20 bg-white relative overflow-hidden">
+    <section className="py-16 bg-white relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -29,77 +29,70 @@ export const AlanWattsShowcase: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true, margin: "-50px" }}
-          className="max-w-5xl mx-auto rounded-lg border border-blue-200 bg-white overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
+          className="max-w-4xl mx-auto rounded-xl border border-blue-200 bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
         >
-          <div className="p-6 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-            <div className="md:col-span-8 flex flex-col justify-between h-full space-y-4">
-              <div className="flex flex-col space-y-4">
-                <div className="flex justify-between items-center w-full">
-                  <Link 
-                    to="/case-studies/alan-watts" 
-                    onClick={() => window.scrollTo(0, 0)}
-                    className="w-fit"
-                  >
-                    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-                      <Button className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-3 rounded-md flex items-center justify-center shadow-sm hover:shadow transition-all group">
-                        View Full Case Study 
-                        <motion.span
-                          initial={{ x: 0 }}
-                          animate={{ x: [0, 5, 0] }}
-                          transition={{ 
-                            duration: 1.5, 
-                            repeat: Infinity, 
-                            repeatType: "reverse"
-                          }}
-                        >
-                          <ArrowRight className="ml-2 h-5 w-5" />
-                        </motion.span>
-                      </Button>
-                    </motion.div>
-                  </Link>
+          <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <div className="space-y-6">
+              <div className="flex items-center space-x-4">
+                <div className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">FE</span>
                 </div>
-                
-                <div className="flex items-center">
-                  <div className="h-14 w-14 rounded-full bg-gray-200 mr-4 overflow-hidden">
-                    <div className="h-full w-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
-                      <span className="text-white font-bold text-lg">FE</span>
-                    </div>
-                  </div>
-                  <div>
-                    <p className="font-medium">Family Estate</p>
-                    <p className="text-sm text-blue-500">Intellectual Property Owner</p>
-                  </div>
+                <div>
+                  <p className="font-semibold text-lg">Family Estate</p>
+                  <p className="text-sm text-blue-600">Intellectual Property Owner</p>
                 </div>
               </div>
               
-              <div className="grid grid-cols-4 gap-3">
-                <div className="bg-blue-50 p-3 rounded-lg text-center transition-all duration-300 hover:bg-blue-100">
-                  <p className="text-xl font-bold text-blue-600">100M+</p>
-                  <p className="text-xs text-gray-500">Total Views</p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg text-center transition-all duration-300 hover:from-blue-100 hover:to-blue-200">
+                  <p className="text-2xl font-bold text-blue-600">100M+</p>
+                  <p className="text-xs text-gray-600">Total Views</p>
                 </div>
-                <div className="bg-blue-50 p-3 rounded-lg text-center transition-all duration-300 hover:bg-blue-100">
-                  <p className="text-xl font-bold text-blue-600">99.9%</p>
-                  <p className="text-xs text-gray-500">Content Claimed</p>
+                <div className="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg text-center transition-all duration-300 hover:from-green-100 hover:to-green-200">
+                  <p className="text-2xl font-bold text-green-600">99.9%</p>
+                  <p className="text-xs text-gray-600">Content Claimed</p>
                 </div>
-                <div className="bg-blue-50 p-3 rounded-lg text-center transition-all duration-300 hover:bg-blue-100">
-                  <p className="text-xl font-bold text-blue-600">660%</p>
-                  <p className="text-xs text-gray-500">Revenue Growth</p>
+                <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-lg text-center transition-all duration-300 hover:from-purple-100 hover:to-purple-200">
+                  <p className="text-2xl font-bold text-purple-600">660%</p>
+                  <p className="text-xs text-gray-600">Revenue Growth</p>
                 </div>
-                <div className="bg-blue-50 p-3 rounded-lg text-center transition-all duration-300 hover:bg-blue-100">
-                  <p className="text-xl font-bold text-blue-600">27k+</p>
-                  <p className="text-xs text-gray-500">Active Claims</p>
+                <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-4 rounded-lg text-center transition-all duration-300 hover:from-orange-100 hover:to-orange-200">
+                  <p className="text-2xl font-bold text-orange-600">27k+</p>
+                  <p className="text-xs text-gray-600">Active Claims</p>
                 </div>
               </div>
+              
+              <Link 
+                to="/case-studies/alan-watts" 
+                onClick={() => window.scrollTo(0, 0)}
+                className="block"
+              >
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg flex items-center justify-center shadow-md hover:shadow-lg transition-all group">
+                    View Full Case Study 
+                    <motion.span
+                      animate={{ x: [0, 3, 0] }}
+                      transition={{ 
+                        duration: 1.5, 
+                        repeat: Infinity, 
+                        repeatType: "reverse"
+                      }}
+                    >
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </motion.span>
+                  </Button>
+                </motion.div>
+              </Link>
             </div>
             
-            <div className="md:col-span-4 h-full flex items-center">
-              <div className="relative overflow-hidden rounded-md h-full w-full">
+            <div className="h-full flex items-center">
+              <div className="relative overflow-hidden rounded-lg h-full w-full">
                 <img 
-                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop&crop=center" 
-                  alt="Family Estate" 
-                  className="w-full h-[280px] md:h-[300px] object-cover hover:scale-105 transition-transform duration-700"
+                  src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&h=300&fit=crop&crop=center" 
+                  alt="Luxury Estate" 
+                  className="w-full h-[280px] object-cover hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute bottom-0 left-0 right-0 py-3 px-4 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+                <div className="absolute bottom-0 left-0 right-0 py-3 px-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
                   <p className="font-medium text-lg text-white mb-1">Family Estate</p>
                   <p className="text-sm text-gray-100">High-value intellectual property with global digital presence</p>
                 </div>
@@ -108,36 +101,6 @@ export const AlanWattsShowcase: React.FC = () => {
           </div>
         </motion.div>
       </div>
-
-      {/* Add decorative elements */}
-      <motion.div 
-        className="absolute -right-20 top-40 w-40 h-40 rounded-full bg-blue-100/50 blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-          rotate: [0, 15, 0]
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          repeatType: "reverse"
-        }}
-      />
-      
-      <motion.div 
-        className="absolute -left-16 bottom-16 w-32 h-32 rounded-full bg-purple-100/40 blur-2xl"
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.2, 0.4, 0.2],
-          rotate: [0, -10, 0]
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          repeatType: "reverse",
-          delay: 2
-        }}
-      />
     </section>
   );
 };

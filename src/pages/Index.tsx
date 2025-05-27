@@ -289,43 +289,117 @@ const Index: React.FC = () => {
         </div>
       </section>
       
-      {/* Enhanced CTA Section with more visibility */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white relative overflow-hidden">
+      {/* Enhanced Dynamic CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 text-white relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Protect Your Content?</h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Join thousands of rights holders who trust us to protect and monetize their valuable content.
-            </p>
-            <Link to="/contact">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+            {/* Animated gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 via-blue-500/20 to-purple-600/20 animate-pulse"></div>
+            
+            {/* Main content */}
+            <div className="relative z-10">
+              <motion.h2 
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-cyan-200 bg-clip-text text-transparent"
               >
-                <Button 
-                  size="lg" 
-                  variant="outline"
-                  className="bg-white text-blue-600 hover:bg-blue-50 border-white text-lg px-12 py-4 shadow-2xl hover:shadow-3xl transition-all duration-300"
-                >
-                  Get Started Today
-                  <ArrowRight className="ml-2 h-6 w-6" />
-                </Button>
+                Ready to Transform Your Content Strategy?
+              </motion.h2>
+              
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed"
+              >
+                Join an exclusive group of rights holders who've discovered the power of AI-driven content protection and monetization
+              </motion.p>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                viewport={{ once: true }}
+                className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
+              >
+                <div className="flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
+                  <div className="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></div>
+                  <span className="text-sm font-medium">AI-Powered Protection</span>
+                </div>
+                <div className="flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
+                  <div className="w-3 h-3 bg-cyan-400 rounded-full mr-3 animate-pulse"></div>
+                  <span className="text-sm font-medium">Real-Time Monetization</span>
+                </div>
               </motion.div>
-            </Link>
+              
+              <Link to="/contact">
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-block"
+                >
+                  <Button 
+                    size="lg" 
+                    className="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-white border-0 text-xl px-12 py-6 rounded-full shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 group"
+                  >
+                    Start Your Journey Today
+                    <motion.div
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+                    </motion.div>
+                  </Button>
+                </motion.div>
+              </Link>
+              
+              <motion.p 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                viewport={{ once: true }}
+                className="text-sm text-blue-200 mt-6"
+              >
+                No setup fees • Free consultation • Custom solutions available
+              </motion.p>
+            </div>
           </motion.div>
         </div>
         
-        {/* Background decoration */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-20 h-20 border border-white rounded-full"></div>
-          <div className="absolute bottom-10 right-10 w-32 h-32 border border-white rounded-full"></div>
-          <div className="absolute top-1/2 left-1/3 w-16 h-16 border border-white rounded-full"></div>
+        {/* Enhanced background decoration */}
+        <div className="absolute inset-0 opacity-30">
+          <motion.div 
+            className="absolute top-20 left-10 w-32 h-32 border border-cyan-400 rounded-full"
+            animate={{ rotate: 360, scale: [1, 1.1, 1] }}
+            transition={{ duration: 20, repeat: Infinity }}
+          />
+          <motion.div 
+            className="absolute bottom-20 right-10 w-24 h-24 border border-purple-400 rounded-full"
+            animate={{ rotate: -360, scale: [1, 1.2, 1] }}
+            transition={{ duration: 15, repeat: Infinity }}
+          />
+          <motion.div 
+            className="absolute top-1/2 left-1/4 w-16 h-16 border border-blue-300 rounded-full"
+            animate={{ rotate: 180, scale: [1, 1.3, 1] }}
+            transition={{ duration: 25, repeat: Infinity }}
+          />
         </div>
+        
+        {/* Animated gradient overlay */}
+        <motion.div 
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent"
+          animate={{ x: ['-100%', '100%'] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+        />
       </section>
     </Layout>
   );
