@@ -5,7 +5,7 @@ import { Shield, Zap, Users } from "lucide-react";
 
 export const UltimateSolution: React.FC = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-blue-50/30 to-white relative overflow-hidden">
+    <section className="py-16 bg-gradient-to-b from-blue-50/30 to-white relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-6xl mx-auto text-center mb-16">
           <motion.h2 

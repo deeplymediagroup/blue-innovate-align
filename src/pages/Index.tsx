@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, lazy, Suspense } from "react";
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
@@ -136,7 +137,7 @@ const Index: React.FC = () => {
       <Hero />
       <ClientLogos />
       
-      <div className="py-12 container mx-auto px-4 md:px-6">
+      <div className="py-16 container mx-auto px-4 md:px-6">
         <div className="text-center mb-8">
           <h2 className="font-display font-bold text-3xl sm:text-4xl mb-4">
             Rights Holders We Work With
@@ -171,7 +172,7 @@ const Index: React.FC = () => {
       </Suspense>
       
       {/* Optional Licensing Section - Updated text */}
-      <section id="licensing" className="py-16 bg-gradient-to-b from-blue-50/30 to-white w-full">
+      <section id="licensing" className="py-16 bg-gradient-to-b from-white to-blue-50/30 w-full">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto mb-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -313,7 +314,7 @@ const Index: React.FC = () => {
       </section>
       
       {/* Pricing Plans section */}
-      <section className="py-16 bg-gradient-to-b from-white to-blue-50/30 w-full">
+      <section className="py-16 bg-gradient-to-b from-blue-50/30 to-white w-full">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mt-0 max-w-5xl mx-auto">
             <Suspense fallback={<LoadingSpinner />}>
