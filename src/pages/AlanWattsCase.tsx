@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Layout } from "@/components/Layout";
 import { GlassmorphicCard } from "@/components/GlassmorphicCard";
@@ -97,7 +96,7 @@ const AlanWattsCase: React.FC = () => {
                     <p className="text-sm text-gray-500">Content Claimed</p>
                   </div>
                   <div>
-                    <p className="text-3xl font-bold text-blue-600">25K+</p>
+                    <p className="text-3xl font-bold text-blue-600">27K+</p>
                     <p className="text-sm text-gray-500">Claims Processed</p>
                   </div>
                   <div>
@@ -346,7 +345,7 @@ const AlanWattsCase: React.FC = () => {
                     </div>
                     
                     <div className="bg-white p-6 rounded-lg shadow-md">
-                      <div className="text-4xl font-bold text-blue-600 mb-2">25K+</div>
+                      <div className="text-4xl font-bold text-blue-600 mb-2">27K+</div>
                       <p>Claims Processed</p>
                     </div>
                     
