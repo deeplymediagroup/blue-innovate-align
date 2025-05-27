@@ -48,16 +48,16 @@ export const AlanWattsShowcase: React.FC = () => {
                   <p className="text-2xl font-bold text-blue-700">100M+</p>
                   <p className="text-xs text-gray-600">Total Views</p>
                 </div>
-                <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-4 rounded-lg text-center transition-all duration-300 hover:from-slate-100 hover:to-slate-200 border border-slate-200">
-                  <p className="text-2xl font-bold text-slate-700">99.9%</p>
+                <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg text-center transition-all duration-300 hover:from-blue-100 hover:to-blue-200 border border-blue-200">
+                  <p className="text-2xl font-bold text-blue-700">99.9%</p>
                   <p className="text-xs text-gray-600">Content Claimed</p>
                 </div>
-                <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 p-4 rounded-lg text-center transition-all duration-300 hover:from-indigo-100 hover:to-indigo-200 border border-indigo-200">
-                  <p className="text-2xl font-bold text-indigo-700">660%</p>
+                <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg text-center transition-all duration-300 hover:from-blue-100 hover:to-blue-200 border border-blue-200">
+                  <p className="text-2xl font-bold text-blue-700">660%</p>
                   <p className="text-xs text-gray-600">Revenue Growth</p>
                 </div>
-                <div className="bg-gradient-to-br from-cyan-50 to-cyan-100 p-4 rounded-lg text-center transition-all duration-300 hover:from-cyan-100 hover:to-cyan-200 border border-cyan-200">
-                  <p className="text-2xl font-bold text-cyan-700">27k+</p>
+                <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg text-center transition-all duration-300 hover:from-blue-100 hover:to-blue-200 border border-blue-200">
+                  <p className="text-2xl font-bold text-blue-700">27k+</p>
                   <p className="text-xs text-gray-600">Active Claims</p>
                 </div>
               </div>
@@ -88,8 +88,8 @@ export const AlanWattsShowcase: React.FC = () => {
             <div className="h-full flex items-center">
               <div className="relative overflow-hidden rounded-lg h-full w-full">
                 <img 
-                  src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=500&h=300&fit=crop&crop=center" 
-                  alt="Celebrity Estate with Orchid Gardens" 
+                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop&crop=center" 
+                  alt="Wine Estate Vineyard" 
                   className="w-full h-[280px] object-cover hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute bottom-0 left-0 right-0 py-3 px-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
