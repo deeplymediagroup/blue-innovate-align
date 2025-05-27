@@ -88,7 +88,7 @@ export const AlanWattsShowcase: React.FC = () => {
             <div className="h-full flex items-center">
               <div className="relative overflow-hidden rounded-lg h-full w-full">
                 <img 
-                  src="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?w=500&h=300&fit=crop&crop=center" 
+                  src="/lovable-uploads/bd5f4d9e-1866-45a2-b53e-a2f987172cbb.png" 
                   alt="Luxury Estate Aerial View" 
                   className="w-full h-[280px] object-cover hover:scale-105 transition-transform duration-700"
                 />
