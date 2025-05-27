@@ -18,7 +18,7 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
-  // Updated images with correct creator profile images and adjusted for Jim Rohn
+  // Updated images with Jim Rohn removed
   const images = [
     { 
       url: "/lovable-uploads/bc4f51e9-4d69-4861-952c-094cb60fbf09.png", 
@@ -28,11 +28,6 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
     { 
       url: "/lovable-uploads/9a04e358-ac60-49f2-a128-fc6b630d19fd.png", 
       name: "Zig Ziglar", 
-      role: "Motivational Speaker"
-    },
-    { 
-      url: "/lovable-uploads/ce91c4d1-7f98-41ef-b220-821a628bf124.png", 
-      name: "Jim Rohn", 
       role: "Motivational Speaker"
     },
     { 
@@ -94,12 +89,7 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
             viewport={{ once: true }}
             className="overflow-hidden rounded-2xl shadow-lg h-80 relative transition-transform duration-300 hover:scale-105 hover:shadow-xl"
           >
-            {/* Adjusted object-position to better frame Jim Rohn's face */}
-            <img 
-              src={images[2].url} 
-              alt={images[2].name} 
-              className="w-full h-full object-cover object-top" 
-            />
+            <img src={images[2].url} alt={images[2].name} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
               <h3 className="font-bold">{images[2].name}</h3>
@@ -135,20 +125,6 @@ export const CreatorGrid: React.FC<ImageGridProps> = ({ className = "" }) => {
             <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
               <h3 className="font-bold">{images[4].name}</h3>
               <p className="text-sm text-white/80">{images[4].role}</p>
-            </div>
-          </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            viewport={{ once: true }}
-            className="overflow-hidden rounded-2xl shadow-lg h-80 relative transition-transform duration-300 hover:scale-105 hover:shadow-xl"
-          >
-            <img src={images[5].url} alt={images[5].name} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-              <h3 className="font-bold">{images[5].name}</h3>
-              <p className="text-sm text-white/80">{images[5].role}</p>
             </div>
           </motion.div>
         </motion.div>
